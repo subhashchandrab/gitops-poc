@@ -21,3 +21,6 @@ spec:
       name: https
       number: 443
       protocol: HTTPS
+    tls:
+      credentialName: somesecret 
+      mode: SIMPLE
