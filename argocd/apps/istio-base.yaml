@@ -7,17 +7,12 @@ spec:
   destination:
     server: https://kubernetes.default.svc 
     namespace: istio-system
-  # ignoreDifferences:
-  #   - group: admissionregistration.k8s.io
-  #     jsonPointers:
-  #       - /webhooks/0/failurePolicy
-  #     kind: ValidatingWebhookConfiguration
-  #     name: istio-validator-istio-system
-  #   - group: admissionregistration.k8s.io
-  #     jsonPointers:
-  #       - /webhooks/0/failurePolicy
-  #     kind: ValidatingWebhookConfiguration
-  #     name: istiod-default-validator
+  ignoreDifferences:
+    - group: admissionregistration.k8s.io                                                              
+      kind: ValidatingWebhookConfiguration
+      jsonPointers:                                                                                    
+      - /webhooks/0/clientConfig/caBundle
+      - /webhooks/0/failurePolicy
   project: default
   sources:
     - chart: base
