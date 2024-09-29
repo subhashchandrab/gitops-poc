@@ -41,7 +41,7 @@ spec:
                   oci.oraclecloud.com/load-balancer-type: "nlb"
                   oci-network-load-balancer.oraclecloud.com/internal: "false"
                   oci-network-load-balancer.oraclecloud.com/is-preserve-source: "false"
-                  oci-network-load-balancer.oraclecloud.com/subnet: : <path:ocivault#nlb_subnet_oke_k8s_cluster#latest | base64decode>  
+                  oci-network-load-balancer.oraclecloud.com/subnet: <path:ocivault#nlb_subnet_oke_k8s_cluster#latest | base64decode>  
                 externalTrafficPolicy: "Local"
   syncPolicy:
     syncOptions:
