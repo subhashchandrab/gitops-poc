@@ -31,11 +31,6 @@ spec:
         releaseName: istiod
       repoURL: 'https://istio-release.storage.googleapis.com/charts'
       targetRevision: 1.23.2
-    - chart: istiod
-      helm:
-        releaseName: istiod
-      repoURL: 'https://istio-release.storage.googleapis.com/charts'
-      targetRevision: 1.23.2
   syncPolicy:
     automated:
       prune: true
