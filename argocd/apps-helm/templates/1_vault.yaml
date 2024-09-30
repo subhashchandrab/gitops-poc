@@ -15,7 +15,7 @@ spec:
     sources:
     - chart: vault
       helm:
-        releaseName: cnpg
+        releaseName: vault
         values: |
           server:
             ha:
