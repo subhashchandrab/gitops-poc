@@ -27,6 +27,6 @@ dependencies:
   version: 7.17.3
   repository: https://helm.elastic.co
 
-- name: filestorage
-  version: 0.1.1
-  repository: https://oci-sunbird.github.io/daas-helm
+# - name: filestorage
+#   version: 0.1.1
+#   repository: https://oci-sunbird.github.io/daas-helm
