@@ -1,9 +1,9 @@
 oci: 
-  user_id: ""
-  tenancy_id: ""
-  region: ""
-  fingerprint: ""
-  oci_cli_key_content: ""
+  user_id: "ocid1.user.oc1..aaaaaa"
+  tenancy_id: "ocid1.tenancy.oc1..aaaa"
+  region: "region"
+  fingerprint: "fingerprint"
+  oci_cli_key_content: "private_key_content"
   oci_cli_auth: "instance_principal"
 
 ansibleenv:
