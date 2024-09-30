@@ -21,3 +21,10 @@ certmgrwebhookoci:
   source:
     repoURL: https://dn13.gitlab.io/cert-manager-webhook-oci
     targetRevision: 1.2.1
+
+commonSetup:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/ddevadat/gitops-poc
+    targetRevision: HEAD

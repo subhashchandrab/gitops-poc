@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: common-setup
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: default
+    server: {{ .Values.commonSetup.destination.server }}
+  project: default
+  source:
+    repoURL: {{ .Values.commonSetup.source.repoURL }}
+    targetRevision: {{ .Values.commonSetup.source.targetRevision }}
+    path: common/setup
+    plugin:
+      name: argocd-vault-plugin-helm
+  syncPolicy:
+    syncOptions:
+      - CreateNameSpace=true
+    automated:
+      prune: true
+      selfHeal: true
