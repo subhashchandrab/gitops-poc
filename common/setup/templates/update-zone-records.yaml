@@ -54,7 +54,7 @@ spec:
     spec:
       serviceAccountName: istio-service-account
       containers:
-      - name: kubectl
+      - name: configmanager
         image: ghcr.io/oci-sunbird/ociop:latest
         command: ["ansible-playbook"]
         args: ["/root/.oci/playbooks/update_zone_record_playbook.yaml", "-i", "/root/.oci/inventory/inventory"]
