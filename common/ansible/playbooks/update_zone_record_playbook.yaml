@@ -19,13 +19,13 @@
 
     - name: Get the external ip of the ingress controller
       shell: |
-        EXTERNAL_IP=$(kubectl get svc -n istio-system istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+        EXTERNAL_IP=$(kubectl get svc -n istio-system istio-ingress -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
         echo $EXTERNAL_IP
       register: istio_gw_external_ip
 
     - name: Get the internal ip of the nginx ingress controller
       shell: |
-        INTERNAL_IP=$(kubectl get svc -n istio-system istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[1].ip}')
+        INTERNAL_IP=$(kubectl get svc -n istio-system istio-ingress -o jsonpath='{.status.loadBalancer.ingress[1].ip}')
         echo $INTERNAL_IP
       register: istio_gw_internal_ip
 
