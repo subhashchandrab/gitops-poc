@@ -23,6 +23,12 @@ postgres:
     repoURL: https://cloudnative-pg.github.io/charts
     targetRevision: 0.19.0
 
+vault:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://helm.releases.hashicorp.com
+    targetRevision: 0.28.1
 
 
 certmgrwebhookoci:

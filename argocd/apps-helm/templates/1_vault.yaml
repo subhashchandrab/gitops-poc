@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vault
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: vault
+    server: {{ .Values.vault.destination.server }}
+  project: default
+  source:
+    repoURL: {{ .Values.vault.source.repoURL }}
+    targetRevision: {{ .Values.vault.source.targetRevision }}
+    helm:
+      values: |
+        server:
+          ha:
+            enabled: false
+  syncPolicy:
+    syncOptions:
+      - CreateNameSpace=true
+    automated:
+      prune: true
+      selfHeal: true
