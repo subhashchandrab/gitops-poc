@@ -5,7 +5,7 @@ metadata:
   namespace: istio-system
 spec:
   dnsNames:
-    - {{ .Values.commonenv.sslDnsNames }}
+    - {{ .Values.commonenv.sslDnsNames | quote }}
   issuerRef:
     name: letsencrypt-issuer
     kind: ClusterIssuer
