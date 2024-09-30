@@ -62,7 +62,7 @@ spec:
         - name: OCI_CLI_AUTH
           valueFrom:
             secretKeyRef:
-              name: ansible-oci
+              name: commonsetup-oci
               key: oci_cli_auth
         volumeMounts:
         - name: inventory-volume
