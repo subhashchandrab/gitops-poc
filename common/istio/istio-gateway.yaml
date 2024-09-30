@@ -22,5 +22,5 @@ spec:
       number: 443
       protocol: HTTPS
     tls:
-      credentialName: somesecret 
+      credentialName: functional-registry-ssl-certificate
       mode: SIMPLE
