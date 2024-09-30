@@ -45,3 +45,5 @@ workload:
   source:
     repoURL: https://github.com/ddevadat/gitops-poc
     targetRevision: HEAD
+  filestorage:
+    rootPassword: <path:ocivault#minio-admin-password#latest | base64decode>

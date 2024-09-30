@@ -19,6 +19,12 @@ spec:
     helm:
       valueFiles:
       - values.yaml
+
+      values: |
+        filestorage:
+          filestorageenv:
+            MINIO_ROOT_PASSWORD: {{ .Values.workload.filestorage.rootPassword }} 
+
   syncPolicy:
     syncOptions:
       - CreateNameSpace=true
