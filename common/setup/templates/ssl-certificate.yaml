@@ -5,7 +5,7 @@ metadata:
   namespace: istio-system
 spec:
   dnsNames:
-    - {{ .Values.commonenv.sslDnsNames | quote }}
+    - "*.<path:ocivault#functional_registry_domain#latest | base64decode>"
   issuerRef:
     name: letsencrypt-issuer
     kind: ClusterIssuer
