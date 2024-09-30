@@ -15,6 +15,7 @@ spec:
   source:
     repoURL: {{ .Values.vault.source.repoURL }}
     targetRevision: {{ .Values.vault.source.targetRevision }}
+    chart: vault
     helm:
       values: |
         server:
