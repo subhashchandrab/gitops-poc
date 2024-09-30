@@ -67,8 +67,13 @@ spec:
         volumeMounts:
         - name: inventory-volume
           mountPath: /root/.oci
+        - name: playbooks-volume
+          mountPath: /root/.oci
       restartPolicy: Never
       volumes:
       - name: inventory-volume
         configMap:
           name: ansible-conf
+      - name: playbooks-volume
+        configMap:
+          name: ansible-playbooks
