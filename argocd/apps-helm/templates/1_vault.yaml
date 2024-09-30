@@ -12,15 +12,16 @@ spec:
     namespace: vault
     server: {{ .Values.vault.destination.server }}
   project: default
-  source:
-    repoURL: {{ .Values.vault.source.repoURL }}
-    targetRevision: {{ .Values.vault.source.targetRevision }}
-    chart: vault
-    helm:
-      values: |
-        server:
-          ha:
-            enabled: false
+    sources:
+    - chart: vault
+      helm:
+        releaseName: cnpg
+        values: |
+          server:
+            ha:
+              enabled: false
+      repoURL: {{ .Values.vault.source.repoURL }}
+      targetRevision: {{ .Values.vault.source.targetRevision }}
   syncPolicy:
     syncOptions:
       - CreateNameSpace=true
