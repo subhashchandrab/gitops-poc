@@ -56,7 +56,13 @@ spec:
       containers:
       - name: kubectl
         image: ghcr.io/oci-sunbird/ociop:latest
-        command: ["kubectl", "get", "service", "istio-ingress", "-n", "istio-system"]
+        command: ["sleep", "60"]
+        env:
+        - name: OCI_CLI_AUTH
+          valueFrom:
+            secretKeyRef:
+              name: ansible-oci
+              key: oci_cli_auth
         volumeMounts:
         - name: inventory-volume
           mountPath: /root
