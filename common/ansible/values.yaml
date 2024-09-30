@@ -1,3 +1,11 @@
+oci: 
+  user_id: ""
+  tenancy_id: ""
+  region: ""
+  fingerprint: ""
+  oci_cli_key_content: ""
+  oci_cli_auth: "instance_principal"
+
 ansibleenv:
   zone_compartment_id: <path:ocivault#zone_compartment_id#latest | base64decode>
   domain: <path:ocivault#functional_registry_domain#latest | base64decode>

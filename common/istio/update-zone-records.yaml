@@ -57,4 +57,12 @@ spec:
       - name: kubectl
         image: ghcr.io/oci-sunbird/ociop:latest
         command: ["kubectl", "get", "service", "istio-ingress", "-n", "istio-system"]
+        volumeMounts:
+        - name: inventory-volume
+          mountPath: /root
+          subPath: inventory
       restartPolicy: Never
+      volumes:
+      - name: inventory-volume
+        configMap:
+          name: ansible-conf
