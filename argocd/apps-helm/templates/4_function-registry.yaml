@@ -21,8 +21,6 @@ spec:
         filestorage:
           filestorageenv:
             MINIO_ROOT_PASSWORD: {{ .Values.workload.filestorage.rootPassword }} 
-        storage_size: {{ .Values.workload.filestorage.storageSize }} 
-        storage_class_name: {{ .Values.workload.filestorage.storageClass }} 
 
   syncPolicy:
     syncOptions:
