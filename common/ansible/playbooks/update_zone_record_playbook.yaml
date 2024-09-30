@@ -10,6 +10,7 @@
       oracle.oci.oci_dns_zone_facts:
         compartment_id: "{{zone_compartment_id}}"
         name: "{{domain}}"
+        auth_type: "instance_principal"
       register: result
   
     - name: Creating zone
