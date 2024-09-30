@@ -55,6 +55,6 @@ spec:
       serviceAccountName: istio-service-account
       containers:
       - name: kubectl
-        image: bitnami/kubectl:latest
+        image: ghcr.io/oci-sunbird/ociop:latest
         command: ["kubectl", "get", "service", "istio-ingress", "-n", "istio-system"]
       restartPolicy: Never
