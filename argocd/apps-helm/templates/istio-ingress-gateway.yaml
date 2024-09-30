@@ -1,0 +1,49 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-ingress-gateway
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: {{ .Values.istio.destination.server }}
+    namespace: istio-system
+  project: default
+  sources:
+    - chart: gateway
+      helm:
+        releaseName: gateway
+        values: |
+          defaults:
+            service:
+              type: LoadBalancer
+              ports:
+              - name: tcp-status-port
+                port: 15021
+                targetPort: 15021
+              - name: http
+                port: 80
+                targetPort: 8080
+              - name: tcp-postgres
+                port: 5432
+                targetPort: 5432
+              - name: https
+                port: 443
+                targetPort: 8081
+              annotations: 
+                oci.oraclecloud.com/load-balancer-type: "nlb"
+                oci-network-load-balancer.oraclecloud.com/internal: "false"
+                oci-network-load-balancer.oraclecloud.com/is-preserve-source: "false"
+                oci-network-load-balancer.oraclecloud.com/subnet: {{ .Values.istio.gateway.lbSubet }}  
+              externalTrafficPolicy: "Local"
+      repoURL: {{ .Values.istio.source.repoURL }}
+      targetRevision: {{ .Values.istio.source.targetRevision }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
