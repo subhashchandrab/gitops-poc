@@ -24,8 +24,8 @@ spec:
     - chart: cert-manager-webhook-oci
       helm:
         releaseName: cert-manager-webhook-oci
-      repoURL: {{ .Values.certmgr-webhook-oci.source.repoURL }}
-      targetRevision: {{ .Values.certmgr-webhook-oci.source.targetRevision }}
+      repoURL: {{ .Values.certmgrwebhookoci.source.repoURL }}
+      targetRevision: {{ .Values.certmgrwebhookoci.source.targetRevision }}
 
   syncPolicy:
     automated:

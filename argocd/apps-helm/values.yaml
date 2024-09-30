@@ -15,7 +15,7 @@ certmanager:
     repoURL: https://charts.jetstack.io
     targetRevision: 1.15.3
 
-certmgr-webhook-oci:
+certmgrwebhookoci:
   destination:
     server: https://kubernetes.default.svc
   source:
