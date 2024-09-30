@@ -4,5 +4,5 @@
   tasks:
     - name: Print zone compartment ID
       debug:
-        msg: "Zone Compartment ID: {{ zone_compartment_id"
+        msg: "Zone Compartment ID: {{ zone_compartment_id }}"
 
