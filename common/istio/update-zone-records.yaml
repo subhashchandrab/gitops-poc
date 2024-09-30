@@ -65,7 +65,7 @@ spec:
               key: oci_cli_auth
         volumeMounts:
         - name: inventory-volume
-          mountPath: /root
+          mountPath: /root/.oci
           subPath: inventory
       restartPolicy: Never
       volumes:
