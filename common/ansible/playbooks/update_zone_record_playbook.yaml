@@ -1,8 +1,23 @@
 ---
-- name: Print variables from inventory
+- name: Update DNS zone records
   hosts: bastion
   tasks:
     - name: Print zone compartment ID
       debug:
         msg: "Zone Compartment ID: {{ zone_compartment_id }}"
 
+    - name: Checking if zone is already present
+      oracle.oci.oci_dns_zone_facts:
+        compartment_id: "{{zone_compartment_id}}"
+        name: "{{domain}}"
+      register: result
+  
+    - name: Creating zone
+      debug:
+        msg: "Zone creation initiated"
+      when: result.zones | length == 0
+
+    - name: Zone already present
+      debug:
+        msg: "Zone already present"
+      when: result.zones | length != 0
