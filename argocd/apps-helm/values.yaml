@@ -47,3 +47,5 @@ workload:
     targetRevision: HEAD
   filestorage:
     rootPassword: <path:ocivault#minio-admin-password#latest | base64decode>
+    storageSize: 1Gi
+    storageClass: longhorn
