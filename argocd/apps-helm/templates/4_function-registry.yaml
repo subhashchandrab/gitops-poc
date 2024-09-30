@@ -16,8 +16,9 @@ spec:
     repoURL: {{ .Values.workload.source.repoURL }}
     targetRevision: {{ .Values.workload.source.targetRevision }}
     path: workload/sunbird-rc
-    plugin:
-      name: argocd-vault-plugin-helm
+    helm:
+      valueFiles:
+      - values.yaml
   syncPolicy:
     syncOptions:
       - CreateNameSpace=true
