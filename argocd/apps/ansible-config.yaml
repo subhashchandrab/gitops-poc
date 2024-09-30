@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ansible-setup
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: istio-system
+    server: https://kubernetes.default.svc 
+  project: default
+  source:
+    repoURL: 'https://github.com/ddevadat/gitops-poc'
+    targetRevision: HEAD
+    path: common/ansible
+    plugin:
+      name: argocd-vault-plugin-helm
+  syncPolicy:
+    syncOptions:
+      - CreateNameSpace=true
+    automated:
+      prune: true
+      selfHeal: true
