@@ -38,3 +38,10 @@ commonSetup:
   source:
     repoURL: https://github.com/ddevadat/gitops-poc
     targetRevision: HEAD
+
+workload:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/ddevadat/gitops-poc
+    targetRevision: HEAD
