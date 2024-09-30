@@ -56,7 +56,8 @@ spec:
       containers:
       - name: kubectl
         image: ghcr.io/oci-sunbird/ociop:latest
-        command: ["sleep", "60"]
+        command: ["ansible-playbook"]
+        args: ["/root/.oci/update_zone_record_playbook.yml", "-i", "/root/.oci/inventory"]
         env:
         - name: OCI_CLI_AUTH
           valueFrom:

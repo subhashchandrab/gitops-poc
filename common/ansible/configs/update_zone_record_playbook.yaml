@@ -1,0 +1,11 @@
+---
+- name: Print variables from inventory
+  hosts: bastion
+  tasks:
+    - name: Print zone compartment ID
+      debug:
+        msg: "Zone Compartment ID: {{ zone_compartment_id }}"
+
+    - name: Print domain
+      debug:
+        msg: "Domain: {{ domain }}"
