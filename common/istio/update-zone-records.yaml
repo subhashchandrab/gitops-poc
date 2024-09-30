@@ -57,7 +57,7 @@ spec:
       - name: kubectl
         image: ghcr.io/oci-sunbird/ociop:latest
         command: ["ansible-playbook"]
-        args: ["/root/.oci/update_zone_record_playbook.yml", "-i", "/root/.oci/inventory"]
+        args: ["/root/.oci/playbooks/update_zone_record_playbook.yaml", "-i", "/root/.oci/inventory/inventory"]
         env:
         - name: OCI_CLI_AUTH
           valueFrom:
@@ -66,9 +66,9 @@ spec:
               key: oci_cli_auth
         volumeMounts:
         - name: inventory-volume
-          mountPath: /root/.oci
+          mountPath: /root/.oci/inventory
         - name: playbooks-volume
-          mountPath: /root/.oci
+          mountPath: /root/.oci/playbooks
       restartPolicy: Never
       volumes:
       - name: inventory-volume
