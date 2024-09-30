@@ -15,6 +15,16 @@ certmanager:
     repoURL: https://charts.jetstack.io
     targetRevision: 1.15.3
 
+
+postgres:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://cloudnative-pg.github.io/charts
+    targetRevision: 0.19.0
+
+
+
 certmgrwebhookoci:
   destination:
     server: https://kubernetes.default.svc
