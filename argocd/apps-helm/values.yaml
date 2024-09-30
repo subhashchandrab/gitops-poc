@@ -6,3 +6,18 @@ istio:
     targetRevision: 1.23.2
   gateway:
     lbSubet: <path:ocivault#nlb_subnet_oke_k8s_cluster#latest | base64decode>
+
+
+certmanager:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://charts.jetstack.io
+    targetRevision: 1.15.3
+
+certmgr-webhook-oci:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://dn13.gitlab.io/cert-manager-webhook-oci
+    targetRevision: 1.2.1
