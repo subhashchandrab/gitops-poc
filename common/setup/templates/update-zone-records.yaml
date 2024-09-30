@@ -73,7 +73,7 @@ spec:
       volumes:
       - name: inventory-volume
         configMap:
-          name: ansible-conf
+          name: commonsetup-conf
       - name: playbooks-volume
         configMap:
-          name: ansible-playbooks
+          name: commonsetup-playbooks
