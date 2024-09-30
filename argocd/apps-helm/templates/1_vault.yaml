@@ -9,8 +9,8 @@ metadata:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: vault
     server: {{ .Values.vault.destination.server }}
+    namespace: vault
   project: default
   sources:
     - chart: vault
@@ -23,8 +23,8 @@ spec:
       repoURL: {{ .Values.vault.source.repoURL }}
       targetRevision: {{ .Values.vault.source.targetRevision }}
   syncPolicy:
-    syncOptions:
-      - CreateNameSpace=true
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
