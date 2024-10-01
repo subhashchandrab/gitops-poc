@@ -1,3 +1,6 @@
+base:
+  defaultRevision: default
+
 gateway:
   defaults:
     service:
