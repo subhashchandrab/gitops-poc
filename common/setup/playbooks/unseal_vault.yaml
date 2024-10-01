@@ -6,7 +6,7 @@
   tasks:
     - name: Check if Vault is sealed
       shell: |
-        kubectl -n vault exec vault-0 -- vault status
+        kubectl -n vault exec vault-0 -- vault status -format=json | jq -r '.sealed'
       register: vault_status
       changed_when: false
       ignore_errors: true
