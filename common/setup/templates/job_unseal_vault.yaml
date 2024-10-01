@@ -18,7 +18,7 @@ metadata:
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 rules:
 - apiGroups: [""]
-  resources: ["pods", "services"]
+  resources: ["pods", "services","pods/log"]
   verbs: ["get", "list"]
 - apiGroups: [""]
   resources: ["pods/exec"]
