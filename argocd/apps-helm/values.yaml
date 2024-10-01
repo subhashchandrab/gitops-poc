@@ -54,9 +54,9 @@ workload:
   filestorage:
     rootPassword: <path:ocivault#minio-admin-password#latest | base64decode>
   claimms:
-    db_url: <path:ocivault#claims_ms_db_url#latest | base64decode >
-    username: <path:ocivault#functional_registry_postgres_app_user#latest | base64decode >
-    password: <path:ocivault#functional_registry_postgres_app_password#latest | base64decode >
+    db_url: <path:ocivault#claims_ms_db_url#latest | base64decode>
+    username: <path:ocivault#functional_registry_postgres_app_user#latest | base64decode>
+    password: <path:ocivault#functional_registry_postgres_app_password#latest | base64decode>
   identity:
      host: "argosbrciam.<path:ocivault#functional_registry_domain#latest | base64decode>"
      jwks_uri: "https://argosbrciam.<path:ocivault#functional_registry_domain#latest | base64decode>/auth/realms/sunbird-rc/protocol/openid-connect/certs"
