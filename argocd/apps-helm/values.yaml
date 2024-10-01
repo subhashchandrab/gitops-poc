@@ -53,3 +53,13 @@ workload:
     targetRevision: HEAD
   filestorage:
     rootPassword: <path:ocivault#minio-admin-password#latest | base64decode>
+  identity:
+     host: "argosbrciam.<path:ocivault#functional_registry_domain#latest | base64decode>"
+     jwks_uri: "https://argosbrciam.<path:ocivault#functional_registry_domain#latest | base64decode>/auth/realms/sunbird-rc/protocol/openid-connect/certs"
+     base_url_identity: https://argosbrc.<path:ocivault#functional_registry_domain#latest | base64decode>/identity
+     base_url_web_did: https://argosbrc.<path:ocivault#functional_registry_domain#latest | base64decode>/identity
+     base_url_credential_schema: https://argosbrc.<path:ocivault#functional_registry_domain#latest | base64decode>/schema
+     base_url_credential_service: https://argosbrc.<path:ocivault#functional_registry_domain#latest | base64decode>/credential
+     vaul_secret_token: <path:ocivault#vault_root_token#latest>
+     db_url: cG9zdGdyZXM6Ly88cGF0aDpvY2l2YXVsdCNmdW5jdGlvbmFsX3JlZ2lzdHJ5X3Bvc3RncmVzX2FwcF91c2VyIHwgYmFzZTY0ZGVjb2RlPjo8cGF0aDpvY2l2YXVsdCNmdW5jdGlvbmFsX3JlZ2lzdHJ5X3Bvc3RncmVzX2FwcF9wYXNzd29yZCB8IGJhc2U2NGRlY29kZT5APHBhdGg6b2NpdmF1bHQjcG9zdGdyZXNzX2RiX2hvc3QgfCBiYXNlNjRkZWNvZGU+OjU0MzIvcmVnaXN0cnkK
+

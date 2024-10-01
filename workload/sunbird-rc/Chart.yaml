@@ -30,3 +30,7 @@ dependencies:
 - name: filestorage
   version: 0.1.1
   repository: https://oci-sunbird.github.io/daas-helm
+
+- name: identity
+  version: 0.0.5
+  repository: https://oci-sunbird.github.io/daas-helm
