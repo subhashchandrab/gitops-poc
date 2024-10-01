@@ -47,20 +47,26 @@
 
     # Store vault_unseal_key in OCI Vault as a secret using oci_vault_secret module
     - name: Store vault_unseal_key in OCI Vault
+      when: vault_status.stdout == "true"
       oracle.oci.oci_vault_secret:
         compartment_id: "{{ vault_compartment_id }}"
         vault_id: "{{ vault_id }}"
         key_id: "{{ vault_key_id }}"
         secret_name: "vault_unseal_key"
-        secret_content: "{{ vault_unseal_key.stdout }}"
         description: "Unseal key for Vault"
+        secret_content:
+          content_type: BASE64
+          content: "{{ vault_unseal_key.stdout | b64encode  }}"
 
     # Store vault_root_token in OCI Vault as a secret using oci_vault_secret module
     - name: Store vault_root_token in OCI Vault
+      when: vault_status.stdout == "true"
       oracle.oci.oci_vault_secret:
         compartment_id: "{{ vault_compartment_id }}"
         vault_id: "{{ vault_id }}"
         key_id: "{{ vault_key_id }}"
         secret_name: "vault_root_token"
-        secret_content: "{{ vault_root_token.stdout }}"
         description: "Root token for Vault"
+        secret_content:
+          content_type: BASE64
+          content: "{{ vault_root_token.stdout | b64encode  }}"
