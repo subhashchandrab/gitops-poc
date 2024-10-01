@@ -66,11 +66,10 @@ workload:
     db_password: <path:ocivault#functional_registry_postgres_app_password#latest | base64decode>
   identity:
      host: "argosbrciam.<path:ocivault#functional_registry_domain#latest | base64decode>"
-     jwks_uri: "https://argosbrciam.<path:ocivault#functional_registry_domain#latest | base64decode>/auth/realms/sunbird-rc/protocol/openid-connect/certs"
-     base_url_identity: https://argosbrc.<path:ocivault#functional_registry_domain#latest | base64decode>/identity
-     base_url_web_did: https://argosbrc.<path:ocivault#functional_registry_domain#latest | base64decode>/identity
-     base_url_credential_schema: https://argosbrc.<path:ocivault#functional_registry_domain#latest | base64decode>/schema
-     base_url_credential_service: https://argosbrc.<path:ocivault#functional_registry_domain#latest | base64decode>/credential
+     base_url_identity: http://functional-registry-identity-service:3332
+     base_url_web_did: http://functional-registry-identity-service:3332
+     base_url_credential_schema: http://functional-registry-credential-schema-service:3333
+     base_url_credential_service: http://functional-registry-credentials-service:3000
      vaul_secret_token: <path:ocivault#vault_root_token#latest>
      db_url: <path:ocivault#db_url#latest>
 
