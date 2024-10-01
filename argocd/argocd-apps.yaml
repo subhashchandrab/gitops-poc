@@ -14,12 +14,6 @@ spec:
     path: argocd/apps-helm/
     plugin:
       name: argocd-vault-plugin-helm
-      # env:
-      #   - name: HELM_VALUES
-      #     value: |
-      #       istio:
-      #         gateway:
-      #           lbSubet: LoadBalancer
   syncPolicy:
     automated:
       prune: true
