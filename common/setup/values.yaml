@@ -16,7 +16,7 @@ ansibleenv:
 
 commonenv:
   sslDnsNames: "*.<path:ocivault#functional_registry_domain#latest | base64decode>"
-  acmeServer: <path:ocivault#acme_server_stage#latest | base64decode> 
+  acmeServer: <path:ocivault#acme_server_prod#latest | base64decode> 
   acmeEmail: <path:ocivault#certificate_email#latest | base64decode> 
 
 postgresenv:
