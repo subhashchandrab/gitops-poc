@@ -21,6 +21,15 @@ spec:
         filestorage:
           filestorageenv:
             MINIO_ROOT_PASSWORD: {{ .Values.workload.filestorage.rootPassword }} 
+
+        keycloak:
+          keycloakenv:
+            DB_PASSWORD: {{ .Values.workload.keycloak.db_password }} 
+            KEYCLOAK_PASSWORD: "{{sbrc_keycloak_admin_password}}"
+            DB_ADDR: {{ .Values.workload.keycloak.db_host }} 
+            DB_USER: {{ .Values.workload.keycloak.db_username }}
+            DOMAIN_NAME: {{ .Values.workload.keycloak.domain_name }}
+            ADMIN_API_SECRET: {{ .Values.workload.keycloak.admin_api_secret }}
         claim-ms:
           claim_msenv:
             connectionInfo_uri: {{ .Values.workload.claimms.db_url }} 

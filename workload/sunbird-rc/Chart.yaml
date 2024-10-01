@@ -38,3 +38,7 @@ dependencies:
 - name: claim-ms
   version: 0.1.0
   repository: https://oci-sunbird.github.io/daas-helm
+
+- name: keycloak
+  version: 0.1.2
+  repository: https://oci-sunbird.github.io/daas-helm
