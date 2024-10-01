@@ -6,4 +6,7 @@ bastion:
   vars:
     zone_compartment_id: "{{ .Values.ansibleenv.zone_compartment_id }}"
     domain: "{{ .Values.ansibleenv.domain }}"
+    vault_compartment_id: "{{ .Values.ansibleenv.zone_compartment_id }}"
+    vault_id: "{{ .Values.ansibleenv.vault_id }}"
+    vault_key_id: "{{ .Values.ansibleenv.vault_key_id }}"
 

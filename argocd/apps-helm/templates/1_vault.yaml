@@ -23,10 +23,6 @@ spec:
       repoURL: {{ .Values.vault.source.repoURL }}
       targetRevision: {{ .Values.vault.source.targetRevision }}
 
-    - repoURL: {{ .Values.commonSetup.source.repoURL }}
-      targetRevision: {{ .Values.commonSetup.source.targetRevision }} 
-      path: common/vault  
-
   syncPolicy:
     automated:
       prune: true
