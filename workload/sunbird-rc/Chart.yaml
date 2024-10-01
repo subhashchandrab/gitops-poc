@@ -35,6 +35,6 @@ dependencies:
 #   version: 0.0.5
 #   repository: https://oci-sunbird.github.io/daas-helm
 
-- name: claim-ms
-  version: 0.1.0
-  repository: https://oci-sunbird.github.io/daas-helm
+# - name: claim-ms
+#   version: 0.1.0
+#   repository: https://oci-sunbird.github.io/daas-helm
