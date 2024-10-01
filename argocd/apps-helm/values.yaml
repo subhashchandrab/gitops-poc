@@ -61,5 +61,5 @@ workload:
      base_url_credential_schema: https://argosbrc.<path:ocivault#functional_registry_domain#latest | base64decode>/schema
      base_url_credential_service: https://argosbrc.<path:ocivault#functional_registry_domain#latest | base64decode>/credential
      vaul_secret_token: <path:ocivault#vault_root_token#latest>
-     db_url: cG9zdGdyZXM6Ly88cGF0aDpvY2l2YXVsdCNmdW5jdGlvbmFsX3JlZ2lzdHJ5X3Bvc3RncmVzX2FwcF91c2VyIHwgYmFzZTY0ZGVjb2RlPjo8cGF0aDpvY2l2YXVsdCNmdW5jdGlvbmFsX3JlZ2lzdHJ5X3Bvc3RncmVzX2FwcF9wYXNzd29yZCB8IGJhc2U2NGRlY29kZT5APHBhdGg6b2NpdmF1bHQjcG9zdGdyZXNzX2RiX2hvc3QgfCBiYXNlNjRkZWNvZGU+OjU0MzIvcmVnaXN0cnkK
+     db_url: postgres://<path:ocivault#functional_registry_postgres_app_user | base64decode>:<path:ocivault#functional_registry_postgres_app_password | base64decode>@<path:ocivault#postgress_db_host | base64decode>:5432/registry
 

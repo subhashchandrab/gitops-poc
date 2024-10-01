@@ -33,7 +33,7 @@ spec:
               credential_service: {{ .Values.workload.identity.base_url_credential_service }} 
             secrets:
               VAULT_SECRET_TOKEN: {{ .Values.workload.identity.vaul_secret_token }} 
-              DB_URL: {{ .Values.workload.identity.db_url }}
+              DB_URL: {{ .Values.workload.identity.db_url | b64enc}}
   syncPolicy:
     syncOptions:
       - CreateNameSpace=true
