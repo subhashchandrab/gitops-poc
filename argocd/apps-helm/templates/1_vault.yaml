@@ -12,6 +12,11 @@ spec:
     server: {{ .Values.vault.destination.server }}
     namespace: vault
   project: default
+  ignoreDifferences:
+    - group: '*'                                                              
+      kind: '*'
+      managedFieldsManagers:                                                                                    
+      - vault-k8s
   sources:
     - chart: vault
       helm:
