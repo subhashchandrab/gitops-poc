@@ -12,7 +12,7 @@ ansibleenv:
   domain: <path:ocivault#functional_registry_domain#latest | base64decode>
   vault_compartment_id: <path:ocivault#vault_compartment_id#latest | base64decode>
   vault_id: <path:ocivault#vault_id#latest | base64decode>
-  vault_key_id: <path:ocivault#functional_registry_domain#latest | base64decode>
+  vault_key_id: <path:ocivault#vault_key_id#latest | base64decode>
 
 commonenv:
   sslDnsNames: "*.<path:ocivault#functional_registry_domain#latest | base64decode>"
