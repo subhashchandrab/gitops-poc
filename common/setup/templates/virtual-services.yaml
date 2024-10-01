@@ -39,7 +39,7 @@ spec:
       uri: "/"
     route:
       - destination:
-          host: identity-identity-service
+          host: functional-registry-identity-service
           port: 
             number: 3332
     headers:
@@ -54,7 +54,7 @@ spec:
       uri: "/"
     route:
       - destination:
-          host: identity-credential-schema-service
+          host: functional-registry-credential-schema-service
           port: 
             number: 3333
     headers:
@@ -69,7 +69,7 @@ spec:
       uri: "/"
     route:
       - destination:
-          host: identity-credentials-service
+          host: functional-registry-credentials-service
           port: 
             number: 3000
     headers:
