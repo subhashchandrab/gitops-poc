@@ -11,7 +11,7 @@ metadata:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: service-reader
+  name: vault-service-reader
   namespace: default
   annotations:
     argocd.argoproj.io/hook: PostSync
@@ -28,7 +28,7 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: service-reader-binding
+  name: vault-service-reader-binding
   namespace: default
   annotations:
     argocd.argoproj.io/hook: PostSync
@@ -39,7 +39,7 @@ subjects:
   namespace: default
 roleRef:
   kind: ClusterRole
-  name: service-reader 
+  name: vault-service-reader 
   apiGroup: rbac.authorization.k8s.io
 
 ---
