@@ -6,7 +6,7 @@
   tasks:
     - name: Check if Vault is sealed
       shell: |
-        kubectl -n vault get pod vault-0
+        kubectl -n vault exec vault-0 -- vault status
       register: vault_status
       changed_when: false
 
