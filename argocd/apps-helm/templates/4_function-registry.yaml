@@ -21,7 +21,6 @@ spec:
         filestorage:
           filestorageenv:
             MINIO_ROOT_PASSWORD: {{ .Values.workload.filestorage.rootPassword }} 
-
         keycloak:
           keycloakenv:
             DB_PASSWORD: {{ .Values.workload.keycloak.db_password }} 
