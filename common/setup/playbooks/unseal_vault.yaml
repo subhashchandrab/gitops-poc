@@ -9,6 +9,7 @@
         kubectl -n vault exec vault-0 -- vault status
       register: vault_status
       changed_when: false
+      ignore_errors: true
 
     - name: Skip initialization if Vault is already unsealed
       debug:
