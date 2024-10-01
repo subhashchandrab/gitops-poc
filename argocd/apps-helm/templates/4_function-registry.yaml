@@ -25,7 +25,7 @@ spec:
         keycloak:
           keycloakenv:
             DB_PASSWORD: {{ .Values.workload.keycloak.db_password }} 
-            KEYCLOAK_PASSWORD: "{{sbrc_keycloak_admin_password}}"
+            KEYCLOAK_PASSWORD: {{ .Values.workload.keycloak.admin_password }} 
             DB_ADDR: {{ .Values.workload.keycloak.db_host }} 
             DB_USER: {{ .Values.workload.keycloak.db_username }}
             DOMAIN_NAME: {{ .Values.workload.keycloak.domain_name }}
