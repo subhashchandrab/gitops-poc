@@ -12,8 +12,8 @@ spec:
     repoURL: 'https://github.com/ddevadat/gitops-poc'
     targetRevision: HEAD
     path: argocd/base-apps
-    plugin:
-      name: argocd-vault-plugin-helm
+    # plugin:
+    #   name: argocd-vault-plugin-helm
   syncPolicy:
     automated:
       prune: true
