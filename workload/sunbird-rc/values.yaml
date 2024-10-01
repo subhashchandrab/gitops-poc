@@ -17,3 +17,15 @@ filestorage:
   storage_size: 1Gi
   storage_class_name: longhorn
 
+identity: 
+  identity-service:
+    ingress:
+      enabled: false
+
+  credential-schema-service:
+    ingress:
+      enabled: false
+
+  credentials-service:
+    ingress:
+      enabled: false
