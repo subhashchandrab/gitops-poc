@@ -1,0 +1,23 @@
+gateway:
+  defaults:
+    service:
+      type: LoadBalancer
+      ports:
+      - name: tcp-status-port
+        port: 15021
+        targetPort: 15021
+      - name: http
+        port: 80
+        targetPort: 8080
+      - name: tcp-postgres
+        port: 5432
+        targetPort: 5432
+      - name: https
+        port: 443
+        targetPort: 8081
+      annotations: 
+        oci.oraclecloud.com/load-balancer-type: "nlb"
+        oci-network-load-balancer.oraclecloud.com/internal: "false"
+        oci-network-load-balancer.oraclecloud.com/is-preserve-source: "false"
+        oci-network-load-balancer.oraclecloud.com/subnet: <path:ocivault#nlb_subnet_oke_k8s_cluster#latest | base64decode> 
+      externalTrafficPolicy: "Local"

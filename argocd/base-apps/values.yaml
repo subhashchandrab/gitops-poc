@@ -1,0 +1,8 @@
+istio:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/ddevadat/gitops-poc
+    targetRevision: HEAD
+
+

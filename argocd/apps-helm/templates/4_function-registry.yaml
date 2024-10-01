@@ -16,37 +16,8 @@ spec:
     repoURL: {{ .Values.workload.source.repoURL }}
     targetRevision: {{ .Values.workload.source.targetRevision }}
     path: workload/sunbird-rc
-    helm:
-      values: |
-        filestorage:
-          filestorageenv:
-            MINIO_ROOT_PASSWORD: {{ .Values.workload.filestorage.rootPassword }} 
-        keycloak:
-          keycloakenv:
-            DB_PASSWORD: {{ .Values.workload.keycloak.db_password }} 
-            KEYCLOAK_PASSWORD: {{ .Values.workload.keycloak.admin_password }} 
-            DB_ADDR: {{ .Values.workload.keycloak.db_host }} 
-            DB_USER: {{ .Values.workload.keycloak.db_username }}
-            DOMAIN_NAME: {{ .Values.workload.keycloak.domain_name }}
-            ADMIN_API_SECRET: {{ .Values.workload.keycloak.admin_api_secret }}
-        claim-ms:
-          claim_msenv:
-            connectionInfo_uri: {{ .Values.workload.claimms.db_url }} 
-            connectionInfo_username: {{ .Values.workload.claimms.username }} 
-            connectionInfo_password: {{ .Values.workload.claimms.password }} 
-        identity:
-          global:
-            host: {{ .Values.workload.identity.host }} 
-            sunbird: 
-              jwks_uri: {{ .Values.workload.identity.jwks_uri }} 
-            base_urls:
-              identity: {{ .Values.workload.identity.base_url_identity }} 
-              web_did: {{ .Values.workload.identity.base_url_web_did }} 
-              credential_schema: {{ .Values.workload.identity.base_url_credential_schema }} 
-              credential_service: {{ .Values.workload.identity.base_url_credential_service }} 
-            secrets:
-              VAULT_SECRET_TOKEN: {{ .Values.workload.identity.vaul_secret_token }} 
-              DB_URL: {{ .Values.workload.identity.db_url }}
+    plugin:
+      name: argocd-vault-plugin-helm
   syncPolicy:
     syncOptions:
       - CreateNameSpace=true
