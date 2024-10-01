@@ -21,6 +21,11 @@ spec:
         filestorage:
           filestorageenv:
             MINIO_ROOT_PASSWORD: {{ .Values.workload.filestorage.rootPassword }} 
+        claim-ms:
+          claim_msenv:
+            connectionInfo_uri: {{ .Values.workload.claimms.db_url }} 
+            connectionInfo_username: {{ .Values.workload.claimms.username }} 
+            connectionInfo_password: {{ .Values.workload.claimms.password }} 
         identity:
           global:
             host: {{ .Values.workload.identity.host }} 
