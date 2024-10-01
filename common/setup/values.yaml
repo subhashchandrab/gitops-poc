@@ -26,3 +26,6 @@ postgresenv:
   replica: 3
   data_size: 1Gi
   storage_class: longhorn
+
+functionregistry: 
+  keycloak_domain: argosbrciam.<path:ocivault#functional_registry_domain#latest | base64decode>

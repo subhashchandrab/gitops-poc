@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: keycloak
+  namespace: sunbird-rc
+spec:
+  gateways:
+    - istio-system/all-hosts
+  hosts:
+    - {{ .Values.functionregistry.keycloak_domain }}
+  http:
+    - route:
+        - destination:
+            host: keycloak
+            port:
+              number: 8080
+      headers:
+        request:
+          set:
+            x-forwarded-proto: https
