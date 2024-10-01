@@ -24,6 +24,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
   name: identity
+  namespace: sunbird-rc
 spec:
   gateways:
     - istio-system/all-hosts
@@ -82,6 +83,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
   name: filestorage
+  namespace: sunbird-rc
 spec:
   gateways:
     - istio-system/all-hosts
