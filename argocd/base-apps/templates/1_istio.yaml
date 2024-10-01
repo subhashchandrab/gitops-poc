@@ -18,10 +18,19 @@ spec:
       - /webhooks/0/clientConfig/caBundle
       - /webhooks/0/failurePolicy
   project: default
-  source:
-    repoURL: {{ .Values.istio.source.repoURL }}
-    targetRevision: {{ .Values.istio.source.targetRevision }}
-    path: common/istio
+  sources:
+    - chart: base
+      helm:
+        releaseName: istio-base
+        values: |
+          defaultRevision: default
+      repoURL: {{ .Values.istio.source.repoURL }}
+      targetRevision: {{ .Values.istio.source.targetRevision }}
+    - chart: istiod
+      helm:
+        releaseName: istiod
+      repoURL: {{ .Values.istio.source.repoURL }}
+      targetRevision: {{ .Values.istio.source.targetRevision }}
   syncPolicy:
     automated:
       prune: true

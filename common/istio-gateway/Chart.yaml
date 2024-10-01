@@ -1,5 +1,5 @@
 apiVersion: v2
-name: istio
+name: istio-ingressgateway
 description: A Helm chart for Istio Components
 
 # A chart can be either an 'application' or a 'library' chart.
@@ -23,14 +23,6 @@ version: 1.23.2
 appVersion: "1.0"
 
 dependencies:
-- name: base
+- name: gateway
   version: 1.23.2
   repository: https://istio-release.storage.googleapis.com/charts
-
-- name: istiod
-  version: 1.23.2
-  repository: https://istio-release.storage.googleapis.com/charts
-
-# - name: gateway
-#   version: 1.23.2
-#   repository: https://istio-release.storage.googleapis.com/charts
