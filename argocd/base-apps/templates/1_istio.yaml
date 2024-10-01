@@ -22,8 +22,6 @@ spec:
     repoURL: {{ .Values.istio.source.repoURL }}
     targetRevision: {{ .Values.istio.source.targetRevision }}
     path: common/istio
-    plugin:
-    name: argocd-vault-plugin-helm
   syncPolicy:
     automated:
       prune: true
