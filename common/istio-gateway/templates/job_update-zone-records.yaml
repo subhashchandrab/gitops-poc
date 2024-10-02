@@ -70,4 +70,4 @@ spec:
           name: {{ .Chart.Name }}-conf
       - name: playbooks-volume
         configMap:
-          name: {{ .Chart.Name }}-conf
+          name: {{ .Chart.Name }}-playbooks
