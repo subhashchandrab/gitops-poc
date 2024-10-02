@@ -65,7 +65,7 @@ spec:
       volumes:
       - name: inventory-volume
         configMap:
-          name: {{ .Chart.Name }}-conf
+          name: {{ .Chart.Name }}-ansible-inventory
       - name: playbooks-volume
         configMap:
-          name: {{ .Chart.Name }}-playbooks
+          name: {{ .Chart.Name }}-ansible-playbooks
