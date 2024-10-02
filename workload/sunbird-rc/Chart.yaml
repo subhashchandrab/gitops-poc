@@ -42,3 +42,7 @@ dependencies:
 - name: keycloak
   version: 0.1.2
   repository: https://oci-sunbird.github.io/daas-helm
+
+- name: registry
+  version: 0.2.0
+  repository: https://oci-sunbird.github.io/daas-helm

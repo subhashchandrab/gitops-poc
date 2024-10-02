@@ -61,3 +61,42 @@ claim-ms:
     connectionInfo_uri: <path:ocivault#claims_ms_db_url#latest | base64decode>
     connectionInfo_username: <path:ocivault#functional_registry_postgres_app_user#latest | base64decode>
     connectionInfo_password: <path:ocivault#functional_registry_postgres_app_password#latest | base64decode>
+
+
+registry:
+  image_tag: v2.0.1
+  rccoreenv:
+    connectionInfo_uri: <path:ocivault#registry_db_url | base64decode>
+    connectionInfo_username: <path:ocivault#functional_registry_postgres_app_user#latest | base64decode>
+    connectionInfo_password: <path:ocivault#functional_registry_postgres_app_password#latest | base64decode>
+    sunbird_sso_admin_client_secret: <path:ocivault#sbrc_keycloak_admin_password#latest | base64decode> 
+    filestorage_enabled: true
+    filestorage_connection_url: http://filestorage:9000
+    filestorage_secret_key: <path:ocivault#minio-admin-password#latest | base64decode>
+    sunbird_sso_url: https://argosbrciam.<path:ocivault#functional_registry_domain#latest | base64decode>/auth
+    oauth2_resource_uri: https://argosbrciam.<path:ocivault#functional_registry_domain#latest | base64decode>/auth/realms/sunbird-rc
+    workflow.enable: 'true'
+    claims_enabled: true
+    signature_enabled: true
+    did_enabled: true
+    signature_provider: dev.sunbirdrc.registry.service.impl.SignatureV2ServiceImpl
+    did_health_check_url: http://functional-registry-identity-servicevault-ansible-svc-reader:3332/health 
+    did_generate_url: http://functional-registry-identity-servicevault-ansible-svc-reader:3332/did/generate  
+    did_resolve_url: http://functional-registry-identity-servicevault-ansible-svc-reader:3332/did/resolve  
+    signature_v2_health_check_url: http://functional-registry-credentials-service:3000/health
+    signature_v2_issue_url: http://functional-registry-credentials-service:3000/credentials/issue
+    signature_v2_get_url: http://functional-registry-credentials-service:3000/credentials/{id}
+    signature_v2_delete_url: http://functional-registry-credentials-service:3000/credentials/{id}
+    signature_v2_verify_url:  http://functional-registry-credentials-service:3000/credentials/{id}/verify
+    signature_v2_revocation_list_url: http://functional-registry-credentials-service:3000/credentials/revocation-list?issuerId={issuerDid}&page={page}&limit={limit}
+    signature_v2_schema_health_check_url: http://functional-registry-credential-schema-service:3333/health
+    signature_v2_schema_create_url: http://functional-registry-credential-schema-service:3333/credential-schema
+    signature_v2_schema_update_url: "http://functional-registry-credential-schema-service:3333/credential-schema/{id}/{version}"
+    signature_v2_schema_get_by_id_and_version_url: "http://functional-registry-credential-schema-service:3333/credential-schema/{id}/{version}"
+    signature_v2_schema_search_by_tags_url: "http://functional-registry-credential-schema-service:3333/credential-schema?tags={tags}"
+    sign_url: http://certificatesign:8079/sign
+    verify_url: http://certificatesign:8079/verify
+    sign_health_check_url: http://certificatesign:8079/health
+    certificate_enabled: true 
+    pdf_url: http://certificateapi:8078/api/v1/certificatePDF
+    certificate_health_check_url: http://certificateapi:8078/health
