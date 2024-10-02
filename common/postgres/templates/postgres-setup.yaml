@@ -13,12 +13,6 @@ metadata:
   namespace: {{ .Values.postgresenv.namespace }}
 type: kubernetes.io/basic-auth
 ---
-
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: {{ .Values.postgresenv.namespace }}
----
 apiVersion: v1
 data:
   username: {{ .Values.postgresenv.identity_username | b64enc | quote }}
@@ -41,8 +35,6 @@ metadata:
 type: kubernetes.io/basic-auth
 ---
 
-
-# Example of PostgreSQL cluster
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
@@ -64,7 +56,7 @@ spec:
       database: registry
       owner: registry
       secret:
-        name: identity-secret
+        name: app-secret
 
 ---
 
@@ -89,4 +81,4 @@ spec:
       database: identity
       owner: identity
       secret:
-        name: app-secret
+        name: identity-secret
