@@ -1,2 +1,11 @@
+oci: 
+  user_id: <path:ocivault#bastion_user_id | base64decode>
+  tenancy_id: <path:ocivault#tenancy_id | base64decode>
+  region: <path:ocivault#region | base64decode>
+  fingerprint: <path:ocivault#fingerprint | base64decode>
+  user_api_key: <path:ocivault#bastion_user_api_key#latest | base64decode>
+
+
 cert-manager:
   installCRDs: true
+
