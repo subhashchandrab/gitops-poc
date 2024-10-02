@@ -5,29 +5,6 @@ istio:
     repoURL: https://istio-release.storage.googleapis.com/charts
     targetRevision: 1.23.2
 
-istioGw:
-  destination:
-    server: https://kubernetes.default.svc
-  source:
-    repoURL: https://github.com/ddevadat/gitops-poc
-    targetRevision: HEAD
-
-certmanager:
-  destination:
-    server: https://kubernetes.default.svc
-  source:
-    repoURL: https://github.com/ddevadat/gitops-poc
-    targetRevision: HEAD
-
-
-postgres:
-  destination:
-    server: https://kubernetes.default.svc
-  source:
-    repoURL: https://github.com/ddevadat/gitops-poc
-    targetRevision: HEAD
-
-
 common:
   destination:
     server: https://kubernetes.default.svc
