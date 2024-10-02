@@ -39,35 +39,3 @@ roleRef:
   name: istio-ansible-svc-reader 
   apiGroup: rbac.authorization.k8s.io
 
----
-
-apiVersion: batch/v1
-kind: Job
-metadata:
-  generateName: update-zone-record
-  namespace: {{ .Values.namespace }}
-  annotations:
-    argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
-spec:
-  template:
-    spec:
-      serviceAccountName: istio-ansible-sa
-      containers:
-      - name: configmanager
-        image: ghcr.io/oci-sunbird/ociop:latest
-        command: ["ansible-playbook"]
-        args: ["/root/.oci/playbooks/update_zone_record_playbook.yaml", "-i", "/root/.oci/inventory/inventory"]
-        volumeMounts:
-        - name: inventory-volume
-          mountPath: /root/.oci/inventory
-        - name: playbooks-volume
-          mountPath: /root/.oci/playbooks
-      restartPolicy: Never
-      volumes:
-      - name: inventory-volume
-        configMap:
-          name: {{ .Chart.Name }}-conf
-      - name: playbooks-volume
-        configMap:
-          name: {{ .Chart.Name }}-playbooks
