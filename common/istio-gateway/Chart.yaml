@@ -1,6 +1,6 @@
 apiVersion: v2
 name: istio-ingressgateway
-description: A Helm chart for Istio Components
+description: A Helm chart for Istio Gateway Components
 
 # A chart can be either an 'application' or a 'library' chart.
 #

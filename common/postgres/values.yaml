@@ -1,0 +1,8 @@
+postgresenv:
+  namespace: sunbird-rc
+  app_username: <path:ocivault#functional_registry_postgres_app_user#latest | base64decode> 
+  app_password: <path:ocivault#functional_registry_postgres_app_password#latest | base64decode> 
+  superuser_password: <path:ocivault#functional_registry_postgres_super_password#latest | base64decode> 
+  replica: 3
+  data_size: 1Gi
+  storage_class: longhorn
