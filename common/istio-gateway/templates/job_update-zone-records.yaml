@@ -42,7 +42,7 @@ roleRef:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: update-zone-record
+  name: update-zone-record
   namespace: {{ .Values.namespace }}
 spec:
   template:
