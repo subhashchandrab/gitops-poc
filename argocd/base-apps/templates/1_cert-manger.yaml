@@ -9,12 +9,12 @@ metadata:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    server: {{ .Values.certmanager.destination.server }}
+    server: {{ .Values.common.destination.server }}
     namespace: cert-manager
   project: default
   source:
-    repoURL: {{ .Values.certmanager.source.repoURL }}
-    targetRevision: {{ .Values.certmanager.source.targetRevision }}
+    repoURL: {{ .Values.common.source.repoURL }}
+    targetRevision: {{ .Values.common.source.targetRevision }}
     path: common/cert-manager
   syncPolicy:
     automated:
