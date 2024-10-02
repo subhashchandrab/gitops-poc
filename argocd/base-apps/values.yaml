@@ -26,3 +26,11 @@ postgres:
   source:
     repoURL: https://github.com/ddevadat/gitops-poc
     targetRevision: HEAD
+
+
+common:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/ddevadat/gitops-poc
+    targetRevision: HEAD
