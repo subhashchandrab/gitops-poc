@@ -5,10 +5,12 @@ functionalregistry:
   registry_domain: argosbrc.<path:ocivault#functional_registry_domain#latest | base64decode>
 
 postgres:
-  password: <path:ocivault#functional_registry_postgres_app_password#latest | base64decode>
-  host: <path:ocivault#postgress_db_host#latest | base64decode> 
-  username: <path:ocivault#functional_registry_postgres_app_user#latest | base64decode>
-
+  registry_username: <path:ocivault#functional_registry_postgres_app_user#latest | base64decode>
+  registry_password: <path:ocivault#functional_registry_postgres_app_password#latest | base64decode>
+  registry_host: <path:ocivault#postgress_db_host#latest | base64decode> 
+  identity_username: <path:ocivault#functional_registry_identity_postgres_app_user#latest | base64decode>
+  identity_password: <path:ocivault#functional_registry_identity_postgres_app_password#latest | base64decode>
+  identity_host: <path:ocivault#functional_registry_identity_postgres_db_host#latest | base64decode> 
 
 elasticsearch:
   esJavaOpts: "-Xms3g -Xmx3g"
@@ -50,7 +52,8 @@ identity:
       credential_service: http://functional-registry-credentials-service:3000
     secrets:
       VAULT_SECRET_TOKEN: <path:ocivault#vault_root_token#latest>
-      DB_URL: <path:ocivault#db_url#latest>
+      DB_URL: cG9zdGdyZXM6Ly9pZGVudGl0eTo8cGF0aDpvY2l2YXVsdCNmdW5jdGlvbmFsX3JlZ2lzdHJ5X2lkZW50aXR5X3Bvc3RncmVzX2FwcF9wYXNzd29yZCB8IGJhc2U2NGRlY29kZT5APHBhdGg6b2NpdmF1bHQjZnVuY3Rpb25hbF9yZWdpc3RyeV9pZGVudGl0eV9wb3N0Z3Jlc19kYl9ob3N0IHwgYmFzZTY0ZGVjb2RlPjo1NDMyL2lkZW50aXR5Cg==
+
   identity-service:
     ingress:
       enabled: false
@@ -65,7 +68,7 @@ identity:
 
 claim-ms:
   claim_msenv:
-    connectionInfo_uri: <path:ocivault#claims_ms_db_url#latest | base64decode>
+    connectionInfo_uri: jdbc:postgresql://<path:ocivault#postgress_db_host | base64decode>:5432/registry
     connectionInfo_username: <path:ocivault#functional_registry_postgres_app_user#latest | base64decode>
     connectionInfo_password: <path:ocivault#functional_registry_postgres_app_password#latest | base64decode>
 
