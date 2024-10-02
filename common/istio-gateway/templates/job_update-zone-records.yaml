@@ -58,12 +58,6 @@ spec:
         image: ghcr.io/oci-sunbird/ociop:latest
         command: ["ansible-playbook"]
         args: ["/root/.oci/playbooks/update_zone_record_playbook.yaml", "-i", "/root/.oci/inventory/inventory"]
-        env:
-        - name: OCI_CLI_AUTH
-          valueFrom:
-            secretKeyRef:
-              name: commonsetup-oci
-              key: oci_cli_auth
         volumeMounts:
         - name: inventory-volume
           mountPath: /root/.oci/inventory
@@ -73,7 +67,7 @@ spec:
       volumes:
       - name: inventory-volume
         configMap:
-          name: commonsetup-conf
+          name: {{ .Chart.Name }}-conf
       - name: playbooks-volume
         configMap:
-          name: commonsetup-playbooks
+          name: {{ .Chart.Name }}-conf
