@@ -11,6 +11,10 @@
       changed_when: false
       ignore_errors: true
 
+    - name: Debug line
+      debug:
+        msg: "Vault status {{vault_status.stdout}}"
+
     - name: Skip initialization if Vault is already unsealed
       when: vault_status.stdout == "false"
       debug:
