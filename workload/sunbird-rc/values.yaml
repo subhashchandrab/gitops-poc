@@ -76,7 +76,7 @@ claim-ms:
 registry:
   image_tag: v2.0.1
   rccoreenv:
-    connectionInfo_uri: <path:ocivault#registry_db_url | base64decode>
+    connectionInfo_uri: jdbc:postgresql://<path:ocivault#postgress_db_host | base64decode>:5432/registry
     connectionInfo_username: <path:ocivault#functional_registry_postgres_app_user#latest | base64decode>
     connectionInfo_password: <path:ocivault#functional_registry_postgres_app_password#latest | base64decode>
     sunbird_sso_admin_client_secret: <path:ocivault#sbrc_keycloak_admin_password#latest | base64decode> 
