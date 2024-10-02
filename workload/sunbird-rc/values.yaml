@@ -2,6 +2,7 @@ functionalregistry:
   keycloak_domain: argosbrciam.<path:ocivault#functional_registry_domain#latest | base64decode>
   identity_domain: argosbrc.<path:ocivault#functional_registry_domain#latest | base64decode>
   filestorage_domain: argosbrcfs.<path:ocivault#functional_registry_domain#latest | base64decode>
+  registry_domain: argosbrc.<path:ocivault#functional_registry_domain#latest | base64decode>
 
 elasticsearch:
   esJavaOpts: "-Xms3g -Xmx3g"

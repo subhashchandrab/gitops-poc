@@ -23,6 +23,34 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
+  name: registry
+  namespace: {{ .Values.namespace }}
+spec:
+  gateways:
+    - istio-system/all-hosts
+  hosts:
+    - {{ .Values.functionalregistry.registry_domain }}
+  http:
+  - name: "registry"
+    match:
+      - uri:
+          prefix: "/registry/"
+    rewrite:
+      uri: "/"
+    route:
+      - destination:
+          host: registry
+          port: 
+            number: 8081
+    headers:
+      request:
+        set:
+          x-forwarded-proto: https    
+---
+
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
   name: identity
   namespace: {{ .Values.namespace }}
 spec:
