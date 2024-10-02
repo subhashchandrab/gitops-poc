@@ -12,3 +12,9 @@ istioGw:
     repoURL: https://github.com/ddevadat/gitops-poc
     targetRevision: HEAD
 
+certmanager:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/ddevadat/gitops-poc
+    targetRevision: HEAD

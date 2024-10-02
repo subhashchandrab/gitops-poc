@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: {{ .Values.certmanager.destination.server }}
+    namespace: cert-manager
+  project: default
+  source:
+    repoURL: {{ .Values.certmanager.source.repoURL }}
+    targetRevision: {{ .Values.certmanager.source.targetRevision }}
+    path: common/cert-manager
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
