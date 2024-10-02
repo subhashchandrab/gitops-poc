@@ -4,6 +4,12 @@ functionalregistry:
   filestorage_domain: argosbrcfs.<path:ocivault#functional_registry_domain#latest | base64decode>
   registry_domain: argosbrc.<path:ocivault#functional_registry_domain#latest | base64decode>
 
+postgres:
+  password: <path:ocivault#functional_registry_postgres_app_password#latest | base64decode>
+  host: <path:ocivault#postgress_db_host#latest | base64decode> 
+  username: <path:ocivault#functional_registry_postgres_app_user#latest | base64decode>
+
+
 elasticsearch:
   esJavaOpts: "-Xms3g -Xmx3g"
   resources:
