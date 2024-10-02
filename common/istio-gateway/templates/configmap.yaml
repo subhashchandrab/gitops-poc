@@ -5,6 +5,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ .Chart.Name }}-conf
+  namespace: {{ .Values.namespace }}
 data:
 {{ tpl (.Files.Glob "configs/*").AsConfig .| indent 2 }}
 {{ end }}
@@ -17,6 +18,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ .Chart.Name }}-playbooks
+  namespace: {{ .Values.namespace }}
 data:
 {{ (.Files.Glob "playbooks/*").AsConfig | indent 2 }}
 {{ end }}
