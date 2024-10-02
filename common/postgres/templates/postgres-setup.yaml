@@ -49,3 +49,28 @@ spec:
       owner: registry
       secret:
         name: app-secret
+
+---
+
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: postgres-identity
+  namespace: {{ .Values.postgresenv.namespace }}
+spec:
+  instances: {{ .Values.postgresenv.replica }}
+  primaryUpdateStrategy: unsupervised
+  storage:
+    size: {{ .Values.postgresenv.data_size }}
+    storageClass: {{ .Values.postgresenv.storage_class }}
+  monitoring:
+    enablePodMonitor: true
+
+  superuserSecret:
+    name: superuser-secret
+  bootstrap:
+    initdb:
+      database: identity
+      owner: registry
+      secret:
+        name: app-secret
