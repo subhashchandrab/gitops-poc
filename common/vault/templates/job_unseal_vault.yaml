@@ -3,9 +3,7 @@ kind: ServiceAccount
 metadata:
   name: vault-ansible-sa
   namespace: vault
-  annotations:
-    argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+
 ---
 
 apiVersion: rbac.authorization.k8s.io/v1
@@ -13,9 +11,7 @@ kind: ClusterRole
 metadata:
   name: vault-ansible-svc-reader
   namespace: vault
-  annotations:
-    argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+
 rules:
 - apiGroups: [""]
   resources: ["pods", "services","pods/log"]
@@ -30,9 +26,6 @@ kind: ClusterRoleBinding
 metadata:
   name: vault-ansible-svc-reader-binding
   namespace: default
-  annotations:
-    argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 subjects:
 - kind: ServiceAccount
   name: vault-ansible-sa 
@@ -49,9 +42,6 @@ kind: Job
 metadata:
   name: unseal-vault
   namespace: {{ .Values.namespace }}
-  annotations:
-    argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   template:
     spec:
