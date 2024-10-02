@@ -45,7 +45,7 @@ roleRef:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: unseal-vault
+  name: unseal-vault-test
   namespace: {{ .Values.namespace }}
   annotations:
     argocd.argoproj.io/hook: Sync
