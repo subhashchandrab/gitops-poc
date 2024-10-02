@@ -6,10 +6,10 @@ metadata:
 spec:
   acme:
     # The ACME server URL
-    server: {{ .Values.acmeServer }} 
+    server: {{ .Values.issuer.acmeServer }} 
 
     # Email address used for ACME registration
-    email: {{ .Values.acmeEmail }} 
+    email: {{ .Values.issuer.acmeEmail }} 
 
     # Name of a secret used to store the ACME account private key
     privateKeySecretRef:
