@@ -1,4 +1,20 @@
 {{- if .Values.common.postgres_enabled }}
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  labels:
+    argocd.argoproj.io/secret-type: repository
+  name: bitnami-postgres-helm-oci
+  namespace: argocd
+stringData:
+  url: registry-1.docker.io/bitnamicharts
+  name: postgres
+  type: helm
+  enableOCI: "true"
+
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
