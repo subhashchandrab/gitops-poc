@@ -53,8 +53,8 @@ spec:
       serviceAccountName: postgres-install-sa
       initContainers:
       - name: init-script
-        image: bash:latest                      
-        command: ["/bin/bash", "-c"]
+        image: busybox                      
+        command: ["/bin/sh", "-c"]
         args:
           - "cp /root/.oci/install/* /tmp/working-directory/ && chmod +x /tmp/working-directory/*.sh"
         volumeMounts:
