@@ -1,4 +1,4 @@
-{{- if .Values.common.postgres_enabled }}
+{{- if .Values.common.minio_enabled }}
 
 apiVersion: v1
 kind: Secret
@@ -19,23 +19,23 @@ kind: Application
 metadata:
   name: postgres
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "1"
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  destination:
-    server: {{ .Values.common.destination.server }}
-    namespace: postgres
-  project: default
   source:
-    repoURL: {{ .Values.common.source.repoURL }}
-    targetRevision: {{ .Values.common.source.targetRevision }}
-    path: workload/id-account-mapper/common/postgres
+    repoURL: registry-1.docker.io/bitnamicharts
+    chart: postgresql
+    targetRevision: 13.2.27
+    plugin:
+      name: argocd-vault-plugin-helm
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc 
+  project: default
   syncPolicy:
+    syncOptions:
+      - CreateNameSpace=true
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
 {{- end }}
