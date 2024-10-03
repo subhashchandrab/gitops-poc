@@ -1,0 +1,51 @@
+{{- if .Values.common.minio_enabled }}
+
+apiVersion: v1
+kind: Secret
+metadata:
+  labels:
+    argocd.argoproj.io/secret-type: repository
+  name: bitnami-minio-helm-oci
+  namespace: argocd
+stringData:
+  url: registry-1.docker.io/bitnamicharts
+  name: minio
+  type: helm
+  enableOCI: "true"
+
+--- 
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: minio
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  source:
+    repoURL: registry-1.docker.io/bitnamicharts
+    chart: minio
+    targetRevision: 14.7.10
+    plugin:
+      name: argocd-vault-plugin-helm
+      env:
+        - name: HELM_VALUES
+          value: |
+            commonAnnotations:
+              reloader.stakater.com/auto: "true"
+            auth:
+              rootPassword: <path:ocivault#minio-admin-password#latest | base64decode>
+            persistence:
+              storageClass: longhorn
+
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc 
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNameSpace=true
+    automated:
+      prune: true
+      selfHeal: true
+{{- end }}
