@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: functional-registry-apps
+  name: argocd-functional-registry-apps
   namespace: argocd
 spec:
   destination:
