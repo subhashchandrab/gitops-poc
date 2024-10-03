@@ -9,7 +9,7 @@ istio:
 common:
   certmanager_enabled: false
   postgres_enabled: true
-  keycloak_enabled: true
+  keycloak_enabled: false
   destination:
     server: https://kubernetes.default.svc
   source:
