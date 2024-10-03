@@ -8,8 +8,8 @@ istio:
 
 common:
   certmanager_enabled: false
-  postgres_enabled: false
-  minio_enabled: true
+  postgres_enabled: true
+  minio_enabled: false
   destination:
     server: https://kubernetes.default.svc
   source:
