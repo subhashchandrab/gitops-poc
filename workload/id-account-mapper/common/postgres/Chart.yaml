@@ -26,3 +26,7 @@ dependencies:
 - name: postgresql
   version: 13.2.27
   repository: oci://registry-1.docker.io/bitnamicharts
+
+- name: postgres-init
+  version: 12.0.2
+  repository: https://mosip.github.io/mosip-helm

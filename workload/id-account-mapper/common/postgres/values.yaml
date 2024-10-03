@@ -1,0 +1,112 @@
+postgresql:
+  auth:
+    username: "openg2puser"
+    database: "openg2pdb"
+  
+  primary:
+    extendedConfiguration: |-
+      wal_level = logical
+      max_wal_senders = 20
+      max_replication_slots = 10
+      max_connections = 500
+  
+    initdb:
+      scripts:
+        create_dbs_and_users.sh: |
+            #!/bin/bash
+            PGPASSWORD=$POSTGRES_POSTGRES_PASSWORD psql -U postgres -d postgres -c "CREATE ROLE odkuser WITH LOGIN NOSUPERUSER CREATEDB CREATEROLE INHERIT REPLICATION CONNECTION LIMIT -1 PASSWORD '"$POSTGRES_PASSWORD"';"
+            PGPASSWORD=$POSTGRES_POSTGRES_PASSWORD psql -U postgres -d postgres -c "CREATE ROLE keycloakuser WITH LOGIN NOSUPERUSER CREATEDB CREATEROLE INHERIT REPLICATION CONNECTION LIMIT -1 PASSWORD '"$POSTGRES_PASSWORD"';"
+            PGPASSWORD=$POSTGRES_POSTGRES_PASSWORD psql -U postgres -d postgres -c "CREATE ROLE sunbirdrcuser WITH LOGIN NOSUPERUSER CREATEDB CREATEROLE INHERIT REPLICATION CONNECTION LIMIT -1 PASSWORD '"$POSTGRES_PASSWORD"';"
+            PGPASSWORD=$POSTGRES_POSTGRES_PASSWORD psql -U postgres -d postgres -c "CREATE ROLE sparuser WITH LOGIN NOSUPERUSER CREATEDB CREATEROLE INHERIT REPLICATION CONNECTION LIMIT -1 PASSWORD '"$POSTGRES_PASSWORD"';"
+            PGPASSWORD=$POSTGRES_POSTGRES_PASSWORD psql -U postgres -d postgres -c "CREATE ROLE gctbuser WITH LOGIN NOSUPERUSER CREATEDB CREATEROLE INHERIT REPLICATION CONNECTION LIMIT -1 PASSWORD '"$POSTGRES_PASSWORD"';"
+            PGPASSWORD=$POSTGRES_POSTGRES_PASSWORD psql -U postgres -d postgres -c "CREATE ROLE mpesa WITH LOGIN NOSUPERUSER CREATEDB CREATEROLE INHERIT REPLICATION CONNECTION LIMIT -1 PASSWORD '"$POSTGRES_PASSWORD"';"
+            PGPASSWORD=$POSTGRES_POSTGRES_PASSWORD psql -U postgres -d postgres -c "CREATE ROLE socialregistryuser WITH LOGIN NOSUPERUSER CREATEDB CREATEROLE INHERIT REPLICATION CONNECTION LIMIT -1 PASSWORD '"$POSTGRES_PASSWORD"';"
+            PGPASSWORD=$POSTGRES_POSTGRES_PASSWORD psql -U postgres -d postgres -c "CREATE DATABASE socialregistrydb WITH OWNER = socialregistryuser TEMPLATE = template0 ENCODING = 'UTF8' TABLESPACE = pg_default CONNECTION LIMIT = -1;"
+            PGPASSWORD=$POSTGRES_POSTGRES_PASSWORD psql -U postgres -d postgres -c "CREATE DATABASE odkdb WITH OWNER = odkuser TEMPLATE = template0 ENCODING = 'UTF8' TABLESPACE = pg_default CONNECTION LIMIT = -1;"
+            PGPASSWORD=$POSTGRES_POSTGRES_PASSWORD psql -U postgres -d postgres -c "CREATE DATABASE keycloakdb WITH OWNER = keycloakuser TEMPLATE = template0 ENCODING = 'UTF8' TABLESPACE = pg_default CONNECTION LIMIT = -1;"
+            PGPASSWORD=$POSTGRES_POSTGRES_PASSWORD psql -U postgres -d postgres -c "CREATE DATABASE "'"spar-mapper-registry"'" WITH OWNER = sunbirdrcuser TEMPLATE = template0 ENCODING = 'UTF8' TABLESPACE = pg_default CONNECTION LIMIT = -1;"
+            PGPASSWORD=$POSTGRES_POSTGRES_PASSWORD psql -U postgres -d postgres -c "CREATE DATABASE spardb WITH OWNER = sparuser TEMPLATE = template0 ENCODING = 'UTF8' TABLESPACE = pg_default CONNECTION LIMIT = -1;"
+            PGPASSWORD=$POSTGRES_POSTGRES_PASSWORD psql -U postgres -d postgres -c "CREATE DATABASE gctbdb WITH OWNER = gctbuser TEMPLATE = template0 ENCODING = 'UTF8' TABLESPACE = pg_default CONNECTION LIMIT = -1;"
+            PGPASSWORD=$POSTGRES_POSTGRES_PASSWORD psql -U postgres -d postgres -c "CREATE DATABASE mpesa WITH OWNER = mpesa TEMPLATE = template0 ENCODING = 'UTF8' TABLESPACE = pg_default CONNECTION LIMIT = -1;"
+  
+postgres-init:
+  dbUserPasswords:
+    dbuserPassword: ""
+  
+  databases:
+    mosip_master:
+      enabled: false
+      branch: develop
+  
+    mosip_audit:
+      enabled: true
+      branch: develop
+  
+    mosip_keymgr:
+      enabled: true 
+      branch: develop
+  
+    mosip_kernel:
+      enabled: false
+      branch: develop
+  
+    mosip_idmap:
+      enabled: false
+      branch: develop
+  
+    mosip_prereg:
+      enabled: false
+      branch: develop
+  
+    mosip_idrepo:
+      enabled: false
+      branch: develop
+  
+    mosip_ida:
+      enabled: false
+      branch: develop
+  
+    mosip_credential:
+      enabled: false
+      branch: develop
+  
+    mosip_regprc:
+      enabled: false
+      branch: develop
+  
+    mosip_regdevice:
+      enabled: false
+      branch: develop
+     
+    mosip_authdevice:
+      enabled: false
+      branch: develop
+  
+    mosip_pms:
+      enabled: false
+      branch: develop
+  
+    mosip_hotlist:
+      enabled: false
+      branch: develop
+  
+    mosip_resident:
+      enabled: false
+      branch: develop
+  
+    mosip_toolkit:
+      enabled: false
+      branch: develop
+  
+    mosip_digitalcard:
+      enabled: false
+      branch: develop
+  
+    mosip_esignet:
+      enabled: true
+      branch: develop
+  
+    mosip_mockidentitysystem:
+      enabled: true
+      branch: develop
+  
