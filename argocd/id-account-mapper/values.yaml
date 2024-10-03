@@ -1,5 +1,5 @@
 istio:
-  enabled: true
+  enabled: false
   destination:
     server: https://kubernetes.default.svc
   source:
@@ -7,8 +7,9 @@ istio:
     targetRevision: 1.23.2
 
 common:
-  certmanager_enabled: true
-  postgres_enabled: true
+  certmanager_enabled: false
+  postgres_enabled: false
+  keycloak: true
   destination:
     server: https://kubernetes.default.svc
   source:
