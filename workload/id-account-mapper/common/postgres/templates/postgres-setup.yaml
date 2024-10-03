@@ -1,0 +1,84 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .Values.postgresenv.namespace }}
+---
+apiVersion: v1
+data:
+  username: {{ .Values.postgresenv.app_username | b64enc | quote }}
+  password: {{ .Values.postgresenv.app_password | b64enc | quote }}
+kind: Secret
+metadata:
+  name: app-secret
+  namespace: {{ .Values.postgresenv.namespace }}
+type: kubernetes.io/basic-auth
+---
+apiVersion: v1
+data:
+  username: {{ .Values.postgresenv.identity_username | b64enc | quote }}
+  password: {{ .Values.postgresenv.identity_password | b64enc | quote }}
+kind: Secret
+metadata:
+  name: identity-secret
+  namespace: {{ .Values.postgresenv.namespace }}
+type: kubernetes.io/basic-auth
+---
+
+apiVersion: v1
+data:
+  username: cG9zdGdyZXM=
+  password: {{ .Values.postgresenv.superuser_password | b64enc | quote }}
+kind: Secret
+metadata:
+  name: superuser-secret
+  namespace: {{ .Values.postgresenv.namespace }}
+type: kubernetes.io/basic-auth
+---
+
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: postgres-registry
+  namespace: {{ .Values.postgresenv.namespace }}
+spec:
+  instances: {{ .Values.postgresenv.replica }}
+  primaryUpdateStrategy: unsupervised
+  storage:
+    size: {{ .Values.postgresenv.data_size }}
+    storageClass: {{ .Values.postgresenv.storage_class }}
+  monitoring:
+    enablePodMonitor: true
+
+  superuserSecret:
+    name: superuser-secret
+  bootstrap:
+    initdb:
+      database: registry
+      owner: registry
+      secret:
+        name: app-secret
+
+---
+
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: postgres-identity
+  namespace: {{ .Values.postgresenv.namespace }}
+spec:
+  instances: {{ .Values.postgresenv.replica }}
+  primaryUpdateStrategy: unsupervised
+  storage:
+    size: {{ .Values.postgresenv.data_size }}
+    storageClass: {{ .Values.postgresenv.storage_class }}
+  monitoring:
+    enablePodMonitor: true
+
+  superuserSecret:
+    name: superuser-secret
+  bootstrap:
+    initdb:
+      database: identity
+      owner: identity
+      secret:
+        name: identity-secret
