@@ -22,7 +22,7 @@ spec:
     name: argocd-vault-plugin-helm-vars
     env:
       - name: HELM_ARGS
-        value: -f values-init.yaml -f values.yaml
+        value: -f values.yaml
   syncPolicy:
     automated:
       prune: true
