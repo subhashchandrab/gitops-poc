@@ -51,20 +51,32 @@ spec:
   template:
     spec:
       serviceAccountName: postgres-install-sa
+      initContainers:
+      - name: init-script
+        image: bash:latest                      
+        command: ["/bin/bash", "-c"]
+        args:
+          - "cp /root/.oci/install/* /tmp/working-directory/ && chmod +x /tmp/working-directory/*.sh"
+        volumeMounts:
+        - name: install-volume
+          mountPath: /root/.oci/install                  
+        - name: writable-dir
+          mountPath: /tmp/working-directory      
       containers:
       - name: configmanager
         image: ghcr.io/oci-sunbird/ociop:latest
         command: ["/bin/bash", "-c"]
         args:
           - |
-            cd /root/.oci/install &&  
-            chmod +x install.sh && 
+            cd /tmp/working-directory &&  
             ./install.sh;                              
         volumeMounts:
-        - name: install-volume
-          mountPath: /root/.oci/install
+        - name: writable-dir
+          mountPath: /tmp/working-directory 
       restartPolicy: Never
       volumes:
       - name: install-volume
         configMap:
           name: {{ .Chart.Name }}-install-config
+      - name: writable-dir
+        emptyDir: {}     
