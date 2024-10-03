@@ -1,5 +1,8 @@
 keycloak_init_enabled: true
 
+realm:
+  keycloak_domain: ""
+
 
 clientSecrets:
   - name: openg2p_admin_client_secret

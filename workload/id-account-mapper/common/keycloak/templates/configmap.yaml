@@ -1,0 +1,24 @@
+
+{{- $scripts := .Files.Glob "scripts/*" }}
+{{ if $scripts }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Chart.Name }}-scripts
+  namespace: {{ .Values.namespace }}
+data:
+{{ tpl (.Files.Glob "scripts/*").AsConfig .| indent 2 }}
+{{ end }}
+
+---
+
+{{- $utils := .Files.Glob "utils/*" }}
+{{ if $utils }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Chart.Name }}-utils
+  namespace: {{ .Values.namespace }}
+data:
+{{ (.Files.Glob "utils/*").AsConfig | indent 2 }}
+{{ end }}
