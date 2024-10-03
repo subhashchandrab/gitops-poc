@@ -1,3 +1,4 @@
+{{- if .Values.common.postgres_enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -10,7 +11,7 @@ metadata:
 spec:
   destination:
     server: {{ .Values.common.destination.server }}
-    namespace: cnpg-system
+    namespace: postgres
   project: default
   source:
     repoURL: {{ .Values.common.source.repoURL }}
@@ -22,3 +23,4 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+{{- end }}
