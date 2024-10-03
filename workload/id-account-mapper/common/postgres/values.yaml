@@ -1,3 +1,5 @@
+istio_enabled: true
+
 postgresql:
   auth:
     username: "openg2puser"
