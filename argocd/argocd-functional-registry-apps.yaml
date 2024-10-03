@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd-base-apps
+  name: Functiona-Registry-Apps
   namespace: argocd
 spec:
   destination:
@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: 'https://github.com/ddevadat/gitops-poc'
     targetRevision: HEAD
-    path: argocd/base-apps
+    path: argocd/functional-registry
     plugin:
       name: argocd-vault-plugin-helm
   syncPolicy:
