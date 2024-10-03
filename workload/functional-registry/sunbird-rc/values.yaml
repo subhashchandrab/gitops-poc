@@ -1,0 +1,112 @@
+functionalregistry: 
+  keycloak_domain: argosbrciam.<path:ocivault#functional_registry_domain#latest | base64decode>
+  identity_domain: argosbrc.<path:ocivault#functional_registry_domain#latest | base64decode>
+  filestorage_domain: argosbrcfs.<path:ocivault#functional_registry_domain#latest | base64decode>
+  registry_domain: argosbrc.<path:ocivault#functional_registry_domain#latest | base64decode>
+
+postgres:
+  registry_username: <path:ocivault#functional_registry_postgres_app_user#latest | base64decode>
+  registry_password: <path:ocivault#functional_registry_postgres_app_password#latest | base64decode>
+  registry_host: <path:ocivault#postgress_db_host#latest | base64decode> 
+  identity_username: <path:ocivault#functional_registry_identity_postgres_app_user#latest | base64decode>
+  identity_password: <path:ocivault#functional_registry_identity_postgres_app_password#latest | base64decode>
+  identity_host: <path:ocivault#functional_registry_identity_postgres_db_host#latest | base64decode> 
+
+elasticsearch:
+  esJavaOpts: "-Xms3g -Xmx3g"
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "1Gi"
+    limits:
+      cpu: "1000m"
+      memory: "4Gi"
+  volumeClaimTemplate:
+    storageClassName: longhorn
+    resources:
+      requests:
+        storage: 1Gi
+
+filestorage:
+  storage_size: 1Gi
+  storage_class_name: longhorn
+  filestorageenv:
+    MINIO_ROOT_PASSWORD: <path:ocivault#minio-admin-password#latest | base64decode>
+
+keycloak:
+  keycloakenv:
+    DB_PASSWORD: <path:ocivault#functional_registry_postgres_app_password#latest | base64decode>
+    KEYCLOAK_PASSWORD: <path:ocivault#sbrc_keycloak_admin_password#latest | base64decode> 
+    DB_ADDR: <path:ocivault#postgress_db_host#latest | base64decode> 
+    DB_USER: <path:ocivault#functional_registry_postgres_app_user#latest | base64decode>
+    DOMAIN_NAME: argosbrciam.<path:ocivault#functional_registry_domain#latest | base64decode>
+    ADMIN_API_SECRET: <path:ocivault#sbrc_keycloak_admin_api_secret#latest | base64decode>
+
+identity: 
+  global:
+    host: "argosbrciam.<path:ocivault#functional_registry_domain#latest | base64decode>"
+    base_urls:
+      identity: http://functional-registry-identity-service:3332 
+      web_did: http://functional-registry-identity-service:3332
+      credential_schema: http://functional-registry-credential-schema-service:3333
+      credential_service: http://functional-registry-credentials-service:3000
+    secrets:
+      VAULT_SECRET_TOKEN: <path:ocivault#vault_root_token#latest>
+      DB_URL: cG9zdGdyZXM6Ly9pZGVudGl0eTo8cGF0aDpvY2l2YXVsdCNmdW5jdGlvbmFsX3JlZ2lzdHJ5X2lkZW50aXR5X3Bvc3RncmVzX2FwcF9wYXNzd29yZCB8IGJhc2U2NGRlY29kZT5APHBhdGg6b2NpdmF1bHQjZnVuY3Rpb25hbF9yZWdpc3RyeV9pZGVudGl0eV9wb3N0Z3Jlc19kYl9ob3N0IHwgYmFzZTY0ZGVjb2RlPjo1NDMyL2lkZW50aXR5Cg==
+
+  identity-service:
+    ingress:
+      enabled: false
+
+  credential-schema-service:
+    ingress:
+      enabled: false
+
+  credentials-service:
+    ingress:
+      enabled: false
+
+claim-ms:
+  claim_msenv:
+    connectionInfo_uri: jdbc:postgresql://<path:ocivault#postgress_db_host | base64decode>:5432/registry
+    connectionInfo_username: <path:ocivault#functional_registry_postgres_app_user#latest | base64decode>
+    connectionInfo_password: <path:ocivault#functional_registry_postgres_app_password#latest | base64decode>
+
+
+registry:
+  image_tag: v2.0.1
+  rccoreenv:
+    connectionInfo_uri: jdbc:postgresql://<path:ocivault#postgress_db_host | base64decode>:5432/registry
+    connectionInfo_username: <path:ocivault#functional_registry_postgres_app_user#latest | base64decode>
+    connectionInfo_password: <path:ocivault#functional_registry_postgres_app_password#latest | base64decode>
+    sunbird_sso_admin_client_secret: <path:ocivault#sbrc_keycloak_admin_password#latest | base64decode> 
+    filestorage_enabled: true
+    filestorage_connection_url: http://filestorage:9000
+    filestorage_secret_key: <path:ocivault#minio-admin-password#latest | base64decode>
+    sunbird_sso_url: https://argosbrciam.<path:ocivault#functional_registry_domain#latest | base64decode>/auth
+    oauth2_resource_uri: https://argosbrciam.<path:ocivault#functional_registry_domain#latest | base64decode>/auth/realms/sunbird-rc
+    workflow.enable: 'true'
+    claims_enabled: true
+    signature_enabled: true
+    did_enabled: true
+    signature_provider: dev.sunbirdrc.registry.service.impl.SignatureV2ServiceImpl
+    did_health_check_url: http://functional-registry-identity-servicevault-ansible-svc-reader:3332/health 
+    did_generate_url: http://functional-registry-identity-servicevault-ansible-svc-reader:3332/did/generate  
+    did_resolve_url: http://functional-registry-identity-servicevault-ansible-svc-reader:3332/did/resolve  
+    signature_v2_health_check_url: http://functional-registry-credentials-service:3000/health
+    signature_v2_issue_url: http://functional-registry-credentials-service:3000/credentials/issue
+    signature_v2_get_url: http://functional-registry-credentials-service:3000/credentials/{id}
+    signature_v2_delete_url: http://functional-registry-credentials-service:3000/credentials/{id}
+    signature_v2_verify_url:  http://functional-registry-credentials-service:3000/credentials/{id}/verify
+    signature_v2_revocation_list_url: http://functional-registry-credentials-service:3000/credentials/revocation-list?issuerId={issuerDid}&page={page}&limit={limit}
+    signature_v2_schema_health_check_url: http://functional-registry-credential-schema-service:3333/health
+    signature_v2_schema_create_url: http://functional-registry-credential-schema-service:3333/credential-schema
+    signature_v2_schema_update_url: "http://functional-registry-credential-schema-service:3333/credential-schema/{id}/{version}"
+    signature_v2_schema_get_by_id_and_version_url: "http://functional-registry-credential-schema-service:3333/credential-schema/{id}/{version}"
+    signature_v2_schema_search_by_tags_url: "http://functional-registry-credential-schema-service:3333/credential-schema?tags={tags}"
+    sign_url: http://certificatesign:8079/sign
+    verify_url: http://certificatesign:8079/verify
+    sign_health_check_url: http://certificatesign:8079/health
+    certificate_enabled: true 
+    pdf_url: http://certificateapi:8078/api/v1/certificatePDF
+    certificate_health_check_url: http://certificateapi:8078/health

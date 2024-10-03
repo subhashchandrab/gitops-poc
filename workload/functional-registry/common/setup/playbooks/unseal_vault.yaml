@@ -1,0 +1,72 @@
+---
+- name: Unseal vault
+  hosts: bastion
+  environment:
+    OCI_ANSIBLE_AUTH_TYPE: "instance_principal"
+  tasks:
+    - name: Check if Vault is sealed
+      shell: |
+        kubectl -n vault exec vault-0 -- vault status -format=json | jq -r '.sealed'
+      register: vault_status
+      changed_when: false
+      ignore_errors: true
+
+    - name: Skip initialization if Vault is already unsealed
+      when: vault_status.stdout == "false"
+      debug:
+        msg: "Vault is already unsealed. Skipping initialization."
+
+    - name: Initialize Vault if it is sealed
+      when: vault_status.stdout == "true"
+      shell: |
+        kubectl -n vault exec vault-0 -- vault operator init \
+        -key-shares=1 \
+        -key-threshold=1 \
+        -format=json > /root/.oci/cluster-keys.json
+      register: vault_init_result
+
+    - name: Read the unseal key from the file
+      shell: cat /root/.oci/cluster-keys.json | jq -r ".unseal_keys_b64[]"
+      when: vault_status.stdout == "true"
+      register: vault_unseal_key
+
+    - name: Read the root token from the file
+      shell: cat /root/.oci/cluster-keys.json | jq -r ".root_token"
+      when: vault_status.stdout == "true"
+      register: vault_root_token
+
+    - name: Unseal Vault
+      when: vault_status.stdout == "true"
+      shell: |
+        kubectl -n vault exec vault-0 -- vault operator unseal {{ vault_unseal_key.stdout }}
+
+    - name: Login to Vault and enable kv-v2 secrets engine
+      when: vault_status.stdout == "true"
+      shell: |
+        kubectl -n vault exec vault-0 -- /bin/sh -c "vault login {{ vault_root_token.stdout }} && vault secrets enable -path=kv kv-v2"
+
+    # Store vault_unseal_key in OCI Vault as a secret using oci_vault_secret module
+    - name: Store vault_unseal_key in OCI Vault
+      when: vault_status.stdout == "true"
+      oracle.oci.oci_vault_secret:
+        compartment_id: "{{ vault_compartment_id }}"
+        vault_id: "{{ vault_id }}"
+        key_id: "{{ vault_key_id }}"
+        secret_name: "vault_unseal_key"
+        description: "Unseal key for Vault"
+        secret_content:
+          content_type: BASE64
+          content: "{{ vault_unseal_key.stdout | b64encode  }}"
+
+    # Store vault_root_token in OCI Vault as a secret using oci_vault_secret module
+    - name: Store vault_root_token in OCI Vault
+      when: vault_status.stdout == "true"
+      oracle.oci.oci_vault_secret:
+        compartment_id: "{{ vault_compartment_id }}"
+        vault_id: "{{ vault_id }}"
+        key_id: "{{ vault_key_id }}"
+        secret_name: "vault_root_token"
+        description: "Root token for Vault"
+        secret_content:
+          content_type: BASE64
+          content: "{{ vault_root_token.stdout | b64encode  }}"

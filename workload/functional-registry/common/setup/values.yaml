@@ -1,0 +1,33 @@
+oci: 
+  user_id: "ocid1.user.oc1..aaaaaa"
+  tenancy_id: "ocid1.tenancy.oc1..aaaa"
+  region: "region"
+  fingerprint: "fingerprint"
+  oci_cli_key_content: "private_key_content"
+  oci_cli_auth: "instance_principal"
+  user_api_key: <path:ocivault#bastion_user_api_key#latest | base64decode>
+
+ansibleenv:
+  zone_compartment_id: <path:ocivault#zone_compartment_id#latest | base64decode>
+  domain: <path:ocivault#functional_registry_domain#latest | base64decode>
+  vault_compartment_id: <path:ocivault#vault_compartment_id#latest | base64decode>
+  vault_id: <path:ocivault#vault_id#latest | base64decode>
+  vault_key_id: <path:ocivault#vault_key_id#latest | base64decode>
+
+commonenv:
+  sslDnsNames: "*.<path:ocivault#functional_registry_domain#latest | base64decode>"
+  acmeServer: <path:ocivault#acme_server_stage#latest | base64decode> 
+  acmeEmail: <path:ocivault#certificate_email#latest | base64decode> 
+
+postgresenv:
+  app_username: <path:ocivault#functional_registry_postgres_app_user#latest | base64decode> 
+  app_password: <path:ocivault#functional_registry_postgres_app_password#latest | base64decode> 
+  superuser_password: <path:ocivault#functional_registry_postgres_super_password#latest | base64decode> 
+  replica: 3
+  data_size: 1Gi
+  storage_class: longhorn
+
+functionregistry: 
+  keycloak_domain: argosbrciam.<path:ocivault#functional_registry_domain#latest | base64decode>
+  identity_domain: argosbrc.<path:ocivault#functional_registry_domain#latest | base64decode>
+  filestorage_domain: argosbrcfs.<path:ocivault#functional_registry_domain#latest | base64decode>

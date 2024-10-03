@@ -15,7 +15,7 @@ spec:
   source:
     repoURL: {{ .Values.common.source.repoURL }}
     targetRevision: {{ .Values.common.source.targetRevision }}
-    path: common/cert-manager
+    path: workload/functional-registry/common/cert-manager
   syncPolicy:
     automated:
       prune: true
