@@ -3,6 +3,7 @@ ansibleenv:
   vault_id: <path:ocivault#vault_id#latest | base64decode>
   vault_key_id: <path:ocivault#vault_key_id#latest | base64decode>
 
+vault_domain: argosbrcvault.<path:ocivault#functional_registry_domain#latest | base64decode>
 
 vault:
   server:
