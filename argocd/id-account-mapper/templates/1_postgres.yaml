@@ -19,7 +19,7 @@ spec:
     targetRevision: {{ .Values.common.source.targetRevision }}
     path: workload/id-account-mapper/common/postgres
     plugin:
-    name: argocd-vault-plugin-helm
+    name: argocd-vault-plugin-helm-vars
     env:
       - name: HELM_ARGS
         value: -f values-init.yaml -f values.yaml
