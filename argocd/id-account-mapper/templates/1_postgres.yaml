@@ -31,7 +31,7 @@ spec:
   project: default
   source:
     repoURL: registry-1.docker.io/bitnamicharts
-    targetRevision: 13.2.27
+    targetRevision: 15.5.38
     chart: postgres
     plugin:
       name: argocd-vault-plugin-helm
@@ -41,14 +41,14 @@ spec:
             auth:
               username: "openg2puser"
               database: "openg2pdb"
-            
+
             primary:
               extendedConfiguration: |-
                 wal_level = logical
                 max_wal_senders = 20
                 max_replication_slots = 10
                 max_connections = 500
-            
+
               initdb:
                 scripts:
                   create_dbs_and_users.sh: |
