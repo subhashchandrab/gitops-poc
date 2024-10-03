@@ -1,0 +1,11 @@
+postgres: 
+  istio_enabled: false
+  init_db_enabled: true
+  mosip_audit_manager_repo: https://github.com/oci-sunbird/audit-manager.git
+  mosip_audit_manager_rel_version: v1.2.0.1
+  mosip_keymanager_repo: https://github.com/oci-sunbird/keymanager.git
+  mosip_keymanager_rel_version: v1.2.0.1-B3
+  mosip_esignet_repo: https://github.com/oci-sunbird/esignet.git
+  mosip_esignet_rel_version: v1.2.0
+  mosip_mockidentitysystem_repo: https://github.com/oci-sunbird/esignet-mock-services.git
+  mosip_mockidentitysystem_rel_version: v0.9.1

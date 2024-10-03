@@ -22,11 +22,3 @@ version: 0.19.0
 # follow Semantic Versioning. They should reflect the version the application is using.
 appVersion: "1.0"
 
-dependencies:
-- name: postgresql
-  version: 13.2.27
-  repository: oci://registry-1.docker.io/bitnamicharts
-
-# - name: postgres-init
-#   version: 12.0.2
-#   repository: https://mosip.github.io/mosip-helm
