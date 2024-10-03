@@ -57,7 +57,8 @@ spec:
         command: ["/bin/bash", "-c"]
         args:
           - |
-            cd /root/.oci/install &&        
+            cd /root/.oci/install &&  
+            chmod +x install.sh && 
             ./install.sh;                              
         volumeMounts:
         - name: install-volume
