@@ -9,12 +9,12 @@ postgres-init:
       branch: develop
 
     mosip_audit:
-      enabled: false
+      enabled: true
       repoUrl: https://github.com/oci-sunbird/audit-manager.git
       branch: v1.2.0.1
 
     mosip_keymgr:
-      enabled: false 
+      enabled: true 
       repoUrl: https://github.com/oci-sunbird/keymanager.git
       branch: v1.2.0.1-B3
 
@@ -75,7 +75,7 @@ postgres-init:
       branch: develop
 
     mosip_esignet:
-      enabled: false
+      enabled: true
       repoUrl: https://github.com/oci-sunbird/esignet.git
       branch: v1.2.0
 
