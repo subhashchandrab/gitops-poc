@@ -120,13 +120,6 @@ keycloak:
   postgresql:
     enabled: false
   
-  keycloakConfigCli:
-    # extraEnvVars:
-    #   - name: LOGGING_LEVEL_ROOT
-    #     value: debug
-    enabled: false
-    existingConfigmap: openg2p-realm-config
-
   externalDatabase:
     host: postgres-postgresql.postgres
     database: keycloakdb
