@@ -16,4 +16,4 @@
 
     - name: Import realm results
       debug:
-        msg: "Import Result {{import_realm_result.stdout}}"
+        msg: "Import Result {{import_realm_result.rc}}"
