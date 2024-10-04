@@ -90,6 +90,7 @@ keycloak:
   
   auth:
     adminUser: admin
+    adminPassword: <path:ocivault#openg2p_keycloak_admin_password#latest | base64decode>
   
   ingress:
     enabled: false
