@@ -13,10 +13,10 @@ metadata:
   namespace: msg-gateways
 data:
   sms-host: mock-sms.mock-sms
-  sms-port: 8080
+  sms-port: "8080"
   sms-username: mock-sms.user
   smtp-host: mock-smtp.mock-smtp
-  smtp-port: 8025
+  smtp-port: "8025"
   smtp-username: mock-smtp.user
 
 ---
