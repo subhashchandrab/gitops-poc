@@ -121,8 +121,9 @@ keycloak:
     enabled: false
   
   keycloakConfigCli:
-    image:
-      tag: latest
+    extraEnvVars:
+      - name: LOGGING_LEVEL_ROOT
+        value: debug
     enabled: true
     existingConfigmap: openg2p-realm-config
 
