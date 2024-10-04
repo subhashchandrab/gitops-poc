@@ -114,6 +114,7 @@ keycloak:
     enabled: false
   
   keycloakConfigCli:
+    enabled: true
     existingConfigmap: openg2p-realm-config
 
   externalDatabase:
