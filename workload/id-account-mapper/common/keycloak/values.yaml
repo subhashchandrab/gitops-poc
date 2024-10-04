@@ -83,7 +83,10 @@ keycloak:
     type: ClusterIP
     headless:
       extraPorts:
-        - 8080
+        - name: keycloakcli
+          port: 8080
+          targetPort: http
+          protocol: TCP
   
   auth:
     adminUser: admin
