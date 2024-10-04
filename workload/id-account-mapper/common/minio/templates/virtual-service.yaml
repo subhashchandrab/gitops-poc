@@ -1,0 +1,24 @@
+
+{{- if .Values.minio_istio_enabled }}
+
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: minio
+spec:
+  gateways:
+    - istio-system/all-hosts
+  hosts:
+    - {{.Values.minio_hostname }}
+  http:
+    - route:
+        - destination:
+            host: minio
+            port:
+              number: 9001
+      headers:
+        request:
+          set:
+            x-forwarded-proto: https
+
+{{- end }}
