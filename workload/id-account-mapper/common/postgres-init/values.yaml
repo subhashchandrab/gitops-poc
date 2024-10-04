@@ -1,4 +1,5 @@
 postgres-init:
+  backoffLimit: 6
   dbUserPasswords:
     dbuserPassword: ""
 
