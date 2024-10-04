@@ -81,12 +81,12 @@ clientSecrets:
 keycloak:
   service:
     type: ClusterIP
-    headless:
-      extraPorts:
-        - name: keycloakcli
-          port: 8080
-          targetPort: http
-          protocol: TCP
+    # headless:
+    #   extraPorts:
+    #     - name: keycloakcli
+    #       port: 8080
+    #       targetPort: http
+    #       protocol: TCP
   
   auth:
     adminUser: admin
