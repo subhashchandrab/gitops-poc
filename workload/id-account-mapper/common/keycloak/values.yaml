@@ -124,7 +124,7 @@ keycloak:
     # extraEnvVars:
     #   - name: LOGGING_LEVEL_ROOT
     #     value: debug
-    enabled: false
+    enabled: true
     existingConfigmap: openg2p-realm-config
 
   externalDatabase:
