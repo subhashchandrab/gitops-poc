@@ -81,12 +81,12 @@ clientSecrets:
 keycloak:
   service:
     type: ClusterIP
-    # headless:
-    #   extraPorts:
-    #     - name: keycloakcli
-    #       port: 8080
-    #       targetPort: http
-    #       protocol: TCP
+    headless:
+      extraPorts:
+        - name: keycloakcli
+          port: 8080
+          targetPort: http
+          protocol: TCP
   
   auth:
     adminUser: admin
@@ -121,12 +121,10 @@ keycloak:
     enabled: false
   
   keycloakConfigCli:
-    extraEnvVars:
-      - name: LOGGING_LEVEL_ROOT
-        value: debug
-      - name: KEYCLOAK_URL
-        value: http://keycloak-headless:80/
-    enabled: true
+    # extraEnvVars:
+    #   - name: LOGGING_LEVEL_ROOT
+    #     value: debug
+    enabled: false
     existingConfigmap: openg2p-realm-config
 
   externalDatabase:
