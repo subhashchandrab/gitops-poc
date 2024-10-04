@@ -81,6 +81,9 @@ clientSecrets:
 keycloak:
   service:
     type: ClusterIP
+    headless:
+      extraPorts:
+        - 8080
   
   auth:
     adminUser: admin
