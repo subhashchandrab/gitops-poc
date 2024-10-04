@@ -13,6 +13,7 @@ common:
   minio_enabled: true
   config_enabled: true
   odk_enabled: true
+  kafka_enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:
