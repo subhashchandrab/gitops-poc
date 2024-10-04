@@ -1,24 +1,25 @@
 
-{{- $scripts := .Files.Glob "scripts/*" }}
-{{ if $scripts }}
+{{- $config := .Files.Glob "config/*" }}
+{{ if $config }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Chart.Name }}-scripts
+  name: openg2p-realm-config
   namespace: {{ .Values.namespace }}
+  annotations:
+    argocd.argoproj.io/hook: PreSync
 data:
-{{ tpl (.Files.Glob "scripts/*").AsConfig .| indent 2 }}
+{{ tpl (.Files.Glob "config/*").AsConfig .| indent 2 }}
 {{ end }}
 
 ---
-
-{{- $utils := .Files.Glob "utils/*" }}
-{{ if $utils }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Chart.Name }}-utils
+  name: keycloak-host
   namespace: {{ .Values.namespace }}
 data:
-{{ (.Files.Glob "utils/*").AsConfig | indent 2 }}
-{{ end }}
+  keycloak-internal-host: keycloak.{{ .Values.namespace }}
+  keycloak-internal-url: http://keycloak.{{ .Values.namespace }}
+  keycloak-external-host: {{ .Values.keycloak_hostname }}
+  keycloak-external-url: https://{{ .Values.keycloak_hostname }}

@@ -1,24 +1,27 @@
 keycloak_init_enabled: true
+keycloak_istio_enabled: true
+keycloak_hostname: keycloak.<path:ocivault#openg2p_domain#latest | base64decode> 
+
 
 realm:
-  keycloak_domain: ""
+  db_password: <path:ocivault#openg2p_pg_password#latest | base64decode> 
 
 
 clientSecrets:
   - name: openg2p_admin_client_secret
-    secret: ""
+    secret: <path:ocivault#openg2p_admin_client_secret#latest | base64decode>
   - name: openg2p_selfservice_client_secret
-    secret: ""
+    secret: <path:ocivault#openg2p_selfservice_client_secret#latest | base64decode>
   - name: openg2p_serviceprovider_client_secret
-    secret: ""
+    secret: <path:ocivault#openg2p_serviceprovider_client_secret#latest | base64decode>
   - name: openg2p_minio_client_secret
-    secret: ""
+    secret: <path:ocivault#openg2p_minio_client_secret#latest | base64decode>
   - name: openg2p_kafka_client_secret
-    secret: ""
+    secret: <path:ocivault#openg2p_kafka_client_secret#latest | base64decode>
   - name: openg2p_opensearch_client_secret
-    secret: ""
+    secret: <path:ocivault#openg2p_opensearch_client_secret#latest | base64decode>
   - name: openg2p_superset_client_secret
-    secret: ""
+    secret: <path:ocivault#openg2p_superset_client_secret#latest | base64decode>
   - name: mosip_abis_client_secret
     secret: ""
   - name: mosip_admin_client_secret
@@ -110,6 +113,9 @@ keycloak:
   postgresql:
     enabled: false
   
+  keycloakConfigCli:
+    existingConfigmap: openg2p-realm-config
+
   externalDatabase:
     host: postgres-postgresql.postgres
     database: keycloakdb

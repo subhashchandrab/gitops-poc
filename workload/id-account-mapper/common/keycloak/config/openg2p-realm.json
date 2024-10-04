@@ -1,4 +1,55 @@
 {
+
+  {{- $adminSecret := "" -}}
+  {{- range .Values.clientSecrets }}
+    {{- if eq .name "openg2p_admin_client_secret" }}
+      {{- $adminSecret = .secret -}}
+    {{- end }}
+  {{- end }}
+
+  {{- $selfServiceClientSecret := "" -}}
+  {{- range .Values.clientSecrets }}
+    {{- if eq .name "openg2p_selfservice_client_secret" }}
+      {{- $selfServiceClientSecret = .secret -}}
+    {{- end }}
+  {{- end }}
+
+  {{- $selfServiceProviderClientSecret := "" -}}
+  {{- range .Values.clientSecrets }}
+    {{- if eq .name "openg2p_serviceprovider_client_secret" }}
+      {{- $selfServiceProviderClientSecret = .secret -}}
+    {{- end }}
+  {{- end }}
+
+  {{- $minioClientSecret := "" -}}
+  {{- range .Values.clientSecrets }}
+    {{- if eq .name "openg2p_minio_client_secret" }}
+      {{- $minioClientSecret = .secret -}}
+    {{- end }}
+  {{- end }}
+
+
+  {{- $kafkaClientSecret := "" -}}
+  {{- range .Values.clientSecrets }}
+    {{- if eq .name "openg2p_kafka_client_secret" }}
+      {{- $kafkaClientSecret = .secret -}}
+    {{- end }}
+  {{- end }}
+
+  {{- $opensearchClientSecret := "" -}}
+  {{- range .Values.clientSecrets }}
+    {{- if eq .name "openg2p_opensearch_client_secret" }}
+      {{- $opensearchClientSecret = .secret -}}
+    {{- end }}
+  {{- end }}
+
+  {{- $supersetClientSecret := "" -}}
+  {{- range .Values.clientSecrets }}
+    {{- if eq .name "openg2p_superset_client_secret" }}
+      {{- $supersetClientSecret = .secret -}}
+    {{- end }}
+  {{- end }}
+
   "id": "6fda1fc8-16cb-4be1-9375-eb47e0fe4fc4",
   "realm": "openg2p",
   "displayName": "OpenG2P",
@@ -1047,7 +1098,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "${OPENG2P_ADMIN_CLIENT_SECRET}",
+      "secret": "{{ $adminSecret | quote }}",
       "redirectUris": [
         "*"
       ],
@@ -1409,7 +1460,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "${OPENG2P_SELFSERVICE_CLIENT_SECRET}",
+      "secret": "{{ $selfServiceClientSecret | quote }}",
       "redirectUris": [
         "*"
       ],
@@ -1765,7 +1816,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "${OPENG2P_SERVICEPROVIDER_CLIENT_SECRET}",
+      "secret": "{{ $selfServiceProviderClientSecret | quote }}",
       "redirectUris": [
         "*"
       ],
@@ -2121,7 +2172,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "${OPENG2P_MINIO_CLIENT_SECRET}",
+      "secret": "{{ $minioClientSecret | quote }}",
       "redirectUris": [
         "*"
       ],
@@ -2486,7 +2537,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "${OPENG2P_KAFKA_CLIENT_SECRET}",
+      "secret": "{{ $kafkaClientSecret | quote }}",
       "redirectUris": [
         "*"
       ],
@@ -2842,7 +2893,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "${OPENG2P_OPENSEARCH_CLIENT_SECRET}",
+      "secret": "{{ $opensearchClientSecret | quote }}",
       "redirectUris": [
         "*"
       ],
@@ -3201,7 +3252,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "${OPENG2P_SUPERSET_CLIENT_SECRET}",
+      "secret": "{{ $supersetClientSecret | quote }}",
       "redirectUris": [
         "*"
       ],
@@ -5012,7 +5063,7 @@
     "oauth2DeviceCodeLifespan": "600",
     "parRequestUriLifespan": "60",
     "clientSessionMaxLifespan": "0",
-    "frontendUrl": "https://{{ .Values.realm.keycloak_domain }}",
+    "frontendUrl": "https://{{ .Values.keycloak_hostname }}",
     "acr.loa.map": "{}"
   },
   "keycloakVersion": "21.0.2",
