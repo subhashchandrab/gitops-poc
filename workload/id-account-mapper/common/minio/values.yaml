@@ -2,6 +2,8 @@ minio_istio_enabled: false
 minio_hostname: minio.<path:ocivault#openg2p_domain#latest | base64decode> 
 
 minio:
+  auth:
+    rootPassword: <path:ocivault#openg2p_minio_admin_password#latest | base64decode>
   persistence:
     enabled: true
     size: 16Gi
