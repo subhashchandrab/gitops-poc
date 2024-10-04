@@ -5,6 +5,7 @@ postgresql:
   auth:
     username: "openg2puser"
     database: "openg2pdb"
+    password: <path:ocivault#openg2p_pg_password#latest | base64decode> 
   
   primary:
     extendedConfiguration: |-
