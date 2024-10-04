@@ -124,6 +124,8 @@ keycloak:
     extraEnvVars:
       - name: LOGGING_LEVEL_ROOT
         value: debug
+      - name: KEYCLOAK_URL
+        value: http://keycloak-headless:80/
     enabled: true
     existingConfigmap: openg2p-realm-config
 
