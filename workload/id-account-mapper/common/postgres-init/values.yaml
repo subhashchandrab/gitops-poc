@@ -1,5 +1,7 @@
 postgres-init:
   backoffLimit: 6
+jobAnnotations:
+  argocd.argoproj.io/sync-wave: "1"
   dbUserPasswords:
     dbuserPassword: ""
 
