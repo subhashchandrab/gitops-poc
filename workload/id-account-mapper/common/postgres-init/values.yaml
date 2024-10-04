@@ -1,7 +1,5 @@
 postgres-init:
   backoffLimit: 6
-jobAnnotations:
-  argocd.argoproj.io/sync-wave: "1"
   dbUserPasswords:
     dbuserPassword: ""
 
@@ -11,12 +9,12 @@ jobAnnotations:
       branch: develop
 
     mosip_audit:
-      enabled: true
+      enabled: false
       repoUrl: https://github.com/oci-sunbird/audit-manager.git
       branch: v1.2.0.1
 
     mosip_keymgr:
-      enabled: true 
+      enabled: false 
       repoUrl: https://github.com/oci-sunbird/keymanager.git
       branch: v1.2.0.1-B3
 
@@ -77,7 +75,7 @@ jobAnnotations:
       branch: develop
 
     mosip_esignet:
-      enabled: true
+      enabled: false
       repoUrl: https://github.com/oci-sunbird/esignet.git
       branch: v1.2.0
 
