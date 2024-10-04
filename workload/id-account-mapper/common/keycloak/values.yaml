@@ -120,6 +120,8 @@ keycloak:
     enabled: false
   
   keycloakConfigCli:
+    image:
+      tag: latest
     enabled: true
     existingConfigmap: openg2p-realm-config
 
