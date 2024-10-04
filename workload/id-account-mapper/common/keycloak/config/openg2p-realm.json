@@ -1098,7 +1098,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "{{ $adminSecret | quote }}",
+      "secret": "{{ $adminSecret }}",
       "redirectUris": [
         "*"
       ],
@@ -1460,7 +1460,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "{{ $selfServiceClientSecret | quote }}",
+      "secret": "{{ $selfServiceClientSecret}}",
       "redirectUris": [
         "*"
       ],
@@ -1816,7 +1816,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "{{ $selfServiceProviderClientSecret | quote }}",
+      "secret": "{{ $selfServiceProviderClientSecret }}",
       "redirectUris": [
         "*"
       ],
@@ -2172,7 +2172,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "{{ $minioClientSecret | quote }}",
+      "secret": "{{ $minioClientSecret }}",
       "redirectUris": [
         "*"
       ],
@@ -2537,7 +2537,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "{{ $kafkaClientSecret | quote }}",
+      "secret": "{{ $kafkaClientSecret }}",
       "redirectUris": [
         "*"
       ],
@@ -2893,7 +2893,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "{{ $opensearchClientSecret | quote }}",
+      "secret": "{{ $opensearchClientSecret }}",
       "redirectUris": [
         "*"
       ],
@@ -3252,7 +3252,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "{{ $supersetClientSecret | quote }}",
+      "secret": "{{ $supersetClientSecret }}",
       "redirectUris": [
         "*"
       ],
