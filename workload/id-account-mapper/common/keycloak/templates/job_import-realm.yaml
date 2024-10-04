@@ -64,7 +64,7 @@ spec:
       volumes:
       - name: inventory-volume
         configMap:
-          name: {{ .Chart.Name }}-ansible-inventory
+          name: openg2p-realm-config
       - name: playbooks-volume
         configMap:
           name: {{ .Chart.Name }}-ansible-playbooks
