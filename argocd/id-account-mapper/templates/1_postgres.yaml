@@ -17,9 +17,6 @@ spec:
     - repoURL: {{ .Values.common.source.repoURL }}
       targetRevision: {{ .Values.common.source.targetRevision }}
       path: workload/id-account-mapper/common/postgres
-    - repoURL: {{ .Values.common.source.repoURL }}
-      targetRevision: {{ .Values.common.source.targetRevision }}
-      path: workload/id-account-mapper/common/postgres-init
   syncPolicy:
     automated:
       prune: true
