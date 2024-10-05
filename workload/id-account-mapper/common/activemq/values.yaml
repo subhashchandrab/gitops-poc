@@ -1,11 +1,12 @@
 activemq-artemis:
-  istio:
-    enabled: false
-    hosts:
-      - activemq.<path:ocivault#openg2p_domain#latest | base64decode> 
-    ingressController:
-      name: gateway
-    prefix: /
-
+  ingress: 
+    istio:
+      enabled: false
+      hosts:
+        - activemq.<path:ocivault#openg2p_domain#latest | base64decode> 
+      ingressController:
+        name: gateway
+      prefix: /
   persistence:
+    enabled: false
     storageClass: oci-bv

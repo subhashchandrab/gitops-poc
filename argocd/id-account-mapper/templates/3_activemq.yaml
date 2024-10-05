@@ -1,4 +1,4 @@
-{{- if .Values.common.activemq_enabledxxx }}
+{{- if .Values.common.activemq_enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
