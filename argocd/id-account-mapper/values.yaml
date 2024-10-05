@@ -23,6 +23,7 @@ common:
   odk_enabled: true
   kafka_enabled: true
   logging_enabled: true
+  activemq_enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:

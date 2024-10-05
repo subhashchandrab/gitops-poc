@@ -1,0 +1,9 @@
+activemq-artemis:
+  istio:
+    enabled: false
+    hosts:
+      - activemq.<path:ocivault#openg2p_domain#latest | base64decode> 
+    ingressController:
+      name: gateway
+    prefix: /
+
