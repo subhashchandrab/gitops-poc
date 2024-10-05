@@ -1,4 +1,4 @@
-{{- if .Values.common.logging_enabled  }}
+{{- if .Values.opensearch.enabled }}
 
 apiVersion: argoproj.io/v1alpha1
 kind: Application
