@@ -22,7 +22,7 @@ common:
   config_enabled: true
   odk_enabled: true
   kafka_enabled: true
-  logging_enabled: false
+  logging_enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:
