@@ -1,7 +1,7 @@
 path:
-  data: /bitnami/opensearch-dashboards/data
+  data: /bitnami/{{ .Chart.Name }}-opensearch-dashboards/data
 pid:
-  file: /opt/bitnami/opensearch-dashboards/tmp/opensearch-dashboards.pid
+  file: /opt/bitnami/{{ .Chart.Name }}-opensearch-dashboards/tmp/opensearch-dashboards.pid
 server:
   host: 0.0.0.0
   port: 5601
