@@ -73,6 +73,8 @@ clientSecrets:
     secret: ""
 
 opensearch:
+  global:
+    storageClass: oci-bv
   dashboards:
     enabled: true
     replicaCount: 1
