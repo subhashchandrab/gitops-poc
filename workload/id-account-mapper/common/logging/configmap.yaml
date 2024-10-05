@@ -15,7 +15,7 @@ data:
     opensearch:
       hosts: https://opensearch:9200
       username: kibanaserver
-      password: {{ .Values.opensearch.dashboards.password }}
+      password: <path:ocivault#openg2p_opensearch_dashboard_password#latest | base64decode>
       requestHeadersWhitelist: 
         - authorization
         - securitytenant
@@ -30,8 +30,8 @@ data:
       openid:
         connect_url: http://keycloak.keycloak/realms/openg2p/.well-known/openid-configuration
         client_id: openg2p-opensearch-client
-        client_secret: {{ .Values.logging_opensearch_client_secret }}
-        base_redirect_url: https://{{ .Values.logging_hostname}}
+        client_secret: <path:ocivault#openg2p_opensearch_client_secret#latest | base64decode>
+        base_redirect_url: https://opensearch.<path:ocivault#openg2p_domain#latest | base64decode>
         logout_url: ""
       ui:
         openid:
@@ -46,6 +46,6 @@ data:
       readonly_mode:
         roles: 
         - kibana_read_only
-    
+
       cookie:
         secure: true
