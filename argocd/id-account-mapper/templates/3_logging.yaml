@@ -1,9 +1,9 @@
-{{- if .Values.opensearch.enabledxxx }}
+{{- if .Values.common.logging_enabled }}
 
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: logging
+  name: opensearch
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "3"

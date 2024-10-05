@@ -8,7 +8,7 @@ server:
 opensearch:
   hosts: https://opensearch:9200
   username: kibanaserver
-  password: {{ .Values.opensearch.dashboards.password }}
+  password: {{ .Values.logging_opensearch_dashboard_password }}
   requestHeadersWhitelist: 
     - authorization
     - securitytenant
