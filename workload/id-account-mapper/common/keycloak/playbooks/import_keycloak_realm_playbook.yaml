@@ -8,15 +8,9 @@
         kubectl -n keycloak exec -it keycloak-0 -- curl -d "client_id=admin-cli" -d "username=admin" -d "password=${keycloak_admin_secret}" -d "grant_type=password" "http://keycloak.keycloak/realms/master/protocol/openid-connect/token" | jq -r '.access_token'
       register: admin_token
 
-    - name: Show Token
-      debug:
-        msg: "Token Result {{admin_token.stdout}}"
-
     - name: Import realm
       shell: |
-        kubectl -n keycloak cp /root/.oci/inventory/openg2p-realm.json keycloak-0:/tmp/new-realm.json
-        kubectl -n keycloak exec -it keycloak-0 -- curl -v -H "content-type: application/json" -H "Authorization: Bearer {{admin_token.stdout}}" "http://keycloak.keycloak/admin/realms" -d @/tmp/new-realm.json
-        sleep 900
+        curl -H "content-type: application/json" -H "Authorization: Bearer {{admin_token.stdout}}" "http://keycloak.keycloak/admin/realms" -d @/root/.oci/inventory/openg2p-realm.json
       register: import_realm_result
 
     - name: Import realm results
