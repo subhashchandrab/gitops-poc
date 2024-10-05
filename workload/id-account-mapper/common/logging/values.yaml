@@ -84,7 +84,7 @@ opensearch:
 
     extraVolumeMounts:
     - name: dashboards-config
-      mountPath: /opt/bitnami/opensearch-dashboards/config/opensearch_dashboards.yml
+      mountPath: /opt/bitnami/logging-opensearch-dashboards/config/opensearch_dashboards.yml
       subPath: opensearch_dashboards.yml  
 
   master:
@@ -107,7 +107,7 @@ opensearch:
 
   extraVolumeMounts:
   - name: security-config
-    mountPath: /opt/bitnami/opensearch/config/opensearch-security/config.yml
+    mountPath: /opt/bitnami/logging-opensearch/config/opensearch-security/config.yml
     subPath: opensearch-security-config.yml
 
   security:
