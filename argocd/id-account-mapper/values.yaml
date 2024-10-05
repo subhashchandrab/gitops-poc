@@ -6,6 +6,14 @@ istio:
     repoURL: https://istio-release.storage.googleapis.com/charts
     targetRevision: 1.23.2
 
+opensearch:
+  enabled: false
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: registry-1.docker.io/bitnamicharts
+    targetRevision: 0.8.0
+
 common:
   certmanager_enabled: false
   postgres_enabled: true
@@ -14,7 +22,7 @@ common:
   config_enabled: true
   odk_enabled: true
   kafka_enabled: true
-  logging_enabled: true
+  logging_enabled: false
   destination:
     server: https://kubernetes.default.svc
   source:
