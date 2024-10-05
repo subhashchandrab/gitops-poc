@@ -12,6 +12,7 @@
       shell: |
         kubectl -n keycloak cp /root/.oci/inventory/openg2p-realm.json keycloak-0:/tmp/new-realm.json
         kubectl -n keycloak exec -it keycloak-0 -- curl -v -H "content-type: application/json" -H "Authorization: Bearer {{admin_token.stdout}}" "http://keycloak.keycloak/admin/realms" -d @/tmp/new-realm.json
+        sleep 120
       register: import_realm_result
 
     - name: Import realm results
