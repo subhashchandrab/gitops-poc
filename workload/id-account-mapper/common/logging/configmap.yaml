@@ -15,7 +15,7 @@ data:
     opensearch:
       hosts: https://opensearch:9200
       username: kibanaserver
-      password: <path:ocivault#openg2p_opensearch_dashboard_password#latest | base64decode>
+      password: "<path:ocivault#openg2p_opensearch_dashboard_password#latest | base64decode>"
       requestHeadersWhitelist: 
         - authorization
         - securitytenant
