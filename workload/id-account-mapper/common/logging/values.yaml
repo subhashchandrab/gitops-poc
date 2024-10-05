@@ -1,5 +1,6 @@
 logging_istio_enabled: false
 logging_hostname: opensearch.<path:ocivault#openg2p_domain#latest | base64decode> 
+logging_opensearch_client_secret: <path:ocivault#openg2p_opensearch_client_secret#latest | base64decode>
 
 clientSecrets:
   - name: openg2p_admin_client_secret
@@ -76,7 +77,6 @@ opensearch:
     enabled: true
     replicaCount: 1
     password: <path:ocivault#openg2p_opensearch_dashboard_password#latest | base64decode>
-
     extraVolumes:
     - name: dashboards-config
       configMap:

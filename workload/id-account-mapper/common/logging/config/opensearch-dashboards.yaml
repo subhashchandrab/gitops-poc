@@ -1,12 +1,3 @@
-  {{- $opensearchClientSecret := "" -}}
-  {{- range .Values.clientSecrets }}
-    {{- if eq .name "openg2p_opensearch_client_secret" }}
-      {{- $opensearchClientSecret = .secret -}}
-    {{- end }}
-  {{- end }}
-
-
-
 path:
   data: /bitnami/opensearch-dashboards/data
 pid:
@@ -17,7 +8,7 @@ server:
 opensearch:
   hosts: https://opensearch:9200
   username: kibanaserver
-  password: {{ .Values.opensearch.dashboard.password }}
+  password: {{ .Values.opensearch.dashboards.password  | quote}}
   requestHeadersWhitelist: 
     - authorization
     - securitytenant
@@ -32,8 +23,8 @@ opensearch_security:
   openid:
     connect_url: http://keycloak.keycloak/realms/openg2p/.well-known/openid-configuration
     client_id: openg2p-opensearch-client
-    client_secret: "{{ $opensearchClientSecret }}"
-    base_redirect_url: https://{{ .Values.logging_hostname }}
+    client_secret: {{ .Values.logging_opensearch_client_secret | quote }}
+    base_redirect_url: https://{{ .Values.logging_hostname}}
     logout_url: ""
   ui:
     openid:
