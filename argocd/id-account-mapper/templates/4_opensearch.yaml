@@ -1,4 +1,4 @@
-{{- if .Values.opensearch.enabledxxx }}
+{{- if .Values.opensearch.enabled }}
 
 
 apiVersion: v1
