@@ -1,5 +1,5 @@
 istio:
-  enabled: true
+  enabled: false
   destination:
     server: https://kubernetes.default.svc
   source:
@@ -15,14 +15,14 @@ opensearch:
     targetRevision: 0.8.0
 
 common:
-  certmanager_enabled: true
+  certmanager_enabled: false
   postgres_enabled: true
   keycloak_enabled: true
-  minio_enabled: true
-  config_enabled: true
-  odk_enabled: true
-  kafka_enabled: true
-  logging_enabled: true
+  minio_enabled: false
+  config_enabled: false
+  odk_enabled: false
+  kafka_enabled: false
+  logging_enabled: false
   destination:
     server: https://kubernetes.default.svc
   source:
