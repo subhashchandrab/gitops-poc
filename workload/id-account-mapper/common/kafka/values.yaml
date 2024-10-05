@@ -1,4 +1,4 @@
-kafka_istio_enabled: false
+kafka_istio_enabled: true
 kafka_hostname: kafka.<path:ocivault#openg2p_domain#latest | base64decode> 
 
 kafka-ui:

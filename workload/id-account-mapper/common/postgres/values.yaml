@@ -1,5 +1,5 @@
 postgres:
-  istio_enabled: false
+  istio_enabled: true
 
 postgresql:
   auth:

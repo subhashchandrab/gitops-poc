@@ -1,4 +1,4 @@
-minio_istio_enabled: false
+minio_istio_enabled: true
 minio_hostname: minio.<path:ocivault#openg2p_domain#latest | base64decode> 
 
 minio:
