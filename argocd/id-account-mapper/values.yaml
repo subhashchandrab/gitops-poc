@@ -18,11 +18,11 @@ common:
   certmanager_enabled: false
   postgres_enabled: true
   keycloak_enabled: true
-  minio_enabled: false
-  config_enabled: false
-  odk_enabled: false
-  kafka_enabled: false
-  logging_enabled: false
+  minio_enabled: true
+  config_enabled: true
+  odk_enabled: true
+  kafka_enabled: true
+  logging_enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:
