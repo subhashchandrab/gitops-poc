@@ -31,7 +31,7 @@ spec:
                   name: gateway
                 prefix: /
             persistence:
-              enabled: false
+              enabled: enabled
               storageClass: oci-bv
   syncPolicy:
     automated:
