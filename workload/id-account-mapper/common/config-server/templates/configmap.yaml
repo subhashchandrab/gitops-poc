@@ -45,7 +45,7 @@ metadata:
   namespace: {{ .Values.namespace }}
 data:
   s3-user-key: {{ .Values.configserver.minio_username }}
-  s3-region: {{ .Values.configserver.minio_region }}
+  s3-region: ""
 
 ---
 apiVersion: v1
@@ -56,3 +56,17 @@ metadata:
 data:
   activemq-core-port: "61616"
   activemq-host: activemq-activemq-artemis.activemq
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: msg-gateway
+  namespace: {{ .Values.namespace }}
+data:
+  sms-host: mock-sms.mock-sms
+  sms-port: "8080"
+  sms-username: mock-sms.user
+  smtp-host: mock-smtp.mock-smtp
+  smtp-port: "8025"
+  smtp-username: mock-smtp.user

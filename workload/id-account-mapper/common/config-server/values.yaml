@@ -9,6 +9,13 @@ configserver:
   minio_pretext_value: ""
   minio_region: ""
   artemis_password: ""
+  sms_secret: <path:ocivault#openg2p_sms_secret#latest | base64decode>
+  smtp_secret: <path:ocivault#openg2p_smtp_secret#latest | base64decode>
+  openg2p_pre_reg_captcha_site_key: <path:ocivault#openg2p_pre_reg_captcha_site_key#latest | base64decode>
+  openg2p_pre_reg_captcha_secret_key: <path:ocivault#openg2p_pre_reg_captcha_secret_key#latest | base64decode>
+  openg2p_resident_captcha_site_key: <path:ocivault#openg2p_resident_captcha_site_key#latest | base64decode>
+  openg2p_resident_captcha_secret_key: <path:ocivault#openg2p_resident_captcha_secret_key#latest | base64decode>
+
   clientSecrets:
     - name: openg2p_admin_client_secret
       secret: <path:ocivault#openg2p_admin_client_secret#latest | base64decode>
