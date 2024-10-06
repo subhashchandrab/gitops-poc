@@ -40,9 +40,4 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-  ignoreDifferences:
-    - kind: StatefulSet
-      group: apps
-      jqPathExpressions:
-        - 'spec.replicas'
 {{- end }}
