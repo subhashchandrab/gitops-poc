@@ -17,16 +17,19 @@ spec:
     repoURL: {{ .Values.softhsm.source.repoURL }}
     targetRevision: {{ .Values.softhsm.source.targetRevision }}
     chart: softhsm
-    helm:
-      releaseName: softhsm-kernel
-      values: |
-        persistence:
-          storageClass: longhorn
-        resources:
-          limits: {}
-          requests:
-            cpu: 100m
-            memory: 20Mi
+    plugin:
+      name: argocd-vault-plugin-helm
+      env:
+        - name: HELM_VALUES      
+          values: |
+            securityPIN: <path:ocivault#openg2p_softhsm_security_pin#latest | base64decode>
+            persistence:
+              storageClass: longhorn
+            resources:
+              limits: {}
+              requests:
+                cpu: 100m
+                memory: 20Mi
   syncPolicy:
     automated:
       prune: true
