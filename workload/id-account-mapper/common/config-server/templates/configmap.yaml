@@ -54,5 +54,5 @@ metadata:
   name: activemq-activemq-artemis-share
   namespace: {{ .Values.namespace }}
 data:
-  activemq-core-port: 61616
+  activemq-core-port: "61616"
   activemq-host: activemq-activemq-artemis.activemq
