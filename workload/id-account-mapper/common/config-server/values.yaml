@@ -8,6 +8,7 @@ configserver:
   minio_password: <path:ocivault#openg2p_minio_admin_password#latest | base64decode>
   minio_pretext_value: ""
   minio_region: ""
+  artemis_password: ""
   clientSecrets:
     - name: openg2p_admin_client_secret
       secret: <path:ocivault#openg2p_admin_client_secret#latest | base64decode>
