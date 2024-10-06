@@ -1,4 +1,4 @@
-{{- if .Values.softhsm.enabledxxx }}
+{{- if .Values.softhsm.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -22,7 +22,7 @@ spec:
       env:
         - name: HELM_VALUES      
           value: |
-            securityPIN: <path:ocivault#openg2p_softhsm_security_pin#latest | base64decode>
+            securityPIN: <path:ocivault#openg2p_softhsm_security_pin#latest>
             persistence:
               storageClass: longhorn
             resources:
