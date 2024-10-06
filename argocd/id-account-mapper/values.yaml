@@ -6,13 +6,14 @@ istio:
     repoURL: https://istio-release.storage.googleapis.com/charts
     targetRevision: 1.23.2
 
-opensearch:
+activemq:
   enabled: false
   destination:
     server: https://kubernetes.default.svc
   source:
-    repoURL: registry-1.docker.io/bitnamicharts
-    targetRevision: 0.8.0
+    repoURL: https://oci-sunbird.github.io/mosip-helm
+    targetRevision: 0.0.2
+
 
 common:
   certmanager_enabled: false
@@ -23,7 +24,6 @@ common:
   odk_enabled: true
   kafka_enabled: true
   logging_enabled: true
-  activemq_enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:
