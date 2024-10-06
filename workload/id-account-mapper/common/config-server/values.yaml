@@ -101,3 +101,10 @@ config-server:
     ## User name of user who has access to the private repo. Ignore for public repo
     username: ""
     token: ""
+  envVariables:
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_OPENG2P_ADMIN_CLIENT_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: keycloak-client-secrets
+          key: openg2p_admin_client_secret 
+      enabled: true
