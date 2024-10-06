@@ -1,4 +1,4 @@
-{{- if .Values.activemq.enabledxxx }}
+{{- if .Values.activemq.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -32,6 +32,8 @@ spec:
                 prefix: /
             persistence:
               enabled: enabled
+              storageClass: longhorn
+              size: 500Mi
   syncPolicy:
     automated:
       prune: true
