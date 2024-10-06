@@ -1,4 +1,4 @@
-{{- if .Values.softhsm.enabled }}
+{{- if .Values.softhsm.enabledxx }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -20,6 +20,8 @@ spec:
     helm:
       releaseName: softhsm-kernel
       values: |
+        persistence:
+          storageClass: longhorn
         resources:
           limits: {}
           requests:
