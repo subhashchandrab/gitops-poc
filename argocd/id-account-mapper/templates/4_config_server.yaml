@@ -1,4 +1,4 @@
-{{- if .Values.common.configserver_enabledxx }}
+{{- if .Values.common.configserver_enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
