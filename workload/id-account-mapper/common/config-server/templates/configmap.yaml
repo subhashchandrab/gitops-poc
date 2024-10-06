@@ -46,3 +46,13 @@ metadata:
 data:
   s3-user-key: {{ .Values.configserver.minio_username }}
   s3-region: {{ .Values.configserver.minio_region }}
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: activemq-activemq-artemis-share
+  namespace: {{ .Values.namespace }}
+data:
+  activemq-core-port: 61616
+  activemq-host: activemq-activemq-artemis.activemq
