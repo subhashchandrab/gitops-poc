@@ -36,3 +36,13 @@ data:
   mosip-smtp-host: smtp.{{ .Values.configserver.domain_name }}
   mosip-signup-host: signup.{{ .Values.configserver.domain_name }}
   is_glowroot_env: absent
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: s3
+  namespace: {{ .Values.namespace }}
+data:
+  s3-user-key: {{ .Values.configserver.minio_username }}
+  s3-region: {{ .Values.configserver.minio_region }}
