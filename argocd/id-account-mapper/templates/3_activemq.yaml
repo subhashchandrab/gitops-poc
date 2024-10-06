@@ -32,7 +32,6 @@ spec:
                 prefix: /
             persistence:
               enabled: enabled
-              storageClass: oci-bv
   syncPolicy:
     automated:
       prune: true
