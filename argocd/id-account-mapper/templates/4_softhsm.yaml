@@ -1,4 +1,4 @@
-{{- if .Values.softhsm.enabledxx }}
+{{- if .Values.softhsm.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
