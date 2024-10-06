@@ -1,4 +1,4 @@
-config-server:
+configserver:
   softhsm_securitypin: <path:ocivault#openg2p_softhsm_security_pin#latest | base64decode>
 conf-secrets:
   fullnameOverride: "conf-secrets"

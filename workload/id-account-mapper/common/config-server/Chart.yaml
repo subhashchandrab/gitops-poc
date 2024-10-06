@@ -1,5 +1,5 @@
 apiVersion: v2
-name: configserver
+name: config-server
 description: A Helm chart for configserver Components
 
 # A chart can be either an 'application' or a 'library' chart.
