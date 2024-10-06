@@ -26,3 +26,7 @@ dependencies:
 - name: conf-secrets
   version: 12.0.1-B4
   repository: https://oci-sunbird.github.io/mosip-helm
+
+- name: config-server
+  version: 12.0.1-B4
+  repository: https://oci-sunbird.github.io/mosip-helm

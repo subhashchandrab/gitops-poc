@@ -3,6 +3,8 @@ kind: ConfigMap
 metadata:
   name: keycloak-host
   namespace: {{ .Values.namespace }}
+  annotations:
+    argocd.argoproj.io/hook: PreSync
 data:
   keycloak-internal-host: keycloak.keycloak
   keycloak-internal-url: http://keycloak.keycloak
@@ -14,6 +16,8 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: global
+  annotations:
+    argocd.argoproj.io/hook: PreSync
 data:
   installation-name: openg2p
   installation-domain: {{ .Values.configserver.domain_name }}
@@ -43,6 +47,8 @@ kind: ConfigMap
 metadata:
   name: s3
   namespace: {{ .Values.namespace }}
+  annotations:
+    argocd.argoproj.io/hook: PreSync
 data:
   s3-user-key: {{ .Values.configserver.minio_username }}
   s3-region: ""
@@ -53,6 +59,8 @@ kind: ConfigMap
 metadata:
   name: activemq-activemq-artemis-share
   namespace: {{ .Values.namespace }}
+  annotations:
+    argocd.argoproj.io/hook: PreSync
 data:
   activemq-core-port: "61616"
   activemq-host: activemq-activemq-artemis.activemq
@@ -63,6 +71,8 @@ kind: ConfigMap
 metadata:
   name: msg-gateway
   namespace: {{ .Values.namespace }}
+  annotations:
+    argocd.argoproj.io/hook: PreSync
 data:
   sms-host: mock-sms.mock-sms
   sms-port: "8080"
