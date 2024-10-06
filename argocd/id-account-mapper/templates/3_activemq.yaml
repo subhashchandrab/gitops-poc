@@ -39,8 +39,9 @@ spec:
     syncOptions:
       - CreateNamespace=true
   ignoreDifferences:
-  - group: apps
-    kind: StatefulSet
-    jsonPointers:
-    - /spec/replicas
+    - group: apps
+      kind: StatefulSet
+      name: activemq-activemq-artemis-slave
+      jsonPointers:
+        - /spec/template/spec  # Ignore the pod template differences
 {{- end }}
