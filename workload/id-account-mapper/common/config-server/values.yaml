@@ -2,6 +2,7 @@ configserver:
   softhsm_securitypin: <path:ocivault#openg2p_softhsm_security_pin#latest | base64decode>
   keycloak_admin_passsword: <path:ocivault#openg2p_keycloak_admin_password#latest | base64decode>
   postgres_user_password: <path:ocivault#openg2p_pg_password#latest | base64decode> 
+  keycloak_hostname: keycloak.<path:ocivault#openg2p_domain#latest | base64decode> 
   clientSecrets:
     - name: openg2p_admin_client_secret
       secret: <path:ocivault#openg2p_admin_client_secret#latest | base64decode>
