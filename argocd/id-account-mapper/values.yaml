@@ -7,7 +7,7 @@ istio:
     targetRevision: 1.23.2
 
 activemq:
-  enabled: true
+  enabled: false
   destination:
     server: https://kubernetes.default.svc
   source:
