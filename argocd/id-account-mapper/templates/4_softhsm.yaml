@@ -21,7 +21,7 @@ spec:
       name: argocd-vault-plugin-helm
       env:
         - name: HELM_VALUES      
-          values: |
+          value: |
             securityPIN: <path:ocivault#openg2p_softhsm_security_pin#latest | base64decode>
             persistence:
               storageClass: longhorn
