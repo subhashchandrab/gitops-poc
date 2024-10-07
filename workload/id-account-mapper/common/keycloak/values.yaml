@@ -80,7 +80,7 @@ clientSecrets:
 
 keycloak:
   commonAnnotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "-9"
   service:
     type: ClusterIP
     # headless:

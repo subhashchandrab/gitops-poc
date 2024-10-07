@@ -3,7 +3,7 @@ postgres:
 
 postgresql:
   commonAnnotations:
-    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/sync-wave: "-10"
   global:
     storageClass: longhorn
   auth:
