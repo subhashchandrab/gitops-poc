@@ -1,3 +1,6 @@
+keymanager_istio_enabled: false
+keymanager_hostname: keymanager.<path:ocivault#openg2p_domain#latest | base64decode> 
+
 configserver:
   domain_name: <path:ocivault#openg2p_domain#latest | base64decode>
   activeProfileEnv: default

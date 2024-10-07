@@ -1,0 +1,26 @@
+
+{{- if .Values.keymanager_istio_enabled }}
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: keymanager
+  namespace: {{ .Values.namespace }}
+spec:
+  gateways:
+    - istio-system/all-hosts
+  hosts:
+    - {{.Values.keymanager_hostname }}
+  http:
+    - match:
+        - uri:
+            prefix: /v1/keymanager
+      route:
+        - destination:
+            host: keymanager
+            port:
+              number: 80
+      headers:
+        request:
+          set:
+            x-forwarded-proto: https
+{{- end }}
