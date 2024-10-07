@@ -63,3 +63,13 @@ data:
   hub_config_file_url_env: http://config-server.config-server/config/*/{{ .Values.configserver.activeProfileEnv }}/{{ .Values.configserver.gitRepo.version }}/websub-service.toml
   spring_config_label_env: {{ .Values.configserver.gitRepo.version }}
   spring_config_url_env: http://config-server.config-server/config
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: softhsm-kernel-share
+  namespace: {{ .Values.namespace }}
+data:
+  PKCS11_PROXY_SOCKET: tcp://softhsm-kernel.softhsm:80
