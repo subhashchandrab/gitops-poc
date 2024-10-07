@@ -9,4 +9,4 @@ activemq-artemis:
       prefix: /
   persistence:
     enabled: false
-    storageClass: oci-bv
+    storageClass: longhorn

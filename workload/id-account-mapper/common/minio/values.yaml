@@ -6,7 +6,8 @@ minio:
     rootPassword: <path:ocivault#openg2p_minio_admin_password#latest | base64decode>
   persistence:
     enabled: true
-    size: 16Gi
+    size: 8Gi
+    storageClass: longhorn
 
   extraEnvVars:
   - name: MINIO_IDENTITY_OPENID_CONFIG_URL

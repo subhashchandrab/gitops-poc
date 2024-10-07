@@ -18,6 +18,8 @@ kafka-ui:
 
 
 kafka:
+  global:
+    storageClass: longhorn
   extraConfig: |-
     log.retention.hours=2
     default.replication.factor=1

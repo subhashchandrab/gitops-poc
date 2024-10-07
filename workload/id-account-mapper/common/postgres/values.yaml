@@ -2,6 +2,8 @@ postgres:
   istio_enabled: false
 
 postgresql:
+  global:
+    storageClass: longhorn
   auth:
     username: "openg2puser"
     database: "openg2pdb"
