@@ -22,10 +22,10 @@ version: 12.0.1-B3
 # follow Semantic Versioning. They should reflect the version the application is using.
 appVersion: "1.0"
 
-# dependencies:
-# - name: kernel-keygen
-#   version: 12.0.1-B4
-#   repository: https://oci-sunbird.github.io/mosip-helm
+dependencies:
+- name: kernel-keygen
+  version: 12.0.1-B4
+  repository: https://oci-sunbird.github.io/mosip-helm
 
 # - name: keymanager
 #   version: 12.0.1-B4

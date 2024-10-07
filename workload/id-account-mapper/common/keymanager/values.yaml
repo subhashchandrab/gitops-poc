@@ -21,3 +21,7 @@ artifacts:
   esignetauthwrapperUrl: /artifactory/libs-release-local/esignet/esignet-wrapper.zip
 
 
+
+kernel-keygen:
+  springConfigNameEnv: kernel
+  softHsmCM: softhsm-kernel-share
