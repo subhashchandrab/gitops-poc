@@ -40,6 +40,7 @@ common:
   kafka_enabled: true
   logging_enabled: true
   configserver_enabled: true
+  keymanager_enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:

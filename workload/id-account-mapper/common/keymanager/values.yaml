@@ -1,0 +1,4 @@
+configserver:
+  domain_name: <path:ocivault#openg2p_domain#latest | base64decode>
+
+
