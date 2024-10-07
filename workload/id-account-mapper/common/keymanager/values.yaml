@@ -1,5 +1,9 @@
 configserver:
   domain_name: <path:ocivault#openg2p_domain#latest | base64decode>
+  activeProfileEnv: default
+  gitRepo:
+    uri: https://github.com/oci-sunbird/mosip-config
+    version: v.1.0.3
 
 artifacts:
   baseUrl: http://artifactory.artifactory:80
