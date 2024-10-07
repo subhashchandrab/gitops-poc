@@ -34,7 +34,7 @@ common:
   certmanager_enabled: false
   postgres_enabled: true
   keycloak_enabled: true
-  minio_enabled: false
+  minio_enabled: true
   config_enabled: false
   odk_enabled: false
   kafka_enabled: false
