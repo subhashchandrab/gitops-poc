@@ -26,3 +26,7 @@ dependencies:
 - name: mock-identity-system
   version: 0.9.1
   repository: https://oci-sunbird.github.io/mosip-helm
+
+- name: esignet
+  version: 1.2.0
+  repository: https://oci-sunbird.github.io/mosip-helm
