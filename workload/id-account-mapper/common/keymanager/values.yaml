@@ -22,6 +22,6 @@ artifacts:
 
 
 
-kernel-keygen:
+keygen:
   springConfigNameEnv: kernel
   softHsmCM: softhsm-kernel-share
