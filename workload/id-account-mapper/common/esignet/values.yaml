@@ -87,6 +87,6 @@ oidc-ui:
   oidc_ui:
     configmaps:
       oidc-ui:
-        REACT_APP_API_BASE_URL:"http://esignet.esignet/v1/esignet" 
-        REACT_APP_SBI_DOMAIN_URI="http://esignet.esignet"
-        OIDC_UI_PUBLIC_URL=''
+        REACT_APP_API_BASE_URL: "http://esignet.esignet/v1/esignet" 
+        REACT_APP_SBI_DOMAIN_URI: "http://esignet.esignet"
+        OIDC_UI_PUBLIC_URL: ""
