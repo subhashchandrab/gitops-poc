@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: pg-credentials
+  namespace: {{ .Values.namespace }}
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+type: Opaque
+data:
+  PGUSERNAME: {{ .Values.postgres.username | b64enc | quote }}
+  PGPASSWORD: {{ .Values.postgres.password | b64enc | quote }}
+  PGHOST: {{ .Values.postgres.host | b64enc | quote }}
+
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: check-postgres-ready
+  namespace: {{ .Values.namespace }}
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: check-postgres
+        image: postgres:14  
+        env:
+        - name: PGPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: pg-credentials
+              key: PGPASSWORD
+        - name: PGUSERNAME
+          valueFrom:
+            secretKeyRef:
+              name: pg-credentials
+              key: PGUSERNAME
+        - name: PGHOST
+          valueFrom:
+            secretKeyRef:
+              name: pg-credentials
+              key: PGHOST
+        command: ["sh", "-c"]
+        args:
+        - |
+          until pg_isready -h $PGHOST -U $PGUSERNAME -d openg2pdb; do
+            echo "Waiting for PostgreSQL to be ready...";
+            sleep 5;
+          done;
+          echo "PostgreSQL is ready!";
+      restartPolicy: Never
+  backoffLimit: 4
+
+

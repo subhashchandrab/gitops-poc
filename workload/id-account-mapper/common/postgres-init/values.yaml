@@ -1,3 +1,8 @@
+postgres:
+  username: openg2puser
+  password: <path:ocivault#openg2p_pg_password#latest | base64decode>
+  host:  postgres-postgresql.postgres
+
 postgres-init:
   backoffLimit: 6
   dbUserPasswords:

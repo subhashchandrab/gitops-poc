@@ -2,6 +2,9 @@ postgres:
   istio_enabled: false
 
 postgresql:
+  commonAnnotations:
+    annotations:
+      argocd.argoproj.io/sync-wave: "1"
   global:
     storageClass: longhorn
   auth:
