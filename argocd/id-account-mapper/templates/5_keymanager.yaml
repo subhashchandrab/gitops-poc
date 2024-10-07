@@ -18,6 +18,9 @@ spec:
     targetRevision: {{ .Values.common.source.targetRevision }}
     path: workload/id-account-mapper/common/keymanager
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
 {{- end }}
