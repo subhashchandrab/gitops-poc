@@ -1,0 +1,26 @@
+{{- if .Values.artifactory.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: artifactory
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: {{ .Values.artifactory.destination.server }}
+    namespace: artifactory
+  project: default
+  source:
+    repoURL: {{ .Values.artifactory.source.repoURL }}
+    targetRevision: {{ .Values.artifactory.source.targetRevision }}
+    chart: artifactory
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+{{- end }}
