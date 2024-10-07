@@ -77,3 +77,16 @@ esignet:
       value: ""
     - name: mosip_esignet_misp_key
       value: ""
+
+oidc-ui:
+  image:
+    repository: mosipid/oidc-ui
+    tag: 1.2.0
+  istio:
+    enabled: false
+  oidc_ui:
+    configmaps:
+      oidc-ui:
+        REACT_APP_API_BASE_URL:"http://esignet.esignet/v1/esignet" 
+        REACT_APP_SBI_DOMAIN_URI="http://esignet.esignet"
+        OIDC_UI_PUBLIC_URL=''
