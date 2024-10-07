@@ -73,8 +73,6 @@ clientSecrets:
     secret: "<path:ocivault#openg2p_mpartner_default_opencrvs_secret#latest | base64decode>"
 
 opensearch:
-  commonAnnotations:
-    argocd.argoproj.io/sync-wave: "3"
   global:
     storageClass: oci-bv
   dashboards:
