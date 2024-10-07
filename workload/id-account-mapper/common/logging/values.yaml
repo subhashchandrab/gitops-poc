@@ -76,9 +76,6 @@ opensearch:
   global:
     storageClass: oci-bv
   dashboards:
-    podAnnotations:
-      annotations:
-        argocd.argoproj.io/sync-wave: "3"
     enabled: true
     replicaCount: 1
     password: "<path:ocivault#openg2p_opensearch_dashboard_password#latest | base64decode>"
@@ -91,18 +88,11 @@ opensearch:
     - name: dashboards-config
       mountPath: /opt/bitnami/opensearch-dashboards/config/opensearch_dashboards.yml
       subPath: opensearch_dashboards.yml  
-  ingest:
-    annotations:
-      argocd.argoproj.io/sync-wave: "3"
   master:
-    annotations:
-      argocd.argoproj.io/sync-wave: "3"
     replicaCount: 1
     persistence:
       size: 8Gi
   data:
-    annotations:
-      argocd.argoproj.io/sync-wave: "3"
     replicaCount: 1
     persistence:
       size: 8Gi
