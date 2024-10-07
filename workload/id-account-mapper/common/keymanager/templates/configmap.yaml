@@ -7,24 +7,3 @@ metadata:
     argocd.argoproj.io/hook: PreSync
 data:
   installation-name: openg2p
-  installation-domain: {{ .Values.configserver.domain_name }}
-  mosip-version: develop
-  mosip-api-host: api.{{ .Values.configserver.domain_name }}
-  mosip-api-internal-host: api-internal.{{ .Values.configserver.domain_name }}
-  mosip-prereg-host: prereg.{{ .Values.configserver.domain_name }}
-  mosip-activemq-host: activemq.{{ .Values.configserver.domain_name }}
-  mosip-kibana-host: kibana.{{ .Values.configserver.domain_name }}
-  mosip-admin-host: admin.{{ .Values.configserver.domain_name }}
-  mosip-regclient-host: regclient.{{ .Values.configserver.domain_name }}
-  mosip-minio-host: minio.{{ .Values.configserver.domain_name }}
-  mosip-kafka-host: kafka.{{ .Values.configserver.domain_name }}
-  mosip-iam-external-host: keycloak.{{ .Values.configserver.domain_name }}
-  mosip-postgres-host: postgres.{{ .Values.configserver.domain_name }}
-  mosip-pmp-host: pmp.{{ .Values.configserver.domain_name }}
-  mosip-resident-host: resident.{{ .Values.configserver.domain_name }}
-  mosip-compliance-host: compliance.{{ .Values.configserver.domain_name }}
-  mosip-esignet-host: esignet.{{ .Values.configserver.domain_name }}
-  mosip-smtp-host: smtp.{{ .Values.configserver.domain_name }}
-  mosip-signup-host: signup.{{ .Values.configserver.domain_name }}
-  is_glowroot_env: absent
-
