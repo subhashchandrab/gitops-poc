@@ -25,3 +25,8 @@ artifacts:
 keygen:
   springConfigNameEnv: kernel
   softHsmCM: softhsm-kernel-share
+
+
+keymanager: 
+  istio:
+    enabled: false
