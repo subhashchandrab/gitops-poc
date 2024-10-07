@@ -17,6 +17,8 @@ spec:
     repoURL: {{ .Values.artifactory.source.repoURL }}
     targetRevision: {{ .Values.artifactory.source.targetRevision }}
     chart: artifactory
+    plugin:
+      name: argocd-vault-plugin-helm
   syncPolicy:
     automated:
       prune: true
