@@ -35,10 +35,10 @@ common:
   postgres_enabled: true
   keycloak_enabled: true
   minio_enabled: true
-  config_enabled: false
-  odk_enabled: false
-  kafka_enabled: false
-  logging_enabled: false
+  config_enabled: true
+  odk_enabled: true
+  kafka_enabled: true
+  logging_enabled: true
   configserver_enabled: false
   keymanager_enabled: false
   destination:

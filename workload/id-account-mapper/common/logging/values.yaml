@@ -18,61 +18,63 @@ clientSecrets:
   - name: openg2p_superset_client_secret
     secret: <path:ocivault#openg2p_superset_client_secret#latest | base64decode>
   - name: mosip_abis_client_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mosip_abis_client_secret#latest | base64decode>"
   - name: mosip_admin_client_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mosip_admin_client_secret#latest | base64decode>"
   - name: mosip_admin_services_client_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mosip_admin_services_client_secret#latest | base64decode>"
   - name: mosip_auth_client_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mosip_auth_client_secret#latest | base64decode>"
   - name: mosip_crereq_client_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mosip_crereq_client_secret#latest | base64decode>"
   - name: mosip_creser_client_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mosip_creser_client_secret#latest | base64decode>"
   - name: mosip_datsha_client_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mosip_datsha_client_secret#latest | base64decode>"
   - name: mosip_ida_client_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mosip_ida_client_secret#latest | base64decode>"
   - name: mosip_misp_client_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mosip_misp_client_secret#latest | base64decode>"
   - name: mosip_pms_client_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mosip_pms_client_secret#latest | base64decode>"
   - name: mosip_policymanager_client_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mosip_policymanager_client_secret#latest | base64decode>"
   - name: mosip_reg_client_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mosip_reg_client_secret#latest | base64decode>"
   - name: mosip_regproc_client_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mosip_regproc_client_secret#latest | base64decode>"
   - name: mosip_resident_client_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mosip_resident_client_secret#latest | base64decode>"
   - name: mosip_prereg_client_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mosip_prereg_client_secret#latest | base64decode>"
   - name: mosip_creser_idpass_client_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mosip_creser_idpass_client_secret#latest | base64decode>"
   - name: mosip_syncdata_client_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mosip_syncdata_client_secret#latest | base64decode>"
   - name: mosip_deployment_client_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mosip_deployment_client_secret#latest | base64decode>"
   - name: mpartner_default_auth_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mpartner_default_auth_secret#latest | base64decode>"
   - name: mosip_idrepo_client_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mosip_idrepo_client_secret#latest | base64decode>"
   - name: mpartner_default_print_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mpartner_default_print_secret#latest | base64decode>"
   - name: mosip_hotlist_client_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mosip_hotlist_client_secret#latest | base64decode>"
   - name: mpartner_default_mobile_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mpartner_default_mobile_secret#latest | base64decode>"
   - name: mosip_digitalcard_client_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mosip_digitalcard_client_secret#latest | base64decode>"
   - name: mpartner_default_digitalcard_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mpartner_default_digitalcard_secret#latest | base64decode>"
   - name: mosip_testrig_client_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mosip_testrig_client_secret#latest | base64decode>"
   - name: mpartner_default_opencrvs_secret
-    secret: ""
+    secret: "<path:ocivault#openg2p_mpartner_default_opencrvs_secret#latest | base64decode>"
 
 opensearch:
+  commonAnnotations:
+    argocd.argoproj.io/sync-wave: "3"
   global:
     storageClass: oci-bv
   dashboards:
