@@ -42,14 +42,14 @@ spar:
       enabled: true
       virtualservice:
         enabled: true
-        host: ""
-        gateway: "internal"
+        host: '{{ tpl .Values.global.sparHostname $ }}'
+        gateway: "istio-system/all-hosts"
         destination: '{{ include "mapper.fullname" . }}'
         destinationPort: '{{ .Values.service.port }}'
         prefix: /api/mapper/
         rewriteUri: "/"
       gateway:
-        enabled: true
+        enabled: false
         host: ""
         ingressController:
           istio: gateway
@@ -82,14 +82,14 @@ spar:
       enabled: true
       virtualservice:
         enabled: true
-        host: ""
-        gateway: "internal"
+        host: '{{ tpl .Values.global.sparHostname $ }}'
+        gateway: "istio-system/all-hosts"
         destination: '{{ include "selfservice.fullname" . }}'
         destinationPort: '{{ .Values.service.port }}'
         prefix: /api/selfservice/
         rewriteUri: "/"
       gateway:
-        enabled: true
+        enabled: false
         host: ""
         ingressController:
           istio: gateway
@@ -109,14 +109,14 @@ spar:
       enabled: true
       virtualservice:
         enabled: true
-        host: ""
-        gateway: "internal"
+        host: '{{ tpl .Values.global.sparHostname $ }}'
+        gateway: "istio-system/all-hosts"
         destination: '{{ include "selfserviceUi.fullname" . }}'
         destinationPort: '{{ .Values.service.port }}'
         prefix: /selfservice
         rewriteUri: ""
       gateway:
-        enabled: true
+        enabled: false
         host: ""
         ingressController:
           istio: gateway
