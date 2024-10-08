@@ -23,7 +23,7 @@ softhsm:
     targetRevision: 12.0.1-B2
 
 artifactory:
-  enabled: false
+  enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:
@@ -41,7 +41,7 @@ common:
   logging_enabled: false
   configserver_enabled: true
   keymanager_enabled: false
-  esignet_enabled: false
+  esignet_enabled: true
   spar_enabled: false
   destination:
     server: https://kubernetes.default.svc
