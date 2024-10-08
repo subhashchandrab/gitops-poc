@@ -22,19 +22,19 @@ spar:
       gateway:
         enabled: false
 
-  keymanager:
-    enabled: true
-    hostname: keymanager.<path:ocivault#openg2p_domain#latest | base64decode> 
-    springConfig:
-      names: application,kernel
-      profile: default
-      gitRepo:
-        enabled: true
-        repoUrl: https://github.com/openg2p/mosip-config
-        branch: master
-      rawConfig: ""
-    envVars:
-      auth_server_admin_allowed_audience: 'openg2p-sr,openg2p-sr-{{ .Release.Namespace }},openg2p-pbms,openg2p-pbms-{{ .Release.Namespace }},openg2p-spar-{{ .Release.Namespace }}'
+  # keymanager:
+  #   enabled: true
+  #   hostname: keymanager.<path:ocivault#openg2p_domain#latest | base64decode> 
+  #   springConfig:
+  #     names: application,kernel
+  #     profile: default
+  #     gitRepo:
+  #       enabled: true
+  #       repoUrl: https://github.com/openg2p/mosip-config
+  #       branch: master
+  #     rawConfig: ""
+  #   envVars:
+  #     auth_server_admin_allowed_audience: 'openg2p-sr,openg2p-sr-{{ .Release.Namespace }},openg2p-pbms,openg2p-pbms-{{ .Release.Namespace }},openg2p-spar-{{ .Release.Namespace }}'
 
 
   spar-mapper-api:
