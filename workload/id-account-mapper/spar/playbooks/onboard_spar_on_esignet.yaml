@@ -18,7 +18,7 @@
         cd /tmp/working-directory
         python3 mkjwk.py
         # if [ $? -eq 0 ]; then
-        #   echo "OIDC client creation completed successfully" > /tmp/working-directory/create_oidc_client.done
+        #   echo "OIDC client creation completed successfully!" > /tmp/working-directory/create_oidc_client.done
         # fi
       register: create_oidc_client
       when: not create_oidc_client_file.stat.exists
