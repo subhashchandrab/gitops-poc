@@ -3,134 +3,139 @@ postgres:
 
 domain: <path:ocivault#openg2p_domain#latest | base64decode> 
 
-spar-self-service-ui:
+spar:
   global:
-    hostname: "spar.<path:ocivault#openg2p_domain#latest | base64decode>"
-  envVars:
-    SPAR_CORE_DB_HOSTNAME: "postgres-postgresql.postgres"
-    SPAR_CORE_DEFAULT_ID_TOKEN_VERIFY_AT_HASH: "false"
-    # Replace the following URLs with available e-Signet issuer url and JWKS url.
-    SPAR_CORE_AUTH_DEFAULT_ISSUERS: '["https://esignet.<path:ocivault#openg2p_domain#latest | base64decode>/v1/esignet"]'
-    SPAR_CORE_AUTH_DEFAULT_JWKS_URLS: '["https://esignet.<path:ocivault#openg2p_domain#latest | base64decode>/v1/esignet/oauth/.well-known/jwks.json"]'
-    # Uncomment the following if using Sunbird Mapper Registry.
-    # SPAR_CONNECTOR_G2PCONNECT_MAPPER_RESOLVE_URL: "http://mapper/v0.1.0/mapper/resolve"
-    # SPAR_CONNECTOR_G2PCONNECT_MAPPER_LINK_URL: "http://mapper/v0.1.0/mapper/link"
-    # SPAR_CONNECTOR_G2PCONNECT_MAPPER_UPDATE_URL: "http://mapper/v0.1.0/mapper/update"
+    sparHostname: spar.<path:ocivault#openg2p_domain#latest | base64decode>
+    esignetBaseUrl: https://esignet.<path:ocivault#openg2p_domain#latest | base64decode>
+    sparAuthClientId: 'openg2p_selfservice_client_secret'
+    sparAuthClientSecret: <path:ocivault#openg2p_selfservice_client_secret#latest | base64decode>
+    keycloakBaseUrl: https://keycloak.<path:ocivault#openg2p_domain#latest | base64decode>
+    keycloakIssuerUrl: '{{ tpl .Values.global.keycloakBaseUrl $ }}/realms/openg2p'
+    sparKeymanagerInstallationName: 'keymanager.keymanager'
 
-  envVarsFrom:
-    # Comment out this section, if you donot have PostgreSQL installed already.
-    SPAR_CORE_DB_PASSWORD:
-      secretKeyRef:
-        name: postgres-postgresql
-        key: password
-
-  # Enable this if you donot have PostgreSQL installed already.
   postgresql:
     enabled: false
+    istio:
+      enabled: false
+      virtualservice:
+        enabled: false
+      gateway:
+        enabled: false
 
-  # Enable only one of the following mappers.
-  # Defaults is SPAR Mapper
-  spar-g2pconnect-id-mapper:
+  keymanager:
     enabled: true
-    # Comment out this section, if you donot have PostgreSQL installed already.
+    hostname: keymanager.<path:ocivault#openg2p_domain#latest | base64decode> 
+    springConfig:
+      names: application,kernel
+      profile: default
+      gitRepo:
+        enabled: true
+        repoUrl: https://github.com/openg2p/mosip-config
+        branch: master
+      rawConfig: ""
     envVars:
-      SPAR_G2PCONNECT_MAPPER_DB_HOSTNAME: "postgres-postgresql.postgres"
-    # Comment out this section, if you donot have PostgreSQL installed already.
+      auth_server_admin_allowed_audience: 'openg2p-sr,openg2p-sr-{{ .Release.Namespace }},openg2p-pbms,openg2p-pbms-{{ .Release.Namespace }},openg2p-spar-{{ .Release.Namespace }}'
+
+
+  spar-mapper-api:
+    enabled: false
+    global:
+      sparHostname: spar.<path:ocivault#openg2p_domain#latest | base64decode>
+    postgresql:
+      enabled: false
+    envVars:
+      SPAR_MAPPER_DB_HOSTNAME: postgres-postgresql.postgres
     envVarsFrom:
-      SPAR_G2PCONNECT_MAPPER_DB_PASSWORD:
+      SPAR_MAPPER_DB_PASSWORD:
         secretKeyRef:
-          name: "postgres-postgresql"
+          name: postgres-postgresql
           key: password
 
-  sunbird-rc-g2p-mapper-registry:
+    istio:
+      enabled: true
+      virtualservice:
+        enabled: true
+        host: spar.<path:ocivault#openg2p_domain#latest | base64decode>
+        gateway: "istio-system/all-hosts"
+        destination: '{{ include "mapper.fullname" . }}'
+        destinationPort: '{{ .Values.service.port }}'
+        prefix: /api/mapper/
+        rewriteUri: "/"
+      gateway:
+        enabled: false
+        host: ""
+        ingressController:
+          istio: gateway
+        httpTlsRedirect: true
+        httpEnabled: true
+        httpsEnabled: false
+        tls:
+          mode: SIMPLE
+          credentialName: ""
+
+  spar-self-service-api:
     enabled: false
-    # Comment out the following, if you donot have PostgreSQL installed already.
-    registry:
-      envVars:
-        connectionInfo_uri: "jdbc:postgresql://postgres-postgresql.postgres:5432/spardb"
-      envVarsFrom:
-        connectionInfo_password:
-          secretKeyRef:
-            name: postgres-postgresql
-            key: password
-
-  # Uncomment the following if you donot have istio installed already.
-  # istio:
-  #   enabled: false
-  # ingress:
-  #   enabled: true
-  # mapper:
-  #   istio:
-  #     enabled: false
-  #   ingress:
-  #     enabled: true
-
-  # For more values checkout the full helm chart at
-  # https://github.com/OpenG2P/openg2p-helm/blob/main/charts/social-payments-account-registry/values.yaml
-
-
-
-social-payments-account-registry:
-  global:
-    hostname: "spar.<path:ocivault#openg2p_domain#latest | base64decode>"
-  envVars:
-    SPAR_CORE_DB_HOSTNAME: "postgres-postgresql.postgres"
-    SPAR_CORE_DEFAULT_ID_TOKEN_VERIFY_AT_HASH: "false"
-    # Replace the following URLs with available e-Signet issuer url and JWKS url.
-    SPAR_CORE_AUTH_DEFAULT_ISSUERS: '["https://esignet.<path:ocivault#openg2p_domain#latest | base64decode>/v1/esignet"]'
-    SPAR_CORE_AUTH_DEFAULT_JWKS_URLS: '["https://esignet.<path:ocivault#openg2p_domain#latest | base64decode>/v1/esignet/oauth/.well-known/jwks.json"]'
-    # Uncomment the following if using Sunbird Mapper Registry.
-    # SPAR_CONNECTOR_G2PCONNECT_MAPPER_RESOLVE_URL: "http://mapper/v0.1.0/mapper/resolve"
-    # SPAR_CONNECTOR_G2PCONNECT_MAPPER_LINK_URL: "http://mapper/v0.1.0/mapper/link"
-    # SPAR_CONNECTOR_G2PCONNECT_MAPPER_UPDATE_URL: "http://mapper/v0.1.0/mapper/update"
-
-  envVarsFrom:
-    # Comment out this section, if you donot have PostgreSQL installed already.
-    SPAR_CORE_DB_PASSWORD:
-      secretKeyRef:
-        name: postgres-postgresql
-        key: password
-
-  # Enable this if you donot have PostgreSQL installed already.
-  postgresql:
-    enabled: false
-
-  # Enable only one of the following mappers.
-  # Defaults is SPAR Mapper
-  spar-g2pconnect-id-mapper:
-    enabled: true
-    # Comment out this section, if you donot have PostgreSQL installed already.
+    global:
+      sparHostname: spar.<path:ocivault#openg2p_domain#latest | base64decode>
+    postgresql:
+      enabled: false
+    postgresInit:
+      enabled: false
     envVars:
-      SPAR_G2PCONNECT_MAPPER_DB_HOSTNAME: "postgres-postgresql.postgres"
-    # Comment out this section, if you donot have PostgreSQL installed already.
+      SPAR_SELFSERVICE_DB_HOSTNAME: postgres-postgresql.postgres
+      SPAR_SELFSERVICE_AUTH_DEFAULT_ISSUERS: '["https://esignet.<path:ocivault#openg2p_domain#latest | base64decode>/v1/esignet","https://keycloak.<path:ocivault#openg2p_domain#latest | base64decode>/realms/openg2p"]'
+      SPAR_SELFSERVICE_AUTH_DEFAULT_JWKS_URLS: '["https://esignet.<path:ocivault#openg2p_domain#latest | base64decode>/v1/esignet/oauth/.well-known/jwks.json","https://keycloak.<path:ocivault#openg2p_domain#latest | base64decode>/realms/openg2p/protocol/openid-connect/certs"]'
     envVarsFrom:
-      SPAR_G2PCONNECT_MAPPER_DB_PASSWORD:
+      SPAR_SELFSERVICE_DB_PASSWORD:
         secretKeyRef:
-          name: "postgres-postgresql"
+          name: postgres-postgresql
           key: password
 
-  sunbird-rc-g2p-mapper-registry:
+    istio:
+      enabled: true
+      virtualservice:
+        enabled: true
+        host: spar.<path:ocivault#openg2p_domain#latest | base64decode>
+        gateway: "istio-system/all-hosts"
+        destination: '{{ include "selfservice.fullname" . }}'
+        destinationPort: '{{ .Values.service.port }}'
+        prefix: /api/selfservice/
+        rewriteUri: "/"
+      gateway:
+        enabled: false
+        host: ""
+        ingressController:
+          istio: gateway
+        httpTlsRedirect: true
+        httpEnabled: true
+        httpsEnabled: false
+        tls:
+          mode: SIMPLE
+          credentialName: ""
+
+  spar-self-service-ui:
     enabled: false
-    # Comment out the following, if you donot have PostgreSQL installed already.
-    registry:
-      envVars:
-        connectionInfo_uri: "jdbc:postgresql://postgres-postgresql.postgres:5432/spardb"
-      envVarsFrom:
-        connectionInfo_password:
-          secretKeyRef:
-            name: postgres-postgresql
-            key: password
+    global:
+      sparHostname: spar.<path:ocivault#openg2p_domain#latest | base64decode>
 
-  # Uncomment the following if you donot have istio installed already.
-  # istio:
-  #   enabled: false
-  # ingress:
-  #   enabled: true
-  # mapper:
-  #   istio:
-  #     enabled: false
-  #   ingress:
-  #     enabled: true
-
-  # For more values checkout the full helm chart at
-  # https://github.com/OpenG2P/openg2p-helm/blob/main/charts/social-payments-account-registry/values.yaml
+    istio:
+      enabled: true
+      virtualservice:
+        enabled: true
+        host: spar.<path:ocivault#openg2p_domain#latest | base64decode>
+        gateway: "istio-system/all-hosts"
+        destination: '{{ include "selfserviceUi.fullname" . }}'
+        destinationPort: '{{ .Values.service.port }}'
+        prefix: /selfservice
+        rewriteUri: ""
+      gateway:
+        enabled: false
+        host: ""
+        ingressController:
+          istio: gateway
+        httpTlsRedirect: true
+        httpEnabled: true
+        httpsEnabled: false
+        tls:
+          mode: SIMPLE
+          credentialName: ""

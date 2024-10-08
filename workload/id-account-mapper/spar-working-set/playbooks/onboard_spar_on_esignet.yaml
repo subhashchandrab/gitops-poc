@@ -1,0 +1,49 @@
+- name: Onboard SPAR on Esignet
+  hosts: bastion
+  tasks:
+    - name: "Upload make jwk script"
+      template:
+        src: "/tmp/working-directory/mkjwk.py.j2"
+        dest: "/tmp/working-directory/mkjwk.py"
+        mode: '0755'
+
+    - name: Check if oidc client creation is already done
+      stat:
+        path: /tmp/working-directory/create_oidc_client.done
+      register: create_oidc_client_file
+
+    - name: Execute mkjwk script
+      shell: |
+        #!/bin/bash
+        cd /tmp/working-directory
+        python3 mkjwk.py
+        # if [ $? -eq 0 ]; then
+        #   echo "OIDC client creation completed successfully!" > /tmp/working-directory/create_oidc_client.done
+        # fi
+      register: create_oidc_client
+      when: not create_oidc_client_file.stat.exists
+
+    - name: Data Load Result
+      debug:
+        msg: "Data Load Result {{create_oidc_client.stdout}}"
+
+    - name: Get jwk private key
+      slurp:
+        src: /tmp/working-directory/private_key.json
+      register: jwk_private_key_encoded
+
+    - name: Set client_assertion_jwk private key
+      set_fact:
+        client_assertion_jwk: "{{jwk_private_key_encoded.content | b64decode}}"
+
+
+    - name: "Update spar update query"
+      template:
+        src: "/tmp/working-directory/update_table.sql.j2"
+        dest: "/tmp/working-directory/update_table.sql"
+        mode: '0755'
+
+    - name: Update spar login provider
+      shell: |
+        cd /tmp/working-directory
+        kubectl -n postgres exec -i postgres-postgresql-0 -- bash -c 'export PGPASSWORD={{sparuser_password}} ; psql -U sparuser -d spardb -f -' < update_table.sql
