@@ -71,7 +71,7 @@ data:
   spring_config_url_env: http://config-server.config-server/config
 
 
-  ---
+---
 
 {{- $config := .Files.Glob "config/*" }}
 {{ if $config }}
