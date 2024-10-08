@@ -108,6 +108,9 @@ spar:
     enabled: true
     global:
       sparHostname: spar.<path:ocivault#openg2p_domain#latest | base64decode>
+    envVars:
+      NEXT_PUBLIC_BASE_PATH: /selfservice
+      NEXT_PUBLIC_BASE_API_PATH: /spar/v1
 
     istio:
       enabled: true
