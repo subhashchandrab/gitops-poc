@@ -25,8 +25,8 @@ api_url = "https://esignet.{{domain}}/v1/esignet/client-mgmt/oauth-client"
 json_data = {
     "requestTime": datetime.utcnow().isoformat(timespec="milliseconds")+"Z",
     "request": {
-      "clientId": "sparclientid1",
-      "clientName": "SPAR1",
+      "clientId": "sparclientid",
+      "clientName": "SPAR",
       "relyingPartyId": "dummyrelyingpartyid",
       "publicKey":  public_key_json,
       "userClaims": [
@@ -37,7 +37,7 @@ json_data = {
       ],
       "logoUri": "https://upload.wikimedia.org/wikipedia/commons/8/85/Logo-Test.png",
       "redirectUris": [
-        "https://spar.{{domain}}/api/selfservice/oauth2/callback"
+        "https://spar.{{domain}}/spar/v1/oauth2/callback"
       ],
       "grantTypes": [
         "authorization_code"
