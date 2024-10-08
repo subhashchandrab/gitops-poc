@@ -42,7 +42,7 @@ spar:
           key: password
 
   spar-self-service-ui:
-    enabled: false
+    enabled: true
     global:
       hostname: spar.<path:ocivault#openg2p_domain#latest | base64decode>
 
