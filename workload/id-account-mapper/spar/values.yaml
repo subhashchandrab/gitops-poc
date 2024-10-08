@@ -39,9 +39,9 @@ spar:
           key: password
 
     istio:
-      enabled: false
+      enabled: true
       virtualservice:
-        enabled: false
+        enabled: true
         host: ""
         gateway: "internal"
         destination: '{{ include "mapper.fullname" . }}'
@@ -49,10 +49,10 @@ spar:
         prefix: /api/mapper/
         rewriteUri: "/"
       gateway:
-        enabled: false
+        enabled: true
         host: ""
         ingressController:
-          istio: ingressgateway
+          istio: gateway
         httpTlsRedirect: true
         httpEnabled: true
         httpsEnabled: false
@@ -79,9 +79,9 @@ spar:
           key: password
 
     istio:
-      enabled: false
+      enabled: true
       virtualservice:
-        enabled: false
+        enabled: true
         host: ""
         gateway: "internal"
         destination: '{{ include "selfservice.fullname" . }}'
@@ -89,10 +89,10 @@ spar:
         prefix: /api/selfservice/
         rewriteUri: "/"
       gateway:
-        enabled: false
+        enabled: true
         host: ""
         ingressController:
-          istio: ingressgateway
+          istio: gateway
         httpTlsRedirect: true
         httpEnabled: true
         httpsEnabled: false
@@ -106,9 +106,9 @@ spar:
       sparHostname: spar.<path:ocivault#openg2p_domain#latest | base64decode>
 
     istio:
-      enabled: false
+      enabled: true
       virtualservice:
-        enabled: false
+        enabled: true
         host: ""
         gateway: "internal"
         destination: '{{ include "selfserviceUi.fullname" . }}'
@@ -116,10 +116,10 @@ spar:
         prefix: /selfservice
         rewriteUri: ""
       gateway:
-        enabled: false
+        enabled: true
         host: ""
         ingressController:
-          istio: ingressgateway
+          istio: gateway
         httpTlsRedirect: true
         httpEnabled: true
         httpsEnabled: false

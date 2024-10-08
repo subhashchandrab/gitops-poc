@@ -1,4 +1,4 @@
-keymanager_istio_enabled: false
+keymanager_istio_enabled: true
 keymanager_hostname: keymanager.<path:ocivault#openg2p_domain#latest | base64decode> 
 
 configserver:

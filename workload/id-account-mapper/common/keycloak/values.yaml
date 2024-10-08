@@ -1,5 +1,5 @@
 keycloak_init_enabled: true
-keycloak_istio_enabled: false
+keycloak_istio_enabled: true
 keycloak_hostname: keycloak.<path:ocivault#openg2p_domain#latest | base64decode> 
 
 
