@@ -26,7 +26,7 @@ spar:
     enabled: false
 
   spar-mapper-api:
-    enabled: false
+    enabled: true
     global:
       sparHostname: spar.<path:ocivault#openg2p_domain#latest | base64decode>
     postgresql:
@@ -62,7 +62,7 @@ spar:
           credentialName: ""
 
   spar-self-service-api:
-    enabled: false
+    enabled: true
     global:
       sparHostname: spar.<path:ocivault#openg2p_domain#latest | base64decode>
     postgresql:
@@ -102,7 +102,7 @@ spar:
           credentialName: ""
 
   spar-self-service-ui:
-    enabled: false
+    enabled: true
     global:
       sparHostname: spar.<path:ocivault#openg2p_domain#latest | base64decode>
 
