@@ -34,7 +34,7 @@ spec:
       - name: install-volume
         configMap:
           name: {{ .Chart.Name }}-install-config
-      - name: playbooks-volume
+      - name: playbook-volume
         configMap:
           name: {{ .Chart.Name }}-ansible-playbooks
       - name: writable-dir
