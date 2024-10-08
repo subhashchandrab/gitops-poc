@@ -1,6 +1,7 @@
 postgres:
   db_password: <path:ocivault#openg2p_pg_password#latest | base64decode> 
 
+domain: <path:ocivault#openg2p_domain#latest | base64decode> 
 
 spar-self-service-ui:
   global:
