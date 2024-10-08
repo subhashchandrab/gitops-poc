@@ -1,5 +1,5 @@
 istio:
-  enabled: true
+  enabled: false
   destination:
     server: https://kubernetes.default.svc
   source:
@@ -7,7 +7,7 @@ istio:
     targetRevision: 1.23.2
 
 activemq:
-  enabled: true
+  enabled: false
   destination:
     server: https://kubernetes.default.svc
   source:
@@ -23,7 +23,7 @@ softhsm:
     targetRevision: 12.0.1-B2
 
 artifactory:
-  enabled: true
+  enabled: false
   destination:
     server: https://kubernetes.default.svc
   source:
@@ -31,18 +31,18 @@ artifactory:
     targetRevision: 12.0.1-B7
 
 common:
-  certmanager_enabled: true
+  certmanager_enabled: false
   postgres_enabled: true
   keycloak_enabled: true
-  minio_enabled: true
-  config_enabled: true
-  odk_enabled: true
-  kafka_enabled: true
-  logging_enabled: true
+  minio_enabled: false
+  config_enabled: false
+  odk_enabled: false
+  kafka_enabled: false
+  logging_enabled: false
   configserver_enabled: true
-  keymanager_enabled: true
-  esignet_enabled: true
-  spar_enabled: true
+  keymanager_enabled: false
+  esignet_enabled: false
+  spar_enabled: false
   destination:
     server: https://kubernetes.default.svc
   source:

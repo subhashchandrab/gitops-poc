@@ -23,4 +23,7 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+    managedNamespaceMetadata: 
+      labels:
+        istio-injection: disabled
 {{- end }}
