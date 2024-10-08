@@ -5,7 +5,7 @@ import csv
 import sys
 import requests
 
-api_url = "http://esignet-mock-identity-system/v1/mock-identity-system/identity"
+api_url = "http://mock-identity-system/v1/mock-identity-system/identity"
 default_lang = "eng"
 default_pin = "222222"
 default_country = "Myland"
