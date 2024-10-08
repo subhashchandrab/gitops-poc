@@ -37,7 +37,7 @@ common:
   minio_enabled: false
   config_enabled: false
   odk_enabled: false
-  kafka_enabled: false
+  kafka_enabled: true
   logging_enabled: false
   configserver_enabled: true
   keymanager_enabled: false
