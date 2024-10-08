@@ -6,12 +6,7 @@
       shell: |
         #!/bin/bash
         cd /tmp/working-directory
-        python3 upload_data_to_mock_esignet.py /tmp/working-directory/sample_data2.csv
-        if [ $? -eq 0 ]; then
-          echo "Data load completed successfully" 
-        else
-          echo "Data load failed" 
-        fi      
+        python3 upload_data_to_mock_esignet.py /tmp/working-directory/sample_data2.csv    
       register: data_load
 
     - name: Data Load Result
