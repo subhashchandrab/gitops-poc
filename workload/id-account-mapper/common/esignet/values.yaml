@@ -52,6 +52,7 @@ mock-identity-system:
       value: ""
 
 esignet:
+  enable_insecure: true
   image:
     repository: mosipid/esignet
     tag: 1.2.0
