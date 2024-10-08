@@ -20,7 +20,8 @@ with open('public_key.json', 'w') as public_key_file:
 
 public_key_json = json.loads(public_key_str)
 
-api_url = "https://esignet.{{domain}}/v1/esignet/client-mgmt/oauth-client"
+# api_url = "https://esignet.{{domain}}/v1/esignet/client-mgmt/oauth-client"
+api_url = "http://esignet.esignet/client-mgmt/oauth-client"
 json_data = {
     "requestTime": datetime.utcnow().isoformat(timespec="milliseconds")+"Z",
     "request": {
