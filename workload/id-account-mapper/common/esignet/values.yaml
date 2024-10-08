@@ -26,6 +26,8 @@ artifacts:
 
 
 mock-identity-system:
+  common: 
+    fullnameOverride: mock-identity-system
   istio:
     enabled: false
 
