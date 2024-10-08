@@ -70,3 +70,30 @@ data:
   spring_config_label_env: {{ .Values.configserver.gitRepo.version }}
   spring_config_url_env: http://config-server.config-server/config
 
+
+  ---
+
+{{- $config := .Files.Glob "config/*" }}
+{{ if $config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Chart.Name }}-install-config
+  namespace: {{ .Values.namespace }}
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+data:
+{{ tpl (.Files.Glob "config/*").AsConfig .| indent 2 }}
+{{ end }}
+
+---
+{{- $playbooks := .Files.Glob "playbooks/*" }}
+{{ if $playbooks }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Chart.Name }}-ansible-playbooks
+  namespace: {{ .Values.namespace }}
+data:
+{{ (.Files.Glob "playbooks/*").AsConfig | indent 2 }}
+{{ end }} 

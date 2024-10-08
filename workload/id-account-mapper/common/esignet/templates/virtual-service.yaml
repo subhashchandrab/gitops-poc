@@ -16,7 +16,7 @@ spec:
           prefix: /v1/mock-identity-system
       route:
         - destination:
-            host: mock-identity-system
+            host: esignet-mock-identity-system
             port:
               number: 80
       headers:
@@ -49,7 +49,7 @@ spec:
             X-Frame-Options: SAMEORIGIN
     - route:
         - destination:
-            host: oidc-ui
+            host: esignet-oidc-ui
             port:
               number: 80
       headers:

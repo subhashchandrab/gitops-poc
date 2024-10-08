@@ -1,0 +1,41 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: esignet-data-load
+  namespace: {{ .Values.namespace }}
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+spec:
+  template:
+    spec:
+      initContainers:
+      - name: init-script
+        image: busybox                      
+        command: ["/bin/sh", "-c"]
+        args:
+          - "cp /root/.oci/install/* /tmp/working-directory/ && cp /root/.oci/playbooks/* /tmp/working-directory/ && chmod +x /tmp/working-directory/* "
+        volumeMounts:
+        - name: install-volume
+          mountPath: /root/.oci/install 
+        - name: playbook-volume
+          mountPath: /root/.oci/playbooks                    
+        - name: writable-dir
+          mountPath: /tmp/working-directory      
+      containers:
+      - name: configmanager
+        image: ghcr.io/oci-sunbird/ociop:latest
+        command: ["ansible-playbook"]
+        args: ["/tmp/working-directory/load_esignet_mock_data.yaml", "-i", "/tmp/working-directory/inventory"]
+        volumeMounts:
+        - name: writable-dir
+          mountPath: /tmp/working-directory 
+      restartPolicy: Never
+      volumes:
+      - name: install-volume
+        configMap:
+          name: {{ .Chart.Name }}-install-config
+      - name: playbooks-volume
+        configMap:
+          name: {{ .Chart.Name }}-ansible-playbooks
+      - name: writable-dir
+        emptyDir: {}     
