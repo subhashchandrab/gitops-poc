@@ -22,6 +22,9 @@ spar:
       gateway:
         enabled: false
 
+  keymanager:
+    enabled: false
+
   spar-mapper-api:
     enabled: false
     global:
