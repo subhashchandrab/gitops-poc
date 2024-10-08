@@ -42,7 +42,7 @@ spar:
       enabled: true
       virtualservice:
         enabled: true
-        host: '{{ tpl .Values.global.sparHostname $ }}'
+        host: spar.<path:ocivault#openg2p_domain#latest | base64decode>
         gateway: "istio-system/all-hosts"
         destination: '{{ include "mapper.fullname" . }}'
         destinationPort: '{{ .Values.service.port }}'
@@ -82,7 +82,7 @@ spar:
       enabled: true
       virtualservice:
         enabled: true
-        host: '{{ tpl .Values.global.sparHostname $ }}'
+        host: spar.<path:ocivault#openg2p_domain#latest | base64decode>
         gateway: "istio-system/all-hosts"
         destination: '{{ include "selfservice.fullname" . }}'
         destinationPort: '{{ .Values.service.port }}'
@@ -109,7 +109,7 @@ spar:
       enabled: true
       virtualservice:
         enabled: true
-        host: '{{ tpl .Values.global.sparHostname $ }}'
+        host: spar.<path:ocivault#openg2p_domain#latest | base64decode>
         gateway: "istio-system/all-hosts"
         destination: '{{ include "selfserviceUi.fullname" . }}'
         destinationPort: '{{ .Values.service.port }}'
