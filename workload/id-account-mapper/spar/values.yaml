@@ -119,6 +119,7 @@ spar:
         destinationPort: '{{ .Values.service.port }}'
         prefix: /selfservice
         rewriteUri: ""
+        redirectToSelfServiceEnabled: true
       gateway:
         enabled: false
         host: ""
