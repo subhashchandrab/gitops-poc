@@ -27,10 +27,14 @@
       debug:
         msg: "Data Load Result {{create_oidc_client.stdout}}"
 
+    - name: Get jwk private key
+      slurp:
+        src: /tmp/working-directory/private_key.json
+      register: jwk_private_key_encoded
 
     - name: Set client_assertion_jwk private key
       set_fact:
-        client_assertion_jwk: "{{jwk_private_key | b64decode}}"
+        client_assertion_jwk: "{{jwk_private_key_encoded.content | b64decode}}"
 
 
     - name: "Update spar update query"
