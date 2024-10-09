@@ -50,6 +50,7 @@
         - keycloak
         - opensearch
         - postgres
+        - argocd
 
     - name: Update private rrset
       oracle.oci.oci_dns_rrset:
