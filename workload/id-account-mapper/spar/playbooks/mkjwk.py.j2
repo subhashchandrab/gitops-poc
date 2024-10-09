@@ -25,8 +25,8 @@ api_url = "https://esignet.{{domain}}/v1/esignet/client-mgmt/oauth-client"
 json_data = {
     "requestTime": datetime.utcnow().isoformat(timespec="milliseconds")+"Z",
     "request": {
-      "clientId": "sparclientid",
-      "clientName": "SPAR",
+      "clientId": "{{oidc_client_id}}",
+      "clientName": "{{oidc_client_name}}",
       "relyingPartyId": "dummyrelyingpartyid",
       "publicKey":  public_key_json,
       "userClaims": [
@@ -46,7 +46,7 @@ json_data = {
         "private_key_jwt"
       ],
      "clientNameLangMap": {
-        "eng": "SPAR",
+        "eng": "{{oidc_client_name}}",
       }
     }
 }

@@ -4,7 +4,7 @@ SET authorization_parameters = '{
   "token_endpoint": "https://esignet.{{domain}}/v1/esignet/oauth/v2/token",
   "validate_endpoint": "https://esignet.{{domain}}/v1/esignet/oidc/userinfo",
   "jwks_endpoint": "https://esignet.{{domain}}/v1/esignet/oauth/.well-known/jwks.json",
-  "client_id": "sparclientid",
+  "client_id": "{{oidc_client_id}}",
   "client_assertion_type": "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
   "client_assertion_jwk": {{client_assertion_jwk | to_json }},
   "response_type": "code",

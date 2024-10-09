@@ -43,7 +43,12 @@
         dest: "/tmp/working-directory/update_table.sql"
         mode: '0755'
 
+    - name: Pausing for 2 min
+      debug:
+        msg: "Pausing for 2 min"
+
     - name: Update spar login provider
       shell: |
         cd /tmp/working-directory
+        sleep 120
         kubectl -n postgres exec -i postgres-postgresql-0 -- bash -c 'export PGPASSWORD={{sparuser_password}} ; psql -U sparuser -d spardb -f -' < update_table.sql

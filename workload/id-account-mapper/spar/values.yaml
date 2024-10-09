@@ -2,6 +2,8 @@ postgres:
   db_password: <path:ocivault#openg2p_pg_password#latest | base64decode> 
 
 domain: <path:ocivault#openg2p_domain#latest | base64decode> 
+oidc_client_id: sparclientid
+oidc_client_name: SPAR
 
 spar:
   global:
@@ -68,7 +70,7 @@ spar:
     postgresql:
       enabled: false
     postgresInit:
-      enabled: false
+      enabled: true
       envVars:
         GIT_REPO_URL: 'https://github.com/oci-sunbird/openg2p-spar-self-service'
         GIT_BRANCH: 'oci-develop'

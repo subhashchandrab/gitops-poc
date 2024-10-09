@@ -6,3 +6,5 @@ bastion:
   vars:
     domain: "{{ .Values.domain }}"
     sparuser_password: "{{ .Values.postgres.db_password }}"
+    oidc_client_id: "{{ .Values.oidc_client_id }}"
+    oidc_client_name: "{{ .Values.oidc_client_name }}"
