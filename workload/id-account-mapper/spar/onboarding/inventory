@@ -8,3 +8,5 @@ bastion:
     sparuser_password: "{{ .Values.postgres.db_password }}"
     oidc_client_id: "{{ .Values.oidc_client_id }}"
     oidc_client_name: "{{ .Values.oidc_client_name }}"
+    jwk_private_key: "{{ .Values.jwk_private_key }}"
+    jwk_public_key: "{{ .Values.jwk_public_key }}"
