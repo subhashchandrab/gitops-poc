@@ -7,7 +7,7 @@ spar:
   global:
     sparHostname: spar.<path:ocivault#openg2p_domain#latest | base64decode>
     esignetBaseUrl: https://esignet.<path:ocivault#openg2p_domain#latest | base64decode>
-    sparAuthClientId: 'openg2p_selfservice_client_secret'
+    sparAuthClientId: 'openg2p-selfservice-client'
     sparAuthClientSecret: <path:ocivault#openg2p_selfservice_client_secret#latest | base64decode>
     keycloakBaseUrl: https://keycloak.<path:ocivault#openg2p_domain#latest | base64decode>
     keycloakIssuerUrl: '{{ tpl .Values.global.keycloakBaseUrl $ }}/realms/openg2p'
