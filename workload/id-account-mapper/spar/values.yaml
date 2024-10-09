@@ -4,8 +4,8 @@ postgres:
 domain: <path:ocivault#openg2p_domain#latest | base64decode> 
 oidc_client_id: sparclientid
 oidc_client_name: SPAR
-jwk_private_key: <path:ocivault#openg2p_jwk_private_key#latest | base64decode> 
-jwk_public_key: <path:ocivault#openg2p_jwk_public_key#latest | base64decode> 
+jwk_private_key: <path:ocivault#openg2p_jwk_private_key#latest> 
+jwk_public_key: <path:ocivault#openg2p_jwk_public_key#latest> 
 
 spar:
   global:

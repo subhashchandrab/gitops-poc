@@ -11,12 +11,12 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 # Generate RSA key pair
 # key = jwk.JWK.generate(kty='RSA', size=2048)
 
-private_key_json = {{jwk_private_key}}
+private_key_json = {{jwk_private_key | b64decode }}
 
 with open('private_key.json', 'w') as private_key_file:
     private_key_file.write(private_key_json)
 
-public_key_str = {{jwk_public_key}}
+public_key_str = {{jwk_public_key | b64decode}}
 with open('public_key.json', 'w') as public_key_file:
     public_key_file.write(public_key_str)
 
