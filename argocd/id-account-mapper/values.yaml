@@ -32,7 +32,7 @@ artifactory:
 
 common:
   certmanager_enabled: true
-  postgres_enabled: false
+  postgres_enabled: true
   keycloak_enabled: false
   # minio_enabled: false
   # config_enabled: false
