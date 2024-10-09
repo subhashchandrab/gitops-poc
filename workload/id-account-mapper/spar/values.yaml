@@ -78,7 +78,7 @@ spar:
       # SPAR_SELFSERVICE_AUTH_DEFAULT_JWKS_URLS: '["https://esignet.<path:ocivault#openg2p_domain#latest | base64decode>/v1/esignet/oauth/.well-known/jwks.json","https://keycloak.<path:ocivault#openg2p_domain#latest | base64decode>/realms/openg2p/protocol/openid-connect/certs"]'
 
       SPAR_SELFSERVICE_AUTH_DEFAULT_ISSUERS: '["https://keycloak.<path:ocivault#openg2p_domain#latest | base64decode>/realms/openg2p"]'
-      SPAR_SELFSERVICE_AUTH_DEFAULT_JWKS_URLS: '["https://esignet.<path:ocivault#openg2p_domain#latest | base64decode>/v1/esignet/oauth/.well-known/jwks.json"]'
+      SPAR_SELFSERVICE_AUTH_DEFAULT_JWKS_URLS: '["https://keycloak.<path:ocivault#openg2p_domain#latest | base64decode>/realms/openg2p/protocol/openid-connect/certs"]'
 
     envVarsFrom:
       SPAR_SELFSERVICE_DB_PASSWORD:
