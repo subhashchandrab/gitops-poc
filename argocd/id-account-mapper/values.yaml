@@ -6,13 +6,13 @@ istio:
     repoURL: https://istio-release.storage.googleapis.com/charts
     targetRevision: 1.23.2
 
-# activemq:
-#   enabled: false
-#   destination:
-#     server: https://kubernetes.default.svc
-#   source:
-#     repoURL: https://oci-sunbird.github.io/mosip-helm
-#     targetRevision: 0.0.2
+activemq:
+  enabled: false
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://oci-sunbird.github.io/mosip-helm
+    targetRevision: 0.0.2
 
 softhsm:
   enabled: true
