@@ -67,10 +67,6 @@ spar:
 
   spar-self-service-api:
     enabled: true
-    image:
-      repository: ghcr.io/oci-sunbird/openg2p-spar-self-service-api
-      pullPolicy: Always
-      tag: "oci-develop"
     global:
       sparHostname: spar.<path:ocivault#openg2p_domain#latest | base64decode>
     postgresql:
