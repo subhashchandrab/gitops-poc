@@ -11,8 +11,7 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 # Generate RSA key pair
 # key = jwk.JWK.generate(kty='RSA', size=2048)
 
-public_key_str = {{jwk_public_key | b64decode}}
-public_key_json = json.loads(public_key_str)
+public_key_json = {{jwk_public_key | b64decode}}
 
 api_url = "https://esignet.{{domain}}/v1/esignet/client-mgmt/oauth-client"
 json_data = {
