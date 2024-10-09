@@ -6,7 +6,7 @@ oci:
   user_api_key: <path:ocivault#bastion_user_api_key#latest | base64decode>
 
 issuer:
-  acmeServer: <path:ocivault#acme_server_stage#latest | base64decode> 
+  acmeServer: <path:ocivault#acme_server_prod#latest | base64decode> 
   acmeEmail: <path:ocivault#certificate_email#latest | base64decode> 
 
 cert-manager:
