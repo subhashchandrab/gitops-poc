@@ -72,7 +72,7 @@ spar:
     postgresql:
       enabled: false
     postgresInit:
-      enabled: false
+      enabled: true
       envVars:
         GIT_REPO_URL: 'https://github.com/oci-sunbird/openg2p-spar-self-service'
         GIT_BRANCH: 'oci-develop'
