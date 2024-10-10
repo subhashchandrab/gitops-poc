@@ -4,11 +4,14 @@ configserver:
   postgres_user_password: <path:ocivault#openg2p_pg_password#latest | base64decode> 
   keycloak_hostname: keycloak.<path:ocivault#openg2p_domain#latest | base64decode>
   domain_name: <path:ocivault#openg2p_domain#latest | base64decode>
+  minio_enabled: false
   minio_username: admin
   minio_password: <path:ocivault#openg2p_minio_admin_password#latest | base64decode>
   minio_pretext_value: ""
   minio_region: ""
+  activemq_enabled: false
   artemis_password: ""
+  msg_gateway: false
   sms_secret: <path:ocivault#openg2p_sms_secret#latest | base64decode>
   smtp_secret: <path:ocivault#openg2p_smtp_secret#latest | base64decode>
   openg2p_pre_reg_captcha_site_key: <path:ocivault#openg2p_pre_reg_captcha_site_key#latest | base64decode>
@@ -87,8 +90,8 @@ configserver:
       secret: "<path:ocivault#openg2p_mpartner_default_opencrvs_secret#latest | base64decode>"
 
 
-conf-secrets:
-  fullnameOverride: "conf-secrets"
+# conf-secrets:
+#   fullnameOverride: "conf-secrets"
 
 config-server:
   fullnameOverride: "config-server"

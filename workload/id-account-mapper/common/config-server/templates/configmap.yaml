@@ -42,6 +42,7 @@ data:
   is_glowroot_env: absent
 
 ---
+{{- if .Values.configserver.minio_enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -54,6 +55,8 @@ data:
   s3-region: ""
 
 ---
+{{- end }}
+{{- if .Values.configserver.activemq_enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -66,6 +69,8 @@ data:
   activemq-host: activemq-activemq-artemis.activemq
 
 ---
+{{- end }}
+{{- if .Values.configserver.msg_gateway }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -80,3 +85,4 @@ data:
   smtp-host: mock-smtp.mock-smtp
   smtp-port: "8025"
   smtp-username: mock-smtp.user
+{{- end }}
