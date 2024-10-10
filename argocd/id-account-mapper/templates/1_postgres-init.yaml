@@ -6,7 +6,7 @@ metadata:
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "1"
-    argocd.argoproj.io/manifest-generate-paths: .
+    argocd.argoproj.io/manifest-generate-paths: /workload/id-account-mapper/common/postgres-init
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
