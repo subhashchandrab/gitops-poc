@@ -24,8 +24,8 @@ artifactory:
 
 common:
   certmanager_enabled: true
-  postgres_enabled: false
-  keycloak_enabled: false
+  postgres_enabled: true
+  keycloak_enabled: true
   kafka_enabled: false
   configserver_enabled: false
   keymanager_enabled: false
