@@ -1,0 +1,85 @@
+postgres:
+  db_password: <path:ocivault#openg2p_pg_password#latest | base64decode> 
+
+domain: <path:ocivault#openg2p_domain#latest | base64decode> 
+oidc_client_id: sparclientid
+oidc_client_name: SPAR
+jwk_private_key: <path:ocivault#openg2p_jwk_private_key#latest> 
+jwk_public_key: <path:ocivault#openg2p_jwk_public_key#latest> 
+
+spar-self-service-ui:
+  global:
+    hostname: "spar.<path:ocivault#openg2p_domain#latest | base64decode>"
+  envVars:
+    NEXT_PUBLIC_BASE_PATH: "/selfservice"
+    NEXT_PUBLIC_BASE_API_PATH: "/spar/v1"
+
+  istio:
+    enabled: true
+    virtualservice:
+      enabled: true
+      host: ""
+      gateway: "istio-system/all-hosts"
+      prefix: "/selfservice"
+      redirectToSparEnabled: true
+
+social-payments-account-registry:
+  global:
+    hostname: "spar.<path:ocivault#openg2p_domain#latest | base64decode>"
+  envVars:
+    SPAR_CORE_DB_HOSTNAME: "postgres-postgresql.postgres"
+    SPAR_CORE_OPENAPI_ROOT_PATH: "/spar/v1"
+    SPAR_CORE_DEFAULT_ID_TOKEN_VERIFY_AT_HASH: "false"
+    SPAR_CORE_AUTH_DEFAULT_ISSUERS: '["https://esignet.<path:ocivault#openg2p_domain#latest | base64decode>/v1/esignet"]'
+    SPAR_CORE_AUTH_DEFAULT_JWKS_URLS: '["https://esignet.<path:ocivault#openg2p_domain#latest | base64decode>/v1/esignet/oauth/.well-known/jwks.json"]'
+
+
+  envVarsFrom:
+    # Comment out this section, if you donot have PostgreSQL installed already.
+    SPAR_CORE_DB_PASSWORD:
+      secretKeyRef:
+        name: postgres-postgresql
+        key: password
+
+  # Enable this if you donot have PostgreSQL installed already.
+  postgresql:
+    enabled: false
+
+  postgresInit:
+    enabled: true
+    envVars:
+      GIT_REPO_URL: 'https://github.com/oci-sunbird/openg2p-spar-self-service'
+      GIT_BRANCH: 'oci-develop'
+
+  istio:
+    enabled: true
+    virtualservice:
+      enabled: true
+      host: ""
+      gateway: "istio-system/all-hosts"
+      prefix: "/spar/v1/"
+      rewriteUri: "/"
+
+  # Enable only one of the following mappers.
+  # Defaults is SPAR Mapper
+  spar-g2pconnect-id-mapper:
+    enabled: true
+    # Comment out this section, if you donot have PostgreSQL installed already.
+    envVars:
+      SPAR_G2PCONNECT_MAPPER_DB_HOSTNAME: "postgres-postgresql.postgres"
+      SPAR_G2PCONNECT_MAPPER_OPENAPI_ROOT_PATH: "/mapper/v1"
+    # Comment out this section, if you donot have PostgreSQL installed already.
+    envVarsFrom:
+      SPAR_G2PCONNECT_MAPPER_DB_PASSWORD:
+        secretKeyRef:
+          name: "postgres-postgresql"
+          key: password
+
+    istio:
+      enabled: true
+      virtualservice:
+        enabled: true
+        host: ""
+        gateway: "istio-system/all-hosts"
+        prefix: "/mapper/v1/"
+        rewriteUri: "/"
