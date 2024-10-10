@@ -174,25 +174,25 @@ config-server:
           name: softhsm-ida
           key: security-pin
       enabled: true
-    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_SIGNUP_HOST
-    #   valueFrom:
-    #     configMapKeyRef:
-    #       name: global
-    #       key: mosip-signup-host
-    #   enabled: true
-    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_API_PUBLIC_HOST
-    #   valueFrom:
-    #     configMapKeyRef:
-    #       name: global
-    #       key: mosip-api-host
-    #   enabled: true
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_SIGNUP_HOST
+      valueFrom:
+        configMapKeyRef:
+          name: global
+          key: mosip-signup-host
+      enabled: true
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_API_PUBLIC_HOST
+      valueFrom:
+        configMapKeyRef:
+          name: global
+          key: mosip-api-host
+      enabled: true
 
-    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_API_INTERNAL_HOST
-    #   valueFrom:
-    #     configMapKeyRef:
-    #       name: global
-    #       key: mosip-api-internal-host
-    #   enabled: true
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_API_INTERNAL_HOST
+      valueFrom:
+        configMapKeyRef:
+          name: global
+          key: mosip-api-internal-host
+      enabled: true
 
     # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_ADMIN_HOST
     #   valueFrom:
