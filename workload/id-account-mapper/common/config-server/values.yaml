@@ -630,4 +630,4 @@ config-server:
         secretKeyRef:
           name: conf-secrets-various
           key: mosip-partner-crypto-p12-password
-      enabled: true
+      enabled: false
