@@ -79,8 +79,22 @@ clientSecrets:
 
 
 keycloak:
-  commonAnnotations:
-    argocd.argoproj.io/sync-wave: "-9"
+  # commonAnnotations:
+  #   argocd.argoproj.io/sync-wave: "-9"
+  initContainers:
+    - name: postgres-checker
+      image: jbergknoff/postgresql-client
+      command:
+        - 'sh'
+        - '-c'
+        - 'until pg_isready -U ${KEYCLOAK_DB_USERNAME} -h ${KEYCLOAK_DB_HOSTNAME} -p ${KEYCLOAK_DB_PORT:-5432} -d ${KEYCLOAK_DB_DBNAME:-keycloakdb}; do sleep 3; done'
+      env: 
+        - name: KEYCLOAK_DB_HOSTNAME
+          value: "postgres-postgresql.postgres"
+        - name: KEYCLOAK_DB_USERNAME
+          value: "keycloakuser"
+        - name: KEYCLOAK_DB_DBNAME
+          value: "keycloakdb"
   service:
     type: ClusterIP
     # headless:
