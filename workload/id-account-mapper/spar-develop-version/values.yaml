@@ -48,8 +48,9 @@ social-payments-account-registry:
   postgresInit:
     enabled: true
     envVars:
-      GIT_REPO_URL: 'https://github.com/oci-sunbird/openg2p-spar-self-service'
-      GIT_BRANCH: 'oci-develop'
+      GIT_REPO_URL: 'https://github.com/openg2p/social-payments-account-registry'
+      GIT_BRANCH: 'develop'
+      DEPLOY_DDL: 'false'
 
   istio:
     enabled: true
