@@ -111,6 +111,69 @@ config-server:
           name: keycloak-client-secrets
           key: openg2p_admin_client_secret 
       enabled: true
+
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_ESIGNET_HOST
+      valueFrom:
+        configMapKeyRef:
+          name: global
+          key: mosip-esignet-host
+      enabled: true
+
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_DBUSER_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: db-common-secrets
+          key: db-dbuser-password
+      enabled: true
+
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_KEYCLOAK_INTERNAL_URL
+      valueFrom:
+        configMapKeyRef:
+          name: keycloak-host
+          key: keycloak-internal-url
+      enabled: true
+
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_KEYCLOAK_EXTERNAL_URL
+      valueFrom:
+        configMapKeyRef:
+          name: keycloak-host
+          key: keycloak-external-url
+      enabled: true
+
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_KEYCLOAK_INTERNAL_HOST
+      valueFrom:
+        configMapKeyRef:
+          name: keycloak-host
+          key: keycloak-internal-host
+      enabled: true
+
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_KEYCLOAK_EXTERNAL_HOST
+      valueFrom:
+        configMapKeyRef:
+          name: keycloak-host
+          key: keycloak-external-host
+      enabled: true
+
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_KEYCLOAK_ADMIN_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: keycloak
+          key: admin-password
+      enabled: true
+
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SOFTHSM_KERNEL_SECURITY_PIN
+      valueFrom:
+        secretKeyRef:
+          name: softhsm-kernel
+          key: security-pin
+      enabled: true
+
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SOFTHSM_IDA_SECURITY_PIN
+      valueFrom:
+        secretKeyRef:
+          name: softhsm-ida
+          key: security-pin
+      enabled: true
     # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_SIGNUP_HOST
     #   valueFrom:
     #     configMapKeyRef:
@@ -165,48 +228,6 @@ config-server:
     #       name: global
     #       key: mosip-compliance-host
     #   enabled: true
-
-    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_ESIGNET_HOST
-      valueFrom:
-        configMapKeyRef:
-          name: global
-          key: mosip-esignet-host
-      enabled: true
-
-    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_DB_DBUSER_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: db-common-secrets
-          key: db-dbuser-password
-      enabled: true
-
-    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_KEYCLOAK_INTERNAL_URL
-      valueFrom:
-        configMapKeyRef:
-          name: keycloak-host
-          key: keycloak-internal-url
-      enabled: true
-
-    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_KEYCLOAK_EXTERNAL_URL
-      valueFrom:
-        configMapKeyRef:
-          name: keycloak-host
-          key: keycloak-external-url
-      enabled: true
-
-    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_KEYCLOAK_INTERNAL_HOST
-      valueFrom:
-        configMapKeyRef:
-          name: keycloak-host
-          key: keycloak-internal-host
-      enabled: true
-
-    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_KEYCLOAK_EXTERNAL_HOST
-      valueFrom:
-        configMapKeyRef:
-          name: keycloak-host
-          key: keycloak-external-host
-      enabled: true
 
     # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_ABIS_CLIENT_SECRET
     #   valueFrom:
@@ -292,54 +313,54 @@ config-server:
     #       key: mosip_datsha_client_secret
     #   enabled: true
 
-    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_IDA_CLIENT_SECRET
-      valueFrom:
-        secretKeyRef:
-          name: keycloak-client-secrets
-          key: mosip_ida_client_secret
-      enabled: true
+    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_IDA_CLIENT_SECRET
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: keycloak-client-secrets
+    #       key: mosip_ida_client_secret
+    #   enabled: true
 
-    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MISP_CLIENT_SECRET
-      valueFrom:
-        secretKeyRef:
-          name: keycloak-client-secrets
-          key: mosip_misp_client_secret
-      enabled: true
+    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_MISP_CLIENT_SECRET
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: keycloak-client-secrets
+    #       key: mosip_misp_client_secret
+    #   enabled: true
 
-    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_PMS_CLIENT_SECRET
-      valueFrom:
-        secretKeyRef:
-          name: keycloak-client-secrets
-          key: mosip_pms_client_secret
-      enabled: true
+    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_PMS_CLIENT_SECRET
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: keycloak-client-secrets
+    #       key: mosip_pms_client_secret
+    #   enabled: true
 
-    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_POLICYMANAGER_CLIENT_SECRET
-      valueFrom:
-        secretKeyRef:
-          name: keycloak-client-secrets
-          key: mosip_policymanager_client_secret
-      enabled: true
+    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_POLICYMANAGER_CLIENT_SECRET
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: keycloak-client-secrets
+    #       key: mosip_policymanager_client_secret
+    #   enabled: true
 
-    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_REG_CLIENT_SECRET
-      valueFrom:
-        secretKeyRef:
-          name: keycloak-client-secrets
-          key: mosip_reg_client_secret
-      enabled: true
+    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_REG_CLIENT_SECRET
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: keycloak-client-secrets
+    #       key: mosip_reg_client_secret
+    #   enabled: true
 
-    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_REGPROC_CLIENT_SECRET
-      valueFrom:
-        secretKeyRef:
-          name: keycloak-client-secrets
-          key: mosip_regproc_client_secret
-      enabled: true
+    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_REGPROC_CLIENT_SECRET
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: keycloak-client-secrets
+    #       key: mosip_regproc_client_secret
+    #   enabled: true
 
-    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_RESIDENT_CLIENT_SECRET
-      valueFrom:
-        secretKeyRef:
-          name: keycloak-client-secrets
-          key: mosip_resident_client_secret
-      enabled: true
+    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_RESIDENT_CLIENT_SECRET
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: keycloak-client-secrets
+    #       key: mosip_resident_client_secret
+    #   enabled: true
 
     # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_PREREG_CLIENT_SECRET
     #   valueFrom:
@@ -362,26 +383,7 @@ config-server:
     #       key: mosip_digitalcard_client_secret
     #   enabled: true
 
-    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_KEYCLOAK_ADMIN_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: keycloak
-          key: admin-password
-      enabled: true
 
-    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SOFTHSM_KERNEL_SECURITY_PIN
-      valueFrom:
-        secretKeyRef:
-          name: softhsm-kernel
-          key: security-pin
-      enabled: true
-
-    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SOFTHSM_IDA_SECURITY_PIN
-      valueFrom:
-        secretKeyRef:
-          name: softhsm-ida
-          key: security-pin
-      enabled: true
 
     # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_ACTIVEMQ_HOST
     #   valueFrom:
