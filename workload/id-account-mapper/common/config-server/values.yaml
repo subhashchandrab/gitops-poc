@@ -341,12 +341,12 @@ config-server:
           key: mosip_resident_client_secret
       enabled: true
 
-    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_PREREG_CLIENT_SECRET
-      valueFrom:
-        secretKeyRef:
-          name: keycloak-client-secrets
-          key: mosip_prereg_client_secret
-      enabled: true
+    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_PREREG_CLIENT_SECRET
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: keycloak-client-secrets
+    #       key: mosip_prereg_client_secret
+    #   enabled: true
 
     # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_HOTLIST_CLIENT_SECRET
     #   valueFrom:
