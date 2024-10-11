@@ -6,7 +6,6 @@ metadata:
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "1"
-    argocd.argoproj.io/manifest-generate-paths: /workload/id-account-mapper/common/postgres
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
@@ -19,6 +18,9 @@ spec:
     targetRevision: {{ .Values.common.source.targetRevision }}
     path: workload/id-account-mapper/common/postgres
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
       - ApplyOutOfSyncOnly=true
