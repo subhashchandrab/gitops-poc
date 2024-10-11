@@ -90,8 +90,8 @@ configserver:
       secret: "<path:ocivault#openg2p_mpartner_default_opencrvs_secret#latest | base64decode>"
 
 
-# conf-secrets:
-#   fullnameOverride: "conf-secrets"
+conf-secrets:
+  fullnameOverride: "conf-secrets"
 
 config-server:
   fullnameOverride: "config-server"
@@ -406,89 +406,89 @@ config-server:
     #       key: artemis-password
     #   enabled: true
 
-    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_AUTHTYPE_CALLBACK_SECRET
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: conf-secrets-various
-    #       key: ida-websub-authtype-callback-secret
-    #   enabled: true
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_AUTHTYPE_CALLBACK_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: conf-secrets-various
+          key: ida-websub-authtype-callback-secret
+      enabled: true
 
-    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_CREDENTIAL_ISSUE_CALLBACK_SECRET
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: conf-secrets-various
-    #       key: ida-websub-credential-issue-callback-secret
-    #   enabled: true
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_CREDENTIAL_ISSUE_CALLBACK_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: conf-secrets-various
+          key: ida-websub-credential-issue-callback-secret
+      enabled: true
 
-    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_PARTNER_SERVICE_CALLBACK_SECRET
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: conf-secrets-various
-    #       key: ida-websub-partner-service-callback-secret
-    #   enabled: true
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_PARTNER_SERVICE_CALLBACK_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: conf-secrets-various
+          key: ida-websub-partner-service-callback-secret
+      enabled: true
 
-    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_CA_CERTIFICATE_CALLBACK_SECRET
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: conf-secrets-various
-    #       key: ida-websub-ca-certificate-callback-secret
-    #   enabled: true
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_CA_CERTIFICATE_CALLBACK_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: conf-secrets-various
+          key: ida-websub-ca-certificate-callback-secret
+      enabled: true
 
-    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_HOTLIST_CALLBACK_SECRET
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: conf-secrets-various
-    #       key: ida-websub-hotlist-callback-secret
-    #   enabled: true
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_HOTLIST_CALLBACK_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: conf-secrets-various
+          key: ida-websub-hotlist-callback-secret
+      enabled: true
 
-    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_MASTERDATA_TEMPLATES_CALLBACK_SECRET
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: conf-secrets-various
-    #       key: ida-websub-masterdata-templates-callback-secret
-    #   enabled: true
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_MASTERDATA_TEMPLATES_CALLBACK_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: conf-secrets-various
+          key: ida-websub-masterdata-templates-callback-secret
+      enabled: true
 
-    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_MASTERDATA_TITLES_CALLBACK_SECRET
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: conf-secrets-various
-    #       key: ida-websub-masterdata-titles-callback-secret
-    #   enabled: true
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDA_WEBSUB_MASTERDATA_TITLES_CALLBACK_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: conf-secrets-various
+          key: ida-websub-masterdata-titles-callback-secret
+      enabled: true
 
-    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDREPO_WEBSUB_VID_CREDENTIAL_UPDATE_SECRET
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: conf-secrets-various
-    #       key: idrepo-websub-vid-credential-update-secret
-    #   enabled: true
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_IDREPO_WEBSUB_VID_CREDENTIAL_UPDATE_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: conf-secrets-various
+          key: idrepo-websub-vid-credential-update-secret
+      enabled: true
 
-    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_RESIDENT_WEBSUB_CREDENTIAL_STATUS_UPDATE_SECRET
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: conf-secrets-various
-    #       key: resident-websub-credential-status-update-secret
-    #   enabled: true
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_RESIDENT_WEBSUB_CREDENTIAL_STATUS_UPDATE_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: conf-secrets-various
+          key: resident-websub-credential-status-update-secret
+      enabled: true
 
-    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_KERNEL_TOKENID_UIN_SALT
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: conf-secrets-various
-    #       key: mosip-kernel-tokenid-uin-salt
-    #   enabled: true
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_KERNEL_TOKENID_UIN_SALT
+      valueFrom:
+        secretKeyRef:
+          name: conf-secrets-various
+          key: mosip-kernel-tokenid-uin-salt
+      enabled: true
 
-    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_KERNEL_TOKENID_PARTNERCODE_SALT
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: conf-secrets-various
-    #       key: mosip-kernel-tokenid-partnercode-salt
-    #   enabled: true
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_KERNEL_TOKENID_PARTNERCODE_SALT
+      valueFrom:
+        secretKeyRef:
+          name: conf-secrets-various
+          key: mosip-kernel-tokenid-partnercode-salt
+      enabled: true
 
-    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_PRINT_WEBSUB_HUB_SECRET
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: conf-secrets-various
-    #       key: print-websub-hub-secret
-    #   enabled: true
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_PRINT_WEBSUB_HUB_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: conf-secrets-various
+          key: print-websub-hub-secret
+      enabled: true
 
     # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_S3_ACCESSKEY
     #   valueFrom:
@@ -609,30 +609,30 @@ config-server:
     #       key: mpartner_default_mobile_secret
     #   enabled: true
 
-    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_RESIDENT_WEBSUB_AUTHTYPE_STATUS_SECRET
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: conf-secrets-various
-    #       key: resident-websub-authtype-status-secret
-    #   enabled: true
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_RESIDENT_WEBSUB_AUTHTYPE_STATUS_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: conf-secrets-various
+          key: resident-websub-authtype-status-secret
+      enabled: true
 
-    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_RESIDENT_WEBSUB_AUTH_TRANSACTION_STATUS_SECRET
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: conf-secrets-various
-    #       key: resident-websub-auth-transaction-status-secret
-    #   enabled: true
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_RESIDENT_WEBSUB_AUTH_TRANSACTION_STATUS_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: conf-secrets-various
+          key: resident-websub-auth-transaction-status-secret
+      enabled: true
 
-    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_IDA_KYC_TOKEN_SECRET
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: conf-secrets-various
-    #       key: mosip-ida-kyc-token-secret
-    #   enabled: true
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_IDA_KYC_TOKEN_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: conf-secrets-various
+          key: mosip-ida-kyc-token-secret
+      enabled: true
 
-    # - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_PARTNER_CRYPTO_P12_PASSWORD
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: conf-secrets-various
-    #       key: mosip-partner-crypto-p12-password
-    #   enabled: true
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_PARTNER_CRYPTO_P12_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: conf-secrets-various
+          key: mosip-partner-crypto-p12-password
+      enabled: true
