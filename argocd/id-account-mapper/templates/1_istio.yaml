@@ -33,9 +33,6 @@ spec:
       repoURL: {{ .Values.istio.source.repoURL }}
       targetRevision: {{ .Values.istio.source.targetRevision }}
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
     syncOptions:
       - CreateNamespace=true
       - ApplyOutOfSyncOnly=true
