@@ -4,8 +4,6 @@ kind: Application
 metadata:
   name: esignet
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "6"
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:

@@ -4,8 +4,6 @@ kind: Application
 metadata:
   name: spar
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "7"
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
