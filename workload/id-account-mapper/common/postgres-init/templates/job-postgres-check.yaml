@@ -17,11 +17,11 @@ spec:
           - '-c'
           - 'until pg_isready -U ${DB_USERNAME} -h ${DB_HOSTNAME} -p ${DB_PORT:-5432} -d ${DB_DBNAME:-openg2puser}; do sleep 3; done'
         env: 
-          - name: KEYCLOAK_DB_HOSTNAME
+          - name: DB_HOSTNAME
             value: "postgres-postgresql.postgres"
-          - name: KEYCLOAK_DB_USERNAME
+          - name: DB_USERNAME
             value: "openg2puser"
-          - name: KEYCLOAK_DB_DBNAME
+          - name: DB_DBNAME
             value: "openg2pdb"
       restartPolicy: Never
   backoffLimit: 4
