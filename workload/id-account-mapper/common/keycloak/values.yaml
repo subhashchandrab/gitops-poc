@@ -111,7 +111,7 @@ keycloak:
   ingress:
     enabled: false
   
-  replicaCount: 2
+  replicaCount: 3
   
   proxy: edge
   production: true
