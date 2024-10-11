@@ -29,7 +29,7 @@ common:
   kafka_enabled: true
   configserver_enabled: true
   keymanager_enabled: true
-  esignet_enabled: false
+  esignet_enabled: true
   spar_enabled: false
   destination:
     server: https://kubernetes.default.svc
