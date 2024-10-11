@@ -7,7 +7,7 @@ istio:
     targetRevision: 1.23.2
 
 softhsm:
-  enabled: false
+  enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:
@@ -15,7 +15,7 @@ softhsm:
     targetRevision: 12.0.1-B2
 
 artifactory:
-  enabled: false
+  enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:
@@ -26,9 +26,9 @@ common:
   certmanager_enabled: true
   postgres_enabled: true
   keycloak_enabled: true
-  kafka_enabled: false
-  configserver_enabled: false
-  keymanager_enabled: false
+  kafka_enabled: true
+  configserver_enabled: true
+  keymanager_enabled: true
   esignet_enabled: false
   spar_enabled: false
   destination:
