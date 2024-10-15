@@ -31,5 +31,8 @@ keygen:
 
 
 keymanager: 
+  metrics:
+    serviceMonitor:
+      enabled: false
   istio:
     enabled: false
