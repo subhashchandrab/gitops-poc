@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: istio-ansible-sa
+  name: istio-ansible-sa-post-delete
   namespace: istio-system
   annotations:
     argocd.argoproj.io/hook: PostDelete
@@ -11,7 +11,7 @@ metadata:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: istio-ansible-svc-reader
+  name: istio-ansible-svc-reader-post-delete
   annotations:
     argocd.argoproj.io/hook: PostDelete
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
@@ -24,17 +24,17 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: istio-ansible-svc-reader-binding
+  name: istio-ansible-svc-reader-post-delete-binding
   annotations:
     argocd.argoproj.io/hook: PostDelete
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 subjects:
 - kind: ServiceAccount
-  name: istio-ansible-sa 
+  name: istio-ansible-sa-post-delete 
   namespace: istio-system
 roleRef:
   kind: ClusterRole
-  name: istio-ansible-svc-reader 
+  name: istio-ansible-svc-reader-post-delete 
   apiGroup: rbac.authorization.k8s.io
 
 ---
@@ -50,7 +50,7 @@ metadata:
 spec:
   template:
     spec:
-      serviceAccountName: istio-ansible-sa
+      serviceAccountName: istio-ansible-sa-post-delete
       containers:
       - name: configmanager
         image: ghcr.io/oci-sunbird/ociop:latest
