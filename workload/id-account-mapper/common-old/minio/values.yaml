@@ -1,0 +1,28 @@
+minio_istio_enabled: true
+minio_hostname: minio.<path:ocivault#openg2p_domain#latest | base64decode> 
+
+minio:
+  auth:
+    rootPassword: <path:ocivault#openg2p_minio_admin_password#latest | base64decode>
+  persistence:
+    enabled: true
+    size: 8Gi
+    storageClass: longhorn
+
+  extraEnvVars:
+  - name: MINIO_IDENTITY_OPENID_CONFIG_URL
+    value: "http://keycloak.keycloak/realms/openg2p/.well-known/openid-configuration"
+  - name: MINIO_IDENTITY_OPENID_CLIENT_ID
+    value: "openg2p-minio-client"
+  - name: MINIO_IDENTITY_OPENID_DISPLAY_NAME
+    value: Keycloak
+  - name: MINIO_IDENTITY_OPENID_CLIENT_SECRET
+    value: <path:ocivault#openg2p_minio_client_secret#latest | base64decode>
+  - name: MINIO_IDENTITY_OPENID_CLAIM_NAME
+    value: groups
+  - name: MINIO_IDENTITY_OPENID_SCOPES
+    value: openid,profile,email,phone,address
+  - name: MINIO_IDENTITY_OPENID_REDIRECT_URI_DYNAMIC
+    value: "on"
+  - name: MINIO_IDENTITY_OPENID_CLAIM_USERINFO
+    value: "http://keycloak.keycloak/realms/openg2p/protocol/openid-connect/userinfo"

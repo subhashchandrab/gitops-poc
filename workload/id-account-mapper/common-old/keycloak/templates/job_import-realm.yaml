@@ -1,0 +1,74 @@
+{{- if .Values.keycloak_init_enabled }}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: keycloak-ansible-sa
+  namespace: keycloak
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: keycloak-ansible-svc-reader
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["*"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: keycloak-ansible-svc-reader-binding
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+subjects:
+- kind: ServiceAccount
+  name: keycloak-ansible-sa 
+  namespace: keycloak
+roleRef:
+  kind: ClusterRole
+  name: keycloak-ansible-svc-reader 
+  apiGroup: rbac.authorization.k8s.io
+
+---
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: import-realm
+  namespace: {{ .Values.namespace }}
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      serviceAccountName: keycloak-ansible-sa
+      containers:
+      - name: configmanager
+        image: ghcr.io/oci-sunbird/ociop:latest
+        command: ["ansible-playbook"]
+        args: ["/root/.oci/playbooks/import_keycloak_realm_playbook.yaml", "-i", "/root/.oci/inventory/inventory"]
+        volumeMounts:
+        - name: inventory-volume
+          mountPath: /root/.oci/inventory
+        - name: playbooks-volume
+          mountPath: /root/.oci/playbooks
+      restartPolicy: Never
+      volumes:
+      - name: inventory-volume
+        configMap:
+          name: openg2p-realm-config
+      - name: playbooks-volume
+        configMap:
+          name: {{ .Chart.Name }}-ansible-playbooks
+{{- end }}

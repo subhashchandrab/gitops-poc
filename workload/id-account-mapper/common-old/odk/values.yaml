@@ -1,0 +1,7 @@
+odk:
+  db_password: <path:ocivault#openg2p_pg_password#latest | base64decode> 
+
+odk-central:
+  global:
+    hostname: odk.<path:ocivault#openg2p_domain#latest | base64decode> 
+

@@ -1,0 +1,14 @@
+---
+- name: Load sample seed data to esignet
+  hosts: bastion
+  tasks:
+    - name: Load data
+      shell: |
+        #!/bin/bash
+        cd /tmp/working-directory
+        python3 upload_data_to_mock_esignet.py /tmp/working-directory/sample_data2.csv    
+      register: data_load
+
+    - name: Data Load Result
+      debug:
+        msg: "Data Load Result {{data_load.stdout}}"

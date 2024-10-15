@@ -1,3 +1,11 @@
+istio:
+  enabled: false
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://istio-release.storage.googleapis.com/charts
+    targetRevision: 1.23.2
+
 softhsm:
   enabled: false
   destination:
@@ -15,9 +23,9 @@ artifactory:
     targetRevision: 12.0.1-B7
 
 common:
-  postgres_enabled: true
-  istio_enabled: true
-  keycloak_enabled: true
+  certmanager_enabled: false
+  postgres_enabled: false
+  keycloak_enabled: false
   kafka_enabled: false
   configserver_enabled: false
   keymanager_enabled: false
