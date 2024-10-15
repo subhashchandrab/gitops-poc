@@ -16,7 +16,7 @@ artifactory:
 
 common:
   postgres_enabled: false
-  istio_enabled: false
+  istio_enabled: true
   keycloak_enabled: false
   kafka_enabled: false
   configserver_enabled: false
