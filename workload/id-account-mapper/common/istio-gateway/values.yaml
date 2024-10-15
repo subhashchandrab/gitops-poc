@@ -1,12 +1,12 @@
 ansibleenv:
   zone_compartment_id: <path:ocivault#zone_compartment_id#latest | base64decode>
-  domain: <path:ocivault#functional_registry_domain#latest | base64decode>
+  domain: <path:ocivault#openg2p_domain#latest | base64decode>
 
 
 argocd_hostname: argocd.<path:ocivault#openg2p_domain#latest | base64decode> 
 
 ssl:
-  sslDnsNames: "*.<path:ocivault#functional_registry_domain#latest | base64decode>"
+  sslDnsNames: "*.<path:ocivault#openg2p_domain#latest | base64decode>"
 
 gateway:
   defaults:
@@ -29,5 +29,6 @@ gateway:
         oci.oraclecloud.com/load-balancer-type: "nlb"
         oci-network-load-balancer.oraclecloud.com/internal: "false"
         oci-network-load-balancer.oraclecloud.com/is-preserve-source: "false"
-        oci-network-load-balancer.oraclecloud.com/subnet: <path:ocivault#nlb_subnet_oke_k8s_cluster#latest | base64decode> 
+        oci-network-load-balancer.oraclecloud.com/subnet: <path:ocivault#public_lb_subnet_id#latest | base64decode> 
+        oci-network-load-balancer.oraclecloud.com/oci-network-security-groups: <path:ocivault#public_lb_nsg_id#latest | base64decode> 
       externalTrafficPolicy: "Local"

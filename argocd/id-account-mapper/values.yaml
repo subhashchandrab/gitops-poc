@@ -1,5 +1,5 @@
 istio:
-  enabled: false
+  enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:
@@ -23,7 +23,7 @@ artifactory:
     targetRevision: 12.0.1-B7
 
 common:
-  certmanager_enabled: false
+  certmanager_enabled: true
   postgres_enabled: false
   keycloak_enabled: false
   kafka_enabled: false

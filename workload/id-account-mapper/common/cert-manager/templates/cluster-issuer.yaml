@@ -20,5 +20,4 @@ spec:
           webhook:
             groupName: acme.d-n.be
             solverName: oci
-            config:
-              ociProfileSecretName: oci-profile
+            config: {}
