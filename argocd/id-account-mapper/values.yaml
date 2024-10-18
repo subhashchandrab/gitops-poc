@@ -15,7 +15,7 @@ artifactory:
     targetRevision: 12.0.1-B7
 
 common:
-  postgres_enabled: false
+  postgres_enabled: true
   istio_enabled: false
   keycloak_enabled: false
   kafka_enabled: false
