@@ -1,0 +1,54 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: internal
+  namespace: istio-system
+spec:
+  selector:
+    istio: ingress
+  servers:
+  - hosts:
+    - 'api-internal.{{ .Values.ansibleenv.domain }}'
+    port:
+      name: http
+      number: 80
+      protocol: HTTP
+    tls:
+      httpsRedirect: true
+  - hosts:
+    - '*'
+    port:
+      name: https
+      number: 443
+      protocol: HTTPS
+    tls:
+      credentialName: {{ .Values.ansibleenv.domain | replace "." "-" }}
+      mode: SIMPLE
+
+--- 
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: public
+  namespace: istio-system
+spec:
+  selector:
+    istio: ingress
+  servers:
+  - hosts:
+    - 'api.{{ .Values.ansibleenv.domain }}'
+    port:
+      name: http
+      number: 80
+      protocol: HTTP
+    tls:
+      httpsRedirect: true
+  - hosts:
+    - '*'
+    port:
+      name: https
+      number: 443
+      protocol: HTTPS
+    tls:
+      credentialName: {{ .Values.ansibleenv.domain | replace "." "-" }}
+      mode: SIMPLE
