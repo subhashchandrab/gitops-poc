@@ -1,5 +1,5 @@
 ansibleenv:
   zone_compartment_id: <path:ocivault#zone_compartment_id#latest | base64decode>
-  domain: "<path:ocivault#openg2p_domain#latest | base64decode>"
+  domain: <path:ocivault#openg2p_domain#latest | base64decode>
 
 
