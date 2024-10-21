@@ -79,8 +79,10 @@ clientSecrets:
 
 
 keycloak:
-  # commonAnnotations:
-  #   argocd.argoproj.io/sync-wave: "-9"
+  image: 
+    repository: mosipid/mosip-keycloak
+    tag: 16.1.1-debian-10-r85
+    
   initContainers:
     - name: postgres-checker
       image: jbergknoff/postgresql-client
