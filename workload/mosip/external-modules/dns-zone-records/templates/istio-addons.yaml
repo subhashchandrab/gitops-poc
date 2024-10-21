@@ -52,3 +52,38 @@ spec:
     tls:
       credentialName: {{ .Values.domain_ssl_secret_name }}
       mode: SIMPLE
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: deny-swagger
+  namespace: istio-system
+spec:
+  selector:
+    matchLabels:
+      istio: ingress
+  action: DENY
+  rules:
+  - to:
+    - operation:
+        paths: ["*/swagger-ui.html", "*/swagger-ui/index.html"]
+
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: proxy-protocol
+  namespace: istio-system
+spec:
+  workloadSelector:
+    labels:
+      app: istio-ingress
+  configPatches:
+  - applyTo: LISTENER
+    patch:
+      operation: MERGE
+      value:
+        listener_filters:
+        - name: envoy.filters.listener.proxy_protocol
+        - name: envoy.filters.listener.tls_inspector
