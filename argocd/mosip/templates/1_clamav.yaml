@@ -25,6 +25,12 @@ spec:
               repository: clamav/clamav
               tag: latest
               pullPolicy: Always
+
+            persistentVolume:
+              enabled: true
+              size: 100Mi
+              storageClass: "longhorn"
+
   syncPolicy:
     automated:
       prune: true
