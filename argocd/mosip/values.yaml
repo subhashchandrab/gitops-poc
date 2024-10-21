@@ -1,5 +1,6 @@
 common:
   dns_record_enabled: true
+  monitoring_enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:

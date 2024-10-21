@@ -1,0 +1,25 @@
+{{- if .Values.common.monitoring_enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mosip-monitoring
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: {{ .Values.common.destination.server }}
+    namespace: monitoring
+  project: default
+  source:
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: 65.3.1
+    chart: kube-prometheus-stack
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+{{- end }}
