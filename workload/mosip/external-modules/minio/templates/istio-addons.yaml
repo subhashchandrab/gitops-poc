@@ -1,0 +1,42 @@
+
+{{- if .Values.minio_istio_enabled }}
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: minio
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - minio
+  http:
+  - name: http
+    match:
+    - uri:
+        prefix: "/"
+    route:
+    - destination:
+        host: minio
+        port:
+           number: 9001
+
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: minio
+spec:
+  selector:
+    istio: ingress
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - {{ .Values.minio_externalHost }}  
+
+
+{{- end }}
