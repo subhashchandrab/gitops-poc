@@ -9,7 +9,6 @@ spec:
   gateways:
   - istio-system/internal
   - istio-system/public
-  - istio-system/all-hosts
   http:
   - match:
       - uri:
