@@ -1,0 +1,17 @@
+postgresHost: postgres.<path:ocivault#openg2p_domain#latest | base64decode>
+
+postgresql:
+  global:
+    storageClass: longhorn
+  
+  resources:
+    limits: {}
+    requests: 
+      cpu: 3000m
+      memory: 3000Mi
+
+  postgresqlExtendedConf:
+    wal_level: logical
+    max_wal_senders: 20
+    max_replication_slots: 10
+    max_connections: 1000
