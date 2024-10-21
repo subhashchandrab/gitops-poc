@@ -1,4 +1,4 @@
-{{- if .Values.common.dns_record_enabledxx }}
+{{- if .Values.common.dns_record_enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
