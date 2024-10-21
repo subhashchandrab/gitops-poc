@@ -3,7 +3,12 @@ postgresHost: postgres.<path:ocivault#openg2p_domain#latest | base64decode>
 postgresql:
   global:
     storageClass: longhorn
-  
+
+  postgresql:
+    postgresqlDatabase: "mosippdb"
+    postgresqlUsername: "mosipuser"
+    postgresqlPassword: "<path:ocivault#mosip_pg_password#latest | base64decode>"
+
   resources:
     limits: {}
     requests: 

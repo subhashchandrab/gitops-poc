@@ -15,13 +15,13 @@ spec:
         command:
           - 'sh'
           - '-c'
-          - 'until pg_isready -U ${DB_USERNAME} -h ${DB_HOSTNAME} -p ${DB_PORT:-5432} -d ${DB_DBNAME:-openg2puser}; do sleep 3; done'
+          - 'until pg_isready -U ${DB_USERNAME} -h ${DB_HOSTNAME} -p ${DB_PORT:-5432} -d ${DB_DBNAME:-mosipuser}; do sleep 3; done'
         env: 
           - name: DB_HOSTNAME
             value: "postgres-postgresql.postgres"
           - name: DB_USERNAME
-            value: "openg2puser"
+            value: "mosipuser"
           - name: DB_DBNAME
-            value: "openg2pdb"
+            value: "mosippdb"
       restartPolicy: Never
   backoffLimit: 4
