@@ -4,6 +4,7 @@ postgresql:
   global:
     storageClass: longhorn
     postgresql:
+      postgresqlDatabase: mosippdb
       postgresqlPassword: "<path:ocivault#mosip_pg_password#latest | base64decode>"
 
   resources:
