@@ -9,7 +9,7 @@ metadata:
 spec:
   destination:
     server: {{ .Values.common.destination.server }}
-    namespace: istio-system
+    namespace: httpbin
   project: default
   source:
     repoURL: {{ .Values.common.source.repoURL }}
