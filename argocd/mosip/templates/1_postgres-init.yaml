@@ -1,4 +1,4 @@
-{{- if .Values.common.postgres_enabledxx }}
+{{- if .Values.common.postgres_enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
