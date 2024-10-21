@@ -19,7 +19,7 @@ softhsm:
     targetRevision: 12.0.1-B2
 
 clamav:
-  enabled: false
+  enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:
