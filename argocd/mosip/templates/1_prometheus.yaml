@@ -1,4 +1,4 @@
-{{- if .Values.common.monitoring_enabledxxx }}
+{{- if .Values.common.monitoring_enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
