@@ -1,0 +1,38 @@
+{{- if .Values.clamav.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: clamav
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: {{ .Values.clamav.destination.server }}
+    namespace: clamav
+  project: default
+  source:
+    repoURL: {{ .Values.clamav.source.repoURL }}
+    targetRevision: {{ .Values.clamav.source.targetRevision }}
+    chart: clamav
+    plugin:
+      name: argocd-vault-plugin-helm
+      env:
+        - name: HELM_VALUES      
+          value: |
+            replicaCount: 1
+            image:
+              repository: clamav/clamav
+              tag: latest
+              pullPolicy: Always
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+    managedNamespaceMetadata: 
+      labels:
+        istio-injection: enabled   
+{{- end }}

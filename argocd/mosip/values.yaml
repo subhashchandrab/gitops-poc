@@ -17,3 +17,11 @@ softhsm:
   source:
     repoURL: https://mosip.github.io/mosip-helm
     targetRevision: 12.0.1-B2
+
+clamav:
+  enabled: true
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://wiremind.github.io/wiremind-helm-charts
+    targetRevision: 2.7.0
