@@ -4,6 +4,7 @@ common:
   keycloak_enabled: true
   postgres_enabled: true
   minio_enabled: true
+  activemq_enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:
