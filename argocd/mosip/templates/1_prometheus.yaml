@@ -1,4 +1,4 @@
-{{- if .Values.common.monitoring_enabled }}
+{{- if .Values.common.monitoring_enabledxxx }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -24,4 +24,5 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - ApplyOutOfSyncOnly=true
+      - ServerSideApply=true
 {{- end }}
