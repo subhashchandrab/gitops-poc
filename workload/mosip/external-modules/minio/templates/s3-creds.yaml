@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: s3
+  labels:
+    istio-injection: enabled
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: s3
+  namespace: s3
+data:
+  s3-user-key: {{ .Values.minio.auth.rootUser }}  
+  s3-region: {{ .Values.minio_region }}  
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: s3
+  namespace: s3
+  annotations:
+    avp.kubernetes.io/path: "ocivault"
+stringData:
+  s3-user-secret: {{ .Values.minio.auth.rootPassword }}  
+  s3-pretext-value: {{ .Values.minio_pretext_value }}  
