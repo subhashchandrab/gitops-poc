@@ -15,6 +15,8 @@ spec:
     repoURL: https://prometheus-community.github.io/helm-charts
     targetRevision: 65.3.1
     chart: kube-prometheus-stack
+  helm:
+    releaseName: mosip-monitoring
   syncPolicy:
     automated:
       prune: true
