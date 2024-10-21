@@ -22,7 +22,7 @@ spec:
       number: 443
       protocol: HTTPS
     tls:
-      credentialName: {{ .Values.ssl_secret_name }}
+      credentialName: {{ .Values.domain_ssl_secret_name }}
       mode: SIMPLE
 
 --- 
@@ -50,5 +50,5 @@ spec:
       number: 443
       protocol: HTTPS
     tls:
-      credentialName: {{ .Values.ssl_secret_name }}
+      credentialName: {{ .Values.domain_ssl_secret_name }}
       mode: SIMPLE
