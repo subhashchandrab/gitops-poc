@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: keycloak-host
+  namespace: {{ .Values.namespace }}
+data:
+  keycloak-internal-host: keycloak.keycloak
+  keycloak-internal-url: http://keycloak.keycloak
+  keycloak-external-host: {{ .Values.keycloakExternalHost }}
+  keycloak-external-url: https://{{ .Values.keycloakExternalHost }}
