@@ -1,10 +1,6 @@
-keycloak_init_enabled: true
 keycloak_istio_enabled: true
-keycloak_hostname: keycloak.<path:ocivault#openg2p_domain#latest | base64decode> 
-
-
-realm:
-  db_password: <path:ocivault#openg2p_pg_password#latest | base64decode> 
+keycloakExternalHost: iam.<path:ocivault#mosip_domain#latest | base64decode> 
+keycloak_db_password: <path:ocivault#mosip_pg_password#latest | base64decode> 
 
 
 clientSecrets:
@@ -82,48 +78,31 @@ keycloak:
   image: 
     repository: mosipid/mosip-keycloak
     tag: 16.1.1-debian-10-r85
-    
-  initContainers:
-    - name: postgres-checker
-      image: jbergknoff/postgresql-client
-      command:
-        - 'sh'
-        - '-c'
-        - 'until pg_isready -U ${KEYCLOAK_DB_USERNAME} -h ${KEYCLOAK_DB_HOSTNAME} -p ${KEYCLOAK_DB_PORT:-5432} -d ${KEYCLOAK_DB_DBNAME:-keycloakdb}; do sleep 3; done'
-      env: 
-        - name: KEYCLOAK_DB_HOSTNAME
-          value: "postgres-postgresql.postgres"
-        - name: KEYCLOAK_DB_USERNAME
-          value: "keycloakuser"
-        - name: KEYCLOAK_DB_DBNAME
-          value: "keycloakdb"
+
   service:
     type: ClusterIP
-    # headless:
-    #   extraPorts:
-    #     - name: keycloakcli
-    #       port: 8080
-    #       targetPort: http
-    #       protocol: TCP
-  
-  auth:
-    adminUser: admin
-    adminPassword: <path:ocivault#openg2p_keycloak_admin_password#latest | base64decode>
-  
-  ingress:
-    enabled: false
-  
-  replicaCount: 2
-  
-  proxy: edge
-  production: true
-  
+
+  extraEnvVars:
+    - name: KEYCLOAK_EXTRA_ARGS
+      value: "-Dkeycloak.profile.feature.upload_scripts=enabled"
+      #value: "-Dkeycloak.profile.feature.upload_scripts=enabled -Dkeycloak.import=/config/realm-mosip.json"
+
+  proxyAddressForwarding: true
+
+  replicaCount: 1
+
+  # Enable if replicaCount > 1
+  serviceDiscovery:
+    enabled: true
+
   resources:
     limits: {}
+    #   cpu: 250m
+    #   memory: 1Gi
     requests:
       cpu: 200m
       memory: 1000Mi
-  
+
   rbac:
     create: true
     rules:
@@ -134,14 +113,37 @@ keycloak:
       verbs:
       - get
       - list
+
+    
+  initContainers:
+    - name: postgres-checker
+      image: jbergknoff/postgresql-client
+      command:
+        - 'sh'
+        - '-c'
+        - 'until pg_isready -U ${KEYCLOAK_DB_USERNAME} -h ${KEYCLOAK_DB_HOSTNAME} -p ${KEYCLOAK_DB_PORT:-5432} -d ${KEYCLOAK_DB_DBNAME:-bitnami_keycloak}; do sleep 3; done'
+      env: 
+        - name: KEYCLOAK_DB_HOSTNAME
+          value: "postgres-postgresql.postgres"
+        - name: KEYCLOAK_DB_USERNAME
+          value: "bn_keycloak"
+        - name: KEYCLOAK_DB_DBNAME
+          value: "bitnami_keycloak"
   
+  auth:
+    adminUser: admin
+    adminPassword: <path:ocivault#mosip_keycloak_admin_password#latest | base64decode>
+  
+  ingress:
+    enabled: false
+ 
   postgresql:
     enabled: false
   
   externalDatabase:
     host: postgres-postgresql.postgres
-    database: keycloakdb
-    user: keycloakuser
+    database: bitnami_keycloak
+    user: bn_keycloak
     existingSecret: postgres-postgresql
     existingSecretPasswordKey: password
   
