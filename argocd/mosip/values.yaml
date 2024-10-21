@@ -18,8 +18,10 @@ softhsm:
     repoURL: https://mosip.github.io/mosip-helm
     targetRevision: 12.0.1-B2
 
+
+## This is not getting deployed. Error install: can't create directory '/run/clamav': Permission denied
 clamav:
-  enabled: true
+  enabled: false
   destination:
     server: https://kubernetes.default.svc
   source:
