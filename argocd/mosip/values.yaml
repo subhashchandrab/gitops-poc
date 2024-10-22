@@ -13,7 +13,8 @@ common:
   keymanager_enabled: true
   websub_enabled: true
   mock_smtp_enabled: true
-  kernel_enabled: true
+  kernel_enabled: true   ## This is not up fully. Idgenerator is giving unique key constraint error
+  masterdata_loader_enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:

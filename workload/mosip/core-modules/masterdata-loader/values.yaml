@@ -1,0 +1,6 @@
+configserver:
+  postgres_user_password: <path:ocivault#mosip_pg_password#latest | base64decode> 
+
+masterdata-loader:
+  fullnameOverride: "masterdata-loader"
+  mosipDataGithubBranch: 1.2.0.1
