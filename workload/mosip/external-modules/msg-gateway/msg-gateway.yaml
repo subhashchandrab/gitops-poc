@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: email-gateway
+  namespace: msg-gateways
+data:
+  email-smtp-host: mock-smtp.mock-smtp
+  email-smtp-port: "8025"
+  email-smtp-username: mock-smtp.user
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: email-gateway
+  namespace: msg-gateways
+  annotations:
+    avp.kubernetes.io/path: "ocivault"
+data:
+  email-smtp-secret: <mosip_smtp_secret>
