@@ -1,17 +1,17 @@
 common:
   dns_record_enabled: true
   monitoring_enabled: true
-  keycloak_enabled: true
-  postgres_enabled: true
-  minio_enabled: true
-  activemq_enabled: true
-  kafka_enabled: true
-  msg_gw_enabled: true
-  captcha_enabled: true
-  landingpage_enabled: true
-  config_server_enabled: true
-  keymanager_enabled: true
-  websub_enabled: true
+  keycloak_enabled: false
+  postgres_enabled: false
+  minio_enabled: false
+  activemq_enabled: false
+  kafka_enabled: false
+  msg_gw_enabled: false
+  captcha_enabled: false
+  landingpage_enabled: false
+  config_server_enabled: false
+  keymanager_enabled: false
+  websub_enabled: false
   destination:
     server: https://kubernetes.default.svc
   source:
@@ -19,7 +19,7 @@ common:
     targetRevision: HEAD
 
 softhsm:
-  enabled: true
+  enabled: false
   destination:
     server: https://kubernetes.default.svc
   source:
@@ -28,7 +28,7 @@ softhsm:
 
 
 artifactory:
-  enabled: true
+  enabled: false
   destination:
     server: https://kubernetes.default.svc
   source:
