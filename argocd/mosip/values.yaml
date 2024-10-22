@@ -17,6 +17,7 @@ common:
   masterdata_loader_enabled: true
   mock_biosdk_enabled: true
   packetmanager_enabled: true
+  datashare_enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:
