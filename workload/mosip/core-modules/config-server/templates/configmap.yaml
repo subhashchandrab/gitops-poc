@@ -1,0 +1,85 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: keycloak-host
+  namespace: {{ .Values.namespace }}
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+data:
+  keycloak-internal-host: keycloak.keycloak
+  keycloak-internal-url: http://keycloak.keycloak
+  keycloak-external-host: {{ .Values.configserver.keycloak_hostname }}
+  keycloak-external-url: https://{{ .Values.configserver.keycloak_hostname }}
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: global
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+data:
+  installation-name: oci-mosip-sandbox
+  installation-domain: {{ .Values.configserver.domain_name }}
+  mosip-version: develop
+  mosip-api-host: api.{{ .Values.configserver.domain_name }}
+  mosip-api-internal-host: api-internal.{{ .Values.configserver.domain_name }}
+  mosip-prereg-host: prereg.{{ .Values.configserver.domain_name }}
+  mosip-activemq-host: activemq.{{ .Values.configserver.domain_name }}
+  mosip-kibana-host: kibana.{{ .Values.configserver.domain_name }}
+  mosip-admin-host: admin.{{ .Values.configserver.domain_name }}
+  mosip-regclient-host: regclient.{{ .Values.configserver.domain_name }}
+  mosip-minio-host: minio.{{ .Values.configserver.domain_name }}
+  mosip-kafka-host: kafka.{{ .Values.configserver.domain_name }}
+  mosip-iam-external-host: iam.{{ .Values.configserver.domain_name }}
+  mosip-idp-host: idp.{{ .Values.configserver.domain_name }}
+  mosip-postgres-host: postgres.{{ .Values.configserver.domain_name }}
+  mosip-pmp-host: pmp.{{ .Values.configserver.domain_name }}
+  mosip-resident-host: resident.{{ .Values.configserver.domain_name }}
+  mosip-compliance-host: compliance.{{ .Values.configserver.domain_name }}
+  mosip-esignet-host: esignet.{{ .Values.configserver.domain_name }}
+  mosip-smtp-host: smtp.{{ .Values.configserver.domain_name }}
+  is_glowroot_env: absent
+
+---
+{{- if .Values.configserver.minio_enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: s3
+  namespace: {{ .Values.namespace }}
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+data:
+  s3-user-key: {{ .Values.configserver.minio_username }}
+  s3-region: ""
+
+---
+{{- end }}
+{{- if .Values.configserver.activemq_enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: activemq-activemq-artemis-share
+  namespace: {{ .Values.namespace }}
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+data:
+  activemq-core-port: "61616"
+  activemq-host: activemq-activemq-artemis.activemq
+
+---
+{{- end }}
+{{- if .Values.configserver.msg_gateway }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: email-gateway
+  namespace: {{ .Values.namespace }}
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+data:
+  email-smtp-host: mock-smtp.mock-smtp
+  email-smtp-port: "8025"
+  email-smtp-username: mock-smtp.user
+{{- end }}
