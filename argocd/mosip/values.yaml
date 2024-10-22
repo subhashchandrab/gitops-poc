@@ -16,6 +16,7 @@ common:
   kernel_enabled: true   ## This is not up fully. Idgenerator is giving unique key constraint error
   masterdata_loader_enabled: true
   mock_biosdk_enabled: true
+  packetmanager_enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:
