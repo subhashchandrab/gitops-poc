@@ -10,6 +10,7 @@ common:
   captcha_enabled: true
   landingpage_enabled: true
   config_server_enabled: true
+  keymanager_enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:
