@@ -22,4 +22,4 @@ artifacts:
 
 
 packetmanager:
-  fullnameOverride: "masterdata-loader"
+  fullnameOverride: "packetmanager"
