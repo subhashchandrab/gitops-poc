@@ -1,0 +1,25 @@
+landing-page: 
+  istio:
+    host: <path:ocivault#mosip_domain#latest | base64decode>
+  landing: 
+    version: v1.2.0.1-B3
+    name: oci-mosip-sandbox
+    api: api.<path:ocivault#mosip_domain#latest | base64decode>
+    apiInternal: api-internal.<path:ocivault#mosip_domain#latest | base64decode>
+    admin: admin.<path:ocivault#mosip_domain#latest | base64decode>
+    prereg: prereg.<path:ocivault#mosip_domain#latest | base64decode>
+    kafka: kafka.<path:ocivault#mosip_domain#latest | base64decode>
+    kibana: kibana.<path:ocivault#mosip_domain#latest | base64decode>
+    activemq: activemq.<path:ocivault#mosip_domain#latest | base64decode>
+    minio: minio.<path:ocivault#mosip_domain#latest | base64decode>
+    keycloak: iam.<path:ocivault#mosip_domain#latest | base64decode>
+    regclient: regclient.<path:ocivault#mosip_domain#latest | base64decode>
+    pmp: pmp.<path:ocivault#mosip_domain#latest | base64decode>
+    compliance: compliance.<path:ocivault#mosip_domain#latest | base64decode>
+    resident: resident.<path:ocivault#mosip_domain#latest | base64decode>
+    esignet: esignet.<path:ocivault#mosip_domain#latest | base64decode>
+    smtp: smtp.<path:ocivault#mosip_domain#latest | base64decode>
+    postgres: 
+      host: postgres.<path:ocivault#mosip_domain#latest | base64decode>
+      port: 5432
+

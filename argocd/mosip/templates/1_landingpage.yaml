@@ -1,0 +1,28 @@
+{{- if .Values.common.landingpage_enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: landing-page
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: {{ .Values.common.destination.server }}
+    namespace: landing-page
+  project: default
+  source:
+    repoURL: {{ .Values.common.source.repoURL }}
+    targetRevision: {{ .Values.common.source.targetRevision }}
+    path: workload/mosip/external-modules/landing-page
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+    managedNamespaceMetadata: 
+      labels:
+        istio-injection: enabled   
+{{- end }}
