@@ -12,6 +12,7 @@ common:
   config_server_enabled: true
   keymanager_enabled: true
   websub_enabled: true
+  mock_smtp_enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:

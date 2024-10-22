@@ -1,0 +1,13 @@
+configserver:
+  domain_name: <path:ocivault#mosip_domain#latest | base64decode>
+  activeProfileEnv: default
+  gitRepo:
+    uri: https://github.com/oci-mosip/mosip-config
+    version: oci-v1.2.0.1-B2
+
+mock-smtp:
+  istio: 
+    hosts:
+      - smtp.<path:ocivault#mosip_domain#latest | base64decode>
+  ingressController:
+    istio: ingress
