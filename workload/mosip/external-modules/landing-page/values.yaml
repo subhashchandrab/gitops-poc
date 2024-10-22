@@ -3,6 +3,10 @@ domain_name: <path:ocivault#mosip_domain#latest | base64decode>
 landing-page: 
   istio:
     host: <path:ocivault#mosip_domain#latest | base64decode>
+    enabled: true
+    ingressController:
+      name: ingress
+    prefix: /
   landing: 
     version: v1.2.0.1-B3
     name: oci-mosip-sandbox
