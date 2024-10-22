@@ -12,6 +12,7 @@ configserver:
   activemq_enabled: true
   artemis_password: ""
   msg_gateway: true
+  smtp_secret: <path:ocivault#mosip_smtp_secret#latest | base64decode>
   pre_reg_captcha_site_key: <path:ocivault#mosip_pre_reg_captcha_site_key#latest | base64decode>
   pre_reg_captcha_secret_key: <path:ocivault#mosip_pre_reg_captcha_secret_key#latest | base64decode>
   resident_captcha_site_key: <path:ocivault#mosip_resident_captcha_site_key#latest | base64decode>
