@@ -8,7 +8,7 @@ common:
   kafka_enabled: true
   msg_gw_enabled: true
   captcha_enabled: true
-  landingpage_enabled: true
+  landingpage_enabled: false
   destination:
     server: https://kubernetes.default.svc
   source:
