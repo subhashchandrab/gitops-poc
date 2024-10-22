@@ -18,6 +18,7 @@ common:
   mock_biosdk_enabled: true
   packetmanager_enabled: true
   datashare_enabled: true
+  prereg_enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:
