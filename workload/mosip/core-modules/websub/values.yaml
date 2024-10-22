@@ -4,3 +4,7 @@ configserver:
   gitRepo:
     uri: https://github.com/oci-mosip/mosip-config
     version: oci-v1.2.0.1-B2
+
+
+websub-consolidator:
+  fullnameOverride: "websub-consolidator"
