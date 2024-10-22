@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: global
+  namespace: {{ .Values.namespace }}
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+data:
+  installation-name: oci-mosip-sandbox
+  installation-domain: {{ .Values.domain_name }}
+  mosip-version: develop
+  mosip-api-host: api.{{ .Values.domain_name }}
+  mosip-api-internal-host: api-internal.{{ .Values.domain_name }}
+  mosip-prereg-host: prereg.{{ .Values.domain_name }}
+  mosip-activemq-host: activemq.{{ .Values.domain_name }}
+  mosip-kibana-host: kibana.{{ .Values.domain_name }}
+  mosip-admin-host: admin.{{ .Values.domain_name }}
+  mosip-regclient-host: regclient.{{ .Values.domain_name }}
+  mosip-minio-host: minio.{{ .Values.domain_name }}
+  mosip-kafka-host: kafka.{{ .Values.domain_name }}
+  mosip-iam-external-host: iam.{{ .Values.domain_name }}
+  mosip-idp-host: idp.{{ .Values.domain_name }}
+  mosip-postgres-host: postgres.{{ .Values.domain_name }}
+  mosip-pmp-host: pmp.{{ .Values.domain_name }}
+  mosip-resident-host: resident.{{ .Values.domain_name }}
+  mosip-compliance-host: compliance.{{ .Values.domain_name }}
+  mosip-esignet-host: esignet.{{ .Values.domain_name }}
+  mosip-smtp-host: smtp.{{ .Values.domain_name }}
+  is_glowroot_env: absent
