@@ -64,8 +64,8 @@ keycloak-init:
 
 keycloak:
   image: 
-    repository: mosipid/mosip-keycloak
-    tag: 16.1.1-debian-10-r85
+    repository: mosipqa/mosip-keycloak
+    tag: 1.2.0.1
 
   service:
     type: ClusterIP

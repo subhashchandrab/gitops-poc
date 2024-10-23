@@ -1,5 +1,6 @@
 external:
   postgres_enabled: true
+  keycloak_enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:
