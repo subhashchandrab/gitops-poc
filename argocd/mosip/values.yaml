@@ -5,6 +5,7 @@ external:
   minio_enabled: true
   clamav_enabled: true
   activemq_enabled: true
+  kafka_enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:

@@ -42,6 +42,7 @@ kafka:
     persistence:
       enabled: true
       size: 2Gi
+      storageClass: longhorn
 
   resources:
     limits: {}
