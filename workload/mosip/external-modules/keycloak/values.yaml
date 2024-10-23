@@ -3,6 +3,7 @@ keycloakExternalHost: iam.<path:ocivault#mosip_domain#latest | base64decode>
 keycloak_db_password: <path:ocivault#mosip_pg_password#latest | base64decode> 
 
 keycloak-init: 
+  backoffLimit: 6
   frontend: https://iam.<path:ocivault#mosip_domain#latest | base64decode>/auth
   clientSecrets:
     - name: mosip_abis_client_secret
