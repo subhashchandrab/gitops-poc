@@ -6,6 +6,7 @@ external:
   clamav_enabled: true
   activemq_enabled: true
   kafka_enabled: true
+  msg_gw_enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:
