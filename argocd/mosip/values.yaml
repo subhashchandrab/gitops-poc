@@ -22,6 +22,7 @@ common:
   idrepo_enabled: true
   pms_enabled: true
   mock_abis_enabled: true
+  mock_mv_enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:
