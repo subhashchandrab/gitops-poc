@@ -1,4 +1,4 @@
-{{- if .Values.common.minio_enabled }}
+{{- if .Values.external.minio_enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -8,12 +8,12 @@ metadata:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    server: {{ .Values.common.destination.server }}
+    server: {{ .Values.external.destination.server }}
     namespace: minio
   project: default
   source:
-    repoURL: {{ .Values.common.source.repoURL }}
-    targetRevision: {{ .Values.common.source.targetRevision }}
+    repoURL: {{ .Values.external.source.repoURL }}
+    targetRevision: {{ .Values.external.source.targetRevision }}
     path: workload/mosip/external-modules/minio
   syncPolicy:
     automated:
