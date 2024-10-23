@@ -19,6 +19,7 @@ common:
   packetmanager_enabled: true
   datashare_enabled: true
   prereg_enabled: true
+  idrepo_enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:
