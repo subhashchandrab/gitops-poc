@@ -46,6 +46,9 @@
         - pmp
         - resident
         - esignet
+        - injiweb
+        - injiverify
+        - injicertify
       
 
     - name: Update private rrset
