@@ -26,4 +26,9 @@ data:
   mosip-compliance-host: compliance.{{ .Values.domain_name }}
   mosip-esignet-host: esignet.{{ .Values.domain_name }}
   mosip-smtp-host: smtp.{{ .Values.domain_name }}
+  mosip-signup-host: signup.{{ .Values.domain_name }}
+  mosip-injiweb-host: injiweb.{{ .Values.domain_name }}
+  mosip-injiverify-host: injiverify.{{ .Values.domain_name }}
+  mosip-injicertify-host: injicertify.{{ .Values.domain_name }}
+  mosip-healthservices-host: healthservices.{{ .Values.domain_name }}
   is_glowroot_env: absent

@@ -8,7 +8,7 @@ landing-page:
       name: ingress
     prefix: /
   landing: 
-    version: v1.2.0.1-B3
+    version: oci-daas-v1.2.0.1-B4
     name: oci-mosip-sandbox
     api: api.<path:ocivault#mosip_domain#latest | base64decode>
     apiInternal: api-internal.<path:ocivault#mosip_domain#latest | base64decode>
@@ -25,6 +25,7 @@ landing-page:
     resident: resident.<path:ocivault#mosip_domain#latest | base64decode>
     esignet: esignet.<path:ocivault#mosip_domain#latest | base64decode>
     smtp: smtp.<path:ocivault#mosip_domain#latest | base64decode>
+    healthservices: healthservices.<path:ocivault#mosip_domain#latest | base64decode>
     postgres: 
       host: postgres.<path:ocivault#mosip_domain#latest | base64decode>
       port: 5432
