@@ -3,6 +3,7 @@ external:
   keycloak_enabled: true
   softhsm_enabled: true
   minio_enabled: true
+  clamav_enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:

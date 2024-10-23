@@ -1,4 +1,4 @@
-{{- if .Values.clamav.enabled }}
+{{- if .Values.external.clamav_enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -8,29 +8,13 @@ metadata:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    server: {{ .Values.clamav.destination.server }}
+    server: {{ .Values.external.destination.server}}
     namespace: clamav
   project: default
   source:
-    repoURL: {{ .Values.clamav.source.repoURL }}
-    targetRevision: {{ .Values.clamav.source.targetRevision }}
-    chart: clamav
-    plugin:
-      name: argocd-vault-plugin-helm
-      env:
-        - name: HELM_VALUES      
-          value: |
-            replicaCount: 1
-            image:
-              repository: clamav/clamav
-              tag: latest
-              pullPolicy: Always
-
-            persistentVolume:
-              enabled: true
-              size: 100Mi
-              storageClass: "longhorn"
-
+    repoURL: {{ .Values.external.source.repoURL}}
+    targetRevision: {{ .Values.external.source.targetRevision }}
+    path: workload/mosip/external-modules/clamav
   syncPolicy:
     automated:
       prune: true
