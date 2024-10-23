@@ -1,3 +1,11 @@
+external:
+  postgres_enabled: true
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/ddevadat/gitops-poc
+    targetRevision: HEAD
+
 common:
   dns_record_enabled: true
   monitoring_enabled: true
