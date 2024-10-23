@@ -23,7 +23,7 @@ common:
   pms_enabled: true
   mock_abis_enabled: true
   mock_mv_enabled: true
-  regproc_enabled: true
+  regproc_enabled: true   ### This is not fully up. It has come depenendency with clamav
   destination:
     server: https://kubernetes.default.svc
   source:
@@ -50,7 +50,7 @@ artifactory:
 
 ## This is not getting deployed. Error install: can't create directory '/run/clamav': Permission denied
 clamav:
-  enabled: false
+  enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:
