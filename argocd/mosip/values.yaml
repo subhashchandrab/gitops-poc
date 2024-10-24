@@ -47,7 +47,7 @@ core:
   print_enabled: true
   
   partner_onboarder_enabled: false   ## Partner Onboarding need to be validated manually..
-  file_server_enabled: false
+  file_server_enabled: true
   resident_enabled: true
   regclient_enabled: true
   
