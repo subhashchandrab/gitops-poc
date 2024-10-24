@@ -1,0 +1,103 @@
+configserver:
+  domain_name: <path:ocivault#mosip_domain#latest | base64decode>
+  activeProfileEnv: default
+  gitRepo:
+    uri: https://github.com/oci-mosip/mosip-config
+    version: oci-v1.2.0.1-B4
+
+  clientSecrets:
+    - name: mosip_abis_client_secret
+      secret: "<path:ocivault#mosip_abis_client_secret#latest | base64decode>"
+    - name: mosip_admin_client_secret
+      secret: "<path:ocivault#mosip_admin_client_secret#latest | base64decode>"
+    - name: mosip_admin_services_client_secret
+      secret: "<path:ocivault#mosip_admin_services_client_secret#latest | base64decode>"
+    - name: mosip_auth_client_secret
+      secret: "<path:ocivault#mosip_auth_client_secret#latest | base64decode>"
+    - name: mosip_crereq_client_secret
+      secret: "<path:ocivault#mosip_crereq_client_secret#latest | base64decode>"
+    - name: mosip_creser_client_secret
+      secret: "<path:ocivault#mosip_creser_client_secret#latest | base64decode>"
+    - name: mosip_datsha_client_secret
+      secret: "<path:ocivault#mosip_datsha_client_secret#latest | base64decode>"
+    - name: mosip_ida_client_secret
+      secret: "<path:ocivault#mosip_ida_client_secret#latest | base64decode>"
+    - name: mosip_misp_client_secret
+      secret: "<path:ocivault#mosip_misp_client_secret#latest | base64decode>"
+    - name: mosip_partner_client_secret
+      secret: "<path:ocivault#mosip_partner_client_secret#latest | base64decode>"
+    - name: mosip_partnermanager_client_secret
+      secret: "<path:ocivault#mosip_partnermanager_client_secret#latest | base64decode>"
+    - name: mosip_pms_client_secret
+      secret: "<path:ocivault#mosip_pms_client_secret#latest | base64decode>"
+    - name: mosip_policymanager_client_secret
+      secret: "<path:ocivault#mosip_policymanager_client_secret#latest | base64decode>"
+    - name: mosip_reg_client_secret
+      secret: "<path:ocivault#mosip_reg_client_secret#latest | base64decode>"
+    - name: mosip_regproc_client_secret
+      secret: "<path:ocivault#mosip_regproc_client_secret#latest | base64decode>"
+    - name: mosip_resident_client_secret
+      secret: "<path:ocivault#mosip_resident_client_secret#latest | base64decode>"
+    - name: mosip_prereg_client_secret
+      secret: "<path:ocivault#mosip_prereg_client_secret#latest | base64decode>"
+    - name: mosip_creser_idpass_client_secret
+      secret: "<path:ocivault#mosip_creser_idpass_client_secret#latest | base64decode>"
+    - name: mosip_syncdata_client_secret
+      secret: "<path:ocivault#mosip_syncdata_client_secret#latest | base64decode>"
+    - name: mosip_deployment_client_secret
+      secret: "<path:ocivault#mosip_deployment_client_secret#latest | base64decode>"
+    - name: mpartner_default_auth_secret
+      secret: "<path:ocivault#mpartner_default_auth_secret#latest | base64decode>"
+    - name: mosip_idrepo_client_secret
+      secret: "<path:ocivault#mosip_idrepo_client_secret#latest | base64decode>"
+    - name: mpartner_default_print_secret
+      secret: "<path:ocivault#mpartner_default_print_secret#latest | base64decode>"
+    - name: mosip_hotlist_client_secret
+      secret: "<path:ocivault#mosip_hotlist_client_secret#latest | base64decode>"
+    - name: mpartner_default_mobile_secret
+      secret: "<path:ocivault#mpartner_default_mobile_secret#latest | base64decode>"
+    - name: mpartner_default_digitalcard_secret
+      secret: "<path:ocivault#mpartner_default_digitalcard_secret#latest | base64decode>"
+    - name: mosip_testrig_client_secret
+      secret: "<path:ocivault#mosip_testrig_client_secret#latest | base64decode>"
+    - name: mosip_digitalcard_client_secret
+      secret: "<path:ocivault#mosip_digitalcard_client_secret#latest | base64decode>"
+
+
+artifacts:
+  baseUrl: http://artifactory.artifactory:80
+  iamAdapter: /artifactory/libs-release-local/io/mosip/kernel/kernel-auth-adapter.jar
+  iamAdapterRegproc: /artifactory/libs-release-local/io/mosip/kernel/kernel-auth-adapter.jar
+  iamAdapterRegprocExt: /artifactory/libs-release-local/io/mosip/kernel/kernel-auth-adapter.jar
+  hsmClientZip: /artifactory/libs-release-local/hsm/client.zip
+  cacheProvider: /artifactory/libs-release-local/cache/cache-provider.jar
+  runtimeDep: /artifactory/libs-release-local/io/mosip/kernel/
+  regprocJars: /artifactory/libs-release-local/clamav/kernel-virusscanner-clamav.jar
+  runtimeDepUrl: /artifactory/libs-release-local/io/mosip/kernel/
+  preregistrationBundleUrl: /artifactory/libs-release-local/i18n/pre-registration-i18n-bundle.zip
+  virusscannerUrl: /artifactory/libs-release-local/clamav/kernel-virusscanner-clamav.jar
+  authwrapperUrl: /artifactory/libs-release-local/idp/idp-auth-wrapper/authentication-wrapper.jar
+  esignetauthwrapperUrl: /artifactory/libs-release-local/esignet/esignet-wrapper.zip
+
+
+
+
+resident:
+  fullnameOverride: "resident"
+  istio:
+    corsPolicy:
+      allowOrigins:
+        - prefix: https://resident.<path:ocivault#mosip_domain#latest | base64decode>
+
+resident-ui:
+  fullnameOverride: "resident-ui"
+  resident:
+    apiHost: api-internal.<path:ocivault#mosip_domain#latest | base64decode>
+  istio:
+    ingressController:
+      name: ingress
+    gateways:
+      - resident-ui-gateway
+    prefix: /
+    hosts:
+      - resident.<path:ocivault#mosip_domain#latest | base64decode>
