@@ -9,16 +9,16 @@ common:
     targetRevision: HEAD
 
 external:
-  postgres_enabled: false
-  keycloak_enabled: false
-  softhsm_enabled: false
-  minio_enabled: false
-  clamav_enabled: false
-  activemq_enabled: false
-  kafka_enabled: false
-  msg_gw_enabled: false
-  captcha_enabled: false
-  landingpage_enabled: false
+  postgres_enabled: true
+  keycloak_enabled: true
+  softhsm_enabled: true
+  minio_enabled: true
+  clamav_enabled: true
+  activemq_enabled: true
+  kafka_enabled: true
+  msg_gw_enabled: true
+  captcha_enabled: true
+  landingpage_enabled: true
   destination:
     server: https://kubernetes.default.svc
   source:
@@ -26,7 +26,7 @@ external:
     targetRevision: HEAD
 
 core:
-  config_server_enabled: false
+  config_server_enabled: true
   artifactory_enabled: false
 
 
