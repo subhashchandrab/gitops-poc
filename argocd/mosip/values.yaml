@@ -34,7 +34,7 @@ core:
   kernel_enabled: true   ## This is not up fully. Idgenerator is giving unique key constraint error
   masterdata_loader_enabled: true
   mock_biosdk_enabled: true
-  packetmanager_enabled: false
+  packetmanager_enabled: true
   datashare_enabled: false
   prereg_enabled: false
   idrepo_enabled: false
