@@ -1,4 +1,4 @@
-{{- if .Values.external.keymanager_enabled }}
+{{- if .Values.core.keymanager_enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -8,12 +8,12 @@ metadata:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    server: {{ .Values.external.destination.server }}
+    server: {{ .Values.core.destination.server }}
     namespace: keymanager
   project: default
   source:
-    repoURL: {{ .Values.external.source.repoURL }}
-    targetRevision: {{ .Values.external.source.targetRevision }}
+    repoURL: {{ .Values.core.source.repoURL }}
+    targetRevision: {{ .Values.core.source.targetRevision }}
     path: workload/mosip/core-modules/keymanager
   syncPolicy:
     automated:
