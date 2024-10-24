@@ -23,6 +23,7 @@ artifacts:
 
 keygen:
   fullnameOverride: "keygen"
+  backoffLimit: 6
 
 ida-auth:
   fullnameOverride: "ida-auth"
