@@ -29,7 +29,7 @@ core:
   config_server_enabled: true
   artifactory_enabled: true
   keymanager_enabled: true
-  websub_enabled: false
+  websub_enabled: true
   mock_smtp_enabled: false
   kernel_enabled: false   ## This is not up fully. Idgenerator is giving unique key constraint error
   masterdata_loader_enabled: false
