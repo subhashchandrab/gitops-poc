@@ -1,4 +1,4 @@
-{{- if .Values.external.dns_record_enabled }}
+{{- if .Values.common.dns_record_enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -8,11 +8,11 @@ metadata:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    server: {{ .Values.external.destination.server }}
+    server: {{ .Values.common.destination.server }}
     namespace: istio-system
   project: default
   source:
-    repoURL: {{ .Values.external.source.repoURL }}
+    repoURL: {{ .Values.common.source.repoURL }}
     targetRevision: {{ .Values.external.source.targetRevision }}
     path: workload/mosip/external-modules/dns-zone-records
   syncPolicy:
