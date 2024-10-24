@@ -1,0 +1,28 @@
+{{- if .Values.core.regclient_enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: regclient
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: {{ .Values.core.destination.server }}
+    namespace: regclient
+  project: default
+  source:
+    repoURL: {{ .Values.core.source.repoURL }}
+    targetRevision: {{ .Values.core.source.targetRevision }}
+    path: workload/mosip/core-modules/regclient
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+    managedNamespaceMetadata: 
+      labels:
+        istio-injection: enabled   
+{{- end }}
