@@ -27,7 +27,7 @@ external:
 
 core:
   config_server_enabled: true
-  artifactory_enabled: false
+  artifactory_enabled: true
 
 
 
