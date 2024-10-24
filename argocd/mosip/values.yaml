@@ -30,7 +30,7 @@ core:
   artifactory_enabled: true
   keymanager_enabled: true
   websub_enabled: true
-  mock_smtp_enabled: false
+  mock_smtp_enabled: true
   kernel_enabled: false   ## This is not up fully. Idgenerator is giving unique key constraint error
   masterdata_loader_enabled: false
   mock_biosdk_enabled: false
