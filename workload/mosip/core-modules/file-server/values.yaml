@@ -9,6 +9,7 @@ mosip-file-server:
   fullnameOverride: "mosip-file-server"
   mosipfileserver:
     host: 'api.<path:ocivault#mosip_domain#latest | base64decode>'
+    healthCheckUrl: https://api.<path:ocivault#mosip_domain#latest | base64decode>/.well-known/
     secrets:
       KEYCLOAK_CLIENT_SECRET: <path:ocivault#mosip_regproc_client_secret#latest | base64decode>
   istio:
