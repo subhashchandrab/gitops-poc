@@ -58,6 +58,8 @@ keycloak-init:
       secret: "<path:ocivault#mpartner_default_mobile_secret#latest | base64decode>"
     - name: mpartner_default_digitalcard_secret
       secret: "<path:ocivault#mpartner_default_digitalcard_secret#latest | base64decode>"
+    - name: mosip_digitalcard_client_secret
+      secret: "<path:ocivault#mosip_digitalcard_client_secret#latest | base64decode>"
     - name: mosip_testrig_client_secret
       secret: "<path:ocivault#mosip_testrig_client_secret#latest | base64decode>"
 
