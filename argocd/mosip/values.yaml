@@ -28,10 +28,7 @@ external:
 core:
   config_server_enabled: true
   artifactory_enabled: true
-
-
-
-  keymanager_enabled: false
+  keymanager_enabled: true
   websub_enabled: false
   mock_smtp_enabled: false
   kernel_enabled: false   ## This is not up fully. Idgenerator is giving unique key constraint error
@@ -50,11 +47,3 @@ core:
   source:
     repoURL: https://github.com/ddevadat/gitops-poc
     targetRevision: HEAD
-
-artifactory:
-  enabled: false
-  destination:
-    server: https://kubernetes.default.svc
-  source:
-    repoURL: https://mosip.github.io/mosip-helm
-    targetRevision: 12.0.1-B2

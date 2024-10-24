@@ -1,4 +1,4 @@
-{{- if .Values.artifactory.enabled }}
+{{- if .Values.core.artifactory_enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -8,15 +8,13 @@ metadata:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    server: {{ .Values.artifactory.destination.server }}
+    server: {{ .Values.core.destination.server }}
     namespace: artifactory
   project: default
   source:
-    repoURL: {{ .Values.artifactory.source.repoURL }}
-    targetRevision: {{ .Values.artifactory.source.targetRevision }}
-    chart: artifactory
-    plugin:
-      name: argocd-vault-plugin-helm
+    repoURL: {{ .Values.core.source.repoURL }}
+    targetRevision: {{ .Values.core.source.targetRevision }}
+    path: workload/mosip/core-modules/artifactory
   syncPolicy:
     automated:
       prune: true
@@ -26,5 +24,5 @@ spec:
       - ApplyOutOfSyncOnly=true
     managedNamespaceMetadata: 
       labels:
-        istio-injection: enabled
+        istio-injection: enabled   
 {{- end }}

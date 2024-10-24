@@ -5,7 +5,7 @@ configserver:
   activeProfileEnv: default
   gitRepo:
     uri: https://github.com/oci-mosip/mosip-config
-    version: oci-v1.2.0.1-B2
+    version: oci-v1.2.0.1-B4
 
 artifacts:
   baseUrl: http://artifactory.artifactory:80
