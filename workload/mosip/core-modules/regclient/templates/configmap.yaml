@@ -30,4 +30,14 @@ metadata:
     argocd.argoproj.io/hook: PreSync
 binaryData:
   keystore.p12: {{ .Values.regclient_keystore_file }}
-
+data:
+  Client.crt: |
+    {{ .Values.regclient_client_certificate | indent 4 }}
+  Client.csr: |
+    {{ .Values.regclient_client_csr | indent 4 }}
+  Client.key: |
+    {{ .Values.regclient_client_key | indent 4 }}
+  RootCA.crt: |
+    {{ .Values.regclient_root_certificate | indent 4 }}
+  RootCA.key: |
+    {{ .Values.regclient_root_key | indent 4 }}
