@@ -1,0 +1,29 @@
+configserver:
+  domain_name: <path:ocivault#mosip_domain#latest | base64decode>
+  activeProfileEnv: default
+  gitRepo:
+    uri: https://github.com/oci-mosip/mosip-config
+    version: oci-v1.2.0.1-B4
+
+mosip-file-server:
+  fullnameOverride: "mosip-file-server"
+  mosipfileserver:
+    host: 'api.<path:ocivault#mosip_domain#latest | base64decode>'
+    secrets:
+      KEYCLOAK_CLIENT_SECRET: <path:ocivault#mosip_regproc_client_secret#latest | base64decode>
+  istio:
+    enabled: true
+    existingGateway: ''             ## istio-system/public or istio-system/internal
+    # ingressController is only valid if existingGateway is null/empty
+    ingressController:
+      # for public, istio: ingressgateway && for internal, istio: ingressgateway-internal
+      - ingress
+    prefix:
+      wellKnownPrefix: '/.well-known/'
+      injiPrefix: '/inji/'
+      mosipCerts: '/mosip-certs/'
+    corsPolicy:
+      allowOrigins:
+        - prefix: https://api.<path:ocivault#mosip_domain#latest | base64decode>
+        - prefix: https://api-internal.<path:ocivault#mosip_domain#latest | base64decode>
+        - prefix: https://verifiablecredential.io
