@@ -39,6 +39,11 @@ data:
   mosip-compliance-host: compliance.{{ .Values.configserver.domain_name }}
   mosip-esignet-host: esignet.{{ .Values.configserver.domain_name }}
   mosip-smtp-host: smtp.{{ .Values.configserver.domain_name }}
+  mosip-signup-host: signup.{{ .Values.configserver.domain_name }}
+  mosip-injiweb-host: injiweb.{{ .Values.configserver.domain_name }}
+  mosip-injiverify-host: injiverify.{{ .Values.configserver.domain_name }}
+  mosip-injicertify-host: injicertify.{{ .Values.configserver.domain_name }}
+  mosip-healthservices-host: healthservices.{{ .Values.configserver.domain_name }}
   is_glowroot_env: absent
 
 ---
@@ -74,12 +79,15 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: email-gateway
+  name: msg-gateway
   namespace: {{ .Values.namespace }}
   annotations:
     argocd.argoproj.io/hook: PreSync
 data:
-  email-smtp-host: mock-smtp.mock-smtp
-  email-smtp-port: "8025"
-  email-smtp-username: mock-smtp.user
+  sms-host: mock-sms.mock-sms
+  sms-port: "8080"
+  sms-username: mock-sms.user
+  smtp-host: mock-smtp.mock-smtp
+  smtp-port: "8025"
+  smtp-username: mock-smtp.user
 {{- end }}

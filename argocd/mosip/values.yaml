@@ -1,4 +1,6 @@
 external:
+  dns_record_enabled: true
+  monitoring_enabled: true
   postgres_enabled: true
   keycloak_enabled: true
   softhsm_enabled: true
@@ -15,18 +17,8 @@ external:
     repoURL: https://github.com/ddevadat/gitops-poc
     targetRevision: HEAD
 
-common:
-  dns_record_enabled: true
-  monitoring_enabled: true
-  keycloak_enabled: false
-  postgres_enabled: false
-  minio_enabled: false
-  activemq_enabled: false
-  kafka_enabled: false
-  msg_gw_enabled: false
-  captcha_enabled: false
-  landingpage_enabled: false
-  config_server_enabled: false
+core:
+  config_server_enabled: true
   keymanager_enabled: false
   websub_enabled: false
   mock_smtp_enabled: false

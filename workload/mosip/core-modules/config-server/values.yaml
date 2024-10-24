@@ -13,6 +13,7 @@ configserver:
   artemis_password: ""
   msg_gateway: true
   smtp_secret: <path:ocivault#mosip_smtp_secret#latest | base64decode>
+  sms_secret: <path:ocivault#mosip_sms_secret#latest | base64decode>
   pre_reg_captcha_site_key: <path:ocivault#mosip_pre_reg_captcha_site_key#latest | base64decode>
   pre_reg_captcha_secret_key: <path:ocivault#mosip_pre_reg_captcha_secret_key#latest | base64decode>
   resident_captcha_site_key: <path:ocivault#mosip_resident_captcha_site_key#latest | base64decode>
@@ -84,7 +85,7 @@ config-server:
   fullnameOverride: "config-server"
   gitRepo:
     uri: https://github.com/oci-mosip/mosip-config
-    version: oci-v1.2.0.1-B2
+    version: oci-v1.2.0.1-B4
     ## Folders within the base repo where properties may be found.
     searchFolders: ""
     private: false
