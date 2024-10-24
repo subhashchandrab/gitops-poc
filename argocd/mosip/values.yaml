@@ -42,10 +42,10 @@ core:
   mock_abis_enabled: true
   mock_mv_enabled: true
   regproc_enabled: true   ### This is not fully up. It has come depenendency with clamav
-
   admin_enabled: true
   ida_enabled: true
   print_enabled: true
+  
   partner_onboarder_enabled: false   ## Partner Onboarding need to be validated manually..
   file_server_enabled: true
   resident_enabled: true
