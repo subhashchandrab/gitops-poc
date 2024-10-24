@@ -24,6 +24,8 @@ artifacts:
 keygen:
   fullnameOverride: "keygen"
   backoffLimit: 6
+  springConfigNameEnv: id-authentication
+  softHsmCM: softhsm-ida-share
 
 ida-auth:
   fullnameOverride: "ida-auth"
