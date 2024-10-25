@@ -1,0 +1,118 @@
+external:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/ddevadat/gitops-poc
+    targetRevision: HEAD
+  components:
+    - name: dns-zone-records
+      path: workload/mosip/external-modules/dns-zone-records
+      namespace: istio-system
+
+    - name: httpbin
+      path: workload/mosip/external-modules/httpbin
+      namespace: istio-system
+
+    - name: mosip-monitoring
+      repo_url: https://prometheus-community.github.io/helm-charts
+      chart_name: kube-prometheus-stack
+      chart_version: 65.3.1
+      namespace: monitoring
+
+    - name: postgres
+      path: workload/mosip/external-modules/postgres
+      namespace: postgres
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: postgres-init
+      path: workload/mosip/external-modules/postgres-init
+      namespace: postgres
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: keycloak
+      path: workload/mosip/external-modules/keycloak
+      namespace: postgres
+      namespace_labels:
+        istio_injection_label: disabled
+
+    - name: softhsm-kernel
+      path: workload/mosip/external-modules/softhsm-kernel
+      namespace: softhsm
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: softhsm-ida
+      path: workload/mosip/external-modules/softhsm-ida
+      namespace: softhsm
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: minio
+      path: workload/mosip/external-modules/minio
+      namespace: minio
+      namespace_labels:
+        istio_injection_label: disabled
+
+    - name: clamav
+      path: workload/mosip/external-modules/clamav
+      namespace: clamav
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: activemq
+      path: workload/mosip/external-modules/activemq
+      namespace: activemq
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: kafka
+      path: workload/mosip/external-modules/kafka
+      namespace: kafka
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: msg-gateway
+      path: workload/mosip/external-modules/msg-gateway
+      namespace: msg-gateways
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: landing-page
+      path: workload/mosip/external-modules/landing-page
+      namespace: landing-page
+      namespace_labels:
+        istio_injection_label: enabled
+
+core:
+  config_server_enabled: true
+  artifactory_enabled: true
+  keymanager_enabled: true
+  websub_enabled: true
+  mock_smtp_enabled: true
+  kernel_enabled: true   ## This is not up fully. Idgenerator is giving unique key constraint error
+  masterdata_loader_enabled: true
+  mock_biosdk_enabled: true
+  packetmanager_enabled: true
+  datashare_enabled: true
+  prereg_enabled: true
+  idrepo_enabled: true
+  pms_enabled: true
+  mock_abis_enabled: true
+  mock_mv_enabled: true
+  regproc_enabled: true   ### This is not fully up. It has come depenendency with clamav
+  admin_enabled: true
+  ida_enabled: true
+  print_enabled: true
+  
+  partner_onboarder_enabled: false   ## Partner Onboarding need to be validated manually..
+  file_server_enabled: true
+  resident_enabled: true
+  regclient_enabled: true
+  
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/ddevadat/gitops-poc
+    targetRevision: HEAD
