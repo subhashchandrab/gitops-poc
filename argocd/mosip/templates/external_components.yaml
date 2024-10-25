@@ -5,6 +5,12 @@ kind: Application
 metadata:
   name: {{ .name }}
   namespace: argocd
+  {{- if .annotations }}
+  annotations:
+    {{- range $key, $value := .annotations }}
+    {{ $key }}: {{ $value }}
+    {{- end }}
+    {{- end }}
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
@@ -33,6 +39,12 @@ kind: Application
 metadata:
   name: {{ .name }}
   namespace: argocd
+  {{- if .annotations }}
+  annotations:
+    {{- range $key, $value := .annotations }}
+    {{ $key }}: {{ $value }}
+    {{- end }}
+    {{- end }}
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
