@@ -57,6 +57,7 @@ data:
   esignet_wrapper_url_env: {{ .Values.artifacts.baseUrl }}/{{ .Values.artifacts.esignetauthwrapperUrl }}
 
 
+
 ---
 
 apiVersion: v1

@@ -63,12 +63,12 @@ data:
   iam_adapter_url_env: {{ .Values.artifacts.baseUrl }}/{{ .Values.artifacts.iamAdapter }}
   iam_adapter_regproc_url_env: {{ .Values.artifacts.baseUrl }}/{{ .Values.artifacts.iamAdapterRegproc }}
   iam_adapter_regproc_ext_url_env: {{ .Values.artifacts.baseUrl }}/{{ .Values.artifacts.iamAdapterRegprocExt }}
-  zip_file_path: {{ .Values.artifacts.baseUrl }}/{{ .Values.artifacts.hsmClientZip }}
+  zip_file_path: {{ .Values.artifacts.hsmClientZip }}
   cache_provider_url_env: {{ .Values.artifacts.baseUrl }}/{{ .Values.artifacts.cacheProvider }}
   runtime_dep_url_env: {{ .Values.artifacts.baseUrl }}/{{ .Values.artifacts.runtimeDep }}
-  regproc_jars_env:  {{ .Values.artifacts.baseUrl }}/{{ .Values.artifacts.regprocJars }}
-  runtime_dep_url_env: {{ .Values.artifacts.baseUrl }}/{{ .Values.artifacts.runtimeDepUrl }}
+  regproc_jars_env:  {{ .Values.artifacts.regprocJars }}
   preregistration_i18n_bundle_url_env: {{ .Values.artifacts.baseUrl }}/{{ .Values.artifacts.preregistrationBundleUrl }}
   virusscanner_url_env: {{ .Values.artifacts.baseUrl }}/{{ .Values.artifacts.virusscannerUrl }}
   auth_wrapper_url_env: {{ .Values.artifacts.baseUrl }}/{{ .Values.artifacts.authwrapperUrl }}
   esignet_wrapper_url_env: {{ .Values.artifacts.baseUrl }}/{{ .Values.artifacts.esignetauthwrapperUrl }}
+
