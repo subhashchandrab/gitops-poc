@@ -43,7 +43,7 @@ external:
 
     - name: keycloak
       path: workload/mosip/external-modules/keycloak
-      namespace: postgres
+      namespace: keycloak
       namespace_labels:
         istio_injection_label: disabled
       annotations:
