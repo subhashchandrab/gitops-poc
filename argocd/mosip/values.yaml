@@ -136,13 +136,13 @@ core:
       annotations:
         argocd.argoproj.io/sync-wave: "-85"
 
-    # - name: keymanager
-    #   path: workload/mosip/core-modules/keymanager
-    #   namespace: keymanager
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-84"
+    - name: keymanager
+      path: workload/mosip/core-modules/keymanager
+      namespace: keymanager
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/sync-wave: "-84"
 
     # - name: websub
     #   path: workload/mosip/core-modules/websub
