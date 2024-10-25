@@ -86,33 +86,144 @@ external:
         istio_injection_label: enabled
 
 core:
-  config_server_enabled: true
-  artifactory_enabled: true
-  keymanager_enabled: true
-  websub_enabled: true
-  mock_smtp_enabled: true
-  kernel_enabled: true   ## This is not up fully. Idgenerator is giving unique key constraint error
-  masterdata_loader_enabled: true
-  mock_biosdk_enabled: true
-  packetmanager_enabled: true
-  datashare_enabled: true
-  prereg_enabled: true
-  idrepo_enabled: true
-  pms_enabled: true
-  mock_abis_enabled: true
-  mock_mv_enabled: true
-  regproc_enabled: true   ### This is not fully up. It has come depenendency with clamav
-  admin_enabled: true
-  ida_enabled: true
-  print_enabled: true
-  
-  partner_onboarder_enabled: false   ## Partner Onboarding need to be validated manually..
-  file_server_enabled: true
-  resident_enabled: true
-  regclient_enabled: true
-  
   destination:
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/ddevadat/gitops-poc
     targetRevision: HEAD
+  components:
+    - name: config-server
+      path: workload/mosip/core-modules/config-server
+      namespace: config-server
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: artifactory
+      path: workload/mosip/core-modules/artifactory
+      namespace: artifactory
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: keymanager
+      path: workload/mosip/core-modules/keymanager
+      namespace: keymanager
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: websub
+      path: workload/mosip/core-modules/websub
+      namespace: websub
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: mock-smtp
+      path: workload/mosip/core-modules/mock-smtp
+      namespace: mock-smtp
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: kernel
+      path: workload/mosip/core-modules/kernel
+      namespace: kernel
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: masterdata-loader
+      path: workload/mosip/core-modules/masterdata-loader
+      namespace: masterdata-loader
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: mock-biosdk
+      path: workload/mosip/core-modules/biosdk
+      namespace: biosdk
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: packetmanager
+      path: workload/mosip/core-modules/packetmanager
+      namespace: packetmanager
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: datashare
+      path: workload/mosip/core-modules/datashare
+      namespace: datashare
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: pre-registration
+      path: workload/mosip/core-modules/prereg
+      namespace: prereg
+
+    - name: idrepo
+      path: workload/mosip/core-modules/idrepo
+      namespace: idrepo
+      namespace_labels:
+        istio_injection_label: enabled
+        
+    - name: pms
+      path: workload/mosip/core-modules/pms
+      namespace: pms
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: mock-abis
+      path: workload/mosip/core-modules/mock-abis
+      namespace: abis
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: mock-mv
+      path: workload/mosip/core-modules/mock-mv
+      namespace: abis
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: registration-processor
+      path: workload/mosip/core-modules/regproc
+      namespace: regproc
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: admin
+      path: workload/mosip/core-modules/admin
+      namespace: admin
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: ida
+      path: workload/mosip/core-modules/ida
+      namespace: ida
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: print
+      path: workload/mosip/core-modules/print
+      namespace: print
+      namespace_labels:
+        istio_injection_label: enabled
+
+    # - name: partner-onboarder
+    #   path: workload/mosip/core-modules/xxxx
+    #   namespace: xxxx
+    #   namespace_labels:
+    #     istio_injection_label: enabled
+
+    - name: mosip-file-server
+      path: workload/mosip/core-modules/file-server
+      namespace: mosip-file-server
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: resident
+      path: workload/mosip/core-modules/resident
+      namespace: resident
+      namespace_labels:
+        istio_injection_label: enabled
+
+    - name: registration-client
+      path: workload/mosip/core-modules/regclient
+      namespace: regclient
+      namespace_labels:
+        istio_injection_label: enabled

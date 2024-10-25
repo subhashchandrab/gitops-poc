@@ -9,16 +9,16 @@ common:
     targetRevision: HEAD
 
 external:
-  postgres_enabled: true
-  keycloak_enabled: true
-  softhsm_enabled: true
-  minio_enabled: true
-  clamav_enabled: true
-  activemq_enabled: true
-  kafka_enabled: true
-  msg_gw_enabled: true
-  captcha_enabled: true
-  landingpage_enabled: true
+  postgres_enabled: false
+  keycloak_enabled: false
+  softhsm_enabled: false
+  minio_enabled: false
+  clamav_enabled: false
+  activemq_enabled: false
+  kafka_enabled: false
+  msg_gw_enabled: false
+  captcha_enabled: false
+  landingpage_enabled: false
   destination:
     server: https://kubernetes.default.svc
   source:
@@ -26,30 +26,30 @@ external:
     targetRevision: HEAD
 
 core:
-  config_server_enabled: true
-  artifactory_enabled: true
-  keymanager_enabled: true
-  websub_enabled: true
-  mock_smtp_enabled: true
-  kernel_enabled: true   ## This is not up fully. Idgenerator is giving unique key constraint error
-  masterdata_loader_enabled: true
-  mock_biosdk_enabled: true
-  packetmanager_enabled: true
-  datashare_enabled: true
-  prereg_enabled: true
-  idrepo_enabled: true
-  pms_enabled: true
-  mock_abis_enabled: true
-  mock_mv_enabled: true
-  regproc_enabled: true   ### This is not fully up. It has come depenendency with clamav
-  admin_enabled: true
-  ida_enabled: true
-  print_enabled: true
+  config_server_enabled: false
+  artifactory_enabled: false
+  keymanager_enabled: false
+  websub_enabled: false
+  mock_smtp_enabled: false
+  kernel_enabled: false   ## This is not up fully. Idgenerator is giving unique key constraint error
+  masterdata_loader_enabled: false
+  mock_biosdk_enabled: false
+  packetmanager_enabled: false
+  datashare_enabled: false
+  prereg_enabled: false
+  idrepo_enabled: false
+  pms_enabled: false
+  mock_abis_enabled: false
+  mock_mv_enabled: false
+  regproc_enabled: false   ### This is not fully up. It has come depenendency with clamav
+  admin_enabled: false
+  ida_enabled: false
+  print_enabled: false
   
   partner_onboarder_enabled: false   ## Partner Onboarding need to be validated manually..
-  file_server_enabled: true
-  resident_enabled: true
-  regclient_enabled: true
+  file_server_enabled: false
+  resident_enabled: false
+  regclient_enabled: false
   
   destination:
     server: https://kubernetes.default.svc
