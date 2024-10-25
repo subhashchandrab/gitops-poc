@@ -14,7 +14,6 @@ artifacts:
   cacheProvider: /artifactory/libs-release-local/cache/cache-provider.jar
   runtimeDep: /artifactory/libs-release-local/io/mosip/kernel/
   regprocJars: /artifactory/libs-release-local/clamav/kernel-virusscanner-clamav.jar
-  runtimeDepUrl: /artifactory/libs-release-local/io/mosip/kernel/
   preregistrationBundleUrl: /artifactory/libs-release-local/i18n/pre-registration-i18n-bundle.zip
   virusscannerUrl: /artifactory/libs-release-local/clamav/kernel-virusscanner-clamav.jar
   authwrapperUrl: /artifactory/libs-release-local/idp/idp-auth-wrapper/authentication-wrapper.jar
