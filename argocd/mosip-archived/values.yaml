@@ -1,0 +1,58 @@
+
+common:
+  dns_record_enabled: true
+  monitoring_enabled: true
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/ddevadat/gitops-poc
+    targetRevision: HEAD
+
+external:
+  postgres_enabled: false
+  keycloak_enabled: false
+  softhsm_enabled: false
+  minio_enabled: false
+  clamav_enabled: false
+  activemq_enabled: false
+  kafka_enabled: false
+  msg_gw_enabled: false
+  captcha_enabled: false
+  landingpage_enabled: false
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/ddevadat/gitops-poc
+    targetRevision: HEAD
+
+core:
+  config_server_enabled: false
+  artifactory_enabled: false
+  keymanager_enabled: false
+  websub_enabled: false
+  mock_smtp_enabled: false
+  kernel_enabled: false   ## This is not up fully. Idgenerator is giving unique key constraint error
+  masterdata_loader_enabled: false
+  mock_biosdk_enabled: false
+  packetmanager_enabled: false
+  datashare_enabled: false
+  prereg_enabled: false
+  idrepo_enabled: false
+  pms_enabled: false
+  mock_abis_enabled: false
+  mock_mv_enabled: false
+  regproc_enabled: false   ### This is not fully up. It has come depenendency with clamav
+  admin_enabled: false
+  ida_enabled: false
+  print_enabled: false
+  
+  partner_onboarder_enabled: false   ## Partner Onboarding need to be validated manually..
+  file_server_enabled: false
+  resident_enabled: false
+  regclient_enabled: false
+  
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/ddevadat/gitops-poc
+    targetRevision: HEAD
