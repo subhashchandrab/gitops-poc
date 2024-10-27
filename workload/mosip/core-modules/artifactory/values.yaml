@@ -1,4 +1,2 @@
 artifactory:
   fullnameOverride: "artifactory"
-  commonAnnotations:
-    argocd.argoproj.io/sync-wave: "-85"

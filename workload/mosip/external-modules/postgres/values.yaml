@@ -1,8 +1,6 @@
 postgresHost: postgres.<path:ocivault#openg2p_domain#latest | base64decode>
 
 postgresql:
-  commonAnnotations:
-    argocd.argoproj.io/sync-wave: "-97"
   global:
     storageClass: longhorn
   auth:

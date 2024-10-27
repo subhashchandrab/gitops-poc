@@ -1,8 +1,6 @@
 
 postgres-init:
   backoffLimit: 6
-  jobAnnotations: 
-    argocd.argoproj.io/sync-wave: "-96"
   dbUserPasswords:
     dbuserPassword: <path:ocivault#mosip_pg_password#latest | base64decode> 
 
