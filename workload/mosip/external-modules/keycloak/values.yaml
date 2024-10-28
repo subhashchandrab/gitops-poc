@@ -4,8 +4,8 @@ keycloak_db_password: <path:ocivault#mosip_pg_password#latest | base64decode>
 
 keycloak-init: 
   backoffLimit: 10
-  jobAnnotations:
-    argocd.argoproj.io/sync-wave: "-95"
+  # jobAnnotations:
+  #   argocd.argoproj.io/sync-wave: "-95"
   frontend: https://iam.<path:ocivault#mosip_domain#latest | base64decode>/auth
   clientSecrets:
     - name: mosip_abis_client_secret
@@ -68,8 +68,8 @@ keycloak-init:
 
 
 keycloak:
-  commonAnnotations:
-    argocd.argoproj.io/sync-wave: "-95"
+  # commonAnnotations:
+  #   argocd.argoproj.io/sync-wave: "-95"
   image: 
     repository: mosipqa/mosip-keycloak
     tag: 1.2.0.1
