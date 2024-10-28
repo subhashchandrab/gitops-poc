@@ -87,3 +87,25 @@ spec:
         listener_filters:
         - name: envoy.filters.listener.proxy_protocol
         - name: envoy.filters.listener.tls_inspector
+
+--- 
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: grafana-virtualservice
+  namespace: istio-system
+spec:
+  hosts:
+  - 'grafana.{{ .Values.ansibleenv.domain }}'
+  gateways:
+    - istio-system/all-hosts
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: mosip-monitoring-grafana.monitoring.svc.cluster.local
+        port:
+          number: 80
