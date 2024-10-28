@@ -49,6 +49,7 @@
         - injiweb
         - injiverify
         - injicertify
+        - grafana
       
 
     - name: Update private rrset
