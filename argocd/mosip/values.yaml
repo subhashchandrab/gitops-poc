@@ -33,7 +33,6 @@ external:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-97"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: postgres-init
@@ -42,7 +41,6 @@ external:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-96"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: keycloak
@@ -51,7 +49,6 @@ external:
     #   namespace_labels:
     #     istio_injection_label: disabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-95"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: softhsm-kernel
@@ -60,7 +57,6 @@ external:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-94"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: softhsm-ida
@@ -69,7 +65,6 @@ external:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-93"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: minio
@@ -78,7 +73,6 @@ external:
     #   namespace_labels:
     #     istio_injection_label: disabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-92"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: clamav
@@ -87,7 +81,6 @@ external:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-91"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: activemq
@@ -96,7 +89,6 @@ external:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-90"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: kafka
@@ -105,7 +97,6 @@ external:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-89"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: msg-gateway
@@ -114,7 +105,6 @@ external:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-88"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: landing-page
@@ -123,7 +113,6 @@ external:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-87"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
 core:
@@ -139,7 +128,6 @@ core:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-86"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: artifactory
@@ -148,7 +136,6 @@ core:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-85"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: keymanager
@@ -157,7 +144,6 @@ core:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-84"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: websub
@@ -166,7 +152,6 @@ core:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-84"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: mock-smtp
@@ -175,7 +160,6 @@ core:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-83"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: kernel
@@ -184,7 +168,6 @@ core:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-82"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: masterdata-loader
@@ -193,7 +176,6 @@ core:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-81"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: mock-biosdk
@@ -202,7 +184,6 @@ core:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-80"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: packetmanager
@@ -211,7 +192,6 @@ core:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-79"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: datashare
@@ -220,14 +200,12 @@ core:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-78"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: pre-registration
     #   path: workload/mosip/core-modules/prereg
     #   namespace: prereg
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-77"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: idrepo
@@ -236,7 +214,6 @@ core:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-76"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: pms
@@ -245,7 +222,6 @@ core:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-75"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: mock-abis
@@ -254,7 +230,6 @@ core:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-74"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: mock-mv
@@ -263,7 +238,6 @@ core:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-73"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: registration-processor
@@ -272,7 +246,6 @@ core:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-72"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: admin
@@ -281,7 +254,6 @@ core:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-71"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: ida
@@ -290,7 +262,6 @@ core:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-70"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: print
@@ -299,7 +270,6 @@ core:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-71"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # # - name: partner-onboarder
@@ -315,7 +285,6 @@ core:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-70"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: resident
@@ -324,7 +293,6 @@ core:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-69"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: registration-client
@@ -333,5 +301,4 @@ core:
     #   namespace_labels:
     #     istio_injection_label: enabled
     #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-68"
     #     argocd.argoproj.io/manifest-generate-paths: .
