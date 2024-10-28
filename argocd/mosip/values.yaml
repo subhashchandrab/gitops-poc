@@ -27,59 +27,59 @@ external:
       annotations:
         argocd.argoproj.io/sync-wave: "-98"
 
-    # - name: postgres
-    #   path: workload/mosip/external-modules/postgres
-    #   namespace: postgres
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-97"
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: postgres
+      path: workload/mosip/external-modules/postgres
+      namespace: postgres
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/sync-wave: "-97"
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: postgres-init
-    #   path: workload/mosip/external-modules/postgres-init
-    #   namespace: postgres
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-96"
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: postgres-init
+      path: workload/mosip/external-modules/postgres-init
+      namespace: postgres
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/sync-wave: "-96"
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: keycloak
-    #   path: workload/mosip/external-modules/keycloak
-    #   namespace: keycloak
-    #   namespace_labels:
-    #     istio_injection_label: disabled
-    #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-101"
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: keycloak
+      path: workload/mosip/external-modules/keycloak
+      namespace: keycloak
+      namespace_labels:
+        istio_injection_label: disabled
+      annotations:
+        argocd.argoproj.io/sync-wave: "-101"
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: softhsm-kernel
-    #   path: workload/mosip/external-modules/softhsm-kernel
-    #   namespace: softhsm
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-94"
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: softhsm-kernel
+      path: workload/mosip/external-modules/softhsm-kernel
+      namespace: softhsm
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/sync-wave: "-94"
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: softhsm-ida
-    #   path: workload/mosip/external-modules/softhsm-ida
-    #   namespace: softhsm
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-93"
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: softhsm-ida
+      path: workload/mosip/external-modules/softhsm-ida
+      namespace: softhsm
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/sync-wave: "-93"
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: minio
-    #   path: workload/mosip/external-modules/minio
-    #   namespace: minio
-    #   namespace_labels:
-    #     istio_injection_label: disabled
-    #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-92"
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: minio
+      path: workload/mosip/external-modules/minio
+      namespace: minio
+      namespace_labels:
+        istio_injection_label: disabled
+      annotations:
+        argocd.argoproj.io/sync-wave: "-92"
+        argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: clamav
     #   path: workload/mosip/external-modules/clamav
