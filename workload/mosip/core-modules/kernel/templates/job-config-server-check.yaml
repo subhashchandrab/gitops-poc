@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: readiness-check
-        image: {{ .Values.initcontainer.image | default "curlimages/curl:latest" }}
+        image: {{ .Values.initcontainer.curl_image | default "curlimages/curl:latest" }}
         command: ["sh", "-c"]
         args:
           - |
