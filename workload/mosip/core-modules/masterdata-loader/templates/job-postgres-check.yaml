@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: postgres-checker
-        image: jbergknoff/postgresql-client
+        image: {{ .Values.initcontainer.postgres_client_image | default "jbergknoff/postgresql-client" }}
         command:
           - 'sh'
           - '-c'
@@ -27,4 +27,8 @@ spec:
           - name: DB_DBNAME
             value: "mosip_master"
       restartPolicy: Never
+      {{- if .Values.initcontainer.imagepullsecret }}
+      imagePullSecrets:
+        - name: {{ .Values.initcontainer.imagepullsecret }}
+      {{- end }}
   backoffLimit: 10
