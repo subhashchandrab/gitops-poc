@@ -23,7 +23,8 @@ artifacts:
   esignetauthwrapperUrl: /artifactory/libs-release-local/esignet/esignet-wrapper.zip
 
 initcontainer:
-  image: <path:ocivault#mosip_curl_image#latest | base64decode> 
+  curl_image: <path:ocivault#mosip_curl_image#latest | base64decode> 
+  tcp_image: <path:ocivault#mosip_tcp_image#latest | base64decode> 
   imagepullsecret: "ocir"
   registrycred: <path:ocivault#mosip_ocir_secret#latest> 
 

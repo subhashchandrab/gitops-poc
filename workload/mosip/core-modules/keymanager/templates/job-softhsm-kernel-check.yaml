@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: tcp-liveness-check
-        image: busybox:latest
+        image: {{ .Values.initcontainer.curl_image | default "busybox:latest" }}
         command: ["sh", "-c"]
         args:
           - |
@@ -25,4 +25,8 @@ spec:
             done
             echo "Service is up!"
       restartPolicy: Never
+      {{- if .Values.initcontainer.imagepullsecret }}
+      imagePullSecrets:
+        - name: {{ .Values.initcontainer.imagepullsecret }}
+      {{- end }}
   backoffLimit: 4
