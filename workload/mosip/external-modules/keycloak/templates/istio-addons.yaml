@@ -9,7 +9,7 @@ spec:
   hosts:
     - "*"
   gateways:
-  - istio-system/keycloak
+  - istio-system/all-hosts
   http:
   - match:
       - uri:
