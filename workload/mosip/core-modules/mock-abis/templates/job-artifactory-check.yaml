@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: check-config-server-readiness
+  name: check-artifactory-readiness
   namespace: {{ .Values.namespace }}
   annotations:
     argocd.argoproj.io/hook: PreSync
@@ -19,8 +19,8 @@ spec:
         args:
           - |
             while true; do
-              echo "Checking readiness of config-server service...";
-              if curl -sf http://config-server.config-server/config/*/*; then
+              echo "Checking readiness of artifactory service...";
+              if curl -sf http://artifactory.artifactory/; then
                 echo "Service is ready!";
                 exit 0;
               else
