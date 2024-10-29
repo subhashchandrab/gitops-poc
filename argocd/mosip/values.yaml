@@ -154,13 +154,13 @@ core:
       annotations:
         argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: mock-smtp
-    #   path: workload/mosip/core-modules/mock-smtp
-    #   namespace: mock-smtp
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: mock-smtp
+      path: workload/mosip/core-modules/mock-smtp
+      namespace: mock-smtp
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: kernel
     #   path: workload/mosip/core-modules/kernel
