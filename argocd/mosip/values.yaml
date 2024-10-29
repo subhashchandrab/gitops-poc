@@ -208,13 +208,13 @@ core:
       annotations:
         argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: idrepo
-    #   path: workload/mosip/core-modules/idrepo
-    #   namespace: idrepo
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: idrepo
+      path: workload/mosip/core-modules/idrepo
+      namespace: idrepo
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: pms
     #   path: workload/mosip/core-modules/pms
