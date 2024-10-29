@@ -186,13 +186,13 @@ core:
       annotations:
         argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: packetmanager
-    #   path: workload/mosip/core-modules/packetmanager
-    #   namespace: packetmanager
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: packetmanager
+      path: workload/mosip/core-modules/packetmanager
+      namespace: packetmanager
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: datashare
     #   path: workload/mosip/core-modules/datashare
