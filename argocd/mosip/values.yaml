@@ -194,13 +194,13 @@ core:
       annotations:
         argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: datashare
-    #   path: workload/mosip/core-modules/datashare
-    #   namespace: datashare
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: datashare
+      path: workload/mosip/core-modules/datashare
+      namespace: datashare
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: pre-registration
     #   path: workload/mosip/core-modules/prereg
