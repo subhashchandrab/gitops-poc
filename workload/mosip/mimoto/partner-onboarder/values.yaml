@@ -70,9 +70,6 @@ configserver:
 
 partner-onboarder:
   fullnameOverride: "mimoto-onboarding"
-  # serviceAccount:
-  #   create: true
-  #   name: mimoto-onboarding
   onboarding:
     modules:
       - name: ida
@@ -108,5 +105,5 @@ partner-onboarder:
         ns_mimoto: mimoto
         ns_esignet: esignet
       onboarding: 
-        ENABLE_INSECURE: true
+        ENABLE_INSECURE: false
     secrets:
