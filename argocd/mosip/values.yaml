@@ -27,93 +27,93 @@ external:
       annotations:
         argocd.argoproj.io/sync-wave: "-98"
 
-    # - name: postgres
-    #   path: workload/mosip/external-modules/postgres
-    #   namespace: postgres
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: postgres
+      path: workload/mosip/external-modules/postgres
+      namespace: postgres
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: postgres-init
-    #   path: workload/mosip/external-modules/postgres-init
-    #   namespace: postgres
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: postgres-init
+      path: workload/mosip/external-modules/postgres-init
+      namespace: postgres
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: keycloak
-    #   path: workload/mosip/external-modules/keycloak
-    #   namespace: keycloak
-    #   namespace_labels:
-    #     istio_injection_label: disabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: keycloak
+      path: workload/mosip/external-modules/keycloak
+      namespace: keycloak
+      namespace_labels:
+        istio_injection_label: disabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: softhsm-kernel
-    #   path: workload/mosip/external-modules/softhsm-kernel
-    #   namespace: softhsm
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: softhsm-kernel
+      path: workload/mosip/external-modules/softhsm-kernel
+      namespace: softhsm
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: softhsm-ida
-    #   path: workload/mosip/external-modules/softhsm-ida
-    #   namespace: softhsm
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: softhsm-ida
+      path: workload/mosip/external-modules/softhsm-ida
+      namespace: softhsm
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: minio
-    #   path: workload/mosip/external-modules/minio
-    #   namespace: minio
-    #   namespace_labels:
-    #     istio_injection_label: disabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: minio
+      path: workload/mosip/external-modules/minio
+      namespace: minio
+      namespace_labels:
+        istio_injection_label: disabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: clamav
-    #   path: workload/mosip/external-modules/clamav
-    #   namespace: clamav
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: clamav
+      path: workload/mosip/external-modules/clamav
+      namespace: clamav
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: activemq
-    #   path: workload/mosip/external-modules/activemq
-    #   namespace: activemq
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: activemq
+      path: workload/mosip/external-modules/activemq
+      namespace: activemq
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: kafka
-    #   path: workload/mosip/external-modules/kafka
-    #   namespace: kafka
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: kafka
+      path: workload/mosip/external-modules/kafka
+      namespace: kafka
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: msg-gateway
-    #   path: workload/mosip/external-modules/msg-gateway
-    #   namespace: msg-gateways
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: msg-gateway
+      path: workload/mosip/external-modules/msg-gateway
+      namespace: msg-gateways
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: landing-page
-    #   path: workload/mosip/external-modules/landing-page
-    #   namespace: landing-page
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: landing-page
+      path: workload/mosip/external-modules/landing-page
+      namespace: landing-page
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
 core:
   destination:
@@ -122,29 +122,29 @@ core:
     repoURL: https://github.com/ddevadat/gitops-poc
     targetRevision: HEAD
   components:
-    # - name: config-server
-    #   path: workload/mosip/core-modules/config-server
-    #   namespace: config-server
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: config-server
+      path: workload/mosip/core-modules/config-server
+      namespace: config-server
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: artifactory
-    #   path: workload/mosip/core-modules/artifactory
-    #   namespace: artifactory
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: artifactory
+      path: workload/mosip/core-modules/artifactory
+      namespace: artifactory
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: keymanager
-    #   path: workload/mosip/core-modules/keymanager
-    #   namespace: keymanager
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: keymanager
+      path: workload/mosip/core-modules/keymanager
+      namespace: keymanager
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: websub
     #   path: workload/mosip/core-modules/websub
