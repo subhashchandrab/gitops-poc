@@ -240,13 +240,13 @@ core:
       annotations:
         argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: registration-processor
-    #   path: workload/mosip/core-modules/regproc
-    #   namespace: regproc
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: registration-processor
+      path: workload/mosip/core-modules/regproc
+      namespace: regproc
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: admin
     #   path: workload/mosip/core-modules/admin
