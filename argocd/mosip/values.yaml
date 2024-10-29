@@ -248,13 +248,13 @@ core:
       annotations:
         argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: admin
-    #   path: workload/mosip/core-modules/admin
-    #   namespace: admin
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: admin
+      path: workload/mosip/core-modules/admin
+      namespace: admin
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: ida
     #   path: workload/mosip/core-modules/ida

@@ -21,6 +21,12 @@ artifacts:
   esignetauthwrapperUrl: /artifactory/libs-release-local/esignet/esignet-wrapper.zip
 
 
+initcontainer:
+  curl_image: <path:ocivault#mosip_curl_image#latest | base64decode> 
+  imagepullsecret: "ocir"
+  registrycred: <path:ocivault#mosip_ocir_secret#latest> 
+
+
 admin-hotlist:
   fullnameOverride: "admin-hotlist"
 
