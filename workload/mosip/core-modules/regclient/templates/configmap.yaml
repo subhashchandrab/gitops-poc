@@ -32,12 +32,12 @@ binaryData:
   keystore.p12: {{ .Values.regclient_keystore_file }}
 data:
   Client.crt: |
-    {{ .Values.regclient_client_certificate | indent 4 }}
+    {{ .Values.regclient_client_certificate | trim |  indent 4 }}
   Client.csr: |
-    {{ .Values.regclient_client_csr | indent 4 }}
+    {{ .Values.regclient_client_csr |  trim | indent 4 }}
   Client.key: |
-    {{ .Values.regclient_client_key | indent 4 }}
+    {{ .Values.regclient_client_key | trim | indent 4 }}
   RootCA.crt: |
-    {{ .Values.regclient_root_certificate | indent 4 }}
+    {{ .Values.regclient_root_certificate | trim | indent 4 }}
   RootCA.key: |
-    {{ .Values.regclient_root_key | indent 4 }}
+    {{ .Values.regclient_root_key | trim | indent 4 }}
