@@ -232,13 +232,13 @@ core:
       annotations:
         argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: mock-mv
-    #   path: workload/mosip/core-modules/mock-mv
-    #   namespace: abis
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: mock-mv
+      path: workload/mosip/core-modules/mock-mv
+      namespace: abis
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: registration-processor
     #   path: workload/mosip/core-modules/regproc

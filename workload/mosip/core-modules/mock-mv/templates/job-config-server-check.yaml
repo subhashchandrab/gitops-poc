@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: check-config-server-readiness-mock-mv-mock-mv
+  name: check-config-server-readiness
   namespace: {{ .Values.namespace }}
   annotations:
     argocd.argoproj.io/hook: PreSync
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: readiness-check
-        image: curlimages/curl:latest # Using a curl image
+        image: {{ .Values.initcontainer.curl_image | default "curlimages/curl:latest" }}
         command: ["sh", "-c"]
         args:
           - |
@@ -29,4 +29,8 @@ spec:
               fi
             done
       restartPolicy: Never
+      {{- if .Values.initcontainer.imagepullsecret }}
+      imagePullSecrets:
+        - name: {{ .Values.initcontainer.imagepullsecret }}
+      {{- end }}
   backoffLimit: 4
