@@ -264,13 +264,13 @@ core:
       annotations:
         argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: print
-    #   path: workload/mosip/core-modules/print
-    #   namespace: print
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: print
+      path: workload/mosip/core-modules/print
+      namespace: print
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
     # # - name: partner-onboarder
     # #   path: workload/mosip/core-modules/xxxx
