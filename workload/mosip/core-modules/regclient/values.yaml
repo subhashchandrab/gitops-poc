@@ -15,7 +15,7 @@ artifacts:
 
 
 regclient_keystore_file: <path:ocivault#mosip_regclient_keystore_file#latest | base64decode>
-regclient_keystore_password: <path:ocivault#mosip_regclient_keystore_password#latest | base64decode>
+regclient_keystore_password: <path:ocivault#mosip_regclient_keystore_password#latest>
 regclient_client_certificate: <path:ocivault#mosip_regclient_client_certificate#latest | base64decode>
 regclient_client_csr: <path:ocivault#mosip_regclient_client_csr#latest | base64decode>
 regclient_client_key: <path:ocivault#mosip_regclient_client_key#latest | base64decode>
