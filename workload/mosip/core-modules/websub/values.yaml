@@ -6,5 +6,10 @@ configserver:
     version: oci-v1.2.0.1-B4
 
 
+initcontainer:
+  curl_image: <path:ocivault#mosip_curl_image#latest | base64decode> 
+  imagepullsecret: "ocir"
+  registrycred: <path:ocivault#mosip_ocir_secret#latest> 
+
 websub-consolidator:
   fullnameOverride: "websub-consolidator"
