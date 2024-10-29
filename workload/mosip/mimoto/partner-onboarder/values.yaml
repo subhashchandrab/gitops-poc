@@ -69,7 +69,10 @@ configserver:
       secret: "<path:ocivault#mosip_digitalcard_client_secret#latest | base64decode>"
 
 partner-onboarder:
-  fullnameOverride: "partner-onboarder"
+  fullnameOverride: "mimoto-onboarding"
+  # serviceAccount:
+  #   create: true
+  #   name: mimoto-onboarding
   onboarding:
     modules:
       - name: ida
