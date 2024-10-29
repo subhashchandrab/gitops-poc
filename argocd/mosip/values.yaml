@@ -307,3 +307,18 @@ core:
         istio_injection_label: enabled
       annotations:
         argocd.argoproj.io/manifest-generate-paths: .
+
+mimoto:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/ddevadat/gitops-poc
+    targetRevision: HEAD
+  components:
+    - name: mimoto-onboarding
+      path: workload/mosip/mimoto/partner-onboarder
+      namespace: mimoto
+      namespace_labels:
+        istio_injection_label: disabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
