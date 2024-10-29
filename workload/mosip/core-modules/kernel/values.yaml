@@ -1,5 +1,10 @@
 keymanager_hostname: keymanager.<path:ocivault#mosip_domain#latest | base64decode> 
 
+initcontainer:
+  image: <path:ocivault#mosip_curl_image#latest | base64decode> 
+  imagepullsecret: "ocir"
+  registrycred: <path:ocivault#mosip_ocir_secret#latest> 
+
 configserver:
   domain_name: <path:ocivault#mosip_domain#latest | base64decode>
   activeProfileEnv: default
