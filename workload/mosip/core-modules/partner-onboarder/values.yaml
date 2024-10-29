@@ -97,7 +97,7 @@ partner-onboarder:
 
     configmaps:
       s3:
-        s3-host: 'http://minio.minio:9000'
+        s3-host: 'https://minio.<path:ocivault#mosip_domain#latest | base64decode>'
         s3-user-key: 'admin'
         s3-region: 'us-east-1'
         s3-bucket-name: 'onboardpartner'
