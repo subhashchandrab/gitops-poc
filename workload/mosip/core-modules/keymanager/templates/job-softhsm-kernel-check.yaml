@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: readiness-check
-        image: curlimages/curl:latest # Using a curl image
+        image: busybox:latest # Using a curl image
         command: ["sh", "-c"]
         args:
           - |
