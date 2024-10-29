@@ -279,13 +279,13 @@ core:
     # #     istio_injection_label: enabled
 
 
-    # - name: mosip-file-server
-    #   path: workload/mosip/core-modules/file-server
-    #   namespace: mosip-file-server
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: mosip-file-server
+      path: workload/mosip/core-modules/file-server
+      namespace: mosip-file-server
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: resident
     #   path: workload/mosip/core-modules/resident
