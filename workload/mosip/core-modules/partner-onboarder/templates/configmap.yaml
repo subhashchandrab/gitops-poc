@@ -70,20 +70,3 @@ data:
   mosip-injicertify-host: injicertify.{{ .Values.configserver.domain_name }}
   mosip-healthservices-host: healthservices.{{ .Values.configserver.domain_name }}
   is_glowroot_env: absent
-
----
-{{- if .Values.configserver.minio_enabled }}
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: s3
-  namespace: {{ .Values.namespace }}
-  annotations:
-    argocd.argoproj.io/hook: PreSync
-data:
-  s3-user-key: {{ .Values.configserver.minio_username }}
-  s3-region: ""
-
----
-{{- end }}
-
