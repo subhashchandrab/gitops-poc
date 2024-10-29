@@ -202,11 +202,11 @@ core:
       annotations:
         argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: pre-registration
-    #   path: workload/mosip/core-modules/prereg
-    #   namespace: prereg
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: pre-registration
+      path: workload/mosip/core-modules/prereg
+      namespace: prereg
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: idrepo
     #   path: workload/mosip/core-modules/idrepo
