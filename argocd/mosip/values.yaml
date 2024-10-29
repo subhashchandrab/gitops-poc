@@ -178,13 +178,13 @@ core:
       annotations:
         argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: mock-biosdk
-    #   path: workload/mosip/core-modules/biosdk
-    #   namespace: biosdk
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: mock-biosdk
+      path: workload/mosip/core-modules/biosdk
+      namespace: biosdk
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: packetmanager
     #   path: workload/mosip/core-modules/packetmanager
