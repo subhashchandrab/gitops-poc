@@ -70,6 +70,7 @@
         - regclient
         - admin
         - object-store
+        - minio
         - kafka
         - iam
         - postgres
