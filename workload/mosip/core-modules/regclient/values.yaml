@@ -22,7 +22,10 @@ regclient_client_key: <path:ocivault#mosip_regclient_client_key#latest | base64d
 regclient_root_certificate: <path:ocivault#mosip_regclient_root_certificate#latest | base64decode>
 regclient_root_key: <path:ocivault#mosip_regclient_root_key#latest | base64decode>
 
-
+initcontainer:
+  curl_image: <path:ocivault#mosip_curl_image#latest | base64decode> 
+  imagepullsecret: "ocir"
+  registrycred: <path:ocivault#mosip_ocir_secret#latest> 
 
 regclient:
   fullnameOverride: "regclient"
