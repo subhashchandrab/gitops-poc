@@ -80,7 +80,7 @@ partner-onboarder:
         enabled: true
       - name: resident
         enabled: true
-      - name: mimoto
+      - name: mobileid
         enabled: true
       - name: digitalcard
         enabled: false
@@ -92,8 +92,6 @@ partner-onboarder:
         enabled: false
       - name: mimoto-keybinding
         enabled: true
-      - name: mimoto-oidc
-        enabled: false
 
     configmaps:
       s3:
@@ -105,5 +103,5 @@ partner-onboarder:
         ns_mimoto: mimoto
         ns_esignet: esignet
       onboarding: 
-        ENABLE_INSECURE: true
+        ENABLE_INSECURE: false
     secrets:
