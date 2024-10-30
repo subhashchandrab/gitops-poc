@@ -7,9 +7,9 @@ metadata:
   name: keycloak
 spec:
   hosts:
-    - "*"
+    - '{{ .Values.keycloakExternalHost }}'
   gateways:
-  - istio-system/all-hosts
+  - keycloak
   http:
   - match:
       - uri:
@@ -42,7 +42,6 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: keycloak
-  namespace: istio-system
 spec:
   selector:
     istio: ingress
