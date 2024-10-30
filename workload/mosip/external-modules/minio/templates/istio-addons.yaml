@@ -7,23 +7,19 @@ metadata:
   name: minio
 spec:
   hosts:
-  - {{ .Values.minio_externalHost | quote}}
+    - {{ .Values.minio_externalHost | quote}}
   gateways:
-  - istio-system/all-hosts
+    - istio-system/all-hosts
   http:
-  - name: http
-    match:
-    - uri:
-        prefix: "/"
-    route:
-    - destination:
-        host: minio
-        port:
-           number: 9001
-    headers:
-      request:
-        set:
-          x-forwarded-proto: https
+    - route:
+        - destination:
+            host: minio
+            port:
+              number: 9001
+      headers:
+        request:
+          set:
+            x-forwarded-proto: https
 
 ---
 apiVersion: networking.istio.io/v1alpha3
