@@ -2,7 +2,7 @@ domain_name: <path:ocivault#mosip_domain#latest | base64decode>
 
 landing-page: 
   istio:
-    host: <path:ocivault#mosip_domain#latest | base64decode>
+    host: landingpage.<path:ocivault#mosip_domain#latest | base64decode>
     enabled: true
     ingressController:
       name: ingress
