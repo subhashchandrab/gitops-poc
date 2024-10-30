@@ -9,7 +9,7 @@ spec:
   hosts:
   - {{ .Values.minio_externalHost | quote}}
   gateways:
-  - minio
+  - istio-system/all-hosts
   http:
   - name: http
     match:
