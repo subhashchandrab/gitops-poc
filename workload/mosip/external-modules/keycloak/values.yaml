@@ -87,7 +87,7 @@ keycloak:
       value: "true"
       #value: "-Dkeycloak.profile.feature.upload_scripts=enabled -Dkeycloak.import=/config/realm-mosip.json"
 
-  proxyAddressForwarding: true
+  proxyAddressForwarding: false
 
   replicaCount: 1
 
