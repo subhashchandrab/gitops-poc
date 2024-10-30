@@ -9,7 +9,7 @@ spec:
   hosts:
   - "*"
   gateways:
-    - istio-system/all-hosts
+    - kafka-ui
   http:
   - route:
     - destination:
@@ -30,7 +30,7 @@ metadata:
   name: kafka-ui
 spec:
   selector:
-    istio: ingress
+    istio: ingressgateway-internal
   servers:
   - port:
       number: 80
