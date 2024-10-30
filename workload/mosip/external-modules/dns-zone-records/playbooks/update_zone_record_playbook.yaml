@@ -51,7 +51,7 @@
         - injicertify
         - grafana
         - iam
-      
+        - minio      
 
     - name: Update private rrset
       oracle.oci.oci_dns_rrset:
@@ -74,4 +74,3 @@
         - kafka
         - postgres
         - smtp
-        - minio
