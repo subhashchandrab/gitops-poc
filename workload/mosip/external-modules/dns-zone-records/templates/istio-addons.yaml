@@ -78,7 +78,7 @@ metadata:
 spec:
   workloadSelector:
     labels:
-      app: istio-ingress
+      app: istio-ingress-not-found    ## We may not need this. So intentionally giving a wrong label
   configPatches:
   - applyTo: LISTENER
     patch:
