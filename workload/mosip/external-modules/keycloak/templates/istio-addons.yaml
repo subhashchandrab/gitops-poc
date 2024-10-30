@@ -28,7 +28,7 @@ spec:
           prefix: /
     route:
     - destination:
-        host: keycloak
+        host: keycloak.keycloak.svc.cluster.local
         port:
           number: 80
     headers:
