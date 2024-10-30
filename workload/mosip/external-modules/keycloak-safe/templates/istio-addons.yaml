@@ -1,16 +1,16 @@
 
 {{- if .Values.keycloak_istio_enabled }}
 
-apiVersion: networking.istio.io/v1alpha3
+apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
   name: keycloak
+  namespace: {{ .Values.namespace }}
 spec:
-  hosts:
-    - "*"
   gateways:
-  - keycloak
-
+    - istio-system/all-hosts
+  hosts:
+    - {{.Values.keycloakExternalHost }}
   http:
   - match:
       - uri:
@@ -37,7 +37,6 @@ spec:
         set:
           x-forwarded-proto: https
 
-
 ---
 
 apiVersion: networking.istio.io/v1alpha3
@@ -46,13 +45,24 @@ metadata:
   name: keycloak
 spec:
   selector:
-    istio: ingressgateway
+    istio: ingress
   servers:
-  - port:
-      number: 80
+  - hosts:
+    - '{{ .Values.keycloakExternalHost }}'
+    port:
       name: http
+      number: 80
       protocol: HTTP
-    hosts:
-    - {{ .Values.keycloakExternalHost }}
+    tls:
+      httpsRedirect: true
+  - hosts:
+    - '{{ .Values.keycloakExternalHost }}'
+    port:
+      name: https
+      number: 443
+      protocol: HTTPS
+    tls:
+      credentialName: {{ .Values.domain_ssl_secret_name }}
+      mode: SIMPLE
 
 {{- end }}
