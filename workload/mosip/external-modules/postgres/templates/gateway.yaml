@@ -5,7 +5,7 @@ metadata:
   namespace: {{ .Values.namespace }}
 spec:
   selector:
-    istio: ingress
+    istio: ingressgateway-internal
   servers:
   - port:
       number: 5432
