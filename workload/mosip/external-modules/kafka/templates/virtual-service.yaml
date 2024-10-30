@@ -9,7 +9,7 @@ spec:
   hosts:
   - "*"
   gateways:
-    - kafka-ui
+    - istio-system/all-hosts
   http:
   - route:
     - destination:

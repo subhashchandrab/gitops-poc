@@ -91,21 +91,21 @@ external:
       annotations:
         argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: kafka
-    #   path: workload/mosip/external-modules/kafka
-    #   namespace: kafka
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: kafka
+      path: workload/mosip/external-modules/kafka
+      namespace: kafka
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: msg-gateway
-    #   path: workload/mosip/external-modules/msg-gateway
-    #   namespace: msg-gateways
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: msg-gateway
+      path: workload/mosip/external-modules/msg-gateway
+      namespace: msg-gateways
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: landing-page
     #   path: workload/mosip/external-modules/landing-page
