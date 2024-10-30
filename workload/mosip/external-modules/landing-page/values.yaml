@@ -6,7 +6,7 @@ landing-page:
     host: landingpage.<path:ocivault#mosip_domain#latest | base64decode>
     enabled: true
     ingressController:
-      name: ingressgateway
+      name: ingressgateway-internal
     prefix: /
   landing: 
     version: oci-daas-v1.2.0.1-B4
