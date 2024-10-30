@@ -50,7 +50,7 @@
         - injiverify
         - injicertify
         - grafana
-        - minio
+        - iam
       
 
     - name: Update private rrset
@@ -74,4 +74,4 @@
         - kafka
         - postgres
         - smtp
-        - iam
+        - minio
