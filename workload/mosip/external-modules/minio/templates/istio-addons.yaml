@@ -20,23 +20,37 @@ spec:
         host: minio
         port:
            number: 9001
+    headers:
+      request:
+        set:
+          x-forwarded-proto: https
 
 ---
-
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: minio
+  namespace: istio-system
 spec:
   selector:
     istio: ingress
   servers:
-  - port:
-      number: 80
+  - hosts:
+    - '{{ .Values.minio_externalHost }}'
+    port:
       name: http
+      number: 80
       protocol: HTTP
-    hosts:
-    - {{ .Values.minio_externalHost }}  
-
+    tls:
+      httpsRedirect: true
+  - hosts:
+    - '{{ .Values.minio_externalHost }}'
+    port:
+      name: https
+      number: 443
+      protocol: HTTPS
+    tls:
+      credentialName: {{ .Values.domain_ssl_secret_name }}
+      mode: SIMPLE
 
 {{- end }}

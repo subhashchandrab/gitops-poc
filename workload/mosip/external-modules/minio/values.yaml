@@ -2,6 +2,7 @@ minio_istio_enabled: true
 minio_externalHost: minio.<path:ocivault#mosip_domain#latest | base64decode> 
 minio_region: ""
 minio_pretext_value: "mosip"
+domain_ssl_secret_name: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
 
 minio: 
   global:
