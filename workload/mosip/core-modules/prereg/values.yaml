@@ -30,7 +30,7 @@ prereg-gateway:
   istio:
     enabled: true
     ingressController:
-      name: ingress
+      name: ingressgateway
     hosts:
       - prereg.<path:ocivault#mosip_domain#latest | base64decode>
 
