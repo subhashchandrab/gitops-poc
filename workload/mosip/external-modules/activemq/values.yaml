@@ -4,5 +4,5 @@ activemq-artemis:
     hosts:
       - activemq.<path:ocivault#mosip_domain#latest | base64decode>
     ingressController:
-      name: ingress
+      name: ingressgateway-internal
     prefix: /

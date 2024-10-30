@@ -82,21 +82,21 @@ external:
       annotations:
         argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: clamav
-    #   path: workload/mosip/external-modules/clamav
-    #   namespace: clamav
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: clamav
+      path: workload/mosip/external-modules/clamav
+      namespace: clamav
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: activemq
-    #   path: workload/mosip/external-modules/activemq
-    #   namespace: activemq
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: activemq
+      path: workload/mosip/external-modules/activemq
+      namespace: activemq
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: kafka
     #   path: workload/mosip/external-modules/kafka
