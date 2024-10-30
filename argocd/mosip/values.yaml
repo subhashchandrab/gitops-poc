@@ -169,13 +169,13 @@ core:
       annotations:
         argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: kernel
-    #   path: workload/mosip/core-modules/kernel
-    #   namespace: kernel
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: kernel
+      path: workload/mosip/core-modules/kernel
+      namespace: kernel
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: masterdata-loader
     #   path: workload/mosip/core-modules/masterdata-loader
