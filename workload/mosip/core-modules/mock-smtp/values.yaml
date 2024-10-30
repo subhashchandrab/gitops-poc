@@ -15,4 +15,4 @@ mock-smtp:
     hosts:
       - smtp.<path:ocivault#mosip_domain#latest | base64decode>
   ingressController:
-    istio: ingress
+    istio: ingressgateway-internal
