@@ -58,21 +58,21 @@ external:
       annotations:
         argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: softhsm-kernel
-    #   path: workload/mosip/external-modules/softhsm-kernel
-    #   namespace: softhsm
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: softhsm-kernel
+      path: workload/mosip/external-modules/softhsm-kernel
+      namespace: softhsm
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: softhsm-ida
-    #   path: workload/mosip/external-modules/softhsm-ida
-    #   namespace: softhsm
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: softhsm-ida
+      path: workload/mosip/external-modules/softhsm-ida
+      namespace: softhsm
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
     - name: minio
       path: workload/mosip/external-modules/minio
