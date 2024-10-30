@@ -7,7 +7,7 @@ metadata:
   name: minio
 spec:
   hosts:
-  - "*"
+  - '{{ .Values.minio_externalHost }}'
   gateways:
   - istio-system/minio
   http:
@@ -36,7 +36,7 @@ spec:
     istio: ingress
   servers:
   - hosts:
-    - '{{ .Values.minio_externalHost }}'
+    - "*"
     port:
       name: http
       number: 80
@@ -44,7 +44,7 @@ spec:
     tls:
       httpsRedirect: true
   - hosts:
-    - '{{ .Values.minio_externalHost }}'
+    - "*"
     port:
       name: https
       number: 443
