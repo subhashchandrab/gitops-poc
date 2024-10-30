@@ -41,8 +41,6 @@ spec:
       name: http
       number: 80
       protocol: HTTP
-    tls:
-      httpsRedirect: true
   - hosts:
     - "{{ .Values.minio_externalHost }}"
     port:
