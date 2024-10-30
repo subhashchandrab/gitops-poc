@@ -19,15 +19,9 @@
 
     - name: Get the external ip of the ingress controller
       shell: |
-        EXTERNAL_IP=$(kubectl get svc -n istio-system istio-ingress -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+        EXTERNAL_IP=$(kubectl get svc -n istio-system istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
         echo $EXTERNAL_IP
       register: istio_gw_external_ip
-
-    - name: Get the internal ip of the ingress controller
-      shell: |
-        INTERNAL_IP=$(kubectl get svc -n istio-system istio-ingress -o jsonpath='{.status.loadBalancer.ingress[1].ip}')
-        echo $INTERNAL_IP
-      register: istio_gw_internal_ip
 
     - name: Update public rrset
       oracle.oci.oci_dns_rrset:
@@ -54,24 +48,4 @@
         - minio
         - landingpage     
 
-    - name: Update private rrset
-      oracle.oci.oci_dns_rrset:
-        zone_name_or_id: "{{domain}}"
-        domain: "{{item}}.{{domain}}"
-        rtype: "A"
-        update_items:
-        - domain: "{{item}}.{{domain}}"
-          rdata: "{{istio_gw_internal_ip.stdout}}"
-          rtype: "A"
-          ttl: 300
-        compartment_id: "{{zone_compartment_id}}"
-      with_items:
-        - api-internal
-        - activemq
-        - kibana
-        - regclient
-        - admin
-        - object-store
-        - kafka
-        - postgres
-        - smtp
+
