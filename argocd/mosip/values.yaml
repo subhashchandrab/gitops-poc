@@ -107,13 +107,13 @@ external:
       annotations:
         argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: landing-page
-    #   path: workload/mosip/external-modules/landing-page
-    #   namespace: landing-page
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: landing-page
+      path: workload/mosip/external-modules/landing-page
+      namespace: landing-page
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
 core:
   destination:
