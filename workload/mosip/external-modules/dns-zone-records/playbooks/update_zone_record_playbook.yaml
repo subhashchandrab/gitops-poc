@@ -51,7 +51,8 @@
         - injicertify
         - grafana
         - iam
-        - minio      
+        - minio
+        - landingpage     
 
     - name: Update private rrset
       oracle.oci.oci_dns_rrset:
