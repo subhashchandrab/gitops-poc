@@ -9,7 +9,7 @@ spec:
   hosts:
     - '{{ .Values.keycloakExternalHost }}'
   gateways:
-  - keycloak
+  - istio-system/all-hosts
   http:
   - match:
       - uri:
