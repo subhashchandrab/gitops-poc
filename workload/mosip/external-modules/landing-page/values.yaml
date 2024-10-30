@@ -1,9 +1,11 @@
 domain_name: <path:ocivault#mosip_domain#latest | base64decode>
+landing_page_host: landingpage.<path:ocivault#mosip_domain#latest | base64decode>
+custom_virtual_service_enabled: true
 
 landing-page: 
   istio:
     host: landingpage.<path:ocivault#mosip_domain#latest | base64decode>
-    enabled: true
+    enabled: false
     ingressController:
       name: ingress
     prefix: /
