@@ -9,7 +9,7 @@ spec:
   hosts:
     - "*"
   gateways:
-  - istio-system/all-hosts
+  - istio-system/keycloak
   http:
   - match:
       - uri:
@@ -47,11 +47,22 @@ spec:
   selector:
     istio: ingress
   servers:
-  - port:
-      number: 80
+  - hosts:
+    - '{{ .Values.keycloakExternalHost }}'
+    port:
       name: http
+      number: 80
       protocol: HTTP
-    hosts:
-    - {{ .Values.keycloakExternalHost }}
+    tls:
+      httpsRedirect: true
+  - hosts:
+    - '{{ .Values.keycloakExternalHost }}'
+    port:
+      name: https
+      number: 443
+      protocol: HTTPS
+    tls:
+      credentialName: {{ .Values.domain_ssl_secret_name }}
+      mode: SIMPLE
 
 {{- end }}

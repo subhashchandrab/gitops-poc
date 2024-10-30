@@ -1,6 +1,7 @@
 keycloak_istio_enabled: true
 keycloakExternalHost: iam.<path:ocivault#mosip_domain#latest | base64decode> 
 keycloak_db_password: <path:ocivault#mosip_pg_password#latest | base64decode> 
+domain_ssl_secret_name: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
 
 keycloak-init: 
   backoffLimit: 10
