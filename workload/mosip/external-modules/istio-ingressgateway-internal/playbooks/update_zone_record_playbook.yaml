@@ -44,7 +44,6 @@
         - kafka
         - postgres
         - smtp
-        - iam
         - landingpage 
 
 
