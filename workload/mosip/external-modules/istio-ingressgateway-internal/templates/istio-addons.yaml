@@ -13,5 +13,11 @@ spec:
       name: http
       number: 80
       protocol: HTTP
+  - hosts:
+    - 'api-internal.{{ .Values.ansibleenv.domain }}'
+    port:
+      name: https
+      number: 443
+      protocol: HTTP
 
 
