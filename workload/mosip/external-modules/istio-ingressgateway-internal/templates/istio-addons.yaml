@@ -14,4 +14,20 @@ spec:
       number: 80
       protocol: HTTP
 
-
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: proxy-protocol-internal
+spec:
+  workloadSelector:
+    labels:
+      app: ingressgateway-internal
+  configPatches:
+  - applyTo: LISTENER
+    patch:
+      operation: MERGE
+      value:
+        listener_filters:
+        - name: envoy.filters.listener.proxy_protocol
+        - name: envoy.filters.listener.tls_inspector
