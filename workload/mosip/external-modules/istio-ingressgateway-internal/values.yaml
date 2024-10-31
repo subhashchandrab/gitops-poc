@@ -23,7 +23,7 @@ gateway:
         name: http2
         protocol: TCP
       - port: 443
-        targetPort: 8080
+        targetPort: 8081
         name: https
         protocol: TCP
       - port: 61616
