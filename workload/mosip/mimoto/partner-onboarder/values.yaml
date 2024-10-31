@@ -112,6 +112,6 @@ partner-onboarder:
       onboarder-namespace:
         ns_mimoto: mimoto
         ns_esignet: esignet
-      onboarding: 
-        ENABLE_INSECURE: false
+      # onboarding: 
+      #   ENABLE_INSECURE: false
     secrets:
