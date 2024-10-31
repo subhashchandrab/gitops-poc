@@ -68,6 +68,13 @@ configserver:
     - name: mosip_digitalcard_client_secret
       secret: "<path:ocivault#mosip_digitalcard_client_secret#latest | base64decode>"
 
+initcontainer:
+  curl_image: <path:ocivault#mosip_curl_image#latest | base64decode> 
+  tcp_image: <path:ocivault#mosip_tcp_image#latest | base64decode> 
+  imagepullsecret: "ocir"
+  registrycred: <path:ocivault#mosip_ocir_secret#latest> 
+
+
 partner-onboarder:
   fullnameOverride: "mimoto-onboarding"
   onboarding:
