@@ -8,7 +8,7 @@ spec:
     istio: ingressgateway-internal
   servers:
   - hosts:
-    - 'api-internal.{{ .Values.ansibleenv.domain }}'
+    - '*'
     port:
       name: http
       number: 80
