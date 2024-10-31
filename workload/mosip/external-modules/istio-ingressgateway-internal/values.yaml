@@ -16,23 +16,23 @@ gateway:
       ports:
       - port: 15021
         targetPort: 15021
-        name: status-port
+        name: status-port-int
         protocol: TCP
       - port: 80
         targetPort: 8080
-        name: http2
+        name: http2-int
         protocol: TCP
       - port: 443
         targetPort: 8080
-        name: https
+        name: https-int
         protocol: TCP
       - port: 61616
         targetPort: 61616
-        name: activemq
+        name: activemq-int
         protocol: TCP
       - port: 5432
         targetPort: 5432
-        name: postgres
+        name: postgres-int
         protocol: TCP
       annotations: 
         oci.oraclecloud.com/load-balancer-type: "lb"
