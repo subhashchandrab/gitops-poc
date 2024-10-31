@@ -18,7 +18,7 @@ spec:
     port:
       name: https
       number: 443
-      protocol: HTTP
+      protocol: HTTPS
 ---
 
 apiVersion: networking.istio.io/v1alpha3
