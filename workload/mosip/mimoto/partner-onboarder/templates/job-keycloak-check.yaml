@@ -20,7 +20,7 @@ spec:
           - |
             while true; do
               echo "Checking readiness of keycloak service...";
-              if curl -sf http://keycloak/auth/realms/master; then
+              if curl -sf http://keycloak.keycloak/auth/realms/master; then
                 echo "Service is ready!";
                 exit 0;
               else
