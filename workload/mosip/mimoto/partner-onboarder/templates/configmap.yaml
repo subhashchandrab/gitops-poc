@@ -49,7 +49,7 @@ data:
   installation-domain: {{ .Values.configserver.domain_name }}
   mosip-version: develop
   mosip-api-host: api.{{ .Values.configserver.domain_name }}
-  mosip-api-internal-host: api-internalxxx.{{ .Values.configserver.domain_name }}
+  mosip-api-internal-host: api-internal.{{ .Values.configserver.domain_name }}
   mosip-prereg-host: prereg.{{ .Values.configserver.domain_name }}
   mosip-activemq-host: activemq.{{ .Values.configserver.domain_name }}
   mosip-kibana-host: kibana.{{ .Values.configserver.domain_name }}
