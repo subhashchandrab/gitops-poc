@@ -31,3 +31,17 @@ spec:
         listener_filters:
         - name: envoy.filters.listener.proxy_protocol
         - name: envoy.filters.listener.tls_inspector
+---
+
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  name: api-internal
+spec:
+  hosts:
+  - 'api-internal.{{ .Values.ansibleenv.domain }}'
+  ports:
+  - number: 443
+    name: http
+    protocol: HTTPS
+  resolution: DNS
