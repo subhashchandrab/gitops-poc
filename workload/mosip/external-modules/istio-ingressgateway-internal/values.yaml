@@ -23,7 +23,7 @@ gateway:
         name: ingressgateway-internal-http2
         protocol: TCP
       - port: 443
-        targetPort: 8081
+        targetPort: 8080
         name: ingressgateway-internal-https
         protocol: TCP
       - port: 61616
