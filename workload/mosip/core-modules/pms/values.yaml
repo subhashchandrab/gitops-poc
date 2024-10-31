@@ -56,7 +56,7 @@ pmp-ui:
   istio:
     enabled: true
     ingressController:
-      name: ingress
+      name: ingressgateway-internal
     gateways:
       - name: pmp-gateway
         protocol: HTTP
