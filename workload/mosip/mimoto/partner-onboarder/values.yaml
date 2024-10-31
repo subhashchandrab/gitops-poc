@@ -1,6 +1,7 @@
 configserver:
   softhsm_securitypin: <path:ocivault#mosip_softhsm_security_pin#latest | base64decode>
   keycloak_admin_passsword: <path:ocivault#mosip_keycloak_admin_password#latest | base64decode>
+  keycloak_manager_passsword: <path:ocivault#mosip_keycloak_manager_password#latest | base64decode>
   postgres_user_password: <path:ocivault#mosip_pg_password#latest | base64decode> 
   keycloak_hostname: iam.<path:ocivault#mosip_domain#latest | base64decode>
   domain_name: <path:ocivault#mosip_domain#latest | base64decode>
