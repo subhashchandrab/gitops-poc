@@ -247,37 +247,37 @@ core:
       annotations:
         argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: registration-processor
-    #   path: workload/mosip/core-modules/regproc
-    #   namespace: regproc
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: registration-processor
+      path: workload/mosip/core-modules/regproc
+      namespace: regproc
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: admin
-    #   path: workload/mosip/core-modules/admin
-    #   namespace: admin
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: admin
+      path: workload/mosip/core-modules/admin
+      namespace: admin
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: ida
-    #   path: workload/mosip/core-modules/ida
-    #   namespace: ida
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: ida
+      path: workload/mosip/core-modules/ida
+      namespace: ida
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: print
-    #   path: workload/mosip/core-modules/print
-    #   namespace: print
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: print
+      path: workload/mosip/core-modules/print
+      namespace: print
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
     # Probably not required. So keeping it disabled
     # - name: partner-onboarder
@@ -291,29 +291,29 @@ core:
 
 
 
-    # - name: mosip-file-server
-    #   path: workload/mosip/core-modules/file-server
-    #   namespace: mosip-file-server
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: mosip-file-server
+      path: workload/mosip/core-modules/file-server
+      namespace: mosip-file-server
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: resident
-    #   path: workload/mosip/core-modules/resident
-    #   namespace: resident
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: resident
+      path: workload/mosip/core-modules/resident
+      namespace: resident
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: registration-client
-    #   path: workload/mosip/core-modules/regclient
-    #   namespace: regclient
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: registration-client
+      path: workload/mosip/core-modules/regclient
+      namespace: regclient
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
 mimoto:
   destination:

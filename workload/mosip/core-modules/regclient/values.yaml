@@ -36,6 +36,6 @@ regclient:
     healthCheckUrl: http://api-internal.<path:ocivault#mosip_domain#latest | base64decode>/v1/syncdata/actuator/health
   istio:
     ingressController:
-      name: ingress
+      name: ingressgateway-internal
     host: regclient.<path:ocivault#mosip_domain#latest | base64decode>
 

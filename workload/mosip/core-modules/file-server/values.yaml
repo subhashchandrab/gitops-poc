@@ -23,7 +23,8 @@ mosip-file-server:
     # ingressController is only valid if existingGateway is null/empty
     ingressController:
       # for public, istio: ingressgateway && for internal, istio: ingressgateway-internal
-      - ingress
+      - ingressgateway
+      - ingressgateway-internal
     prefix:
       wellKnownPrefix: '/.well-known/'
       injiPrefix: '/inji/'

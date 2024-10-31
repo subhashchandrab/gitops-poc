@@ -41,6 +41,6 @@ admin-ui:
   fullnameOverride: "admin-ui"
   istio:
     ingressController:
-      name: ingress
+      name: ingressgateway-internal
     hosts:
       - api-internal.<path:ocivault#mosip_domain#latest | base64decode>

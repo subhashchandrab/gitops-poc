@@ -98,7 +98,7 @@ resident-ui:
     apiHost: api-internal.<path:ocivault#mosip_domain#latest | base64decode>
   istio:
     ingressController:
-      name: ingress
+      name: ingressgateway
     gateways:
       - resident-ui-gateway
     prefix: /
