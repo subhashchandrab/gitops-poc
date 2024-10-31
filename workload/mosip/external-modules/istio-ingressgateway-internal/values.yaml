@@ -40,6 +40,7 @@ gateway:
         service.beta.kubernetes.io/oci-load-balancer-shape: "flexible"
         service.beta.kubernetes.io/oci-load-balancer-shape-flex-min: "10"
         service.beta.kubernetes.io/oci-load-balancer-shape-flex-max: "100"
+        service.beta.kubernetes.io/oci-load-balancer-backend-protocol: "HTTPS"
         service.beta.kubernetes.io/oci-load-balancer-ssl-ports: "443"    
         service.beta.kubernetes.io/oci-load-balancer-tls-secret: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
         oci.oraclecloud.com/oci-network-security-groups: <path:ocivault#mosip_public_lb_nsg_id#latest | base64decode>
