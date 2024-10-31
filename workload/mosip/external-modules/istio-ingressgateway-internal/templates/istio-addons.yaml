@@ -21,5 +21,6 @@ spec:
       protocol: HTTPS
     tls:
       mode: SIMPLE
+      credentialName: {{ .Values.domain_ssl_secret_name }}
 ---
 
