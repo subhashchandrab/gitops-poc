@@ -8,7 +8,7 @@ metadata:
 data:
   keycloak-internal-host: keycloak.keycloak
   keycloak-internal-url: http://keycloak.keycloak
-  keycloak-external-host: keycloak.keycloak
+  keycloak-external-host: {{ .Values.configserver.keycloak_hostname }}
   keycloak-external-url: http://keycloak.keycloak
 
 ---
