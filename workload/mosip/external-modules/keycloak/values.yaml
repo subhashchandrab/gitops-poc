@@ -133,6 +133,8 @@ keycloak:
   auth:
     adminUser: admin
     adminPassword: <path:ocivault#mosip_keycloak_admin_password#latest | base64decode>
+    managementUser: manager
+    managementPassword: <path:ocivault#mosip_keycloak_manager_password#latest | base64decode>
   
   ingress:
     enabled: false
