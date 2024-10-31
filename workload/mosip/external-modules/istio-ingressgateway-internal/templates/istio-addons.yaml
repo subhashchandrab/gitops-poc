@@ -13,13 +13,5 @@ spec:
       name: http
       number: 80
       protocol: HTTP
-  - hosts:
-    - 'api-internal.{{ .Values.ansibleenv.domain }}'
-    port:
-      name: https
-      number: 443
-      protocol: HTTPS
-    tls:
-      credentialName: {{ .Values.domain_ssl_secret_name }}
-      mode: SIMPLE
+
 
