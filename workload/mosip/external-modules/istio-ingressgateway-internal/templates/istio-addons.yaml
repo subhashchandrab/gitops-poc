@@ -18,6 +18,8 @@ spec:
     port:
       name: https
       number: 443
-      protocol: HTTP
-
+      protocol: HTTPS
+    tls:
+      credentialName: {{ .Values.domain_ssl_secret_name }}'
+      mode: SIMPLE
 
