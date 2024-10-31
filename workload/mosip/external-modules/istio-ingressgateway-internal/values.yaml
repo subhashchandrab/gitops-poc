@@ -20,11 +20,11 @@ gateway:
         protocol: TCP
       - port: 80
         targetPort: 8080
-        name: http2-int
+        name: http-int
         protocol: TCP
       - port: 443
         targetPort: 8080
-        name: http2-intssl
+        name: http-intssl
         protocol: TCP
       - port: 61616
         targetPort: 61616
