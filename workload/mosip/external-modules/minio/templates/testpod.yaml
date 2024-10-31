@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: curl-nslookup
+  labels:
+    app: curl-nslookup
+spec:
+  containers:
+  - name: curl-nslookup-container
+    image: curlimages/curl:latest  # This image includes curl and other network tools
+    command: ["/bin/sh", "-c", "while true; do sleep 3600; done"]  # Keeps the pod running
+    args:
+      - sleep
+      - "3600"
+    env:
+    - name: DNS_SERVER
+      value: "8.8.8.8"  # Optional: Replace with your DNS server if needed
+    resources:
+      limits:
+        memory: "64Mi"
+        cpu: "100m"
+    # Add busybox as an additional init container for nslookup
+    initContainers:
+    - name: install-nslookup
+      image: busybox:latest
+      command: ["sh", "-c", "cp /bin/nslookup /tools"]
+      volumeMounts:
+      - name: tools
+        mountPath: /tools
+  volumes:
+  - name: tools
+    emptyDir: {}
