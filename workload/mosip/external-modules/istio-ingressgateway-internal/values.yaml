@@ -23,8 +23,8 @@ gateway:
         name: http2-int
         protocol: TCP
       - port: 443
-        targetPort: 8081
-        name: https-int
+        targetPort: 8080
+        name: http2-int-ssl
         protocol: TCP
       - port: 61616
         targetPort: 61616
