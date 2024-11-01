@@ -38,33 +38,45 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 
 ---
-
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: update-zone-record-int
+  name: update-k8s-svc-int
   namespace: {{ .Values.namespace }}
   annotations:
     argocd.argoproj.io/hook: PostSync
 spec:
+  serviceAccountName: istio-ansible-sa-int
   template:
     spec:
-      serviceAccountName: istio-ansible-sa-int
+      initContainers:
+      - name: init-script
+        image: busybox                      
+        command: ["/bin/sh", "-c"]
+        args:
+          - "cp /root/.oci/install/* /tmp/working-directory/ && cp /root/.oci/playbooks/* /tmp/working-directory/ && chmod +x /tmp/working-directory/* "
+        volumeMounts:
+        - name: install-volume
+          mountPath: /root/.oci/install 
+        - name: playbook-volume
+          mountPath: /root/.oci/playbooks                    
+        - name: writable-dir
+          mountPath: /tmp/working-directory      
       containers:
       - name: configmanager
         image: ghcr.io/oci-sunbird/ociop:latest
         command: ["ansible-playbook"]
-        args: ["/root/.oci/playbooks/update_zone_record_playbook.yaml", "-i", "/root/.oci/inventory/inventory"]
+        args: ["/tmp/working-directory/update_zone_record_playbook.yaml", "-i", "/tmp/working-directory/inventory"]
         volumeMounts:
-        - name: inventory-volume
-          mountPath: /root/.oci/inventory
-        - name: playbooks-volume
-          mountPath: /root/.oci/playbooks
+        - name: writable-dir
+          mountPath: /tmp/working-directory 
       restartPolicy: Never
       volumes:
-      - name: inventory-volume
+      - name: install-volume
         configMap:
           name: {{ .Chart.Name }}-ansible-inventory-internal
-      - name: playbooks-volume
+      - name: playbook-volume
         configMap:
           name: {{ .Chart.Name }}-ansible-playbooks-internal
+      - name: writable-dir
+        emptyDir: {}   
