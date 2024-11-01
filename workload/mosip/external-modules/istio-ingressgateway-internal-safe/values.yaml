@@ -1,6 +1,9 @@
 ansibleenv:
   zone_compartment_id: <path:ocivault#zone_compartment_id#latest | base64decode>
   domain: <path:ocivault#openg2p_domain#latest | base64decode>
+  hostname:
+    - api-internal.<path:ocivault#openg2p_domain#latest | base64decode>
+    - iam.<path:ocivault#openg2p_domain#latest | base64decode>
 domain_ssl_secret_name: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
 
 
@@ -44,4 +47,3 @@ gateway:
         oci.oraclecloud.com/oci-network-security-groups: <path:ocivault#mosip_public_lb_nsg_id#latest | base64decode>
         oci-network-load-balancer.oraclecloud.com/subnet: <path:ocivault#mosip_public_lb_subnet_id#latest | base64decode>
         oci.oraclecloud.com/security-rule-management-mode: "None"  
-        external-dns.alpha.kubernetes.io/hostname: api-internal.<path:ocivault#openg2p_domain#latest | base64decode> , iam.<path:ocivault#openg2p_domain#latest | base64decode>
