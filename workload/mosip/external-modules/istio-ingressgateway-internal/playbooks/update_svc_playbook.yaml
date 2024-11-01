@@ -46,4 +46,8 @@
     - name: Apply the service defintion
       shell: |
         kubectl -n istio-system apply -f /tmp/working-directory/ingress-svc-ing-hostname.yaml
+      register: svc_apply
 
+    - name: Display the output of the service apply
+      debug:
+        msg: "{{ svc_apply.stdout }}"
