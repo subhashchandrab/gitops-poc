@@ -15,14 +15,3 @@ spec:
       protocol: HTTP
 
 ---
-
-apiVersion: networking.istio.io/v1
-kind: DestinationRule
-metadata:
-  name: originate-tls
-spec:
-  host: api-internal.{{ .Values.ansibleenv.domain }}
-  trafficPolicy:
-    tls:
-      mode: SIMPLE
-      credentialName: {{ .Values.domain_ssl_secret_name }}
