@@ -16,19 +16,31 @@
         namespace: istio-system
       register: svc_info
 
-    - name: Modify service status to add hostnames
+    - name: Initialize updated status
       set_fact:
-        updated_status: >
-          { "status": { "loadBalancer": { "ingress": [ ] } } }
+        updated_status:
+          status:
+            loadBalancer:
+              ingress: []
 
     - name: Print hostnames as a single line
       debug:
         msg: "{{ hostnames | join(', ') }}"
 
-    - name: Populate updated status with hostnames
+    - name: Create ingress list with hostnames
       set_fact:
-        updated_status: "{{ updated_status | combine({ 'status': { 'loadBalancer': { 'ingress': updated_status.status.loadBalancer.ingress + [{'hostname': item}] } } } } ) }}"
+        ingress_list: "{{ ingress_list | default([]) + [{'hostname': item}] }}"
       loop: "{{ hostnames }}"
+
+    - name: Populate updated status with the complete ingress list
+      set_fact:
+        updated_status: "{{ updated_status | combine({ 'status': { 'loadBalancer': { 'ingress': ingress_list } } }) }}"
+        
+
+    # - name: Populate updated status with hostnames
+    #   set_fact:
+    #     updated_status: "{{ updated_status | combine({ 'status': { 'loadBalancer': { 'ingress': updated_status.status.loadBalancer.ingress + [{'hostname': item}] } } } } ) }}"
+    #   loop: "{{ hostnames }}"
 
     - name: Update the service status in Kubernetes
       k8s:
