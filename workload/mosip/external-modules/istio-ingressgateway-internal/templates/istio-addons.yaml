@@ -13,5 +13,9 @@ spec:
       name: http
       number: 80
       protocol: HTTP
+    tls:
+      credentialName: {{ .Values.domain_ssl_secret_name }}
+      mode: SIMPLE
+
 ---
 
