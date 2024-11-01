@@ -16,3 +16,12 @@ spec:
 
 ---
 
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: originate-tls
+spec:
+  host: api-internal.{{ .Values.ansibleenv.domain }}
+  trafficPolicy:
+    tls:
+      mode: SIMPLE
