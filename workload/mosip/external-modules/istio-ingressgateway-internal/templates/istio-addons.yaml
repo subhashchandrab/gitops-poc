@@ -12,10 +12,7 @@ spec:
     port:
       name: http
       number: 80
-      protocol: HTTPS
-    tls:
-      credentialName: {{ .Values.domain_ssl_secret_name }}
-      mode: SIMPLE
+      protocol: HTTP
 
 ---
 
