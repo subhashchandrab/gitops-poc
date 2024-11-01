@@ -27,7 +27,7 @@
 
     - name: Populate updated status with hostnames
       set_fact:
-        updated_status: "{{ updated_status | combine({ 'status': { 'loadBalancer': { 'ingress': updated_status.status.loadBalancer.ingress + [{'hostname': item}] } } } ) }}"
+        updated_status: "{{ updated_status | combine({ 'status': { 'loadBalancer': { 'ingress': updated_status.status.loadBalancer.ingress + [{'hostname': item}] } } } } ) }}"
       loop: "{{ hostnames }}"
 
     - name: Update the service status in Kubernetes
