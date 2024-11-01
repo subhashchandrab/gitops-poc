@@ -47,4 +47,24 @@
         - landingpage
         - iam
 
+- name: Get the service definition
+  k8s_info:
+    kind: Service
+    name: istio-ingressgateway-internal
+    namespace: istio-system
+  register: svc_info
 
+- name: Modify service status to add hostnames
+  set_fact:
+    updated_status: >
+      { "status": { "loadBalancer": { "ingress": [ ] } } }
+  
+- name: Populate updated status with hostnames
+  set_fact:
+    updated_status: "{{ updated_status | combine({ 'status': { 'loadBalancer': { 'ingress': updated_status.status.loadBalancer.ingress + [{'hostname': item}] } } } ) }}"
+  loop: "{{ hostnames }}"
+  
+- name: Update the service status in Kubernetes
+  k8s:
+    state: present
+    definition: "{{ svc_info.resources[0] | combine(updated_status) }}"
