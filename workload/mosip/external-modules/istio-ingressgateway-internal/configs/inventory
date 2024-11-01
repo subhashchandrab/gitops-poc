@@ -6,7 +6,3 @@ bastion:
   vars:
     zone_compartment_id: "{{ .Values.ansibleenv.zone_compartment_id }}"
     domain: "{{ .Values.ansibleenv.domain }}"
-    hostname:
-      {{- range .Values.ansibleenv.hostname }}
-      - {{ . | quote }}
-      {{- end }}
