@@ -4,6 +4,11 @@
   environment:
     OCI_ANSIBLE_AUTH_TYPE: "instance_principal"
   tasks:
+    - name: Install kubernetes pre requisites
+      pip:
+        name: 
+          - kubernetes
+
     - name: Get the service definition
       k8s_info:
         kind: Service
