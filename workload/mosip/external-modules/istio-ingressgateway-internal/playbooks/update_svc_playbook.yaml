@@ -1,0 +1,49 @@
+---
+- name: Update DNS zone records
+  hosts: bastion
+  environment:
+    OCI_ANSIBLE_AUTH_TYPE: "instance_principal"
+  tasks:
+    - name: Install kubernetes pre requisites
+      pip:
+        name: 
+          - kubernetes
+
+    - name: Get the service definition of istio ingress internal gateway
+      shell: |
+        kubectl get svc -n istio-system istio-ingressgateway-internal -o yaml > /tmp/working-directory/ingress-svc.yaml
+
+    - name: Read the ingress svc YAML file
+      ansible.builtin.slurp:
+        src: /tmp/working-directory/ingress-svc.yaml
+      register: yaml_content
+
+    - name: Parse YAML content
+      set_fact:
+        yaml_data: "{{ yaml_content['content'] | b64decode | from_yaml }}"
+
+    - name: Create ingress list with hostnames
+      set_fact:
+        ingress_list: "{{ hostnames | map('community.general.dict_kv', 'hostname') | list }}"
+
+    - name: Update ingress with hostnames
+      set_fact:
+        yaml_data: >
+          {{ yaml_data | combine({
+              'status': {
+                'loadBalancer': {
+                  'ingress': ingress_list
+                }
+              }
+            }, recursive=True)
+          }}
+
+    - name: Write updated YAML back to file
+      ansible.builtin.copy:
+        dest: /tmp/working-directory/ingress-svc-ing-hostname.yaml
+        content: "{{ yaml_data | to_nice_yaml }}"
+
+    - name: Apply the service defintion
+      shell: |
+        kubectl -n istio-system apply -f /tmp/working-directory/ingress-svc-ing-hostname.yaml
+
