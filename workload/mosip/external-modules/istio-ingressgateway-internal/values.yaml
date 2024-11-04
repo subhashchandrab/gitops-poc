@@ -48,4 +48,3 @@ gateway:
         oci-network-load-balancer.oraclecloud.com/subnet: <path:ocivault#mosip_public_lb_subnet_id#latest | base64decode>
         oci.oraclecloud.com/security-rule-management-mode: "None"  
         external-dns.alpha.kubernetes.io/hostname: api-internal.<path:ocivault#openg2p_domain#latest | base64decode> , iam.<path:ocivault#openg2p_domain#latest | base64decode> ,activemq.<path:ocivault#openg2p_domain#latest | base64decode>, kibana.<path:ocivault#openg2p_domain#latest | base64decode>, regclient.<path:ocivault#openg2p_domain#latest | base64decode>, admin.<path:ocivault#openg2p_domain#latest | base64decode> , minio.<path:ocivault#openg2p_domain#latest | base64decode> , kafka.<path:ocivault#openg2p_domain#latest | base64decode>, postgres.<path:ocivault#openg2p_domain#latest | base64decode>, smtp.<path:ocivault#openg2p_domain#latest | base64decode>, landingpage.<path:ocivault#openg2p_domain#latest | base64decode> 
-      loadBalancerIP: "10.0.1.230"
