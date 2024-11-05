@@ -67,9 +67,12 @@ postgres-init:
       enabled: false
       branch: develop
 
+    # mosip_esignet:
+    #   enabled: false
+    #   branch: rlease-1.1.0
     mosip_esignet:
-      enabled: false
-      branch: rlease-1.1.0
+      enabled: true
+      branch: develop
 
     mosip_mockidentitysystem:
       enabled: false
