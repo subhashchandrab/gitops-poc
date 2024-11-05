@@ -40,11 +40,11 @@
         - kibana
         - regclient
         - admin
-        - minio
         - kafka
         - postgres
         - smtp
         - landingpage
         - iam
+
 
 
