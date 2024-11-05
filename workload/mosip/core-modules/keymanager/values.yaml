@@ -1,6 +1,7 @@
 keymanager_hostname: keymanager.<path:ocivault#mosip_domain#latest | base64decode> 
 
 configserver:
+  postgres_user_password: <path:ocivault#mosip_pg_password#latest | base64decode> 
   domain_name: <path:ocivault#mosip_domain#latest | base64decode>
   activeProfileEnv: default
   gitRepo:
