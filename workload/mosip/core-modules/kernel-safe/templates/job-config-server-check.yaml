@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: check-idgenerator-readiness
+  name: check-config-server-readiness
   namespace: {{ .Values.namespace }}
   annotations:
     argocd.argoproj.io/hook: PreSync
@@ -19,8 +19,8 @@ spec:
         args:
           - |
             while true; do
-              echo "Checking readiness of idgenerator service...";
-              if curl -sf http://idgenerator.kernel/v1/idgenerator/actuator/health; then
+              echo "Checking readiness of config-server service...";
+              if curl -sf http://config-server.config-server/config/*/*; then
                 echo "Service is ready!";
                 exit 0;
               else

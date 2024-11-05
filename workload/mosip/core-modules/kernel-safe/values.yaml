@@ -35,12 +35,6 @@ auditmanager:
 
 idgenerator:
   fullnameOverride: "idgenerator"
-  startupProbe:
-    enabled: false
-  livenessProbe:
-    enabled: false
-  readinessProbe:
-    enabled: false
 
 masterdata:
   fullnameOverride: "masterdata"
