@@ -36,7 +36,7 @@ metadata:
   name: minio
 spec:
   selector:
-    istio: ingressgateway-internal
+    istio: ingressgateway
   servers:
   - port:
       number: 80
