@@ -18,11 +18,7 @@ spec:
         command:
           - 'sh'
           - '-c'
-          - |
-            until PGPASSWORD="${DB_PASSWORD}" psql -U ${DB_USERNAME} -h ${DB_HOSTNAME} -p ${DB_PORT:-5432} -d ${DB_DBNAME:-mosip_master} -c "SELECT 1 FROM information_schema.tables WHERE table_schema = 'public' AND table_name = 'app_detail';" | grep -q 1; do
-              echo "Waiting for app_detail table to be ready..."
-              sleep 3
-            done
+          - 'until pg_isready -U ${DB_USERNAME} -h ${DB_HOSTNAME} -p ${DB_PORT:-5432} -d ${DB_DBNAME:-mosip_master}; do sleep 3; done'
         env: 
           - name: DB_HOSTNAME
             value: "postgres-postgresql.postgres"
@@ -30,11 +26,6 @@ spec:
             value: "masteruser"
           - name: DB_DBNAME
             value: "mosip_master"
-          - name: DB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: db-common-secrets
-                key: db-dbuser-password
       restartPolicy: Never
       {{- if .Values.initcontainer.imagepullsecret }}
       imagePullSecrets:
