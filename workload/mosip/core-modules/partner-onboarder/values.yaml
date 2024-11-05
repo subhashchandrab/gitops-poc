@@ -91,17 +91,15 @@ partner-onboarder:
       - name: resident-oidc
         enabled: false
       - name: mimoto-keybinding
-        enabled: true
+        enabled: false
 
     configmaps:
       s3:
-        s3-host: 'https://minio.<path:ocivault#mosip_domain#latest | base64decode>'
+        # s3-host: 'https://minio.<path:ocivault#mosip_domain#latest | base64decode>'
         s3-user-key: 'admin'
         s3-region: 'us-east-1'
-        s3-bucket-name: 'onboardpartner'
+        s3-bucket-name: 'onboarder'
       onboarder-namespace:
         ns_mimoto: mimoto
         ns_esignet: esignet
-      onboarding: 
-        ENABLE_INSECURE: false
     secrets:
