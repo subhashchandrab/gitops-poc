@@ -349,3 +349,11 @@ esignet:
         istio_injection_label: enabled
       annotations:
         argocd.argoproj.io/manifest-generate-paths: .
+
+    - name: softhsm-esignet
+      path: workload/mosip/esignet/softhsm-esignet
+      namespace: softhsm
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
