@@ -22,6 +22,7 @@ configserver:
   resident_captcha_secret_key: <path:ocivault#mosip_resident_captcha_secret_key#latest | base64decode>
   esignet_captcha_site_key: <path:ocivault#mosip_esignet_captcha_site_key#latest | base64decode>
   esignet_captcha_secret_key: <path:ocivault#mosip_esignet_captcha_secret_key#latest | base64decode>
+  mosip_esignet_misp_key: <path:ocivault#mosip_esignet_misp_key#latest | base64decode>
 
   clientSecrets:
     - name: mosip_abis_client_secret
@@ -637,4 +638,25 @@ config-server:
         secretKeyRef:
           name: softhsm-esignet
           key: security-pin
+      enabled: true
+
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_ESIGNET_CAPTCHA_SITE_KEY
+      valueFrom:
+        secretKeyRef:
+          name: mosip-captcha
+          key: esignet-captcha-site-key
+      enabled: true
+
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_ESIGNET_CAPTCHA_SECRET_KEY
+      valueFrom:
+        secretKeyRef:
+          name: mosip-captcha
+          key: esignet-captcha-secret-key
+      enabled: true
+
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_MOSIP_ESIGNET_MISP_KEY
+      valueFrom:
+        secretKeyRef:
+          name: esignet-misp-onboarder-key
+          key: mosip-esignet-misp-key
       enabled: true
