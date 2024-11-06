@@ -9,6 +9,8 @@ configserver:
   minio_password: <path:ocivault#mosip_minio_admin_password#latest | base64decode>
   minio_pretext_value: ""
   minio_region: ""
+  esignet_enabled: true
+  esignet_redis_password: <path:ocivault#mosip_esignet_redis_password#latest | base64decode>
   activemq_enabled: true
   artemis_password: ""
   msg_gateway: true
@@ -621,4 +623,11 @@ config-server:
         secretKeyRef:
           name: conf-secrets-various
           key: mosip-partner-crypto-p12-password
+      enabled: true
+
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_REDIS_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: redis
+          key: redis-password
       enabled: true
