@@ -34,21 +34,21 @@ external:
       annotations:
         argocd.argoproj.io/sync-wave: "-98"
 
-    - name: postgres
-      path: workload/mosip/external-modules/postgres
-      namespace: postgres
-      namespace_labels:
-        istio_injection_label: enabled
-      annotations:
-        argocd.argoproj.io/manifest-generate-paths: .
+    # - name: postgres
+    #   path: workload/mosip/external-modules/postgres
+    #   namespace: postgres
+    #   namespace_labels:
+    #     istio_injection_label: enabled
+    #   annotations:
+    #     argocd.argoproj.io/manifest-generate-paths: .
 
-    - name: postgres-init
-      path: workload/mosip/external-modules/postgres-init
-      namespace: postgres
-      namespace_labels:
-        istio_injection_label: enabled
-      annotations:
-        argocd.argoproj.io/manifest-generate-paths: .
+    # - name: postgres-init
+    #   path: workload/mosip/external-modules/postgres-init
+    #   namespace: postgres
+    #   namespace_labels:
+    #     istio_injection_label: enabled
+    #   annotations:
+    #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: keycloak
     #   path: workload/mosip/external-modules/keycloak
@@ -334,10 +334,10 @@ esignet:
     repoURL: https://github.com/ddevadat/gitops-poc
     targetRevision: HEAD
   components:
-    - name: esignet-postgres-init
-      path: workload/mosip/esignet/postgres-init
-      namespace: esignet-postgres-init
-      namespace_labels:
-        istio_injection_label: enabled
-      annotations:
-        argocd.argoproj.io/manifest-generate-paths: .
+    # - name: esignet-postgres-init
+    #   path: workload/mosip/esignet/postgres-init
+    #   namespace: esignet-postgres-init
+    #   namespace_labels:
+    #     istio_injection_label: enabled
+    #   annotations:
+    #     argocd.argoproj.io/manifest-generate-paths: .
