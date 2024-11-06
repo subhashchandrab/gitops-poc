@@ -65,4 +65,5 @@ postgres-init:
     
     mosip_esignet:
       enabled: true
+      host: "postgres-postgresql.postgres"
       branch: develop
