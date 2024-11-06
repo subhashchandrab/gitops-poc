@@ -1,4 +1,6 @@
 
+postgres_password: <path:ocivault#mosip_pg_password#latest | base64decode> 
+
 postgres-init:
   backoffLimit: 6
   jobAnnotations:
