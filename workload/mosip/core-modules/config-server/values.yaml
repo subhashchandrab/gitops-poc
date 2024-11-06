@@ -631,3 +631,10 @@ config-server:
           name: redis
           key: redis-password
       enabled: true
+
+    - name: SPRING_CLOUD_CONFIG_SERVER_OVERRIDES_SOFTHSM_ESIGNET_SECURITY_PIN
+      valueFrom:
+        secretKeyRef:
+          name: softhsm-esignet
+          key: security-pin
+      enabled: true
