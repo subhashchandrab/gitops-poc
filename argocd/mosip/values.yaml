@@ -357,3 +357,11 @@ esignet:
         istio_injection_label: enabled
       annotations:
         argocd.argoproj.io/manifest-generate-paths: .
+
+    - name: esignet
+      path: workload/mosip/esignet/esignet
+      namespace: esignet
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
