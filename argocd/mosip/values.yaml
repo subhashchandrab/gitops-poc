@@ -122,13 +122,13 @@ external:
 #       annotations:
 #         argocd.argoproj.io/manifest-generate-paths: .
 
-# core:
-#   destination:
-#     server: https://kubernetes.default.svc
-#   source:
-#     repoURL: https://github.com/ddevadat/gitops-poc
-#     targetRevision: HEAD
-#   components:
+core:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/ddevadat/gitops-poc
+    targetRevision: HEAD
+  components:
 #     - name: config-server
 #       path: workload/mosip/core-modules/config-server
 #       namespace: config-server
