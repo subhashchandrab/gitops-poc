@@ -341,3 +341,11 @@ esignet:
         istio_injection_label: enabled
       annotations:
         argocd.argoproj.io/manifest-generate-paths: .
+
+    - name: esignet-redis
+      path: workload/mosip/esignet/redis
+      namespace: redis
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .

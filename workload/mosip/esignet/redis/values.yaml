@@ -1,0 +1,6 @@
+redis:
+  fullnameOverride: "redis"
+  global:
+    storageClass: "longhorn"
+    redis:
+      password: "<path:ocivault#mosip_esignet_redis_password#latest | base64decode>"

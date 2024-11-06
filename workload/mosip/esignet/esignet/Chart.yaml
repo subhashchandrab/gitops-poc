@@ -1,6 +1,6 @@
 apiVersion: v2
-name: partner-onboarder-chart
-description: A Helm chart for partner onboarder Components
+name: esignet-chart
+description: A Helm chart for esignet Components
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -23,7 +23,7 @@ version: 12.0.1
 appVersion: "1.0"
 
 dependencies:
-- name: partner-onboarder
+- name: esignet
   version: 12.0.1
   repository: https://mosip.github.io/mosip-helm
 
