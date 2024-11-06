@@ -27,3 +27,6 @@ dependencies:
   version: 1.4.0
   repository: https://mosip.github.io/mosip-helm
 
+- name: oidc-ui
+  version: 1.0.1
+  repository: https://mosip.github.io/mosip-helm
