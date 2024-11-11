@@ -48,4 +48,3 @@ gateway:
         oci.oraclecloud.com/oci-network-security-groups: <path:ocivault#mosip_public_lb_nsg_id#latest | base64decode>
         oci-network-load-balancer.oraclecloud.com/subnet: <path:ocivault#mosip_public_lb_subnet_id#latest | base64decode>
         oci.oraclecloud.com/security-rule-management-mode: "None"  
-        external-dns.alpha.kubernetes.io/hostname: testing.<path:ocivault#openg2p_domain#latest | base64decode>

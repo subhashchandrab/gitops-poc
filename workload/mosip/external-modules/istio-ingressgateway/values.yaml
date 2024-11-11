@@ -35,12 +35,13 @@ gateway:
         name: postgres
         protocol: TCP
       annotations: 
-        oci.oraclecloud.com/load-balancer-type: "nlb"
-        oci-network-load-balancer.oraclecloud.com/internal: "false"
-        oci-network-load-balancer.oraclecloud.com/is-preserve-source: "false"
+        oci.oraclecloud.com/load-balancer-type: "lb"
         oci.oraclecloud.com/ingress-ip-mode: "Proxy"
+        service.beta.kubernetes.io/oci-load-balancer-shape: "flexible"
+        service.beta.kubernetes.io/oci-load-balancer-shape-flex-min: "10"
+        service.beta.kubernetes.io/oci-load-balancer-shape-flex-max: "100"
+        service.beta.kubernetes.io/oci-load-balancer-ssl-ports: "443"    
+        service.beta.kubernetes.io/oci-load-balancer-tls-secret: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
         oci.oraclecloud.com/oci-network-security-groups: <path:ocivault#mosip_public_lb_nsg_id#latest | base64decode>
         oci-network-load-balancer.oraclecloud.com/subnet: <path:ocivault#mosip_public_lb_subnet_id#latest | base64decode>
         oci.oraclecloud.com/security-rule-management-mode: "None"  
-        external-dns.alpha.kubernetes.io/hostname: testpub.<path:ocivault#openg2p_domain#latest | base64decode>
-      externalTrafficPolicy: "Local"
