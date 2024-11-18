@@ -57,6 +57,9 @@ gitlab-runner:
           helper_image_flavor = "ubuntu"
           pull_policy = "if-not-present"
           executor = "kubernetes"
+          [runners.kubernetes.service_container_security_context]
+          privileged = true
+          allow_privilege_escalation = true
           [[runners.kubernetes.volumes.host_path]]
             name = "buildah"
             mount_path = "/var/lib/containers/storage"
@@ -65,6 +68,15 @@ gitlab-runner:
           [[runners.kubernetes.volumes.empty_dir]]
             mount_path = "/var/run/"
             name = "docker-sock"
+          [[runners.kubernetes.services]]
+          alias = "dind"
+          command = [
+              "--host=tcp://0.0.0.0:2375",
+              "--host=unix://var/run/docker.sock",
+              "--storage-driver=overlay2"
+          ]
+          entrypoint = ["dockerd"]
+          name = "docker:20.10.12-dind"
         [runners.cache]
           Type = "s3"
           Path = "gitlab_runner"
