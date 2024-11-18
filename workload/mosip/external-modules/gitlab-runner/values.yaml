@@ -38,7 +38,7 @@ gitlab-runner:
     serviceMonitor:
       enabled: false
   service:
-    enabled: false
+    enabled: true
     type: ClusterIP
   runners:
     # runner configuration, where the multi line strings is evaluated as
