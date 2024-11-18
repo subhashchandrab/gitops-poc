@@ -129,53 +129,53 @@ core:
     repoURL: https://github.com/ddevadat/gitops-poc
     targetRevision: HEAD
   components:
-    # - name: config-server
-    #   path: workload/mosip/core-modules/config-server
-    #   namespace: config-server
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: config-server
+      path: workload/mosip/core-modules/config-server
+      namespace: config-server
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: artifactory
-    #   path: workload/mosip/core-modules/artifactory
-    #   namespace: artifactory
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: artifactory
+      path: workload/mosip/core-modules/artifactory
+      namespace: artifactory
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: keymanager
-    #   path: workload/mosip/core-modules/keymanager
-    #   namespace: keymanager
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: keymanager
+      path: workload/mosip/core-modules/keymanager
+      namespace: keymanager
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: websub
-    #   path: workload/mosip/core-modules/websub
-    #   namespace: websub
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: websub
+      path: workload/mosip/core-modules/websub
+      namespace: websub
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: mock-smtp
-    #   path: workload/mosip/core-modules/mock-smtp
-    #   namespace: mock-smtp
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: mock-smtp
+      path: workload/mosip/core-modules/mock-smtp
+      namespace: mock-smtp
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: kernel
-    #   path: workload/mosip/core-modules/kernel
-    #   namespace: kernel
-    #   namespace_labels:
-    #     istio_injection_label: enabled
-    #   annotations:
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: kernel
+      path: workload/mosip/core-modules/kernel
+      namespace: kernel
+      namespace_labels:
+        istio_injection_label: enabled
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: masterdata-loader
     #   path: workload/mosip/core-modules/masterdata-loader
