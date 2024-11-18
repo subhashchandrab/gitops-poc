@@ -34,6 +34,13 @@ external:
       annotations:
         argocd.argoproj.io/sync-wave: "-98"
 
+    - name: gitlab-runner
+      path: workload/mosip/external-modules/gitlab-runner
+      namespace: gitlab
+      annotations:
+        argocd.argoproj.io/sync-wave: "-99"
+        argocd.argoproj.io/manifest-generate-paths: .
+
     # - name: postgres
     #   path: workload/mosip/external-modules/postgres
     #   namespace: postgres

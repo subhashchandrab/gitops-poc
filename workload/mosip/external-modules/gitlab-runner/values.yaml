@@ -1,0 +1,106 @@
+gitlab-runner:
+  image:
+    registry: registry.gitlab.com
+    image: gitlab-org/gitlab-runner
+    tag: alpine-v16.11.0
+  useTini: false
+  imagePullPolicy: IfNotPresent
+  gitlabUrl: https://gitlab.com/
+  runnerToken: "<path:ocivault#circles_gitlab_runner_token#latest | base64decode>"
+  terminationGracePeriodSeconds: 3600
+  concurrent: 100
+  shutdown_timeout: 0
+  checkInterval: 5
+  logLevel: debug
+  sessionServer:
+    enabled: false
+    # annotations: {}
+    # timeout: 1800
+    # internalPort: 8093
+    # externalPort: 9000
+    # publicIP: ""
+    # loadBalancerSourceRanges:
+    #   - 1.2.3.4/32
+
+  ## For RBAC support:
+  rbac:
+    create: true
+    rules: []
+    clusterWideAccess: false
+    podSecurityPolicy:
+      enabled: false
+      resourceNames:
+      - gitlab-runner
+  metrics:
+    enabled: false
+    portName: metrics
+    port: 9252
+    serviceMonitor:
+      enabled: false
+  service:
+    enabled: false
+    type: ClusterIP
+  runners:
+    # runner configuration, where the multi line strings is evaluated as
+    # template so you can specify helm values inside of it.
+    #
+    # tpl: https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-tpl-function
+    # runner configuration: https://docs.gitlab.com/runner/configuration/advanced-configuration.html
+    config: |
+      [[runners]]
+        output_limit = 200960
+        [runners.kubernetes]
+          privileged = true
+          allow_privilege_escalation = true
+          namespace = "{{.Release.Namespace}}"
+          image = "ubuntu:22.04"
+          helper_image_flavor = "ubuntu"
+          pull_policy = "if-not-present"
+          executor = "kubernetes"
+          [[runners.kubernetes.volumes.host_path]]
+            name = "buildah"
+            mount_path = "/var/lib/containers/storage"
+            read_only = false
+          [runners.kubernetes.volumes]
+          [[runners.kubernetes.volumes.empty_dir]]
+            mount_path = "/var/run/"
+            name = "docker-sock"
+        [runners.cache]
+          Type = "s3"
+          Path = "gitlab_runner"
+          Shared = true
+          [runners.cache.s3]
+            BucketName = "gitlab-shared-caching"
+            BucketLocation = "<path:ocivault#circles_gitlab_cache_s3_region#latest | base64decode>"
+            ServerAddress = "<path:ocivault#circles_gitlab_cache_s3_host#latest | base64decode>"
+            AccessKey = "<path:ocivault#circles_gitlab_cache_s3_access_key#latest | base64decode>"
+            SecretKey = "<path:ocivault#circles_gitlab_cache_s3_secret_key#latest | base64decode>"
+    configPath: ""
+    tags: "oke"
+    cache: {}
+  securityContext:
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: false
+    runAsNonRoot: true
+    privileged: false
+    capabilities:
+      drop: ["ALL"]
+  strategy: {}
+  podSecurityContext:
+    runAsUser: 100
+    fsGroup: 65533
+  resources: {}
+  affinity: {}
+  topologySpreadConstraints: {}
+  nodeSelector: {}
+  tolerations: []
+  hostAliases: []
+  deploymentAnnotations: {}
+  deploymentLabels: {}
+  podAnnotations: {}
+  podLabels: {}
+  priorityClassName: ""
+  secrets: []
+  configMaps: {}
+  volumeMounts: []
+  volumes: []
