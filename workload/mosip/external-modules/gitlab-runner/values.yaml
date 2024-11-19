@@ -51,13 +51,14 @@ gitlab-runner:
         output_limit = 200960
         [runners.kubernetes]
           privileged = true
-          node_selector = "kubernetes.io/hostname=10.0.2.214"
           allow_privilege_escalation = true
           namespace = "{{.Release.Namespace}}"
           image = "ubuntu:22.04"
           helper_image_flavor = "ubuntu"
           pull_policy = "if-not-present"
           executor = "kubernetes"
+          [runners.kubernetes.node_selector]
+            kubernetes.io/hostname = 0.0.2.214
           [[runners.kubernetes.volumes.host_path]]
             name = "buildah"
             mount_path = "/var/lib/containers/storage"
