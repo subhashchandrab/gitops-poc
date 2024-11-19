@@ -73,7 +73,7 @@ gitlab-runner:
           command = [
               "--host=tcp://0.0.0.0:2375",
               "--host=unix://var/run/docker.sock",
-              "--storage-driver=overlay2"
+              "--storage-driver=vfs"
           ]
           entrypoint = ["dockerd"]
           name = "docker:20.10.12-dind"
