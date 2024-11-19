@@ -94,7 +94,8 @@ gitlab-runner:
   resources: {}
   affinity: {}
   topologySpreadConstraints: {}
-  nodeSelector: {}
+  nodeSelector: 
+    "kubernetes.io/hostname": "10.0.2.214"
   tolerations: []
   hostAliases: []
   deploymentAnnotations: {}
