@@ -63,10 +63,15 @@ gitlab-runner:
             name = "buildah"
             mount_path = "/var/lib/containers/storage"
             read_only = false
-          [runners.kubernetes.volumes]
-          [[runners.kubernetes.volumes.empty_dir]]
+          [[runners.kubernetes.volumes.host_path]]
+            name = "docker-sock"
             mount_path = "/var/run/"
-            name = "docker-sock"        
+            read_only = true
+            host_path = "/var/run/"
+          [runners.kubernetes.volumes]
+          # [[runners.kubernetes.volumes.empty_dir]]
+          #   mount_path = "/var/run/"
+          #   name = "docker-sock"        
         [runners.cache]
           Type = "s3"
           Path = "gitlab_runner"
