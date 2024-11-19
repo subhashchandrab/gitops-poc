@@ -58,7 +58,7 @@ gitlab-runner:
           pull_policy = "if-not-present"
           executor = "kubernetes"
           [[runners.kubernetes.node_selector]]
-            kubernetes.io/hostname = 0.0.2.214
+            "kubernetes.io/hostname" = "10.0.2.214"
           [[runners.kubernetes.volumes.host_path]]
             name = "buildah"
             mount_path = "/var/lib/containers/storage"
