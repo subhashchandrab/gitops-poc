@@ -51,6 +51,7 @@ gitlab-runner:
         output_limit = 200960
         [runners.kubernetes]
           privileged = true
+          node_selector = "kubernetes.io/hostname=10.0.2.214"
           allow_privilege_escalation = true
           namespace = "{{.Release.Namespace}}"
           image = "ubuntu:22.04"
