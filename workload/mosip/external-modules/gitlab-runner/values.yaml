@@ -64,7 +64,10 @@ gitlab-runner:
           [runners.kubernetes.volumes]
           [[runners.kubernetes.volumes.empty_dir]]
             mount_path = "/var/run/"
-            name = "docker-sock"        
+            name = "docker-sock"     
+          [[runners.kubernetes.volumes.empty_dir]]
+          mount_path = "/var/lib/"
+          name = "docker-data"   
         [runners.cache]
           Type = "s3"
           Path = "gitlab_runner"
