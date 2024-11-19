@@ -57,8 +57,6 @@ gitlab-runner:
           helper_image_flavor = "ubuntu"
           pull_policy = "if-not-present"
           executor = "kubernetes"
-          [[runners.kubernetes.node_selector]]
-            "kubernetes.io/hostname" = "10.0.2.214"
           [[runners.kubernetes.volumes.host_path]]
             name = "buildah"
             mount_path = "/var/lib/containers/storage"
@@ -94,8 +92,7 @@ gitlab-runner:
   resources: {}
   affinity: {}
   topologySpreadConstraints: {}
-  nodeSelector: 
-    "kubernetes.io/hostname": "10.0.2.214"
+  nodeSelector: {}
   tolerations: []
   hostAliases: []
   deploymentAnnotations: {}
