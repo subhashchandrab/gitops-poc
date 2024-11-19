@@ -57,21 +57,14 @@ gitlab-runner:
           helper_image_flavor = "ubuntu"
           pull_policy = "if-not-present"
           executor = "kubernetes"
-          [runners.kubernetes.node_selector]
-            gitlab = "true"
           [[runners.kubernetes.volumes.host_path]]
             name = "buildah"
             mount_path = "/var/lib/containers/storage"
             read_only = false
-          [[runners.kubernetes.volumes.host_path]]
-            name = "docker-sock"
-            mount_path = "/var/run/"
-            read_only = true
-            host_path = "/var/run/"
           [runners.kubernetes.volumes]
-          # [[runners.kubernetes.volumes.empty_dir]]
-          #   mount_path = "/var/run/"
-          #   name = "docker-sock"        
+          [[runners.kubernetes.volumes.empty_dir]]
+            mount_path = "/var/run/"
+            name = "docker-sock"        
         [runners.cache]
           Type = "s3"
           Path = "gitlab_runner"
