@@ -1,3 +1,5 @@
+storage_class: longhorn
+
 cass-operator:
   fullnameOverride: ''
   disableCertManagerCheck: true
