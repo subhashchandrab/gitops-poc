@@ -4,6 +4,9 @@ metadata:
   name: dc1
 spec:
   superuserSecretName: super-user-secret
+  users:
+    - secretName: super-user-secret
+      superuser: true
   clusterName: development
   serverType: cassandra
   serverVersion: "4.1.2"
