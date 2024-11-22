@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: cassandra
+  namespace: {{ .Values.namespace }}
+spec:
+  hosts:
+    - "*"
+  gateways:
+  - cassandra
+  tcp:
+  - match:
+    - port: 9402
+    route:
+    - destination:
+        host: development-dc1-service
+        port:
+          number: 9402
+    
+

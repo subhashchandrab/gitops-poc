@@ -1,7 +1,7 @@
 storage_class: longhorn
 super_username: cassandra
 super_user_password: "<path:ocivault#cncf_cassandra_super_user_password#latest | base64decode>"
-
+cassandraHost: cassandra.<path:ocivault#openg2p_domain#latest | base64decode>
 cass-operator:
   fullnameOverride: ''
   disableCertManagerCheck: true
