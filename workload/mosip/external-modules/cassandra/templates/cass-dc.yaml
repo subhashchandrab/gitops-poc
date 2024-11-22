@@ -24,7 +24,6 @@ spec:
       memory: 2Gi
       cpu: 1000m
   podTemplateSpec:
-    securityContext: {}
     spec:
       containers:
       - name: cassandra
