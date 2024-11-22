@@ -41,12 +41,12 @@ external:
     #     argocd.argoproj.io/sync-wave: "-99"
     #     argocd.argoproj.io/manifest-generate-paths: .
 
-    # - name: cassandra
-    #   path: workload/mosip/external-modules/cassandra
-    #   namespace: cass-operator
-    #   annotations:
-    #     argocd.argoproj.io/sync-wave: "-99"
-    #     argocd.argoproj.io/manifest-generate-paths: .
+    - name: cassandra
+      path: workload/mosip/external-modules/cassandra
+      namespace: cass-operator
+      annotations:
+        argocd.argoproj.io/sync-wave: "-99"
+        argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: postgres
     #   path: workload/mosip/external-modules/postgres
