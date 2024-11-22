@@ -3,6 +3,7 @@ kind: CassandraDatacenter
 metadata:
   name: dc1
 spec:
+  superuserSecretName: super-user-secret
   clusterName: development
   serverType: cassandra
   serverVersion: "4.1.2"
