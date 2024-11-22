@@ -36,6 +36,10 @@ gateway:
         targetPort: 5432
         name: postgres
         protocol: TCP
+      - port: 9042
+        targetPort: 9042
+        name: cassandra
+        protocol: TCP
       annotations: 
         oci.oraclecloud.com/load-balancer-type: "lb"
         oci.oraclecloud.com/ingress-ip-mode: "Proxy"

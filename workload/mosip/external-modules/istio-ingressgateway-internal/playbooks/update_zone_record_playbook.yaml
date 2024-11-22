@@ -45,6 +45,7 @@
         - smtp
         - landingpage
         - iam
+        - cassandra
 
 
 
