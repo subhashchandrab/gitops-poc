@@ -2,8 +2,6 @@ apiVersion: cassandra.datastax.com/v1beta1
 kind: CassandraDatacenter
 metadata:
   name: dc1
-  annotations:
-    argocd.argoproj.io/hook: PostSync
 spec:
   superuserSecretName: super-user-secret
   users:
