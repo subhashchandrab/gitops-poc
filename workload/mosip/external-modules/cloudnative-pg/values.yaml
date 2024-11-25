@@ -1,7 +1,6 @@
-storage_class: longhorn
-super_username: cassandra
-super_user_password: "<path:ocivault#cncf_cassandra_super_user_password#latest | base64decode>"
-cassandraHost: cassandra.<path:ocivault#openg2p_domain#latest | base64decode>
+pg_db_user: mosippdb
+pg_db_password: <path:ocivault#mosip_pg_password#latest | base64decode> 
+
 cluster:
   version:
     postgresql: "14"
@@ -27,3 +26,7 @@ cluster:
       # -- PostgreSQL User Name Maps rules (lines to be appended to the pg_ident.conf file)
       pg_ident: 
         - mymap   /^(.*)@mydomain\.com$      \1
+    initdb: 
+      database: mosippdb
+      secret:
+        name: "postgres-postgresql" 
