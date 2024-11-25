@@ -9,85 +9,68 @@ postgres-init:
   databases:
     mosip_master:
       enabled: true
-      host: "cloudnative-pg-cluster-rw"
       branch: release-1.2.0.1
 
     mosip_audit:
       enabled: true
-      host: "cloudnative-pg-cluster-rw"
       branch: release-1.2.0.1
 
     mosip_keymgr:
       enabled: true 
-      host: "cloudnative-pg-cluster-rw"
       branch: release-1.2.0.1-B4
 
     mosip_kernel:
       enabled: true
-      host: "cloudnative-pg-cluster-rw"
       branch: release-1.2.0.1
 
     mosip_idmap:
       enabled: true
-      host: "cloudnative-pg-cluster-rw"
       branch: release-1.2.0.1
 
     mosip_prereg:
       enabled: true
-      host: "cloudnative-pg-cluster-rw"
       branch: release-1.2.0.1
 
     mosip_idrepo:
       enabled: true
-      host: "cloudnative-pg-cluster-rw"
       branch: release-1.2.0.1
 
     mosip_ida:
       enabled: true
-      host: "cloudnative-pg-cluster-rw"
       branch: release-1.2.0.1
 
     mosip_credential:
       enabled: true
-      host: "cloudnative-pg-cluster-rw"
       branch: release-1.2.0.1
 
     mosip_regprc:
       enabled: true
-      host: "cloudnative-pg-cluster-rw"
       branch: release-1.2.0.x
 
     mosip_pms:
       enabled: true
-      host: "cloudnative-pg-cluster-rw"
       branch: release-1.2.0.1
 
     mosip_hotlist:
       enabled: true
-      host: "cloudnative-pg-cluster-rw"
       branch: release-1.2.0.1
 
     mosip_resident:
       enabled: true
-      host: "cloudnative-pg-cluster-rw"
       branch: release-1.2.0.1
 
     mosip_toolkit:
       enabled: false
-      host: "cloudnative-pg-cluster-rw"
       branch: release-1.x.x
   
     mosip_digitalcard:
       enabled: false
-      host: "cloudnative-pg-cluster-rw"
       branch: develop
 
     mosip_esignet:
       enabled: false
-      host: "cloudnative-pg-cluster-rw"
       branch: rlease-1.1.0
 
     mosip_mockidentitysystem:
       enabled: false
-      host: "cloudnative-pg-cluster-rw"
       branch: 0.9.0
