@@ -123,11 +123,11 @@ cluster:
         max_wal_senders: "20"
         max_replication_slots: "10"
       # -- PostgreSQL Host Based Authentication rules (lines to be appended to the pg_hba.conf file)
-      # pg_hba: 
-      #   - host all all 10.244.0.0/16 md5
+      pg_hba: 
+        - host all all 10.244.0.0/16 md5
       # -- PostgreSQL User Name Maps rules (lines to be appended to the pg_ident.conf file)
-      # pg_ident: 
-      #   - mymap   /^(.*)@mydomain\.com$      \1
+      pg_ident: 
+        - mymap   /^(.*)@mydomain\.com$      \1
     initdb: 
       database: mosippdb
       owner: mosippdb
