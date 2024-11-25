@@ -19,7 +19,7 @@ postgres-init:
       su:
         user: postgres
         secret:
-          name: superuser-secret
+          name: cloudnative-pg-cluster-superuser
           key: password
 
     mosip_audit:
