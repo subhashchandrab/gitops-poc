@@ -31,3 +31,7 @@ cluster:
       owner: mosippdb
       secret:
         name: "postgres-postgresql" 
+      postInitSQL:
+        - CREATE ROLE bn_keycloak WITH LOGIN NOSUPERUSER CREATEDB CREATEROLE INHERIT REPLICATION CONNECTION LIMIT -1 PASSWORD '<path:ocivault#mosip_pg_password#latest | base64decode>';
+        - CREATE DATABASE bitnami_keycloak WITH OWNER = bn_keycloak TEMPLATE = template0 ENCODING = 'UTF8' TABLESPACE = pg_default CONNECTION LIMIT = -1;
+
