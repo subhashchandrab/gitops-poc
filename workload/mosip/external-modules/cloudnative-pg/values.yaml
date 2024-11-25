@@ -2,6 +2,7 @@ pg_db_user: mosippdb
 pg_db_password: <path:ocivault#mosip_pg_password#latest | base64decode> 
 
 cluster:
+  superuserSecret: "superuser-secret"
   version:
     postgresql: "14"
   cluster:
