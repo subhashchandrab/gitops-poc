@@ -28,5 +28,6 @@ cluster:
         - mymap   /^(.*)@mydomain\.com$      \1
     initdb: 
       database: mosippdb
+      owner: mosippdb
       secret:
         name: "postgres-postgresql" 
