@@ -14,7 +14,7 @@ postgres-init:
   databases:
     mosip_master:
       enabled: true
-      host: "cloudnative-pg-cluster-rw"
+      host: "cloudnative-pg-cluster-rw.cloudnative-pg"
       branch: release-1.2.0.1
       su:
         user: postgres
