@@ -1,8 +1,8 @@
 ansibleenv:
   zone_compartment_id: <path:ocivault#zone_compartment_id#latest | base64decode>
-  domain: <path:ocivault#openg2p_domain#latest | base64decode>
+  domain: <path:ocivault#mosip_domain#latest | base64decode>
 
-domain_ssl_secret_name: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
+domain_ssl_secret_name: <path:ocivault#mosip_domain_ssl_secret_name#latest | base64decode>
 
 
 gateway: 
@@ -42,5 +42,5 @@ gateway:
         oci.oraclecloud.com/oci-network-security-groups: <path:ocivault#mosip_public_lb_nsg_id#latest | base64decode>
         oci-network-load-balancer.oraclecloud.com/subnet: <path:ocivault#mosip_public_lb_subnet_id#latest | base64decode>
         oci.oraclecloud.com/security-rule-management-mode: "None"  
-        external-dns.alpha.kubernetes.io/hostname: testpub.<path:ocivault#openg2p_domain#latest | base64decode>
+        external-dns.alpha.kubernetes.io/hostname: testpub.<path:ocivault#mosip_domain#latest | base64decode>
       externalTrafficPolicy: "Local"

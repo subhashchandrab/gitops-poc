@@ -1,5 +1,5 @@
 ansibleenv:
   zone_compartment_id: <path:ocivault#zone_compartment_id#latest | base64decode>
-  domain: <path:ocivault#openg2p_domain#latest | base64decode>
+  domain: <path:ocivault#mosip_domain#latest | base64decode>
 
-domain_ssl_secret_name: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
+domain_ssl_secret_name: <path:ocivault#mosip_domain_ssl_secret_name#latest | base64decode>

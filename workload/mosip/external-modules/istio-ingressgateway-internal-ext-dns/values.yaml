@@ -1,10 +1,10 @@
 ansibleenv:
   zone_compartment_id: <path:ocivault#zone_compartment_id#latest | base64decode>
-  domain: <path:ocivault#openg2p_domain#latest | base64decode>
+  domain: <path:ocivault#mosip_domain#latest | base64decode>
   hostnames:
-    - api-internal.<path:ocivault#openg2p_domain#latest | base64decode>
-    - iam.<path:ocivault#openg2p_domain#latest | base64decode>
-domain_ssl_secret_name: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
+    - api-internal.<path:ocivault#mosip_domain#latest | base64decode>
+    - iam.<path:ocivault#mosip_domain#latest | base64decode>
+domain_ssl_secret_name: <path:ocivault#mosip_domain_ssl_secret_name#latest | base64decode>
 
 
 gateway: 
@@ -43,8 +43,8 @@ gateway:
         service.beta.kubernetes.io/oci-load-balancer-shape-flex-min: "10"
         service.beta.kubernetes.io/oci-load-balancer-shape-flex-max: "100"
         service.beta.kubernetes.io/oci-load-balancer-ssl-ports: "443"    
-        service.beta.kubernetes.io/oci-load-balancer-tls-secret: <path:ocivault#openg2p_domain_ssl_secret_name#latest | base64decode>
+        service.beta.kubernetes.io/oci-load-balancer-tls-secret: <path:ocivault#mosip_domain_ssl_secret_name#latest | base64decode>
         oci.oraclecloud.com/oci-network-security-groups: <path:ocivault#mosip_public_lb_nsg_id#latest | base64decode>
         oci-network-load-balancer.oraclecloud.com/subnet: <path:ocivault#mosip_public_lb_subnet_id#latest | base64decode>
         oci.oraclecloud.com/security-rule-management-mode: "None"  
-        external-dns.alpha.kubernetes.io/hostname: api-internal.<path:ocivault#openg2p_domain#latest | base64decode> , iam.<path:ocivault#openg2p_domain#latest | base64decode> ,activemq.<path:ocivault#openg2p_domain#latest | base64decode>, kibana.<path:ocivault#openg2p_domain#latest | base64decode>, regclient.<path:ocivault#openg2p_domain#latest | base64decode>, admin.<path:ocivault#openg2p_domain#latest | base64decode> , minio.<path:ocivault#openg2p_domain#latest | base64decode> , kafka.<path:ocivault#openg2p_domain#latest | base64decode>, postgres.<path:ocivault#openg2p_domain#latest | base64decode>, smtp.<path:ocivault#openg2p_domain#latest | base64decode>, landingpage.<path:ocivault#openg2p_domain#latest | base64decode> 
+        external-dns.alpha.kubernetes.io/hostname: api-internal.<path:ocivault#mosip_domain#latest | base64decode> , iam.<path:ocivault#mosip_domain#latest | base64decode> ,activemq.<path:ocivault#mosip_domain#latest | base64decode>, kibana.<path:ocivault#mosip_domain#latest | base64decode>, regclient.<path:ocivault#mosip_domain#latest | base64decode>, admin.<path:ocivault#mosip_domain#latest | base64decode> , minio.<path:ocivault#mosip_domain#latest | base64decode> , kafka.<path:ocivault#mosip_domain#latest | base64decode>, postgres.<path:ocivault#mosip_domain#latest | base64decode>, smtp.<path:ocivault#mosip_domain#latest | base64decode>, landingpage.<path:ocivault#mosip_domain#latest | base64decode> 

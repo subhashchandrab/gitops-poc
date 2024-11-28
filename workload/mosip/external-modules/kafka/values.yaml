@@ -1,5 +1,5 @@
 kafka_istio_enabled: true
-kafkaUiHost: kafka.<path:ocivault#openg2p_domain#latest | base64decode> 
+kafkaUiHost: kafka.<path:ocivault#mosip_domain#latest | base64decode> 
 installName: kafka-ui
 
 kafka-ui:

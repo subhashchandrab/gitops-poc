@@ -1,4 +1,4 @@
-postgresHost: postgres.<path:ocivault#openg2p_domain#latest | base64decode>
+postgresHost: postgres.<path:ocivault#mosip_domain#latest | base64decode>
 
 postgresql:
   commonAnnotations: 
