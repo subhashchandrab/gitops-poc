@@ -2,15 +2,15 @@ external:
   destination:
     server: https://kubernetes.default.svc
   source:
-    repoURL: https://github.com/ddevadat/gitops-poc
+    repoURL: https://github.com/subhashchandrab/gitops-poc
     targetRevision: HEAD
   components:
-    - name: istio-ingressgateway
-      path: workload/mosip/external-modules/istio-ingressgateway
-      namespace: istio-system
-      annotations:
-        argocd.argoproj.io/sync-wave: "-100"
-        argocd.argoproj.io/manifest-generate-paths: .
+    # - name: istio-ingressgateway
+    #   path: workload/mosip/external-modules/istio-ingressgateway
+    #   namespace: istio-system
+    #   annotations:
+    #     argocd.argoproj.io/sync-wave: "-100"
+    #     argocd.argoproj.io/manifest-generate-paths: .
 
     # - name: istio-ingressgateway-internal
     #   path: workload/mosip/external-modules/istio-ingressgateway-internal
@@ -127,7 +127,7 @@ core:
   destination:
     server: https://kubernetes.default.svc
   source:
-    repoURL: https://github.com/ddevadat/gitops-poc
+    repoURL: https://github.com/subhashchandrab/gitops-poc
     targetRevision: HEAD
   components:
     # - name: config-server
@@ -317,7 +317,7 @@ mimoto:
   destination:
     server: https://kubernetes.default.svc
   source:
-    repoURL: https://github.com/ddevadat/gitops-poc
+    repoURL: https://github.com/subhashchandrab/gitops-poc
     targetRevision: HEAD
   components:
     # - name: mimoto-onboarding
@@ -332,7 +332,7 @@ esignet:
   destination:
     server: https://kubernetes.default.svc
   source:
-    repoURL: https://github.com/ddevadat/gitops-poc
+    repoURL: https://github.com/subhashchandrab/gitops-poc
     targetRevision: HEAD
   components:
     # - name: esignet-postgres-init
