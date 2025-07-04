@@ -13,6 +13,11 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+
+# env:
+#   TF_VAR_tenancy_ocid: ${{ secrets.TENANCY_OCID }}
+#   TF_VAR_compartment_ocid: ${{ vars.COMPARTMENT_OCID }}
+  
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -34,8 +39,8 @@ jobs:
           mkdir -p /home/runner/.oci
           cat >/home/runner/.oci/config <<EOL
           [DEFAULT]
-          SECRET=${{ secrets.ENV_VAR }}
-          VAR=${{ vars.ENV_SECRET }}
+          SECRET=${{ secrets.TEST_VAR }}
+          VAR=${{ vars.TEST_SECRET }}
           EOL
           # python3 --version
           # cat /etc/*release*
