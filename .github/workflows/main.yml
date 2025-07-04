@@ -14,9 +14,9 @@ on:
   workflow_dispatch:
 
 
-# env:
-#   TF_VAR_tenancy_ocid: ${{ secrets.TENANCY_OCID }}
-#   TF_VAR_compartment_ocid: ${{ vars.COMPARTMENT_OCID }}
+env:
+  TEST_SECRET: ${{ secrets.TEST_SECRET }}
+  TEST_VAR: ${{ vars.TEST_VAR }}
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -39,8 +39,8 @@ jobs:
           mkdir -p /home/runner/.oci
           cat >/home/runner/.oci/config <<EOL
           [DEFAULT]
-          SECRET=${{ secrets.TEST_SECRET }}
-          VAR=${{ vars.TEST_VAR }}
+          SECRET=${TEST_SECRET}
+          VAR=${vars.TEST_VAR}
           EOL
           # python3 --version
           # cat /etc/*release*
