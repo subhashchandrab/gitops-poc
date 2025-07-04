@@ -14,9 +14,9 @@ on:
   workflow_dispatch:
 
 
-env:
-  TEST_SECRET: ${{ secrets.TEST_SECRET }}
-  TEST_VAR: ${{ vars.TEST_VAR }}
+# env:
+#   TEST_SECRET: ${{ secrets.TEST_SECRET }}
+#   TEST_VAR: ${{ vars.TEST_VAR }}
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -24,7 +24,7 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-22.04
-
+    environment: test
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -39,8 +39,8 @@ jobs:
           mkdir -p /home/runner/.oci
           cat >/home/runner/.oci/config <<EOL
           [DEFAULT]
-          SECRET=${TEST_SECRET}
-          VAR=${TEST_VAR}
+          SECRET=$${{ secrets.TEST_SECRET }}
+          VAR=${{ vars.TEST_VAR }}
           EOL
           # python3 --version
           # cat /etc/*release*
