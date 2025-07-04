@@ -38,7 +38,7 @@ jobs:
           chmod +x install.sh
           ./install.sh --accept-all-defaults
           source /home/runner/.bashrc
-          echo "Installed OCI CLI verion: $(oci --version)"
+          echo "Installed OCI CLI verion: $(/home/runner/bin/oci --version)"
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
