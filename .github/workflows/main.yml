@@ -43,7 +43,7 @@ jobs:
           chmod +x install.sh
           ./install.sh --accept-all-defaults
           source /home/runner/.bashrc
-          export PATH=$PATH:/home/runner/bin/oci
+          export PATH="/home/runner/bin/oci:$PATH"
           echo "Installed OCI CLI verion: $(oci --version)"
 
 
