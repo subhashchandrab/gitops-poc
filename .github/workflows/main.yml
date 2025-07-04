@@ -24,24 +24,30 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12.3' 
+      # - uses: actions/setup-python@v5
+      #   with:
+      #     python-version: '3.12.3' 
           
       # Runs a single command using the runners shell
       - name: Install OCI CLI
         run: |
-          python3 --version
-          cat /etc/*release*
-          echo "Installing OCI CLI..."
-          wget https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh
-          chmod +x install.sh
-          ./install.sh --accept-all-defaults
-          source /home/runner/.bashrc
-          echo "Installed OCI CLI verion: $(/home/runner/bin/oci --version)"
+          mkdir -p /home/runner/.oci
+          cat >/home/runner/.oci/config <<EOL
+          [DEFAULT]
+          SECRET=${{ secrets.ENV_VAR }}
+          VAR=${{ vars.ENV_SECRET }}
+          EOL
+          # python3 --version
+          # cat /etc/*release*
+          # echo "Installing OCI CLI..."
+          # wget https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh
+          # chmod +x install.sh
+          # ./install.sh --accept-all-defaults
+          # source /home/runner/.bashrc
+          # echo "Installed OCI CLI verion: $(/home/runner/bin/oci --version)"
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          cat /home/runner/.oci/config
+
