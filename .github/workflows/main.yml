@@ -36,23 +36,15 @@ jobs:
       # Runs a single command using the runners shell
       - name: Install OCI CLI
         run: |
-          mkdir -p /home/runner/.oci
-          cat >/home/runner/.oci/config <<EOL
-          [DEFAULT]
-          SECRET=$${{ secrets.TEST_SECRET }}
-          VAR=${{ vars.TEST_VAR }}
-          EOL
-          # python3 --version
-          # cat /etc/*release*
-          # echo "Installing OCI CLI..."
-          # wget https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh
-          # chmod +x install.sh
-          # ./install.sh --accept-all-defaults
-          # source /home/runner/.bashrc
-          # echo "Installed OCI CLI verion: $(/home/runner/bin/oci --version)"
+          python3 --version
+          cat /etc/*release*
+          echo "Installing OCI CLI..."
+          wget https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh
+          chmod +x install.sh
+          ./install.sh --accept-all-defaults
+          source /home/runner/.bashrc
+          export PATH=$PATH:/home/runner/bin/oci
+          echo "Installed OCI CLI verion: $(oci --version)"
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          cat /home/runner/.oci/config
+
 
