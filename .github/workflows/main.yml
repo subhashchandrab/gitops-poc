@@ -40,7 +40,7 @@ jobs:
           cat >/home/runner/.oci/config <<EOL
           [DEFAULT]
           SECRET=${TEST_SECRET}
-          VAR=${vars.TEST_VAR}
+          VAR=${TEST_VAR}
           EOL
           # python3 --version
           # cat /etc/*release*
