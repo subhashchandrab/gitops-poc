@@ -37,7 +37,7 @@ jobs:
           wget https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh
           chmod +x install.sh
           ./install.sh --accept-all-defaults
-          source ~/.bashrc
+          source /home/runner/.bashrc
           echo "Installed OCI CLI verion: $(oci --version)"
 
       # Runs a set of commands using the runners shell
