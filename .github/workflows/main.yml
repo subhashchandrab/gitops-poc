@@ -39,8 +39,8 @@ jobs:
           mkdir -p /home/runner/.oci
           cat >/home/runner/.oci/config <<EOL
           [DEFAULT]
-          SECRET=${{ secrets.TEST_VAR }}
-          VAR=${{ vars.TEST_SECRET }}
+          SECRET=${{ secrets.TEST_SECRET }}
+          VAR=${{ vars.TEST_VAR }}
           EOL
           # python3 --version
           # cat /etc/*release*
