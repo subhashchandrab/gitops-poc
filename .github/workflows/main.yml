@@ -35,6 +35,7 @@ jobs:
           cat /etc/*release*
           echo "Installing OCI CLI..."
           wget https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh
+          chmod +x install.sh
           ./install.sh --accept-all-defaults
           source ~/.bashrc
           echo "Installed OCI CLI verion: $(oci --version)"
